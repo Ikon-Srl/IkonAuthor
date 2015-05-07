@@ -1,0 +1,18 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+<div class="clearfloat"></div>
+<div class="menu_resources">
+  <!--ALLEGATI-->
+  # List<IKCMS_ModelCMS_Interface> files = Model.Models.Where(m => m.ManagerType == typeof(IKGD_ResourceTypeDocument).Name || m.ManagerType == typeof(IKGD_ResourceTypeAttachment).Name).OfType<IKCMS_ModelCMS_Interface>().ToList();
+  <div class="panel_resources" if='files != null && files.Any()'>
+    <label class="risorsa_titolo">${Resources.ResourceStandard.Allegati}</label>
+    <for each='var file in files'>
+      <div class="risorsa_panel">
+        <a href='${file.UrlDownloadDefaultStream().DefaultIfEmpty("javascript:;").EncodeAsAttribute()}' target="_blank?{IKGD_SiteMode.IsTargetSupported}" class="risorsa_link">${file.vfsNode.vNode.name}</a>
+      </div>  
+    </for>
+  </div>
+
+  <!--LINKS-->
+  $!{Html.Partial("~/Views/IKCMS/Links/LinksViewer")}
+
+</div>

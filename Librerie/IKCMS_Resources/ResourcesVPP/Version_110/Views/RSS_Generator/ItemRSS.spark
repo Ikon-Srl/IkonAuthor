@@ -1,0 +1,14 @@
+<viewdata model="FS_Operations.FS_NodeInfo_Interface"/>
+# var settingsKVT = ViewData["itemSettingsKVT"] as KeyValueObjectTree;
+# var title = (settingsKVT != null) ? settingsKVT["Title"].Value as string : Utility.FindPropertySafe<string>(ViewData["itemSettings"], "Title");
+# var text = (settingsKVT != null) ? settingsKVT["Text"].Value as string : Utility.FindPropertySafe<string>(ViewData["itemSettings"], "Text");
+# var text_abstract = (settingsKVT != null) ? settingsKVT["Abstract"].Value as string : Utility.FindPropertySafe<string>(ViewData["itemSettings"], "Abstract");
+<div>
+  <div style="float:left;">
+    <img src='${UrlHelperExtension.UrlProxyVFS(Model.rNode, null, "image", "~/Content/Images/trasparente.gif", true)}'/>
+  </div>
+  <div>${Model.vData.date_node.ToLongDateString()}<if condition='Model.vData.date_node_aux != null'> - ${Model.vData.date_node_aux.Value.ToLongDateString()}</if></div>
+  <div><b>${title}</b></div>
+  <div><i>${text_abstract}</i></div>
+  <div>${text}</div>
+</div>

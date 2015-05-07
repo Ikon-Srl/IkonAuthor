@@ -1,0 +1,30 @@
+<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+# var items = ViewData["Items"] as IEnumerable<Ikon.Indexer.IKGD_LuceneDocCollection>;
+# var pager = items == null ? null : Ikon.IKCMS.Pagers.PagingHelperExtensions.FactoryPagerSimple(items, 5, null);
+# ViewData["FilterHtml"] = new Ikon.Filters.IKGD_HtmlCleaner();
+# ViewData["breadCrumbs"] = new List<IKCMS_ModelCMS_BreadCrumbsElement> { new IKCMS_ModelCMS_BreadCrumbsElement(null, null, "Ricerca nel sito") };
+# //ViewData["SectionTitle"] = "Ricerca nel sito";
+
+<content name="cms_content_main">
+  <div class="ricerca_risultati">
+    <div class="counter">
+      <div>${IKCMS_StaticResources.GetString("CmsSearch_SearchedText")}: ${ViewData["query"]}</div>
+      <div class="left">${IKCMS_StaticResources.GetString("CmsSearch_ResultsFound")}: ${ViewData["ItemsCount"]}</div><br /><br />
+      <div class="pager right" if='pager != null && pager.PagerPageCount > 0'>${Html.Partial("~/Views/Components/Navigation/Pager", pager)}</div>
+    </div>
+    <div class="clearfloat"></div>
+    <if condition='pager != null'>
+      <for each='var item in pager.ItemsVisible'>
+        ${Html.Partial("~/Views/Search/SearchItem", item)}
+      </for>
+    </if>
+    <else>
+      <br/><br/><br/>
+      ${IKCMS_StaticResources.GetString("CmsSearch_NoResults")}<br/>
+      <br/><br/><br/>
+    </else>
+    <div class="pager right" if='pager != null && pager.PagerPageCount > 0'>${Html.Partial("~/Views/Components/Navigation/Pager", pager)}</div>
+  </div>
+</content>

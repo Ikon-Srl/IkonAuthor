@@ -1,0 +1,200 @@
+
+--Rigenerazione degli indici:
+
+DBCC DBREINDEX('IKGD_RNODE', '', 80);
+DBCC DBREINDEX('IKGD_SNODE', '', 80);
+DBCC DBREINDEX('IKGD_VNODE', '', 80);
+DBCC DBREINDEX('IKGD_VDATA', '', 80);
+DBCC DBREINDEX('IKGD_VDATA_KEYVALUE', '', 80);
+DBCC DBREINDEX('IKGD_INODE', '', 80);
+DBCC DBREINDEX('IKGD_RELATION', '', 80);
+DBCC DBREINDEX('IKGD_PROPERTY', '', 80);
+DBCC DBREINDEX('IKGD_MSTREAM', '', 80);
+DBCC DBREINDEX('IKCAT_ElementAttribute', '', 0);
+DBCC DBREINDEX('IKCAT_ElementFolder', '', 0);
+DBCC DBREINDEX('IKCAT_ElementMain', '', 0);
+DBCC DBREINDEX('IKCAT_ElementVariant', '', 0);
+DBCC DBREINDEX('IKCAT_AttributeResource', '', 0);
+DBCC DBREINDEX('IKCAT_AttributeStream', '', 0);
+DBCC DBREINDEX('IKCAT_Attribute', '', 0);
+
+DBCC DBREINDEX('IKATT_Attribute', '', 0);
+DBCC DBREINDEX('IKATT_AttributeMapping', '', 0);
+DBCC DBREINDEX('IKATT_AttributeStream', '', 0);
+DBCC DBREINDEX('IKQM_Queue', '', 0);
+DBCC DBREINDEX('IKQM_QueueBlob', '', 0);
+DBCC DBREINDEX('IKQM_QueueLog', '', 0);
+
+DBCC DBREINDEX('IKGD_SNAPSHOT', '', 0);
+DBCC DBREINDEX('IKGD_FREEZED', '', 0);
+DBCC DBREINDEX('IKGD_CONFIG', '', 0);
+DBCC DBREINDEX('IKGD_KEYSTORAGE', '', 0);
+DBCC DBREINDEX('IKGD_KEYSTORAGE_MAP', '', 0);
+DBCC DBREINDEX('IKCMS_SEO', '', 0);
+DBCC DBREINDEX('IKGD_ADMIN', '', 0);
+
+DBCC DBREINDEX('IKG_HITACC', '', 80);
+DBCC DBREINDEX('IKG_HITLOG', '', 50);
+
+DBCC DBREINDEX('LazyLoginMapper', '', 70);
+DBCC DBREINDEX('LazyLogin_Vote', '', 80);
+DBCC DBREINDEX('LazyLogin_Log', '', 80);
+DBCC DBREINDEX('LazyLogin_AnagraficaMain', '', 70);
+DBCC DBREINDEX('LazyLogin_CartMain', '', 70);
+DBCC DBREINDEX('LazyLogin_CartItem', '', 70);
+DBCC DBREINDEX('LazyLogin_CartItemStream', '', 70);
+DBCC DBREINDEX('LazyLogin_CartLog', '', 70);
+
+DBCC DBREINDEX('aspnet_UsersInRoles', '', 0);
+DBCC DBREINDEX('aspnet_Membership', '', 80);
+DBCC DBREINDEX('aspnet_Users', '', 80);
+DBCC DBREINDEX('aspnet_Roles', '', 0);
+
+-- attenzione che questo puo' essere molto lento
+DBCC DBREINDEX('IKGD_STREAM', '', 80);
+
+
+EXEC sp_updatestats;
+
+-- cancellazione di tutti i query plan sul server
+--DBCC FREEPROCCACHE;
+-- cancellazione di tutti i query plan per un database
+--SELECT [dbid] FROM master.dbo.sysdatabases WHERE name = 'NOME_DB'
+--DBCC FLUSHPROCINDB(12345);
+
+DBCC checkdb([...databasename...])
+
+--DBCC DBREINDEX('XYZ', '', 80); e' stato deprecato, convertire gli script con la seguente sintassi
+--ALTER INDEX ALL ON [XYZ] REBUILD WITH (FILLFACTOR = 80, SORT_IN_TEMPDB = ON, STATISTICS_NORECOMPUTE = ON);
+
+
+
+
+
+--usare questi comandi per testare il server 'a freddo':
+CHECKPOINT;
+DBCC DROPCLEANBUFFERS;
+UPDATE STATISTICS [table_name]
+
+
+UPDATE STATISTICS [IKGD_RNODE];
+UPDATE STATISTICS [IKGD_SNODE];
+UPDATE STATISTICS [IKGD_VNODE];
+UPDATE STATISTICS [IKGD_VDATA];
+UPDATE STATISTICS [IKGD_VDATA_KEYVALUE];
+UPDATE STATISTICS [IKGD_INODE];
+UPDATE STATISTICS [IKGD_RELATION];
+UPDATE STATISTICS [IKGD_PROPERTY];
+UPDATE STATISTICS [IKGD_MSTREAM];
+UPDATE STATISTICS [IKCAT_ElementAttribute];
+UPDATE STATISTICS [IKCAT_ElementFolder];
+UPDATE STATISTICS [IKCAT_ElementMain];
+UPDATE STATISTICS [IKCAT_ElementVariant];
+UPDATE STATISTICS [IKCAT_AttributeResource];
+UPDATE STATISTICS [IKCAT_AttributeStream];
+UPDATE STATISTICS [IKCAT_Attribute];
+UPDATE STATISTICS [IKGD_SNAPSHOT];
+UPDATE STATISTICS [IKGD_FREEZED];
+UPDATE STATISTICS [IKGD_CONFIG];
+UPDATE STATISTICS [IKGD_KEYSTORAGE];
+UPDATE STATISTICS [IKGD_KEYSTORAGE_MAP];
+UPDATE STATISTICS [IKCMS_SEO];
+UPDATE STATISTICS [IKGD_ADMIN];
+UPDATE STATISTICS [IKG_HITACC];
+UPDATE STATISTICS [IKG_HITLOG];
+UPDATE STATISTICS [LazyLoginMapper];
+UPDATE STATISTICS [LazyLogin_Vote];
+UPDATE STATISTICS [LazyLogin_Log];
+UPDATE STATISTICS [aspnet_UsersInRoles];
+UPDATE STATISTICS [aspnet_Membership];
+UPDATE STATISTICS [aspnet_Users];
+UPDATE STATISTICS [aspnet_Roles];
+UPDATE STATISTICS [IKGD_STREAM];
+
+
+--
+-- pulizia della tabella IKG_HITLOG
+--
+--select min(id) from ( select top 500000 id from IKG_HITLOG order by id desc) ids;
+--insert into IKG_HITLOG_ARCHIVE select * from ikg_hitlog where id < 6617910
+--delete from IKG_HITLOG where id < 6617910
+
+
+--
+-- pulizia dell'account LazyLogin creato dai crawler e di tutti i record associati via trigger:
+--
+delete from LazyLoginMapper where UserId='00000000-0000-0000-0000-000000000000'
+
+
+--
+-- pulizia dei tag non validi
+--
+-- DELETE FROM IKGD_PROPERTY WHERE [name] = 'IKCAT_Tag' AND attributeId IS NULL
+
+
+
+--
+-- controllo degli url rewrite non validi
+--
+SELECT * from IKCMS_SEO
+--JOIN IKGD_VNODE ON IKGD_VNODE.snode = IKCMS_SEO.target_snode
+WHERE target_rnode IS NULL AND target_snode IS NOT NULL
+
+
+
+--
+--generazione degli hitlog accumulati:
+--
+
+--
+--importazione dall'archivio degli hitlog IKG_HITLOG_ARCHIVE
+--da eseguire una tantum
+--
+INSERT INTO IKG_HITACC(rNode,Category,Hits,Value,LastUpdate)
+SELECT rNode,Category,Hits,Value,LastUpdate
+FROM ((SELECT DISTINCT resID as rNode,0 as Category,0 as Hits,0 as Value,'1900-01-01' as LastUpdate FROM IKG_HITLOG_ARCHIVE WHERE action=1) EXCEPT (SELECT DISTINCT rNode as rNode,0 as Category,0 as Hits,0 as Value,'1900-01-01' as LastUpdate FROM IKG_HITACC WHERE Category=0)) t
+WHERE rNode IN (SELECT code FROM IKGD_RNODE)
+
+UPDATE IKG_HITACC SET Hits = Hits + th.hits_count, LastUpdate = th.tsmax
+FROM (SELECT t1.resID,COUNT(*) as hits_count,MAX(ts) as tsmax FROM IKG_HITLOG_ARCHIVE t1 JOIN IKG_HITACC t2 ON (t2.rNode=t1.resID) WHERE (t1.action=1 AND t2.Category=0 AND t1.ts>t2.LastUpdate) GROUP BY resID) th
+WHERE Category=0 AND rNode=th.resID
+
+
+--
+--aggiornamento dall'archivio degli hitlog da IKG_HITLOG
+--viene effettuata direttamente dal processing asincrono di hitlog
+--
+INSERT INTO IKG_HITACC(rNode,Category,Hits,Value,LastUpdate)
+SELECT rNode,0 as Category,0 as Hits,0 as Value,'1900-01-01' as LastUpdate
+FROM ((SELECT DISTINCT resID as rNode FROM IKG_HITLOG WHERE action=1) EXCEPT (SELECT DISTINCT rNode as rNode FROM IKG_HITACC WHERE Category=0)) t
+WHERE rNode IN (SELECT code FROM IKGD_RNODE)
+
+UPDATE IKG_HITACC SET Hits = Hits + th.hits_count, LastUpdate = th.tsmax
+FROM (SELECT t1.resID,COUNT(*) as hits_count,MAX(ts) as tsmax FROM IKG_HITLOG t1 JOIN IKG_HITACC t2 ON (t2.rNode=t1.resID) WHERE (t1.action=1 AND t2.Category=0 AND t1.ts>t2.LastUpdate) GROUP BY resID) th
+WHERE Category=0 AND IKG_HITACC.rNode=th.resID
+
+
+--
+--aggiornamento dall'archivio dei voti da LazyLogin_Vote
+--viene effettuata direttamente dal processing asincrono di hitlog
+--
+INSERT INTO IKG_HITACC(rNode,Category,Hits,Value,LastUpdate)
+SELECT rNode,1 as Category,0 as Hits,0 as Value,'1900-01-01' as LastUpdate
+FROM (SELECT DISTINCT t1.rNode FROM (SELECT * FROM LazyLogin_Vote WHERE Category=0) t1 LEFT OUTER JOIN (SELECT * FROM IKG_HITACC WHERE Category=1) t2 ON (t2.rNode=t1.rNode) JOIN IKGD_RNODE t3 ON (t3.code=t1.rNode) WHERE t2.rNode is null) th
+
+UPDATE IKG_HITACC SET Value = (Value*Hits + votes)/(Hits + th.hits_count), Hits = Hits + th.hits_count, LastUpdate = th.tsmax
+FROM (SELECT t1.rNode,COUNT(*) as hits_count,SUM(t1.Value) as votes,MAX(t1.Date) as tsmax FROM LazyLogin_Vote t1 JOIN IKG_HITACC t2 ON (t2.rNode=t1.rNode) WHERE (t1.Category=0 AND t2.Category=1 AND (t1.Value IS NOT NULL) AND t1.Date>t2.LastUpdate) GROUP BY t1.rNode) th
+WHERE Category=1 AND IKG_HITACC.rNode=th.rNode
+
+
+
+--
+-- pulizia manuale degli stream orfani
+--
+--DELETE FROM IKGD_MSTREAM WHERE inode NOT IN (SELECT version FROM IKGD_INODE)
+
+
+
+
+
+

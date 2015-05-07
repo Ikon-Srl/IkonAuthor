@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{213AA23E-553C-47F2-BD09-CE74BAAE1BED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IKGD_VFS_Library</RootNamespace>
+    <AssemblyName>IKGD_VFS_Library</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=1.0.0.155, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\elmah\Bin\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Heijden.Dns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\dnsbl\Heijden.Dns.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Check\VFS_CheckDB.cs" />
+    <Compile Include="Config\Bootsrapper_Interfaces.cs" />
+    <Compile Include="Config\IKGD_SiteMode.cs" />
+    <Compile Include="Config\IKGD_Attributes.cs" />
+    <Compile Include="Config\IKGD_Constants.cs" />
+    <Compile Include="Config\IKGD_ConfigVFS.cs" />
+    <Compile Include="Data\IKGD_DataBaseLazyLogin.cs" />
+    <Compile Include="Data\IKGD_DataBase.cs" />
+    <Compile Include="Data\IKGD_DataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IKGD_DataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\AsyncProxyVFS.cs" />
+    <Compile Include="Handlers\ProxyIKATT_Helper.cs" />
+    <Compile Include="Handlers\ProxyIKATT.cs" />
+    <Compile Include="Handlers\ProxyVFS2_Helper.cs" />
+    <Compile Include="Handlers\ImpersonationHelpers.cs" />
+    <Compile Include="Handlers\ProxyIKCAT.cs" />
+    <Compile Include="Language\IKGD_LanguageManager.cs" />
+    <Compile Include="Log\IKCMS_ApplicationStatus.cs" />
+    <Compile Include="Membership\MembershipExtensions.cs" />
+    <Compile Include="QueueManager\QueueManager.cs" />
+    <Compile Include="Serialization\KeyValueObjectTree.cs" />
+    <Compile Include="Serialization\KeyValueTree.cs" />
+    <Compile Include="VFS\IKGD_ExternalVFS_Support.cs" />
+    <Compile Include="VPP\IKGD_MultiVirtualPathProvider.cs" />
+    <Compile Include="VPP\ProxyZipVFS_VPP.cs" />
+    <Compile Include="Handlers\ProxyFCKEditorVFS.cs" />
+    <Compile Include="Handlers\ProxyVFS.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Membership\IKGD_AccountManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\Ikon_Serialization.cs" />
+    <Compile Include="VFS\IKGD_FS_Lib_OperationsHelpersCMS.cs" />
+    <Compile Include="VFS\IKGD_FS_Lib_Operations.cs" />
+    <Compile Include="VFS\IKGD_FS_Lib_OperationsHelpers.cs" />
+    <Compile Include="VFS\IKGD_Path_Helpers.cs" />
+    <Compile Include="VFS\IKGD_VFS_Helpers.cs" />
+    <Compile Include="VFS\FS_TagData.cs" />
+    <Compile Include="VFS\IKGD_FS_Lib_Support.cs" />
+    <Compile Include="VFS\IKGD_VFS_WebPage.cs" />
+    <Compile Include="VPP\IKGD_ZipVirtualFileProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\IKGD_DataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>IKGD_DataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Data\IKGD_DataClasses.dbml.layout">
+      <DependentUpon>IKGD_DataClasses.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKGD_Auth_Library\IKGD_Auth_Library.csproj">
+      <Project>{8FC2631F-3CA9-43AE-A6D9-F3357A4025DD}</Project>
+      <Name>IKGD_Auth_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ConfigSettings\IKGD_ConfigSettings.csproj">
+      <Project>{A6FB392B-CC41-4877-BB2A-87BA7CFED799}</Project>
+      <Name>IKGD_ConfigSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Utility\IKGD_Utility.csproj">
+      <Project>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</Project>
+      <Name>IKGD_Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="INFO.txt" />
+    <Content Include="SQL\SQL_NORMALIZATION.txt" />
+    <Content Include="SQL\Misc\SQL_ANALISYS_01.txt" />
+    <Content Include="SQL\DUPLICAZIONE_IKGD_CONFIG.txt" />
+    <Content Include="SQL\SQL_IKGD_CONFIG_CLEANUP_01.txt" />
+    <Content Include="SQL\SQL_FAILOVER.txt" />
+    <Content Include="SQL\SQL_LOGFILES.txt" />
+    <Content Include="SQL\Misc\SQL_UPDATE_SCHEMA_DATA_03.txt" />
+    <Content Include="SQL\Misc\SQL_UPDATE_SCHEMA_DATA_02.txt" />
+    <Content Include="SQL\Misc\SQL_INDICI_03.txt" />
+    <Content Include="SQL\Misc\SQL_UPDATE_SCHEMA_DATA.txt" />
+    <Content Include="SQL\Misc\SQL_TOOLS_01.txt" />
+    <Content Include="SQL\Misc\SQL_EXAMPLE_01.txt" />
+    <Content Include="SQL\Misc\SQL_INDICI_01.txt" />
+    <Content Include="SQL\Misc\SQL_INDICI_02.txt" />
+    <Content Include="SQL\SQL_SUPPORT.txt" />
+    <Content Include="Data\dbml.Associations.Reference.xml" />
+    <Content Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\builder\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

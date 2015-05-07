@@ -1,0 +1,68 @@
+﻿<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Page_Interface"/>
+
+# var ModelPage = (ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).ModelRoot as Ikon.IKCMS.IKCMS_ModelCMS_Page_Interface;
+# bool isCompactView = (Request.Params["ListMode"] != "Wide");
+# var rowSize = isCompactView ? 4 : 2;
+# var pageSize = rowSize * (isCompactView ? 4 : 3);
+# ManagerTagFilter_PhotoGallery gallery = new ManagerTagFilter_PhotoGallery(Model);
+# gallery.ScanVFS_Paged(pageSize, null, Request.Params[gallery.ParameterNameSorter] ?? (Model as IKCMS_ModelCMS_VFS_LanguageKVT_Interface).VFS_ResourceNoLanguageKVT("SortAtStart").ValueString, null);
+# var popupView = Model.TemplateInfo.ViewPaths["popup"] ?? "~/Views/Gallery/Popup_PhotoGallery";
+
+<content name="tail_CodeJS">
+  <if condition='!string.IsNullOrEmpty(Request.Params["rNode"])'>
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+      try {
+        //autopopup per le foto
+        //$('a[rel="gallery"][href*="sNode=${Request.Params["sNode"].EncodeAsJavaScript()}&"]').add($('a[rel="gallery"][href$="sNode=${Request.Params["sNode"].EncodeAsJavaScript()}"]')).click();
+        $('a[rel="gallery"][href*="rNode=${Request.Params["rNode"].EncodeAsJavaScript()}&"]').add($('a[rel="gallery"][href$="rNode=${Request.Params["rNode"].EncodeAsJavaScript()}"]')).click();
+      } catch (e) { }
+    });
+
+    </script>
+  </if>
+</content>
+<content name="cms_content_aux2">${Html.Partial("~/Views/Gallery/SearchBox", gallery)}</content>
+<content name="cms_content_main">
+
+    <div class="clearfloat"></div>
+    <div id="photogallery">
+    <h2 class="bold">risultati trovati:</h2>
+    
+      <div class="ordina">
+          Ordina:&nbsp; <a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Name", "+Name", +1)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Name", "+Name", +1, "active_", "up", "down")}' rel="nofollow">Nome</a>&nbsp; 
+          <a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Creat", "-Creat", -1)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Creat", "-Creat", +1, "active_", "up", "down")}' rel="nofollow">più recenti</a>&nbsp;
+          <!--<a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Date", "-Date", -1)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Date", "-Date", +1, "active_", "up", "down")}' rel="nofollow">più recenti</a>&nbsp;-->
+          <!--<a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Viewed", "-Viewed", null)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Viewed", "-Viewed", -1, "active_", "down", "down")}' rel="nofollow">più visti</a>&nbsp;-->
+          <!--<a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Voted", "-Voted", null)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "voted", "-Voted", -1, "active_", "down", "down")}' rel="nofollow">più votati</a>-->
+      </div>
+      <!--<div class="vista">
+        Visualizzazione&nbsp; <a href='${isCompactView ? "javascript:;" : Utility.UriSetQuery(Request.Url, "ListMode", "Compact").EncodeAsAttributeUrl()}' rel="nofollow"><img src="~/Content/Images/icona_griglia.gif" alt="grid" /></a>&nbsp;<a href='${isCompactView ? Utility.UriSetQuery(Request.Url, "ListMode", "Wide").EncodeAsAttributeUrl() : "javascript:;"}' rel="nofollow"><img src="~/Content/Images/icona_lista.gif" alt="lista" /></a>
+      </div>-->
+      <!--<div class="pager" if='gallery.Pager != null && gallery.Pager.PagerPageCount > 1'>${Html.Partial("~/Views/Components/Navigation/Pager", gallery.Pager)}</div>-->
+      <!--<div class="dimensione_icone"><div class="left">dimensione icone: &nbsp; </div><a href='${isCompactView ? Utility.UriSetQuery(Request.Url, "ListMode", "Wide").EncodeAsAttributeUrl() : "javascript:;"}'><img src="~/Content/Images/icone_grandi.gif" alt="icone grandi" /></a> <a href='${isCompactView ? "javascript:;" : Utility.UriSetQuery(Request.Url, "ListMode", "Compact").EncodeAsAttributeUrl()}'><img src="~/Content/Images/icone_piccole.gif" alt="icone piccole" /></a></div>-->
+     
+      <div class="clearfloat"></div>
+      <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithView(null, rNode, popupView)).EncodeAsAttribute()}' each='var rNode in gallery.NodesPre' if='gallery.NodesPre != null' class="autoPopupAny" data-fancybox-type='ajax' rel="gallery"></a>-->
+      <div class='${isCompactView ? "" : "big"}'>
+        <for each='var item in gallery.Models.OfType<IKCMS_ModelCMS_GenericBrickInterface>()'>
+          <div class='${(itemIndex % rowSize != rowSize - 1) ? "item" : "ultimo"}'>
+            <div class="thumb">
+              <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithView(null, item.rNode, popupView)).EncodeAsAttribute()}' class="autoPopupAny" data-fancybox-type='ajax' rel="gallery">
+                ${item.ImageCMS(isCompactView ? "thumb_small" : "thumb_home", Url.TransparentImage(), null, null, null)}
+              </a>
+            </div>
+            <div class="titolo">$!{item.Title}</div>
+          </div>
+        </for>
+        <div class="clearfloat"></div>
+        <!--<div class="pager" if='gallery.Pager != null && gallery.Pager.PagerPageCount > 1'>${Html.Partial("~/Views/Components/Navigation/Pager", gallery.Pager)}</div>-->
+      </div>
+      <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithView(null, rNode, popupView)).EncodeAsAttribute()}' each='var rNode in gallery.NodesPost' if='gallery.NodesPost != null' class="autoPopupAny" data-fancybox-type='ajax' rel="gallery"></a>-->
+
+      <div class="clearfloat"></div>
+    </div>
+</content>
+

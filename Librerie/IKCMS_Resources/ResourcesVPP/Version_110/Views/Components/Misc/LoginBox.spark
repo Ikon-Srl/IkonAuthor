@@ -1,0 +1,67 @@
+﻿<content name="tail_CodeJS">
+  <script type="text/javascript">
+  /*<![CDATA[*/
+    $(document).ready(function() {
+      $('#LB_userName, #LB_password').bind('keypress', function(e) {
+        var code = e.keyCode || e.which;
+        if(code == 13) {
+          $('#LB_actionLogin').click();
+        }
+      });
+      $('.LB_submit').click(function(e) {
+        try {
+          e.preventDefault();
+          e.stopPropagation();
+        } catch (e) { }
+        var action = $(this).metadata().action || $(this).attr('id');
+        var successUrl = $(this).closest('a').attr('href') || document.referrer;
+        var formRequest = { userName: $("#LB_userName").val(), password: $("#LB_password").val(), action: action, successUrl: successUrl };
+        //
+        if ($(this).hasClass('isIdentified')) {
+          if ($('#LB_userName').val().length == 0 || $('#LB_password').val().length == 0) {
+            window.location = successUrl;
+            return;
+          }
+        }
+        //alert(action + ' | ' + successUrl);
+        $.ajax({
+          url: '${Url.GetMvcActionUrl<IkonWeb.Controllers.AuthController>(c => c.Login(null))}',
+          type: 'POST',
+          dataType: 'json',
+          data: $.toJSON(formRequest),
+          contentType: 'application/json; charset=utf-8',
+          success: function(result) {
+            var tmpFn = function() {
+              if (result.hasError == false && typeof (result.successUrl) == 'string')
+                window.location = result.successUrl;
+              else if (result.hasError == true && typeof (result.errorUrl) == 'string')
+                window.location = result.errorUrl;
+            };
+            if (typeof (result.message) == 'string')
+              bootbox.alert(result.message, tmpFn);
+            else
+              tmpFn();
+          }
+        });
+        //
+      });
+    });
+  /*]]>*/
+  </script>
+</content>
+
+<div class='titolo1 clickableBlock'><h3>${IKCMS_StaticResources.GetString("LoginBox_Title")}</h3><a rel="nofollow" href='#${Url.Content("~/AreaPersonale")}' class='clickableBlockLink'></a></div>
+<div class='descrizione'>
+  ${IKCMS_StaticResources.GetString("LoginBox_Text")}
+</div>
+<form>
+  <label for="LB_username">${IKCMS_StaticResources.GetString("Login_UserName")}</label><br/>
+  <input id="LB_userName" type="text" value='${MembershipHelper.IsAnonymous ? null : MembershipHelper.UserName}' class="textbox" />
+  <div class="clearfloat"></div>
+  <label for="LB_password">${IKCMS_StaticResources.GetString("Login_Password")}}</label><br/>
+  <input id="LB_password" type="password" class="textbox" />
+  <a id="LB_actionLogin" href='~/AreaPersonale' class="login_submit LB_submit isIdentified?{!MembershipHelper.IsAnonymous} { action:'actionLogin' }"><img src="~/Content/Images/freccia_AP.gif" alt="." /></a>
+  <div class='clearfloat'></div>
+  <if condition='MembershipHelper.IsAnonymous'><a id="actionRegister" href='${Url.Content(string.Format("~/Auth/RegisterAjax?ReturnUrl={0}", Url.Encode(Request.QueryString["ReturnUrl"])))}' class="submit { action:'actionRegister' }">${IKCMS_StaticResources.GetString("Login_Registrati")}</a><br /></if>
+  <a id="LB_actionForgot" href="~/Auth/Login" class="clicca forgotPassword LB_submit { action:'actionForgot' }">${IKCMS_StaticResources.GetString("Login_PasswordDimenticata")}</a><br />
+</form>

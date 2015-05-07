@@ -1,0 +1,7 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+<if condition='Model is IKCMS_ModelCMS_LinkKVT'>
+  # var mdl = Model as IKCMS_ModelCMS_LinkKVT;
+  <div class="link_panel clickableBlock" if='mdl.HasLink'>
+    <a href='${mdl.LinkUrl.EncodeAsAttribute()}' target='${mdl.LinkTarget}?{mdl.HasLinkTarget}' class="risorsa_link clickableBlockLink">${mdl.Title.DefaultIfEmptyTrim(mdl.Name)}</a>
+  </div>
+</if>

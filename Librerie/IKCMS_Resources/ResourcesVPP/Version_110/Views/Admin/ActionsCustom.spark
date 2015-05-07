@@ -1,0 +1,7 @@
+﻿
+# var has_ACL = FS_ACL_Reduced.HasOperatorACLs();
+# var languages = Ikon.GD.IKGD_Config.GetElements("Languages", "language");
+
+<!--<a rel="nofollow" href='javascript:;' target="_blank" if='has_ACL' class='opzioni_button' >Custom action</a>-->
+<div class='opzioni_separator20'></div>
+

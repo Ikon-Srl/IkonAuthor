@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Files>
+
+  <File filename="~/Content/JS/jsLib.min.js" type="javascript">
+    <Add filename="~/Scripts/jquery.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.json-2.3.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.form.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.hijack.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.bgiframe.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.pngFix.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.metadata.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.ba-bbq.js" />
+    <Add filename="~/Content/JS/Plugins/knockout-2.0.0.js" />
+    <Add filename="~/Content/JS/Plugins/knockout.mapping-latest.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.linq.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.media.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.cookie.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.blockUI.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.fancybox-1.3.4.js" />
+    <!--<Add filename="~/Content/JS/Plugins/superfish.js" />-->
+    <!--<Add filename="~/Content/JS/Plugins/supersubs.js" />-->
+    <Add filename="~/Content/JS/Plugins/jquery.watermark.js" />
+    <!--<Add filename="~/Content/JS/Plugins/jquery.ba-urlinternal.js" />-->
+    <!--<Add filename="~/Content/JS/Plugins/jquery.text-overflow.js" />-->
+    <Add filename="~/Content/JS/Plugins/jquery.condense.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.myimgscale-0.2.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.hoverIntent.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.FCKEditor.js" />
+    <!--<Add filename="~/Content/JS/Plugins/jquery.mediaqueries.js" />-->
+
+    <Add filename="~/Content/JS/Plugins/jquery.qtip-1.0.js" />
+    <!--<Add filename="~/Content/JS/Plugins/jquery.tipTip.js" />-->
+
+    <!--<Add filename="~/Content/JS/Plugins/jquery.newsScrollerMV.js" />-->
+    <Add filename="~/Content/JS/Plugins/jquery.MV_TeasersRotator.js" />
+
+    <Add filename="~/Content/JS/Plugins/IKCMS.Support.js" />
+
+    <!--<Add filename="~/Content/JS/Plugins/jquery.lightbox-0.5.js" />-->
+  </File>
+
+  <File filename="~/Content/JS/jsCustom.min.js" type="javascript">
+    <Add filename="~/Content/JS/Plugins/UI/jquery-ui.js" />
+    <!--<Add filename="~/Content/JS/Plugins/UI/jquery.ui.touch-punch.js" />-->
+    <Add filename="~/Content/JS/Plugins/jquery.easing.1.3.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.cycle.all.js" />
+    <!--<Add filename="~/Content/JS/Plugins/jquery-mdd.js" />-->
+    <Add filename="~/Content/JS/Plugins/jQuery.equalHeights.js" />
+    <Add filename="~/Content/JS/Plugins/jquery.accordion_modif.js" />
+    
+    <!--ci sono dei problemi nel processing di questo file-->
+    <!--<Add filename="~/Content/JS/Plugins/autocolumn.min.js" Compress="false" />-->
+    <!--<Add filename="~/Content/JS/Plugins/jquery.columnize.js" />-->
+
+    <!--<Add filename="~/Content/JS/Custom.js" />-->
+  </File>
+
+  <File filename="~/Content/CSS/CssLib.min.css" type="css">
+    <Add filename="~/Content/CSS/reset.css" />
+    <Add filename="~/Content/CSS/font-face.css" />
+    <Add filename="~/Content/CSS/generale.css" />
+    <Add filename="~/Content/CSS/teaser.css" />
+    <!--<Add filename="~/Content/CSS/menu-mdd.css" />-->
+    <Add filename="~/Content/CSS/Menu_sx.css" />
+    <Add filename="~/Content/CSS/superfish.css" />
+    <Add filename="~/Content/CSS/fancybox/jquery.fancybox-1.3.4.patched.2min.css" />
+    <Add filename="~/Content/CSS/smoothness/jquery-ui-1.8.2min.css" />
+  </File>
+
+</Files>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<message>
+  <from address="no-reply@example.com" text="Registrazione sito web {$site}"/>
+  <!--<bcc address="no-reply@example.com" text="Account manager: sito web {$site}"/>-->
+  <subject>Registrazione sul sito web {$site}</subject>
+  <body>
+    <![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$title}</title>
+</head>
+<body>
+<div style="width:650px; float:left;">
+<div><img src="{$baseUrl}Content/images/logo.png" alt="Logo" /></div>
+<div>
+  <br />
+  <br />
+  <h1>Registrazione al sito {$site}</h1>
+  <br />
+  <br />
+</div>
+Gentile {$FullName},<br />
+grazie per aver effettuato la registrazione all'area riservata del sito {$site}.<br />
+<br />
+Per accedere all'area riservata del sito puoi utilizzare l'autenticazione tramite il tuo account facebook oppure utilizzare la tua E-mail:<br />
+{$Email}<br />
+<br />
+<br />
+Per modificare successivamente il tuo profilo personale utilizza il seguente link
+<a href="{$baseUrl}AreaPersonale/DatiPersonali">Area Personale</a><br />
+<br />
+<br />
+</div>
+</body>
+</html>
+]]>
+  </body>
+</message>

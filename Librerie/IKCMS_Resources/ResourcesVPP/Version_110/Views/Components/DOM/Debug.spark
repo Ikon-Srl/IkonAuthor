@@ -1,0 +1,14 @@
+﻿<div class="clearfix"></div>
+<div>
+  DOM: #<input id="counter_DOM"/><br/>
+  ANIMATED: #<input id="counter_ANIMATED"/><br/>
+</div>
+<div class="clearfix"></div>
+<content name="tail_CodeJS">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      setInterval(function(){ $('#counter_DOM').val(document.getElementsByTagName("*").length); }, 2000);
+      setInterval(function(){ $('#counter_ANIMATED').val($("*:animated").length); }, 2000);
+    });
+  </script>
+</content>

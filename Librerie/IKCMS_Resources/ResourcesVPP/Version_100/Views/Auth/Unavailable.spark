@@ -1,0 +1,19 @@
+﻿<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+# ViewData["breadCrumbs"] = new List<IKCMS_ModelCMS_BreadCrumbsElement> { new IKCMS_ModelCMS_BreadCrumbsElement(null, null, "Warning") };
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="TitleH1">Login</content>
+<content name="Header_Main"><img src="~/Content/Images/_showreel3.jpg" /></content>
+<content name="Navigator">
+  <br/>
+</content>
+<content name="Template_Contents">
+  <!--TESTO BENVENUTO-->
+  Il sistema di registrazione degli utenti &egrave; al momento in manutenzione, sar&agrave; nuovamente disponibile a breve.<br/>
+  <br/><br/>
+  The user registration system is currently unavailable for sysem maintenance, it will be available soon.<br/>
+  <br /><br />
+</content>
+<content name="Template_Contents_Col3"></content>

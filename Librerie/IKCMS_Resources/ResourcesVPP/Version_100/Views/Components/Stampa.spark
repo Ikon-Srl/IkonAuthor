@@ -1,0 +1,3 @@
+﻿<div id="stampa_panel">
+  <use content="print_link"><div class="stampa"><a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<PrintingController>(c => c.RenderAsPDF(Utility.Encrypt(Request.Url.PathAndQuery), null))}' rel="nofollow" style="text-decoration:none;"><img src="~/Content/Images/icona_stampa.gif" alt="stampa" /><!--&nbsp; ${Resources.ResourceStandard.Footer_Stampa}--></a></div></use>
+</div>

@@ -1,0 +1,12 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+# var items = Model.Models.OfType<IKCMS_ModelCMS_LinkKVT>().ToList();
+# string templateDefault = "~/Views/IKCMS/Links/LinkSimple";
+# string templateForced = null;
+<if condition='items.Any()'>
+  <div class="panel_links">
+    <!--<label class="risorsa_titolo bold">${Resources.ResourceStandard.Links}</label>-->
+    <for each='var item in items'>
+      $!{Html.Partial(templateForced ?? item.TemplateInfo.ViewPath ?? templateDefault, item)}
+    </for>
+  </div>
+</if>

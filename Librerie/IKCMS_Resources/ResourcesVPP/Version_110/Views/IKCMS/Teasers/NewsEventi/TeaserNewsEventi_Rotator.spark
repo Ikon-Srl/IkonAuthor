@@ -1,0 +1,22 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_TeaserNewsEventi_Interface'>
+  # var mdl = ViewData.Model as IKCMS_ModelCMS_TeaserNewsEventi_Interface;
+  # var items = mdl.Models.OfType<IKCMS_ModelCMS_GenericBrickInterface>().ToList();
+  # string templateName = mdl.TemplateInfo.Name;
+  # string cssClass = (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassForced] ?? mdl.CssClass.NullIfEmpty() ?? (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassDefault];
+  # string templateItemViewPath = mdl.TemplateItemViewPath.NullIfEmpty() ?? "~/Views/IKCMS/Teasers/NewsEventi/TeaserNewsEventi_Item";
+  # int delay = Utility.TryParse<int>(mdl.VFS_ResourceNoLanguageKVT("Delay").ValueString, 10000);
+  # int transition = Utility.TryParse<int>(mdl.VFS_ResourceNoLanguageKVT("Transition").ValueString, 500);
+  # int visibleItemsCount = (int)(ViewData[TeasersHelperExtension.ViewDataContainerVisibleItemsCount] ?? 1);
+  # string title = mdl.Title;
+  <if condition='mdl != null && items.Any()'>
+    <div class="box_teaser ${ViewData[TeasersHelperExtension.ViewDataPlaceholderName]} ${templateName} ${ViewData[TeasersHelperExtension.ViewDataContainerCssClass]} ${cssClass}">
+      <div class="title clickableBlock"><h3><a href='$!{IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.BrowserModuleFor(Utility.Implode(mdl.Relations.Select(r => r.rnode_dst), ","), null, null))}' class="clickableBlockLink append_UrlBack" >${title.EncodeAsHtml()}</a></h3></div>
+      ${mdl.ImageCMS("image", "box_image", null)}
+      <div class='items teaser_rotator?{items.Count > visibleItemsCount} { minItems:${visibleItemsCount}, dirVertical:true, delay:${delay}, speed:${transition} } animationGroup' style="position:relative; overflow:hidden;">
+        <for each='var item in items'>
+          $!{Html.RenderGenericBrick(item, new PlaceholderRenderParams { Index = itemIndex, TemplateDefault = templateItemViewPath, ContainerCssClass = cssClass })}
+        </for>
+      </div>
+    </div>
+  </if>
+</if>

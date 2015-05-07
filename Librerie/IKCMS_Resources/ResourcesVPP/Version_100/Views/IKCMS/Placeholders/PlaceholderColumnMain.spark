@@ -1,0 +1,10 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var elements = (ViewData.Model as IKCMS_ModelCMS_Interface).Models.OfType<IKCMS_ModelCMS_GenericBrickInterface>().Where(m => m.Placeholder == "ColumnMain").ToList();
+  # string templateDefault = IKCMS_TemplatesTypeHelper.TemplatesAvailableForResource(typeof(IKCMS_ResourceType_ParagraphKVT), null, null).Select(t => t.ViewPath).FirstOrDefault();
+  <!--<div class="teasersViewersContainer" if='elements.Any()'>-->
+    <for each='var element in elements'>
+      <!--<hr/>sNode:${element.sNode}<br/>ManagerType:${element.ManagerType}<br/>Category:${element.Category}<br/>template:${element.TemplateViewPath}<br/><hr/>-->
+      $!{Html.Partial(element.TemplateViewPath ?? templateDefault, element)}
+    </for>
+  <!--</div>-->
+</if>

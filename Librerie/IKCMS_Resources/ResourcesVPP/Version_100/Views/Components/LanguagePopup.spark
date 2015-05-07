@@ -1,0 +1,37 @@
+
+# int? rNode = ViewData.Model is IKCMS_ModelCMS_Interface ? (int?)((ViewData.Model as IKCMS_ModelCMS_Interface).rNode) : null;
+# int? sNode = ViewData.Model is IKCMS_ModelCMS_Interface ? (int?)((ViewData.Model as IKCMS_ModelCMS_Interface).sNode) : null;
+# string url_it = Url.GetMvcActionUrl<global::Custom.Controllers.LanguageController>(c => c.SetLanguageExt("it", rNode, sNode, ViewData["UrlOnLanguageChange"] as string)).EncodeAsAttribute();
+# string url_en = Url.GetMvcActionUrl<global::Custom.Controllers.LanguageController>(c => c.SetLanguageExt("en", rNode, sNode, ViewData["UrlOnLanguageChange"] as string)).EncodeAsAttribute();
+# string url_de = Url.GetMvcActionUrl<global::Custom.Controllers.LanguageController>(c => c.SetLanguageExt("de", rNode, sNode, ViewData["UrlOnLanguageChange"] as string)).EncodeAsAttribute();
+# string url_sl = Url.GetMvcActionUrl<global::Custom.Controllers.LanguageController>(c => c.SetLanguageExt("sl", rNode, sNode, ViewData["UrlOnLanguageChange"] as string)).EncodeAsAttribute();
+
+<div class='popup_linguaV2'>
+  <if condition='IKGD_Language_Provider.Provider.Language == "en"'>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_it.png" alt="it" />&nbsp; <a href='${url_it}' class="realiz">Italian - Italiano</a></div>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_en.png" alt="en" />&nbsp; <a href='${url_en}' class="realiz" rel="nofollow">English</a></div>
+    <!--<div class="link_lingua"><img src="~/Content/Images/bandierina_de.png" alt="de" />&nbsp; <a href='${url_de}' class="realiz">German - Deutsch</a></div>-->
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_sl.png" alt="de" />&nbsp; <a href='${url_sl}' class="realiz">Slovenian - Slovensko</a></div>
+  </if>
+  
+  <else if='IKGD_Language_Provider.Provider.Language == "de"'>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_it.png" alt="it" />&nbsp; <a href='${url_it}' class="realiz">Italienisch - Italiano</a></div>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_en.png" alt="en" />&nbsp; <a href='${url_en}' class="realiz">Englisch - English</a></div>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_de.png" alt="de" />&nbsp; <a href='${url_de}' class="realiz" rel="nofollow">Deutsch</a></div>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_sl.png" alt="sl" />&nbsp; <a href='${url_sl}' class="realiz">Slowenisch - Slovensko</a></div>
+  </else>
+  
+ <else if='IKGD_Language_Provider.Provider.Language == "sl"'>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_it.png" alt="it" />&nbsp; <a href='${url_it}' class="realiz">Italijansko - Italiano</a></div>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_en.png" alt="en" />&nbsp; <a href='${url_en}' class="realiz">Angle&scaron;ko - English</a></div>
+    <!--<div class="link_lingua"><img src="~/Content/Images/bandierina_de.png" alt="de" />&nbsp; <a href='${url_de}' class="realiz">Deutsch</a></div>-->
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_sl.png" alt="sl" />&nbsp; <a href='${url_sl}' class="realiz" rel="nofollow">Slovensko</a></div>
+  </else>
+ 
+  <else>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_it.png" alt="it" />&nbsp; <a href='${url_it}' class="realiz" rel="nofollow">Italiano</a></div>
+    <div class="link_lingua"><img src="~/Content/Images/bandierina_en.png" alt="en" />&nbsp; <a href='${url_en}' class="realiz">Inglese - English</a></div>
+    <!--<div class="link_lingua"><img src="~/Content/Images/bandierina_de.png" alt="de" />&nbsp; <a href='${url_de}' class="realiz">Tedesco - Deutsch</a></div>-->
+   <div class="link_lingua"><img src="~/Content/Images/bandierina_sl.png" alt="sl" />&nbsp; <a href='${url_sl}' class="realiz">Sloveno - Slovensko</a></div>
+  </else>
+</div>

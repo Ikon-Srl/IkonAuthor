@@ -1,0 +1,141 @@
+﻿<use master="Application" />
+
+# var has_ACL = (bool)(ViewData["HasACL"] ?? false);
+# var isAuth = System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+# var fullAuth = has_ACL && FS_OperationsHelpers.IsRoot && isAuth;
+
+# ViewData["body_class"] = "blank";
+
+<content name="tail_IncludeJS">
+  <script once="jsForms.min.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/Compiled/jsForms.min.js")}'></script>
+  <script once="bootstrap-datepicker.locale.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/LIBs/Dates/DatePicker/js/locales/bootstrap-datepicker-{0}.js".FormatString(IKGD_Language_Provider.Provider.LanguageMeta))}'></script>
+</content>
+
+<content name="title">Admin Page</content>
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="body_Tail"><input type="hidden" id="ajaxTimeOut" name="ajaxTimeOut" value="3600000" /></content>
+<content name="body_Main">
+
+  <div class="navbar navbar-inverse navbar-fixed-top_OFF">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href='${Url.Content(IKGD_Config.AppSettings["Page_Home"] ?? Request.ApplicationPath)}' target="_blank">$!{IKCMS_StaticResources.GetString("Title_Head")}</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li if='has_ACL'><a rel="nofollow" href='${Url.Content(IKGD_Config.AppSettings["Page_Home_IKGD"] ?? (IKGD_Config.AppSettings["AuthorBasePath"] ?? "~" + "/Author.wgx"))}' target="_blank">Editor CMS</a></li>
+
+            <li if='has_ACL'><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.ResetCache())}'>Cache Reset</a></li>
+
+            <li class="dropdown" if='has_ACL'>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">CMS Operations <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class='active?{Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == 0}'><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetVersionFrozen(0))}'>Modalit&agrave;: pubblicato</a></li>
+                <li class='active?{Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == -1}'><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetVersionFrozen(-1))}'>Modalit&agrave;: preview</a></li>
+                <li class="divider"></li>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.ResetCache())}'>Reset della cache sul server</a></li>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.GCCollect())}' target="_blank" if='FS_OperationsHelpers.IsRoot'>GC Collect</a></li>
+                <!--<li if='FS_OperationsHelpers.IsRoot && isAuth'><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.RecycleAppPoolIIS())}'>Reset del web server</a></li>-->
+                <li class="divider"></li>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.UpdateHitsStats())}'>Aggiornamento dei contatori, voti e statistiche</a></li>
+                <li class="divider"></li>
+                <li><a rel="nofollow" href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.BatchStatus())}' target="_blank">Batch processes monitor</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown" if='has_ACL'>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">External DATA <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <if condition='fullAuth'>
+                  <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.SearchEngineUpdate())}' target="_blank">Lucene Update</a></li>
+                  <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.SearchEngineRebuild())}' target="_blank">Lucene Rebuild</a></li>
+                  <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.SearchEngineRebuildFull())}' target="_blank">Lucene Rebuild with streams cleaning</a></li>
+                  <li class="divider"></li>
+                </if>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SiteMapXmlRebuild(null, null))}' target="_blank">Sitemap.xml rebuild</a></li>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.ClearDiskCacheVFS(null, null))}' target="_blank">Clear Disk Cache VFS</a></li>
+                <li class="divider"></li>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.IKGD_QueueRun())}' target="_blank">Async Queue Run</a></li>
+                <if condition='fullAuth'>
+                  <li class="divider"></li>
+                  <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.ClearUnmappedExternalResources())}' target="_blank">Ottimizzazione External Files</a></li>
+                </if>
+                <if condition='Utility.TryParse<bool>(IKGD_Config.AppSettings["IKGD_DeserializeOnVFS_Enabled"], false)'>
+                  <li class="divider"></li>
+                  <li><a rel="nofollow" href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.DeserializeOnVFS_UpdateAll(false))}' target="_blank">DeserializeOnVFS UPDATE</a></li>
+                  <li><a rel="nofollow" href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.DeserializeOnVFS_UpdateAll(true))}' target="_blank">DeserializeOnVFS REBUILD</a></li>
+                </if>
+              </ul>
+            </li>
+
+            <li class="dropdown" if='has_ACL'>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <if condition='fullAuth'>
+                  <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.GetResourcesUsage())}' target="_blank">Disk Usage Summary</a></li>
+                </if>
+                <if condition='IKGD_Config.AppSettings["WebStatsCode"].IsNotNullOrWhiteSpace()'>
+                  <li class="divider"></li>
+                  <li><a rel="nofollow" href='${global::IkonWeb.Controllers.AdminCMSController.GetUrlStatistiche()}' target="_blank">Statistiche Web</a></li>
+                </if>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <for each='var language in Ikon.GD.IKGD_Config.GetElements("Languages", "language")'>
+                  <li class='active?{language.Value == IKGD_Language_Provider.Provider.Language}'><a href='${Url.GetMvcActionUrl<LanguageController>(c => c.SetLanguage(language.Value, null, null))}'>[${language.Value}] - ${language.Description}</a></li>
+                </for>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">LogOn <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a rel="nofollow" href='${Utility.UriSetQuery(System.Web.Security.FormsAuthentication.LoginUrl, "ReturnUrl", IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AdminCMSController>(c => c.Index()))}'>Login</a></li>
+                <li><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.Logout())}'>Logout</a></li>
+                <li class="divider"></li>
+                <li><a rel="nofollow" href='~/Auth/RegisterLocalConnection'>Unlock local connection</a></li>
+                <li class="divider"></li>
+                <li><a href="javascript:;"><i>current user:</i><br/>[${MembershipHelper.UserName}]<br/>${MembershipHelper.FullName}</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+          <if condition='has_ACL'>
+            <form action='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetDateTime(null))}' method="get" class="navbar-form pull-right">
+              <input type="text" name="datetime" id="datetime" value='${Ikon.GD.FS_OperationsHelpers.DateTimeSession}' data-date-format="yyyy-mm-dd" data-provide="datepicker" class="span2" />
+              <button type="submit" class="btn">modifica la data del CMS</button>
+            </form>
+          </if>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    $!{Html.Partial("~/Views/AdminCMS/Info")}
+
+    <div class="clearfloat"></div>
+    <br />
+    <if condition='ViewData["dbg"] != null'>
+      <hr/>
+      ${ViewData["dbg"]}
+      <hr/>
+    </if>
+    <if condition='ViewData["message"] != null'>
+      <hr/>
+      ${ViewData["message"]}
+      <hr/>
+    </if>
+    <if condition='ViewData["error"] != null'>
+      <hr/>
+      ${ViewData["error"]}
+      <hr/>
+    </if>
+
+  </div>
+
+</content>

@@ -1,0 +1,95 @@
+
+User-agent: 80legs.com
+User-agent: AhrefsBot
+User-agent: BLP_bbot
+User-agent: businessdbbot
+User-agent: CCBot
+User-agent: CovarioIDS
+User-agent: ConveraCrawler
+User-agent: curl/
+User-agent: discobot
+User-agent: Download Ninja
+User-agent: EMail Exractor
+User-agent: Ezooms
+User-agent: FDM 3.x
+User-agent: FlaxCrawler
+User-agent: Grabber
+User-agent: Grapeshot
+User-agent: GSLFbot
+User-agent: heritrix
+User-agent: HTTrack
+User-agent: intelium_bot
+User-agent: IstellaBot
+User-agent: Java/
+User-agent: larbin
+User-agent: lemurwebcrawler
+User-agent: libwww-perl
+User-agent: MetamojiCrawler
+User-agent: MJ12bot
+User-agent: Nutch
+User-agent: OpenAcoon
+User-agent: PHP/
+User-agent: Plukkie
+User-agent: proximic
+User-agent: Python-urllib
+User-agent: Ruby
+User-agent: SemrushBot
+User-agent: SEOkicks
+User-agent: spbot
+User-agent: TurnitinBot
+User-agent: YandexBot
+User-agent: WBSearchBot
+User-agent: WeblexBot
+User-agent: wget
+User-agent: WIRE/0.
+User-agent: ZyBORG
+Disallow: /
+
+
+User-agent: MSNBot/Bingbot
+User-agent: bingbot
+User-agent: msnbot
+Crawl-delay: 120 
+
+
+User-Agent: *
+Disallow: /*.wgx$
+Disallow: /AdminCMS
+Disallow: /admincms
+Disallow: /BatchCMS
+Disallow: /batchcms
+Disallow: /Admin/
+Disallow: /admin/
+Disallow: /Auth/
+Disallow: /Auth$
+Disallow: /auth/
+Disallow: /Batch/
+Disallow: /batch/
+
+
+Disallow: /Custom/
+Disallow: /custom/
+Disallow: /Tmp/
+Disallow: /tmp/
+Disallow: /LazyLogin
+Disallow: /lazylogin
+Disallow: /ShowReel
+Disallow: /showreel
+Disallow: /Search/SearchCMS
+Disallow: /search/searchcms
+Disallow: /Printing/
+Disallow: /printing/
+Disallow: /Custom/RenderAsPDF
+Disallow: /custom/renderaspdf
+Disallow: /LazyLogin/HitLog
+Disallow: /lazylogin/hitlog
+Disallow: /*=print=true
+Disallow: /*&ListMode=*
+Disallow: /*&listmode=*
+Disallow: /*?ListMode=*
+Disallow: /*?listmode=*
+Disallow: /*&SortMode=*
+Disallow: /*&sortmode=*
+Disallow: /*?SortMode=*
+Disallow: /*?sortmode=*
+Disallow: /AreaPersonale

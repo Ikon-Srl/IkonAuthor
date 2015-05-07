@@ -1,0 +1,34 @@
+comandi per attivare la sql cache invalidation per MS-SQL 2005
+
+- verificare la presenza di tutte le tabelle (compresa IKGD_RELATION e IKGD_PROPERTY)
+  eseguendo Ikon.GD.IKGD_VFS_Helpers.RegisterSqlCacheDepenedencyInvalidation()
+
+
+C:\Windows\Microsoft.NET\Framework\v2.0.50727
+
+
+-- attivazione dell'invalidazione per il database selezionato
+aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -ed
+
+-- attivazione dell'invalidazione per le tabelle utilizzate
+aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -et -t "IKGD_VNODE"
+aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -et -t "IKGD_INODE"
+aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -et -t "IKGD_VDATA"
+aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -et -t "aspnet_UsersInRoles"
+
+-- lista delle tabelle con invalidazione attivata
+aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -lt
+
+C:\Windows\Microsoft.NET\Framework\v2.0.50727\aspnet_regsql.exe -S ".\SQLExpress" -E -d "IK_Intranet2" -et -t "aspnet_UsersInRoles"
+
+
+<system.web>
+    <caching>
+      <sqlCacheDependency enabled="true" pollTime="1000" >
+        <databases>
+          <add name="GDCS_DB" connectionStringName="GDCS" />
+        </databases>
+      </sqlCacheDependency>
+    </caching>
+</system.web>
+

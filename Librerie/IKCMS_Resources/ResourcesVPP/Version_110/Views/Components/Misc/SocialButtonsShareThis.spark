@@ -1,0 +1,31 @@
+﻿<use content="cms_social">
+  <div id="socialbar">
+    <div class="a2a_kit a2a_default_style_OFF share-this">
+      <a class="a2a_button_facebook"><img src="~/Content/Images/icone/facebook_icona.png" alt="facebook"/></a>
+      <a class="a2a_button_google_plus"><img src="~/Content/Images/icone/googlePlus_icona.png" alt="google plus"/></a>
+      <a class="a2a_button_pinterest"><img src="~/Content/Images/icone/pinterest_icona.png" alt="pinterest"/></a>
+      <a class="a2a_button_youtube"><img src="~/Content/Images/icone/iconaYouTube.png" alt="YouTube"/></a>
+      <a class="a2a_button_twitter"><img src="~/Content/Images/icone/twitter_icona.png" alt="twitter"/></a>
+    </div>
+    <div class="separator"></div>
+    <use content="cms_print"><a rel="nofollow" href='#${IKCMS_RouteUrlManager.GetMvcActionUrl<PrintingController>(c => c.RenderAsPDF(Utility.Encrypt(Request.Url.PathAndQuery), null))}'><img src="~/Content/Images/icone/stampa_icona.png" alt="Stampa" /></a></use>
+  </div>
+  <script type="text/javascript">
+    function my_addtoany_onready() {
+        a2a_config.target = '.share-this';
+        a2a.init('page');
+    }
+    var a2a_config = a2a_config || {};
+    a2a_config.tracking_callback = { ready: my_addtoany_onready };
+    a2a_config.onclick = true;
+    (function() {
+        var a = document.createElement('script');
+        a.type = 'text/javascript';
+        a.async = true;
+        a.src = 'http://static.addtoany.com/menu/page.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(a, s);
+    })();
+  </script>
+</use>
+

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5171EBC4-143E-40D0-A4C8-E03F41F1D8EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IKGD_ResourceType_Standard</RootNamespace>
+    <AssemblyName>IKGD_ResourceType_Standard</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceTypes\Intranet\IKGD_BaseResources.cs" />
+    <Compile Include="ResourceTypes\Intranet\IKGD_StandardResources.cs" />
+    <Compile Include="ResourceTypes\Intranet\IKGD_StandardWidgetsBrowse.cs" />
+    <Compile Include="ResourceTypes\Intranet\IKGD_StandardWidgetsSingleton.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKGD_ConfigSettings\IKGD_ConfigSettings.csproj">
+      <Project>{A6FB392B-CC41-4877-BB2A-87BA7CFED799}</Project>
+      <Name>IKGD_ConfigSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ResourceType_Library\IKGD_ResourceType_Library.csproj">
+      <Project>{BD9888C2-C2C8-43BB-BF9E-077648C2D223}</Project>
+      <Name>IKGD_ResourceType_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Utility\IKGD_Utility.csproj">
+      <Project>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</Project>
+      <Name>IKGD_Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_VFS_Library\IKGD_VFS_Library.csproj">
+      <Project>{213AA23E-553C-47F2-BD09-CE74BAAE1BED}</Project>
+      <Name>IKGD_VFS_Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\App.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Calendario.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Circolari.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Contatti.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\CosaFareSe.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\DocSupporto.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\FAQ.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\FeedRSS.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\File.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Folder.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Html.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\iGoogle.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Link.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Menu.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Modulistica.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Multimediale.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\News.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Normativa.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Organigramma.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Rubrica.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Search.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Collezione.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Documents.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\File.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Folder.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Widget.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\WidgetFolder.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\VFS\PageCMS.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\PageNoCMS.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\TreeNode.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

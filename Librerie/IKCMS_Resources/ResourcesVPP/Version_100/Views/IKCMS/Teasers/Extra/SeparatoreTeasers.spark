@@ -1,0 +1,5 @@
+﻿# int rowNumber = (int)ViewData.Model;
+# string style = string.Format("top:{0}px;", rowNumber * 230 + 90);
+<!--<div class="clearfloat"></div>
+<div class="separatore_teasers" style='${style}'><img src="~/Content/Images/trasparente.gif" alt=" " /></div>
+<div class="clearfloat"></div>-->

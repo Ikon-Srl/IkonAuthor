@@ -1,0 +1,10 @@
+﻿<viewdata model="IKCMS_ModelCMS_ArchiveBrowserItem<IKCMS_ResourceType_NewsKVT>"/>
+<div class="item clickableBlock">
+  <div class="data"><h3 class="blu">${Model.DateNode.ToLongDateString()} -&nbsp;</h3></div><div class="titolo"><h3 class="blu">$!{Model.Title}</h3></div>
+  <div class="thumb">${Model.ImageCMS_WithDefault("thumb", Url.StaticImage("_thumb_news01.jpg"), new { rel = "gallery" })}</div>
+  <div class="autore">Autore: <span class="autoHideParent"><strong class=nero>$!{Model.VFS_ResourceLanguageKVT("Author").ValueString}</strong></span></div>
+  <div class="abstract">$!{Model.VFS_ResourceLanguageKVT("Abstract").ValueString}</div>
+  <div class="link"><a href='${Model.Url}' class="leggi clickableBlockLink"><!--<img src="~/Content/Images/vai.gif" />--></a></div>
+  <br /><br />
+</div>
+<div class="clearfloat"></div>

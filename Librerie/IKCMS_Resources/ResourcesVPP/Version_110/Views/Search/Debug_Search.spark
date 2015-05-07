@@ -1,0 +1,30 @@
+<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+# var items = ViewData["Items"] as IEnumerable<Ikon.Indexer.IKGD_LuceneDocCollection>;
+# var pager = Ikon.IKCMS.Pagers.PagingHelperExtensions.FactoryPagerSimple(items, 5, null);
+# ViewData["TitleHead"] = "Ricerca nel sito";
+
+<content name="Template_Contents">
+  <div class="txt_contenuti">
+    <h1>${ViewData["TitleHead"]}</h1>
+    Hai cercato: ${ViewData["query"]}<br />
+    Risultati: ${ViewData["ItemsCount"]}<br />
+
+    <div class="clearfloat"></div>
+    ${Html.Partial("~/Views/Components/Navigation/Pager", pager)}
+    <div class="clearfloat"></div>
+    
+    <if condition='pager != null'>
+      <for each='var item in pager.ItemsVisible'>
+        ${Html.Partial("~/Views/Search/Debug_SearchItem", item)}
+      </for>
+    </if>
+    <else>
+      <br/><br/><br/>
+      La ricerca non ha fornito nessun risultato.
+      <br/><br/><br/><br/>
+    </else>
+    
+  </div>
+</content>

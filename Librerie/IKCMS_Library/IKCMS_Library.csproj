@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{316EBCA7-F84D-4893-8246-7E231B54B196}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IKCMS_Library</RootNamespace>
+    <AssemblyName>IKCMS_Library</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=2.1.13.813, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoFac\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web, Version=2.1.13.813, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web.Mvc, Version=2.1.13.813, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=1.0.0.155, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\elmah\Bin\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentFilters, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\FluentFilters\mvc2\FluentFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Html\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\MVC\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\MVC\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark.Web.Mvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\MVC\Spark.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accessibility\IKCMS_SiteViewMode.cs" />
+    <Compile Include="Bootstrapper\AssemblySupport.cs" />
+    <Compile Include="Bootstrapper\Bootstrapper.cs" />
+    <Compile Include="Browser\BrowserSupport.cs" />
+    <Compile Include="Config\IKCMS_Constants.cs" />
+    <Compile Include="ExtendedViews\MV_ResponseFilterPostProcessorStream.cs" />
+    <Compile Include="ExtendedViews\ResponseFilterStream.cs" />
+    <Compile Include="ExtendedViews\GlobalFilters.cs" />
+    <Compile Include="Handlers\ExtensionLessTransferRequestHandler.cs" />
+    <Compile Include="Handlers\HandlerUrlRewriteOLD.cs" />
+    <Compile Include="Handlers\HandlerWrapperVWG.cs" />
+    <Compile Include="Handlers\HandlerUrlRewrite.cs" />
+    <Compile Include="Handlers\IKCMS_ExceptionsManager.cs" />
+    <Compile Include="Handlers\StaticContentFilter.cs" />
+    <Compile Include="IoC\IKCMS_ManagerIoC.cs" />
+    <Compile Include="Library\GoogleHelper.cs" />
+    <Compile Include="Log\IKCMS_HitLogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\IKCMS_UrlManager.cs" />
+    <Compile Include="Routing\IKCMS_Routing.cs" />
+    <Compile Include="SEO\IKCMS_SeoManager.cs" />
+    <Compile Include="Server\ServerSupport.cs" />
+    <Compile Include="Session\IKCMS_SessionManager.cs" />
+    <Compile Include="Spark\IKCMS_SparkViewExtensions.cs">
+    </Compile>
+    <Compile Include="Spark\IKCMS_SparkExtensions.cs" />
+    <Compile Include="Stateless\DynamicTriggerBehaviour.cs" />
+    <Compile Include="Stateless\Enforce.cs" />
+    <Compile Include="Stateless\IgnoredTriggerBehaviour.cs" />
+    <Compile Include="Stateless\ParameterConversion.cs" />
+    <Compile Include="Stateless\ParameterConversionResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParameterConversionResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Stateless\StateConfiguration.cs" />
+    <Compile Include="Stateless\StateConfigurationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateConfigurationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Stateless\StateMachine.cs" />
+    <Compile Include="Stateless\StateMachineResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateMachineResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Stateless\StateReference.cs" />
+    <Compile Include="Stateless\StateRepresentation.cs" />
+    <Compile Include="Stateless\StateRepresentationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateRepresentationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Stateless\Transition.cs" />
+    <Compile Include="Stateless\TransitioningTriggerBehaviour.cs" />
+    <Compile Include="Stateless\TriggerBehaviour.cs" />
+    <Compile Include="Stateless\TriggerWithParameters.cs" />
+    <Compile Include="Tags\IKCAT_AttributeStorage.cs" />
+    <Compile Include="Tags\IKATT_AttributeStorage.cs" />
+    <Compile Include="VPP\IKCMS_VirtualPathProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKGD_Auth_Library\IKGD_Auth_Library.csproj">
+      <Project>{8FC2631F-3CA9-43AE-A6D9-F3357A4025DD}</Project>
+      <Name>IKGD_Auth_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ConfigSettings\IKGD_ConfigSettings.csproj">
+      <Project>{A6FB392B-CC41-4877-BB2A-87BA7CFED799}</Project>
+      <Name>IKGD_ConfigSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_FilterParser\IKGD_FilterParser.csproj">
+      <Project>{1ED7FD2A-7CB2-40FE-B684-3D8BF9FB5866}</Project>
+      <Name>IKGD_FilterParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Utility\IKGD_Utility.csproj">
+      <Project>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</Project>
+      <Name>IKGD_Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_VFS_Library\IKGD_VFS_Library.csproj">
+      <Project>{213AA23E-553C-47F2-BD09-CE74BAAE1BED}</Project>
+      <Name>IKGD_VFS_Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Stateless\ParameterConversionResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ParameterConversionResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Stateless</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stateless\StateConfigurationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StateConfigurationResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Stateless</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stateless\StateMachineResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StateMachineResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Stateless</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stateless\StateRepresentationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StateRepresentationResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Stateless</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LazyLogin\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

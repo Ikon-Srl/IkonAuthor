@@ -1,0 +1,16 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+# var ModelBC = ViewData.Model as IKCMS_ModelCMS_Interface;
+# var breadCrumbs = ViewData["breadCrumbs"] as IEnumerable<IKCMS_ModelCMS_BreadCrumbsElement> ?? (ModelBC != null ? ModelBC.ModelRoot.BreadCrumbs : null);
+# var breadCrumbsLastText = ViewData["breadCrumbsLastText"] as string;
+# int? breadCrumbsSkipFirst = (int?)ViewData["breadCrumbsSkipFirst"];
+# int? breadCrumbsSkipLast = (int?)ViewData["breadCrumbsSkipLast"];
+<div id="navigator" class="left">
+  <!--<a href="~/" class="nav" rel="nofollow">HomePage</a> |&nbsp;-->
+  <if condition='breadCrumbs != null'>
+    <for each='var frag in breadCrumbs.Skip(breadCrumbsSkipFirst.GetValueOrDefault(0)).SkipLast(breadCrumbsSkipLast)'>
+     <if condition='fragIndex > 0'> | </if><a href='${frag.Url.DefaultIfEmpty("javascript:;")}?{!string.IsNullOrEmpty(frag.Url)}' class="nav" rel="nofollow">${fragIsLast ? breadCrumbsLastText.DefaultIfEmpty(frag.Text) : frag.Text}</a>
+    </for>
+  </if>
+</div>
+<!--<use content="Back"><div class="right">${Html.Partial("~/Views/Components/Back")}</div></use>-->
+<div class="clearfloat"></div>

@@ -1,0 +1,10 @@
+﻿<viewdata model="IKCMS_ModelCMS_Interface"/>
+<div class="menu_news">
+<!--<div class="titolo"><h3 class="bold">Categorie</h3></div>-->
+  <ul>
+    <li>
+      ${Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_ArchiveBrowser_Interface>().FirstOrDefault().BuildBrowseMenu("", false, (node, selected) => { return string.Format(node.Level <= 2 ? "<a href=\"{1}\" class=\"{2}\">{0}</a>" : "", System.Web.HttpUtility.HtmlEncode(node.Data.fragString), System.Web.HttpUtility.HtmlAttributeEncode(Utility.ResolveUrl(node.Data.url)), (selected ? "selected" : string.Empty)); })}
+      <!--${Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_ArchiveBrowser_Interface>().FirstOrDefault().BuildBrowseMenu("", false, 2, 2, (node, selected) => { return string.Format("<a href=\"{1}\" class=\"{2}\">{0}</a>&nbsp;&nbsp;", System.Web.HttpUtility.HtmlEncode(node.Data.fragString), System.Web.HttpUtility.HtmlAttributeEncode(Utility.ResolveUrl(node.Data.url)), (selected ? "selected" : string.Empty)); })}-->
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ParagraphKVT"/>
+<if condition='Model != null'>
+
+  # //Ikon.Filters.IKGD_HtmlCleaner cleaner = new Ikon.Filters.IKGD_HtmlCleaner();
+  # //MultiStreamInfo4Settings imageInfo = Model.StreamInfos("thumb");
+
+  <div class="paragrafo top">
+    <div class="titolo" if='!string.IsNullOrEmpty(Model.Title)'><h3 class="azzurro">${Model.Title}</h3></div>
+    <div class="testo htmlTruncate?{Utility.TryParse<bool>(Model.VFS_ResourceNoLanguageKVT("Truncate").ValueString)} { condensedLength:${Utility.TryParse<int?>(Model.VFS_ResourceNoLanguageKVT("TruncateLength").ValueString) ?? 800}, moreText:'&lt;span&gt;${Resources.ResourceStandard.Paragraph_Expand}&lt;/span&gt;', lessText:'&lt;span&gt;${Resources.ResourceStandard.Paragraph_Compact}&lt;/span&gt;' }" if='!string.IsNullOrEmpty(Model.Text)'>
+      <div class="txt">${Model.Text}</div>
+    </div>
+    
+    <div class="paragrafo_image_DX" if='Model.HasStream("image_top")'>
+      ${Model.ImageCMS_WithLink("image_top", "popup", null, "autoPopup", null, new { rel = "gallery" })}
+      <!--<div class="caption autoHide">${Model.VFS_ResourceLanguageKVT("Didascalia").ValueString}</div>-->
+    </div>    
+    
+    <div class="clearfloat"></div>  
+  </div>
+
+</if>

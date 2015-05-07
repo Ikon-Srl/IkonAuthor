@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="CMS_IKGD" EntityNamespace="Ikon.GD" ContextNamespace="Ikon.GD" Class="IKGD_DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=CMS_IKGD;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=60" SettingsObjectName="IKGD_VFS_Library.Properties.Settings" SettingsPropertyName="GDCS" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IKGD_VNODE" Member="IKGD_VNODEs">
+    <Type Name="IKGD_VNODE">
+      <Association Name="IKGD_RNODE_IKGD_VNODE" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE1" Member="IKGD_RNODE_folder" ThisKey="folder" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE2" Member="IKGD_RNODE_parent" ThisKey="parent" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_SNODE_IKGD_VNODE" Member="IKGD_SNODE" ThisKey="snode" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_RNODE" Member="IKGD_RNODEs">
+    <Type Name="IKGD_RNODE">
+      <Association Name="IKGD_RNODE_IKGD_VNODE" Member="IKGD_VNODEs" ThisKey="code" OtherKey="rnode" Type="IKGD_VNODE" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE1" Member="IKGD_VNODEs_folder" ThisKey="code" OtherKey="folder" Type="IKGD_VNODE" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE2" Member="IKGD_VNODEs_parent" ThisKey="code" OtherKey="parent" Type="IKGD_VNODE" />
+      <Association Name="IKGD_RNODE_IKGD_INODE" Member="IKGD_INODEs" ThisKey="code" OtherKey="rnode" Type="IKGD_INODE" />
+      <Association Name="IKGD_RNODE_IKGD_PROPERTY" Member="IKGD_PROPERTies" ThisKey="code" OtherKey="rnode" Type="IKGD_PROPERTY" />
+      <Association Name="IKGD_RNODE_IKGD_RELATION" Member="IKGD_RELATIONs" ThisKey="code" OtherKey="rnode" Type="IKGD_RELATION" />
+      <Association Name="IKGD_RNODE_IKGD_SNODE" Member="IKGD_SNODEs" ThisKey="code" OtherKey="rnode" Type="IKGD_SNODE" />
+      <Association Name="IKGD_RNODE_IKGD_ACL" Member="IKGD_ACLs" ThisKey="code" OtherKey="rnode" Type="IKGD_ACL" />
+      <Association Name="IKGD_RNODE_IKGD_VDATA" Member="IKGD_VDATAs" ThisKey="code" OtherKey="rnode" Type="IKGD_VDATA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_SNODE" Member="IKGD_SNODEs">
+    <Type Name="IKGD_SNODE">
+      <Association Name="IKGD_SNODE_IKGD_VNODE" Member="IKGD_VNODEs" ThisKey="code" OtherKey="snode" Type="IKGD_VNODE" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION" Member="IKGD_RELATIONs_dst" ThisKey="code" OtherKey="snode_dst" Type="IKGD_RELATION" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION1" Member="IKGD_RELATIONs_src" ThisKey="code" OtherKey="snode_src" Type="IKGD_RELATION" />
+      <Association Name="IKGD_RNODE_IKGD_SNODE" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_RELATION" Member="IKGD_RELATIONs">
+    <Type Name="IKGD_RELATION">
+      <Association Name="IKGD_RNODE_IKGD_RELATION" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION" Member="IKGD_SNODE_dst" ThisKey="snode_dst" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION1" Member="IKGD_SNODE_src" ThisKey="snode_src" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

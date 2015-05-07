@@ -1,0 +1,34 @@
+﻿<use master="Master_admin" />
+
+# //var has_ACL = FS_ACL_Reduced.HasOperatorACLs();
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="title">Admin Page</content>
+<content name="rightContent">
+  <!--COLONNA DX-->
+  <div class='titolo_informazioni'>Informazioni</div>
+  <table cellpadding="0" cellspacing="0" id='tblInformazioni' width="100%">
+    <tr><td width="292px">Modalità corrente di visualizzazione del sito:</td><td rowspan="8" width="1px" class='spacer'></td><td class='td_value'><span class='stato_sito_label'>${Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == -1 ? "Preview" : "Pubblicato"}</span></td></tr>
+    <tr class='alt'><td>UserName:</td><td class='td_value'>${MembershipHelper.UserName}</td></tr>
+    <tr><td>Anonymous:</td><td class='td_value'>${MembershipHelper.IsAnonymous}</td></tr>
+    <tr class='alt'><td>Roles:</td><td class='td_value'>${Utility.Implode(System.Web.Security.Roles.GetRolesForUser(), ", ", null, true, true)}</td></tr>
+    <tr><td>Aree visualizzabili:</td><td class='td_value'><div>${Utility.Implode(Ikon.GD.FS_OperationsHelpers.CachedAreasExtended.AreasAllowed, ", ", null, true, true)}</div></td></tr>
+    <tr class='alt'><td>Lingua corrente:</td><td class='td_value'><span class='lingua_corrente_label'>${IKGD_Language_Provider.Provider.LanguageNN} [${IKGD_Language_Provider.Provider.Language}]</span></td></tr>
+    <tr><td>Data corrente:</td><td class='td_value'>${Ikon.GD.FS_OperationsHelpers.DateTimeSession}</td></tr>
+    <tr class='alt'><td>Indirizzo IP del client:</td><td class='td_value'>$!{Utility.GetRequestAddressExt(null)}</td></tr>
+  <table>
+</content>
+<content name="tail_CodeJS">
+<script type="text/javascript">
+  /*<![CDATA[*/
+      $(document).ready(function() {
+	    $("#tblInformazioni tr td.td_value div").each(function(){
+		    if ($(this).height()>90){
+			    $(this).css("height","90px");
+			    $(this).css("overflow","auto");
+		    }
+	    });
+      });
+  /*]]>*/
+</script>
+</content>

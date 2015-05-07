@@ -1,0 +1,29 @@
+﻿<use master="Master_site" />
+
+<content name="Template_Contents_override">
+  <div class="main_sfondo">
+    <div class="fascia_contenuti">
+      <use content="Template_Contents_BloccoTop">
+        <div id="blocco_top">
+          <div id="altezza">
+            <div class="left">
+              <use content="Template_Contents_TopLeft">
+                <!-- contenuti della parte sinistra della fascia superiore della pagina -->
+              </use>
+            </div>
+            <div class="right">
+              <use content="Template_Contents_TopSearchModule">
+                <!-- search module della fascia superiore -->
+              </use>
+            </div>
+          </div>
+        </div>
+      </use>
+    </div>
+  </div>
+
+  <div class="bianco_full">
+    <use content="Template_Contents"></use>
+    <div class="clearfloat"></div>
+  </div>
+</content>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Files>
+
+  <File filename="~/Content/Compiled/jsBootstrap.min.js" type="javascript">
+    <Add filename="~/Content/LIBs/Bootstrap/js/" />
+    <Add filename="~/Content/LIBs/Bootstrap/js_extra/" />
+  </File>
+
+  <File filename="~/Content/Compiled/jsLib.min.js" type="javascript">
+    <Add filename="~/Scripts/jquery.js" />
+    <Add filename="~/Scripts/jquery-migrate.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-transition.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-alert.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-button.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-carousel.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-collapse.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-dropdown.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-modal.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-tooltip.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-popover.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-scrollspy.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-tab.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-typeahead.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js/bootstrap-affix.js" />
+    <Add filename="~/Content/LIBs/Bootstrap/js_extra/" />
+    <Add filename="~/Content/LIBs/JS_base/" />
+    <Add filename="~/Content/LIBs/ModalBootBox/bootbox.js" />
+    <!--<Add filename="~/Content/LIBs/standby/underscore.js" />-->
+    <Add filename="~/Content/LIBs/FancyBox/jquery.fancybox.js" />
+    <!--<Add filename="~/Content/LIBs/PrettyLoader/js/jquery.prettyLoader.js" />-->
+    <!--attenzione che il componente e' un po' critico, e' meglio lasciarlo per ultimo visto che puo' incasinare gli altri script-->
+    <!--<Add filename="~/Content/LIBs/Dates/DatePicker/js/bootstrap-datepicker.js" />-->
+  </File>
+
+  <File filename="~/Content/Compiled/jsForms.min.js" type="javascript">
+    <Add filename="~/Content/LIBs/Forms/Validation/jqBootstrapValidation-1.3.7.min.js" />
+    <Add filename="~/Content/LIBs/Forms/FCKEditor/jquery.FCKEditor.js" />
+    <!--<Add filename="~/Content/LIBs/Forms/Chosen/chosen.jquery.js" />-->
+    <Add filename="~/Content/LIBs/Dates/DatePicker/js/bootstrap-datepicker.js" />
+  </File>
+
+  <File filename="~/Content/Compiled/jsCustom.min.js" type="javascript">
+    <!--<Add filename="~/Content/LIBs/Texts/" />-->
+    <!--<Add filename="~/Content/LIBs/Columnizer/js/jquery.columnizer.js" />-->
+    <!--<Add filename="~/Content/LIBs/Video/jquery.media.js" />-->
+    <!--<Add filename="~/Content/LIBs/Cycle/jquery.cycle.lite.js" />-->
+    <Add filename="~/Content/JS/Plugins/" />
+    <Add filename="~/Content/JS/" />
+  </File>
+
+  <DotLess>
+    <Compile filename="~/Content/Compiled/css_main.less" />
+    <Compile filename="~/Content/Compiled/css_admin.less" />
+    <Compile filename="~/Content/Compiled/css_AP.less" />
+  </DotLess>
+
+  <!--<File filename="~/Content/CSS/CssLib.min.css" type="css">
+    <Add filename="~/Content/CSS/reset.css" />
+    <Add filename="~/Content/CSS/font-face.css" />
+    <Add filename="~/Content/CSS/generale.css" />
+    <Add filename="~/Content/CSS/teaser.css" />
+    <Add filename="~/Content/CSS/Menu_sx.css" />
+    <Add filename="~/Content/CSS/superfish.css" />
+    <Add filename="~/Content/CSS/fancybox/jquery.fancybox-1.3.4.patched.2min.css" />
+    <Add filename="~/Content/CSS/smoothness/jquery-ui-1.8.2min.css" />
+  </File>-->
+
+</Files>

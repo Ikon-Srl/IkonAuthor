@@ -1,0 +1,212 @@
+﻿<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+# ViewData["breadCrumbs"] = new List<IKCMS_ModelCMS_BreadCrumbsElement> { new IKCMS_ModelCMS_BreadCrumbsElement(null, null, "Form di Registrazione") };
+# ViewData["SectionTitle"] = "Form di Registrazione";
+# MembershipUserKVT userKVT = ViewData["userKVT"] as MembershipUserKVT;
+# var dataFB = ViewData["dataFB"] as IDictionary<string, object>;
+# var KVT_FB = ViewData["KVT_FB"] as KeyValueObjectTree;
+# var fConnected = Request.QueryString["FB_token"].IsNotNullOrWhiteSpace();
+
+<content name="head_IncludeCSS">
+  <!-- <link type="text/css" rel="stylesheet" href="~/Content/CSS/captcha/captcha.css"> -->
+</content>
+<content name="tail_IncludeJS">
+  <!-- <script once="jQuery.captcha" type="text/javascript" src="~/Content/JS/Plugins/jquery.captcha.js"></script> -->
+</content>
+<content name="tail_CodeJS">
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      // per eliminare i blocchi con field non visibili ma con ancora i validatori attivi
+      $('.autoRemove:hidden').remove();
+
+      try {
+        $('.ajax-fc-container').captcha({
+          url: '${IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AuthController>(c => c.CaptchaCode())}',
+          captchaDir: '${Url.Content("~/Content/CSS/captcha")}'
+        });
+      } catch (e) { }
+      
+    });
+
+  </script>
+
+</content>
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="cms_content_main">
+
+<form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AuthController>(c => c.RegisterAjax(null))}'>
+  <!-- <input name="returnUrl" type="hidden" value='${Request.Params["ReturnUrl"].EncodeAsAttribute()}'/> -->
+  <if condition='ViewData["errors"] != null'>
+    <hr/>
+    ERRORE:<br/>
+    ${ViewData["errors"]}<br/>
+    <br/>
+                <a rel="nofollow" href='${Utility.UriSetQuery(System.Web.Security.FormsAuthentication.LoginUrl, "ReturnUrl", IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AdminCMSController>(c => c.Index()))}' class="buttonStyle">Login</a>
+    <br/>
+    <br/>
+    <hr/>
+  </if>
+  <else>
+    <!--TESTO INTRO-->
+    Benvenuto nella pagina di registrazione.<br />
+    Per poter accedere ai servizi &egrave; necessario effettuare l'autenticazione.<br />
+    <br /><br />
+    <!--FORM-->
+    <table class="main_question" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+      <td class="colonna_label">
+        <label for="Input_Nome">Nome</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="Input_Nome" type="text" class="campo_contatto_text" value='$!{userKVT["Nome"].Value}' />
+      </td>
+      <td class="colonna_label">
+        <label for="Input_Cognome">Cognome</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="Input_Cognome" type="text" class="campo_contatto_text" value='$!{userKVT["Cognome"].Value}' />
+      </td>
+      </tr>
+      <tr if='!string.IsNullOrEmpty(ViewData["userNameForm"] as string)'>
+      <td class="colonna_label">
+        <label for="userName">Username</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="userNameDisplay" type="text" class="campo_contatto_text" value='${ViewData["userNameForm"]}' readonly="readonly" disabled="disabled" />
+        <input name="userName" type="hidden" value='${ViewData["userNameForm"]}'/>
+      </td>
+      <td class="colonna_label">&nbsp;</td>
+      <td class="colonna_field">&nbsp;</td>
+      </tr>
+      <tr if='(bool)ViewData["displayPasswordCurrent"]'>
+      <td class="colonna_label">
+        <label for="PasswordCurrent">Password Corrente</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="PasswordCurrent" type="password" class="campo_contatto_text" />
+      </td>
+      <td class="colonna_label">&nbsp;</td>
+      <td class="colonna_field">&nbsp;</td>
+      </tr>
+      <tr if='(bool)ViewData["displayPasswordChange"]'>
+      <td class="colonna_label">
+        <label for="PasswordNew">Password</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="PasswordNew" type="password" class="campo_contatto_text" />
+      </td>
+      <td class="colonna_label">
+        <label for="PasswordVerify">Verifica Password</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="PasswordVerify" type="password" class="campo_contatto_text" />
+      </td>
+      </tr>
+      <tr>
+      <td colspan="4" class="titolo_argomento">
+        <div>
+          <br />
+        Inserisci il tuo indirizzo di posta elettronica.<br/>
+        In fase di registrazione l'indirizzo E-mail inserito diventerà lo username per l'accesso al sito.<br/>
+        In seguito sarà possibile modificare l'indirizzo di E-mail inserito.<br/>
+        </div>
+      </td>
+      </tr>
+      <tr>
+      <td class="colonna_label">
+        <label for="userEmail">E-mail</label>
+        <span class="asterisco">*</span>
+      </td>
+      <td class="colonna_field">
+        <input name="userEmail" type="text" class="campo_contatto_text" value='$!{userKVT.User.Email}' />
+      </td>
+      <td class="colonna_label">&nbsp;</td>
+      <td class="colonna_field">&nbsp;</td>
+      </tr>
+		  
+      <tr>
+      <td class="colonna_label">
+        <label for="Input_Citta">Comune</label>
+      </td>
+      <td class="colonna_field">
+        <input name="Input_Citta" type="text" class="campo_contatto_text" value='$!{userKVT["Citta"].Value}' />
+      </td>
+      <td class="colonna_label">
+        <label for="Input_Provincia">Provincia</label>
+      </td>
+      <td class="colonna_field">
+        <!-- <input name="Input_Provincia" type="text" class="campo_contatto_text" value='$!{userKVT["Provincia"].Value}' /> -->
+        ${HelperExtensionCommon.DDL_HelperSimple("Input_Provincia", IKCMS_ManagerIoC.requestContainer.Resolve<Custom.DB.DataContext_Custom>().IK_ANA_Provincias.OrderBy(r => r.Nome).Select(r => new SelectListItem() { Value = r.Sigla, Text = r.Nome, Selected = string.Equals(r.Sigla, userKVT["Provincia"].Value) }), "campo_contatto_select", null, string.Empty)}
+      </td>
+      </tr>
+
+		  
+      <tr>
+      <td class="colonna_label">
+        <label for="Input_Indirizzo">Indirizzo completo</label>
+      </td>
+      <td class="colonna_field" colspan="3">
+        <input name="Input_Indirizzo" type="text" class="campo_contatto_text" value='$!{userKVT["Indirizzo"].Value}' />
+      </td>
+      </tr>
+      <tr>
+      <td class="colonna_label">
+        <label for="Input_Telefono">Telefono</label>
+      </td>
+      <td class="colonna_field">
+        <input name="Input_Telefono" type="text" class="campo_contatto_text" value='$!{userKVT["Telefono"].Value}' />
+      </td>
+      <td class="colonna_label">&nbsp;</td>
+      <td class="colonna_field">&nbsp;</td>
+      </tr>
+      <tr>
+      <td colspan="4">
+        <br />
+        <br />
+        <strong>Consenso al trattamento dei dati personali</strong>
+        <br />
+        <br />
+        Informativa ai sensi dell'art. 13 d.lgs 196/03 recante "Codice in materia di trattamento dei dati personali".<br />
+        Il trattamento &egrave; effettuato con strumenti elettronici, gestito da incaricati all'uopo individuati e con l'adozione delle misure minime richieste dalla normativa.<br />
+        L'eventuale rifiuto comporta l'impossibilit&agrave; di ricevere informazioni e di accesso alle iniziative. Possono essere esercitati i diritti previsti dall'art. 7 del Codice.
+        <br />
+        <br />
+        <div style="float:left;"><label for="privacy">Accetto</label><span class="asterisco">*</span></div>
+        <div style="float:left;"><input id="privacy" name="privacy" type="checkbox" value="true" $!{(bool)userKVT["Privacy"].Value ? "checked='checked'" : null} class="blank" /></div>
+        
+        <br />
+      </td>
+      </tr>
+      <!--<tr>
+      <td colspan="4">
+        <br />
+        <input name="captchaEnabled" type="hidden" value='true'/>
+        <div style="">
+        <div class="ajax-fc-container" style="margin-left: 0px; position:relative;">
+        </div>
+        </div>
+        <br />
+      </td>
+      </tr>-->
+      <tr>
+      <td colspan="4">
+        <br/>
+        <a href='${(Request.Params["ReturnUrl"] ?? "javascript:;").EncodeAsAttribute()}' class="buttonStyle formSubmitWithJsonReturn">Invia</a>
+        <br/><br/><br/>
+      </td>
+      </tr>
+    </table>
+  </else>
+</form>
+</content>

@@ -1,0 +1,22 @@
+﻿
+Parsing di Html in stile LINQ
+
+http://htmlagilitypack.codeplex.com/
+
+http://www.superstarcoders.com/linq-to-html.aspx
+http://www.superstarcoders.com/blogs/posts/stripping-tags-from-html-in-c-sharp.aspx
+
+
+provare a creare un HttpModule
+e attivare il binding sugli eventi
+
+app.BeginRequest
+
+app.PreSendRequestHeaders (per verificare gli header e il mimetype)
+app.PreSendRequestHeaders
+app.PreSendRequestContent (per verificare gli header e il mimetype)
+
+app.PostRequestHandlerExecute (quando viene eseguito?)
+app.PostReleaseRequestState (quando viene eseguito?)
+
+app.EndRequest

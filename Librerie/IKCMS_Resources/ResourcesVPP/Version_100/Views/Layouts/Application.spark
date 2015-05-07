@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang='${IKGD_Language_Provider.Provider.LanguageMeta}' lang='${IKGD_Language_Provider.Provider.LanguageMeta}'>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <use content="meta_description"><meta name="description" content="$!{(ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaDescriptionRecursive.EncodeAsAttribute()}" if='ViewData.Model is IKCMS_ModelCMS_Interface && (ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaDescriptionRecursive.IsNotEmpty()'/></use>
+  <use content="meta_keywords"><meta name="keywords" content="$!{(ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaKeywords.EncodeAsAttribute()}" if='ViewData.Model is IKCMS_ModelCMS_Interface && (ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaKeywords.IsNotEmpty()' /></use>
+  <use content="meta_robots"><meta name="robots" content="$!{(ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaRobots.EncodeAsAttribute()}" if='ViewData.Model is IKCMS_ModelCMS_Interface && (ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaRobots.IsNotEmpty()' /></use>
+  <use content="meta_language"><meta name="language" content='$!{IKGD_Language_Provider.Provider.LanguageMeta}' /></use>
+  <use content="meta_og"></use>
+  <use content="meta_header"></use>
+  <use content="meta_canonical">${Html.WriteCanonicalUrl()}</use>
+  <meta name="google-site-verification" content="4gbA5PoWDHe2Bf5DG1P3TEOZOBsgE4F1oliwk7RpxLU" />
+  <meta name="Revisit-After" content="1 DAY" />
+  <meta name="IKONROBOT" content="check" />
+  <base href='${Utility.ResolveUrlFull("~/")}'/>
+  <title>
+    <use content="title">
+      <if condition='ViewData["TitleHead"] != null'>${ViewData["TitleHead"]}</if>
+      <else if='ViewData.Model is Ikon.IKCMS.IKCMS_ModelCMS_Interface'>$!{(ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).BackRecurseOnModels.OfType<IKCMS_ModelCMS_Page_Interface>().FirstOrDefault().TitleHead}</else>
+      <else>BaseSite</else>
+    </use>
+  </title>
+  <!-- production CSS -->
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/CssLib.min.css")}' if='!HttpContext.Current.IsDebuggingEnabled' />
+  <!-- development CSS -->
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/reset.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/font-face.css")}' if='HttpContext.Current.IsDebuggingEnabled' />
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/generale.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/content/CSS/teaser.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+  <!--<link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/menu-mdd.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />-->
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/superfish.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/fancybox/jquery.fancybox-1.3.4.patched.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/smoothness/jquery-ui-1.8.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+  <!--<link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/css/custom-theme/jquery-ui-1.8.2.custom.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />-->
+  <link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/Menu_sx.css")}' media="screen" if='HttpContext.Current.IsDebuggingEnabled' />
+
+  <use content="head_IncludeCSS" />
+
+  <script once="jsLib.min.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/JS/jsLib.min.js")}'></script>
+  <script once="jsCustom.min.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/JS/jsCustom.min.js")}'></script>
+  <script once="jQueryUI.lang" type="text/javascript" src='${Url.AutoVersioning("~/Content/JS/Plugins/UI/i18n/jquery.ui.datepicker-" + IKGD_Language_Provider.Provider.LanguageMeta + ".js")}'></script>
+  <script once="Custom.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/JS/Custom.js")}'></script>
+
+  <use content="head_IncludeJS" />
+
+  <script type="text/javascript">
+  /*<![CDATA[*/
+
+    $(document).ready(function() {
+      try { $('html').addClass('${Request.Browser.Browser} ${Request.Browser.Browser + Request.Browser.MajorVersion.ToString()}'); } catch (e) { }
+      // try { $('.autoMedia,.flash_small').media(); } catch (e) { }
+      try { ajaxLoader(500, '${Url.Content("~/Content/Images/loader-ajax.gif")}', 48, { showOverlay: false }); } catch (e) { }
+    });
+
+    $(window).load(function() {
+      try {
+        // $('.flash_big').media();
+      } catch (e) { }
+    });
+
+  /*]]>*/
+  </script>
+
+  <use content="head_CodeJS" />
+</head>
+<body class='${"lang-{0}".FormatString(IKGD_Language_Provider.Provider.LanguageMeta)} ${ViewData["body_class"] ?? "standard"}' data-language='${IKGD_Language_Provider.Provider.LanguageMeta}' data-snode='$!{(ViewData.Model is IKCMS_ModelCMS_Interface) ? (int?)(ViewData.Model as IKCMS_ModelCMS_Interface).sNode : null}' data-rnode='$!{(ViewData.Model is IKCMS_ModelCMS_Interface) ? (int?)(ViewData.Model as IKCMS_ModelCMS_Interface).rNode : null}'>
+  <if condition='Ikon.GD.MembershipHelper.UserName == "root"'>
+    # IKCMS_ExecutionProfiler.EnableOutput = false;
+  </if>
+  <use content="body_Head" />
+  ${Html.WebsiteOptimizerTestAB_TOP()}
+  <use content="body_Main" />
+  <use content="view" />
+
+  <use content="tail_IncludeJS" />
+  <use content="tail_CodeJS" />
+  <script type="text/javascript">
+	/*<![CDATA[*/
+    var _gaq = _gaq || [];
+    <use content="account_GA" />
+    <for each='var codeGA in Utility.Explode(IKGD_Config.AppSettings["GoogleAnalyticsCode-" + IKGD_Language_Provider.Provider.LanguageNN] ?? IKGD_Config.AppSettings["GoogleAnalyticsCode"], ",", " ", true)'>
+      # string ga_pre = codeGAIsFirst ? string.Empty : Convert.ToChar(codeGAIndex + 97) + ".";
+      _gaq.push(['${ga_pre}_setAccount', '${codeGA}']);
+      _gaq.push(['${ga_pre}_setCustomVar', 1, 'language', '${IKGD_Language_Provider.Provider.LanguageNN}', 3]);
+      _gaq.push(['${ga_pre}_setDomainName', 'none']);
+      _gaq.push(['${ga_pre}_setAllowLinker', true]);
+      _gaq.push(['${ga_pre}_trackPageview']);
+    </for>
+    <use content="setCustomVar_GA" />
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+	// to optionally track all ajax calls
+    //$(document).ajaxSend(function(event, xhr, settings) {
+    //  if (typeof(_gaq) != 'undefined' && _gaq != null) {
+    //    //_gaq.push(['_trackPageview', settings.url]);
+    //    //_gaq.push(['_trackEvent', 'AJAX', 'Request', settings.url]);
+    //  }
+    //});
+	/*]]>*/
+  </script><noscript></noscript>
+  ${Html.WebsiteOptimizerTestAB_BOTTOM()}
+  <use content="Logger">$!{Html.Partial("~/Views/Shared/HitLogger")}</use>
+  <use content="body_Tail" />
+</body>
+</html>

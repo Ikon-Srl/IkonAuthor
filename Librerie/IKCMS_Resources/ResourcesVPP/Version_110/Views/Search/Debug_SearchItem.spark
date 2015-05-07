@@ -1,0 +1,18 @@
+<viewdata model="Ikon.Indexer.IKGD_LuceneDocCollection"/>
+# Ikon.Filters.IKGD_HtmlCleaner filter = ViewData["FilterHtml"] as Ikon.Filters.IKGD_HtmlCleaner;
+<hr/>
+<div class="item clickableBlock_OFF">
+  Rank: ${Model.Score}<br/>
+  Documento scaricabile: ${Model.isUnstructured}<br/>
+  Pagina CMS: ${Model.hasPage}<br/>
+  Matches: ${Model.Docs.Count}<br/>
+  Paths: ${Model.Paths.Count}<br/>
+  Paths: ${Model.Paths.Count}<br/>
+  sNode: ${Model.sNode}<br/>
+  rNode: ${Model.rNode}<br/>
+  Folder: ${Model.rNodePage}<br/>
+  Title: ${filter.Parse(Model.Title)}<br/>
+  Text: ${filter.Parse(Model.TextFormatted)}<br/>
+  Url: ${Model.Url}<br/>
+  Link: <a href='${IKCMS_RouteUrlManager.GetMvcUrlGeneral(null, Model.sNode, null, true, false)}' class="clickableBlockLink">vai&raquo;</a><br/>
+</div>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+!{UrlHelperExtension.CustomTagMainHtml()}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <meta name="viewport" content='width=device-width'>
+  <use content="html_headers"></use>
+  <meta name="generator" content="Ikon Author">
+  <use content="meta_description"><meta name="description" content="$!{(ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaDescriptionRecursive.EncodeAsAttribute()}" if='ViewData.Model is IKCMS_ModelCMS_Interface && (ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaDescriptionRecursive.IsNotEmpty()' charset="utf-8"/></use>
+  <use content="meta_keywords"><meta name="keywords" content="$!{(ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaKeywords.EncodeAsAttribute()}" if='ViewData.Model is IKCMS_ModelCMS_Interface && (ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaKeywords.IsNotEmpty()' charset="utf-8"/></use>
+  <use content="meta_robots"><meta name="robots" content="$!{(ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaRobots.EncodeAsAttribute()}" if='ViewData.Model is IKCMS_ModelCMS_Interface && (ViewData.Model as IKCMS_ModelCMS_Interface).HeaderMetaRobots.IsNotEmpty()'/></use>
+  <use content="meta_og"></use>
+  <use content="meta_header"></use>
+  <use content="meta_canonical">${Html.WriteCanonicalUrl()}</use>
+  <meta name="google-site-verification" content="4gbA5PoWDHe2Bf5DG1P3TEOZOBsgE4F1oliwk7RpxLU" />
+  <meta name="Revisit-After" content="1 DAY" />
+  <meta name="IKONROBOT" content="check" />
+  <base href='${Utility.ResolveUrlFull("~/")}'/>
+  <title>
+    <use content="title">
+      <if condition='ViewData["TitleHead"] != null'>${ViewData["TitleHead"]}</if>
+      <else if='ViewData.Model is Ikon.IKCMS.IKCMS_ModelCMS_Interface'>$!{(ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).BackRecurseOnModels.OfType<IKCMS_ModelCMS_Page_Interface>().FirstOrDefault().TitleHead}</else>
+      <else>${IKCMS_StaticResources.GetString("Title_Head")}</else>
+    </use>
+  </title>
+  <!-- all CSS -->
+  <!--<link once="font1" rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' />-->
+  <link once="main.less" rel="stylesheet" type="text/css" href='${Url.AutoVersioning("~/Content/Compiled/css_main.{0}".FormatString(HttpContext.Current.IsDebuggingEnabled ? "less" : "css"))}' />
+  <use content="head_IncludeCSS" />
+  <!--<script once="less.js" type="text/javascript" src='${Url.AutoVersioning("~/Scripts/less.js")}'></script>-->
+  <script once="modernizr.js" type="text/javascript" src='${Url.AutoVersioning("~/Scripts/modernizr.js")}'></script>
+  <!-- favicons -->
+  <link rel="shortcut icon" href="~/Content/favicons/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="~/Content/favicons/apple-touch-icon-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="~/Content/favicons/apple-touch-icon-57x57-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/favicons/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/favicons/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/favicons/apple-touch-icon-144x144-precomposed.png" />
+  <use content="head_IncludeJS" />
+  <use content="head_CodeJS" />
+</head>
+<body class='${"lang-{0}".FormatString(IKGD_Language_Provider.Provider.LanguageMeta)} ${ViewData["body_class"] ?? "standard"}' data-language='${IKGD_Language_Provider.Provider.LanguageMeta}' data-snode='$!{(ViewData.Model is IKCMS_ModelCMS_Interface) ? (int?)(ViewData.Model as IKCMS_ModelCMS_Interface).sNode : null}' data-rnode='$!{(ViewData.Model is IKCMS_ModelCMS_Interface) ? (int?)(ViewData.Model as IKCMS_ModelCMS_Interface).rNode : null}' data-cachekey='$!{(ViewData.Model is IKCMS_ModelCMS_Interface) ? (ViewData.Model as IKCMS_ModelCMS_Interface).CacheKey : null}' data-baseUrl='${Utility.ResolveUrl("~/")}'>
+  <if condition='Ikon.GD.MembershipHelper.UserName == "root"'>
+    # IKCMS_ExecutionProfiler.EnableOutput = false;
+  </if>
+  <use content="body_Head" />
+  ${Html.WebsiteOptimizerTestAB_TOP()}
+  <!--[if lt IE 7]><p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p><![endif]-->
+  <use content="body_Main" />
+  <use content="view" />
+  <div id="fb-root"></div>
+  <!-- javascript at bottom -->
+  <script once="jsLib.min.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/Compiled/jsLib.min.js")}'></script>
+  <!--<script once="jsForms.min.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/Compiled/jsForms.min.js")}'></script>-->
+  <!--<script once="bootstrap-datepicker.locale.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/LIBs/Dates/DatePicker/js/locales/bootstrap-datepicker-{0}.js".FormatString(IKGD_Language_Provider.Provider.LanguageMeta))}'></script>-->
+  <script type="text/javascript">
+	//Modernizr.load({ test: Modernizr.csscolumns, nope: '${Url.Content("~/Content/LIBs/Columnizer/jquery.columnizer.js")}' });
+  </script>
+  <!-- javascripts with production/development versions -->
+  <if condition='!HttpContext.Current.IsDebuggingEnabled'>
+    <script once="jsCustom.min.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/Compiled/jsCustom.min.js")}'></script>
+  </if><else>
+    <script once="Custom.js" type="text/javascript" src='${Url.AutoVersioning("~/Content/JS/Custom.js")}'></script>
+  </else>
+  <!-- site javascripts end -->
+  <use content="tail_IncludeJS" />
+  <script type="text/javascript">
+  /*<![CDATA[*/
+
+    $(document).ready(function() {
+      try { ajaxLoader(500, '${Url.Content("~/Content/LIBs/Images/Loader/loader-ajax.gif")}', 48, { showOverlay: false }); } catch (e) { }
+    });
+
+    //$(window).load(function() {
+    //  try {
+    //  } catch (e) { }
+    //});
+
+  /*]]>*/
+  </script>
+  <use content="tail_CodeJS" />
+  <script type="text/javascript">
+	/*<![CDATA[*/
+    var _gaq = _gaq || [];
+    <use content="account_GA" />
+    <for each='var codeGA in Html.GA_GetTrackingCodes()'>
+      _gaq.push(['${codeGA.Prefix}_setAccount', '${codeGA.Code}']);
+      _gaq.push(['${codeGA.Prefix}_setCustomVar', 1, 'language', '${IKGD_Language_Provider.Provider.LanguageNN}', 3]);
+      _gaq.push(['${codeGA.Prefix}_setDomainName', 'none']);
+      _gaq.push(['${codeGA.Prefix}_setAllowLinker', true]);
+      _gaq.push(['${codeGA.Prefix}_trackPageview']);
+    </for>
+    <use content="setCustomVar_GA" />
+    ${Html.GA_LoadScripts()}
+	// to optionally track all ajax calls
+    //$(document).ajaxSend(function(event, xhr, settings) {
+    //  if (typeof(_gaq) != 'undefined' && _gaq != null) {
+    //    //_gaq.push(['_trackPageview', settings.url]);
+    //    //_gaq.push(['_trackEvent', 'AJAX', 'Request', settings.url]);
+    //  }
+    //});
+	/*]]>*/
+  </script><noscript></noscript>
+  ${Html.WebsiteOptimizerTestAB_BOTTOM()}
+  <use content="Logger">$!{Html.Partial("~/Views/Shared/HitLogger")}</use>
+  <use content="body_Tail" />
+</body>
+</html>

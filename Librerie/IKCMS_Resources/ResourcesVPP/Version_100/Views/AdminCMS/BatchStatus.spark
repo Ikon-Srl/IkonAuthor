@@ -1,0 +1,36 @@
+<use master="Application" />
+
+<content name="title">Batch processes status monitor</content>
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="body_Tail"><input type="hidden" id="ajaxTimeOut" name="ajaxTimeOut" value="3600000" /></content>
+<content name="body_Main">
+
+  <div class="navbar navbar-inverse navbar-fixed-top_OFF">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href='${Url.Content(IKGD_Config.AppSettings["Page_Home"] ?? Request.ApplicationPath)}'>$!{IKCMS_StaticResources.GetString("Title_Head")}</a>
+        <div class="nav-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container_OFF">
+  
+    <hr/>
+      <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.BatchStatus())}' class="buttonStyle">UPDATE</a>
+    <hr/>
+      Title: ${IKCMS_ApplicationStatus.StatusGet<string>("batch_title")}
+    <hr/>
+      Status: ${IKCMS_ApplicationStatus.StatusGet<string>("batch_status")}
+    <hr/>
+      Timer: ${IKCMS_ApplicationStatus.StopwatchGet("batch").Elapsed.TotalSeconds}
+    <hr/>
+      Progress: ${IKCMS_ApplicationStatus.StatusGet<string>("batch_progress")}
+    <hr/>
+      Info: ${IKCMS_ApplicationStatus.StatusGet<string>("batch_info")}
+    <hr/>
+
+  </div>
+
+</content>

@@ -1,0 +1,21 @@
+﻿<viewdata model="IKCMS_ModelCMS_TeaserNewsEventi<IKCMS_ResourceType_TeaserNewsEventiKVT>"/>
+<!--<div class="clearfloat"></div>
+<div class="clearfloat"></div>-->
+<if condition='Model != null'>
+  # int maxItems = Model.MaxItems.GetValueOrDefault(2);
+  # string TemplateItem = Model.TemplateItemViewPath.NullIfEmpty() ?? "~/Views/IKCMS/Teasers/NewsEventi/Teaser_NewsEventi_Item";
+  # var items = Model.Models;
+  <div class="box_widget" if='items.Any()'>
+    <div class='teaser_viewer'>
+      <div class="titolo clickableBlock"><h3>$!{Model.Title}</h3><a href='$!{IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.BrowserModuleFor(Utility.Implode(Model.Relations.Select(r => r.rnode_dst), ","), null, null))}' class="clickableBlockLink" ></a></div>
+      <!--<div class="archivio_notizie"><a href='$!{IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.BrowserModuleFor(Utility.Implode(Model.Relations.Select(r => r.rnode_dst), ","), null, null))}' >archivio notizie »</a></div>-->
+      <!--<div class="feed"><a href='$!{IKCMS_RouteUrlManager.GetMvcActionUrl<RSS_GeneratorController>(c => c.FeedAtom(Model.sNode, null, null, null))}'><img src="~/Content/Images/icona_feed.jpg" height="16" width="16" style="border-width: 0;" alt="feed rss" /></a></div>-->
+      <div class="clearfloat"></div>
+      <div class='contenuto teaser_rotator${items.Count() <= 2 ? "OFF" : null} { minItems:2, dirVertical:true, speed:${Model.VFS_ResourceNoLanguageKVT("Transition").ValueString ?? "500"} }' style="z-index:1;position:relative;">
+        <for each='var item in items'>
+          ${Html.Partial(TemplateItem, item)}
+        </for>
+      </div>
+    </div>
+  </div>
+</if>

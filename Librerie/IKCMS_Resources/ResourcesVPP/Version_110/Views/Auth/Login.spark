@@ -1,0 +1,104 @@
+<use master="Master_site" />
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();        
+
+<content name="tail_CodeJS">
+
+  <script type="text/javascript">
+  /*<![CDATA[*/
+    $(document).ready(function() {
+
+      $('#userName, #password').on('keypress', function(e) {
+        var code = e.keyCode || e.which;
+        if(code == 13) {
+          $('#actionLogin').click();
+        }
+      });
+
+      $('.submit').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var action = $(this).metadata().action || $(this).attr('id');
+        var successUrl = $(this).closest('a').attr('href') || document.referrer;
+        var formRequest = { userName: $("#userName").val(), password: $("#password").val(), action: action, successUrl: successUrl, ReturnUrl: $("#ReturnUrl").val(), ResponseUrlSSO: $("#ResponseUrlSSO").val() };
+        //alert(action + ' | ' + successUrl);
+        $.ajax({
+          url: '${Url.Action("Login")}',
+          type: 'POST',
+          dataType: 'json',
+          data: $.toJSON(formRequest),
+          contentType: 'application/json; charset=utf-8',
+          success: function(result) {
+            var tmpFn = function() {
+              if (result.hasError == false && typeof (result.successUrl) == 'string')
+                window.location = result.successUrl;
+              else if (result.hasError == true && typeof (result.errorUrl) == 'string')
+                window.location = result.errorUrl;
+            };
+            if (typeof (result.message) == 'string')
+              bootbox.alert(result.message, tmpFn);
+            else
+              tmpFn();
+          }
+        });
+        //
+      });
+
+    });
+  /*]]>*/
+  </script>
+
+</content>
+${Html.Partial("~/Views/Auth/FB_Connect")}
+<content name="body_Tail">
+  <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="${(ViewData["ReturnUrl"] as string ?? Request.Params["ReturnUrl"]).EncodeAsAttribute()}"/>
+  <input type="hidden" id="ResponseUrlSSO" name="ResponseUrlSSO" value="${(ViewData["ResponseUrlSSO"] as string ?? Request.Params["ResponseUrlSSO"]).EncodeAsAttribute()}"/>
+</content>
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="title">Login</content>
+<content name="cms_content_main">
+    <!--TESTO BENVENUTO-->
+    Benvenuto nella schermata di Login.<br />
+    Per poter accedere ai servizi &egrave; necessario effettuare l'autenticazione.<br />
+    Inserisci <strong>username</strong> e <strong>password</strong> e clicca sul pulsante di invio per accedere all'area riservata.
+    <br /><br />
+    <!--BOX LOGIN-->
+    <div class="box_login">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="30" style="text-align:left;">
+            <strong>Nome utente:</strong>
+          </td>
+          <td height="30" style="text-align:right;">
+            <input id="userName" type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td height="30" style="text-align:left;">
+            <strong>Password:</strong>
+          </td>
+          <td height="30" style="text-align:right;">
+            <input id="password" type="password" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:left;"><br />
+            Hai dimenticato la password? <a id="actionForgot" href="javascript:;" class="clicca forgotPassword submit">Clicca qui</a><br />
+            <if condition='MembershipHelper.IsAnonymous'>Non sei registrato? <a id="actionRegister" href='${Url.Content(string.Format("~/Auth/RegisterAjax?ReturnUrl={0}", Url.Encode(Request.QueryString["ReturnUrl"]))).EncodeAsAttribute()}' class="clicca submit">Clicca qui</a><br /></if>
+            <if condition='!MembershipHelper.IsAnonymous'>Per modificare la password <a id="actionModify" href='${Url.Content(string.Format("~/Auth/ChangePassword?ReturnUrl={0}", Url.Encode(Request.QueryString["ReturnUrl"]))).EncodeAsAttribute()}' class="clicca submit">Clicca qui</a><br /></if>
+          </td>
+        </tr>
+      </table>
+      <br />
+            <div id="submit" class="left"><a id="actionLogin" href='${Request.QueryString["ReturnUrl"].EncodeAsAttribute()}' class="submit_link submit buttonStyle">Login</a></div>
+            <if condition='Ikon.IKCMS.FaceBook.FaceBookHelperSimple.AutoGetAppId("Auth").IsNotEmpty()'>
+              <!--<form action='${Url.GetMvcActionUrl<AuthController>(c => c.AuthFB(null))}'>-->
+              <form action='${Url.GetMvcActionUrl<AuthController>(c => c.AutoRegisterFB(null))}'>
+                <input id="FB_token" name="FB_token" type="hidden">
+                <if condition='Request.Params["ReturnUrl"].IsNotEmpty()'><input name="ReturnUrl" type="hidden" value='${Request.Params["ReturnUrl"].EncodeAsAttribute()}'></if>
+                <a href="javascript:;" onclick="AuthByFB();" class="fConnect"></a>
+              </form>
+            </if>
+    </div>
+</content>
+<!--${Html.Partial("~/Views/Auth/FB_Connect")}-->

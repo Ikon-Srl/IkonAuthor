@@ -1,0 +1,15 @@
+<use content="cms_language_manager">
+  <div class="lingua">
+    <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<LanguageController>(c => c.SetLanguage(null, null, null))}' method="get">
+      <if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+        <input type="hidden" name="rNode" value='${(ViewData.Model as IKCMS_ModelCMS_Interface).rNode}' />
+        <input type="hidden" name="sNode" value='${(ViewData.Model as IKCMS_ModelCMS_Interface).sNode}' />
+      </if>
+      <select id="lingua" name="language" class="autoSubmitDDL">
+        <option value="it" selected='selected?{IKGD_Language_Provider.Provider.Language == "it"}'>italiano</option>
+        <option value="en" selected='selected?{IKGD_Language_Provider.Provider.Language == "en"}'>english</option>
+        <option value="de" selected='selected?{IKGD_Language_Provider.Provider.Language == "de"}'>deutsch</option>
+      </select>
+    </form>
+  </div>
+</use>

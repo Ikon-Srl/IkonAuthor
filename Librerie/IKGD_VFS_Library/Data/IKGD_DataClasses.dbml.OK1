@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="BaseSite_CMS" EntityNamespace="Ikon.GD" ContextNamespace="Ikon.GD" Class="IKGD_DataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=BlankSite_CMS;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=60" SettingsObjectName="IKGD_VFS_Library.Properties.Settings" SettingsPropertyName="GDCS" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IKGD_RNODE" Member="IKGD_RNODEs">
+    <Type Name="IKGD_RNODE">
+      <Column Name="code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="date_creat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="flag_folder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="locked" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="locked_by" Type="System.String" DbType="VarChar(100)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKGD_SNODE" Member="IKGD_SNODEs" ThisKey="code" OtherKey="rnode" Type="IKGD_SNODE" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE" Member="IKGD_VNODEs" ThisKey="code" OtherKey="rnode" Type="IKGD_VNODE" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE1" Member="IKGD_VNODEs_folder" ThisKey="code" OtherKey="folder" Type="IKGD_VNODE" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE2" Member="IKGD_VNODEs_parent" ThisKey="code" OtherKey="parent" Type="IKGD_VNODE" />
+      <Association Name="IKGD_RNODE_IKGD_VDATA" Member="IKGD_VDATAs" ThisKey="code" OtherKey="rnode" Type="IKGD_VDATA" />
+      <Association Name="IKGD_RNODE_IKGD_INODE" Member="IKGD_INODEs" ThisKey="code" OtherKey="rnode" Type="IKGD_INODE" />
+      <Association Name="IKGD_RNODE_IKGD_PROPERTY" Member="IKGD_PROPERTies" ThisKey="code" OtherKey="rnode" Type="IKGD_PROPERTY" />
+      <Association Name="IKGD_RNODE_IKGD_RELATION" Member="IKGD_RELATIONs" ThisKey="code" OtherKey="rnode" Type="IKGD_RELATION" />
+      <Association Name="IKGD_RNODE_IKGD_RELATION1" Member="IKGD_RELATIONs_dst" ThisKey="code" OtherKey="rnode_dst" Type="IKGD_RELATION" />
+      <Association Name="IKGD_RNODE_IKGD_ACL" Member="IKGD_ACLs" ThisKey="code" OtherKey="rnode" Type="IKGD_ACL" />
+      <Association Name="IKGD_RNODE_LazyLogin_Vote" Member="LazyLogin_Votes" ThisKey="code" OtherKey="rNode" Type="LazyLogin_Vote" />
+      <Association Name="IKGD_RNODE_IKCAT_ElementFolder" Member="IKCAT_ElementFolders" ThisKey="code" OtherKey="rNode" Type="IKCAT_ElementFolder" />
+      <Association Name="IKGD_RNODE_IKCAT_ElementMain" Member="IKCAT_ElementMains" ThisKey="code" OtherKey="rNode" Type="IKCAT_ElementMain" />
+      <Association Name="IKGD_RNODE_IKG_HITLOG" Member="IKG_HITLOGs" ThisKey="code" OtherKey="resID" Type="IKG_HITLOG" />
+      <Association Name="IKGD_RNODE_IKG_HITACC" Member="IKG_HITACCs" ThisKey="code" OtherKey="rNode" Type="IKG_HITACC" />
+      <Association Name="IKGD_RNODE_IKGD_VDATA_KEYVALUE" Member="IKGD_VDATA_KEYVALUEs" ThisKey="code" OtherKey="rNode" Type="IKGD_VDATA_KEYVALUE" />
+      <Association Name="IKGD_RNODE_IKATT_AttributeMapping" Member="IKATT_AttributeMappings" ThisKey="code" OtherKey="rNode" Type="IKATT_AttributeMapping" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_SNODE" Member="IKGD_SNODEs">
+    <Type Name="IKGD_SNODE">
+      <Column Name="code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="date_creat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="flag_folder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_SNODE_IKGD_VNODE" Member="IKGD_VNODEs" ThisKey="code" OtherKey="snode" Type="IKGD_VNODE" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION" Member="IKGD_RELATIONs_dst" ThisKey="code" OtherKey="snode_dst" Type="IKGD_RELATION" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION1" Member="IKGD_RELATIONs_src" ThisKey="code" OtherKey="snode_src" Type="IKGD_RELATION" />
+      <Association Name="IKGD_SNODE_IKCAT_ElementFolder" Member="IKCAT_ElementFolders" ThisKey="code" OtherKey="sNode" Type="IKCAT_ElementFolder" />
+      <Association Name="IKGD_RNODE_IKGD_SNODE" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_VNODE" Member="IKGD_VNODEs">
+    <Type Name="IKGD_VNODE">
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="snode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="parent" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="folder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_folder" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_noDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="language" Type="System.String" DbType="VarChar(2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="position" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="placeholder" Type="System.String" DbType="VarChar(100)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="template" Type="System.String" DbType="VarChar(100)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE1" Member="IKGD_RNODE_folder" ThisKey="folder" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_RNODE_IKGD_VNODE2" Member="IKGD_RNODE_parent" ThisKey="parent" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_SNODE_IKGD_VNODE" Member="IKGD_SNODE" ThisKey="snode" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_VDATA" Member="IKGD_VDATAs">
+    <Type Name="IKGD_VDATA">
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_inactive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_unstructured" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_autoDeleteOnRels" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="flags_menu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="area" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="manager_type" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="category" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="settings" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="date_node" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="date_node_aux" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="date_activation" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="date_expiry" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="geoLatY" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="geoLonX" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="geoRangeM" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_VDATA_IKGD_VDATA_KEYVALUE" Member="IKGD_VDATA_KEYVALUEs" ThisKey="version" OtherKey="vDataVersion" Type="IKGD_VDATA_KEYVALUE" />
+      <Association Name="IKGD_RNODE_IKGD_VDATA" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_INODE" Member="IKGD_INODEs">
+    <Type Name="IKGD_INODE">
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="filename" Type="System.String" DbType="NVarChar(260) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="mime" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="size" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_INODE_IKGD_STREAM" Member="IKGD_STREAMs" ThisKey="version" OtherKey="inode" Type="IKGD_STREAM" />
+      <Association Name="IKGD_INODE_IKGD_MSTREAM" Member="IKGD_MSTREAMs" ThisKey="version" OtherKey="inode" Type="IKGD_MSTREAM" />
+      <Association Name="IKGD_RNODE_IKGD_INODE" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_STREAM" Member="IKGD_STREAMs">
+    <Type Name="IKGD_STREAM">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="inode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="source" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="IKGD_STREAM_IKGD_MSTREAM" Member="IKGD_MSTREAMs" ThisKey="id" OtherKey="stream" Type="IKGD_MSTREAM" />
+      <Association Name="IKGD_INODE_IKGD_STREAM" Member="IKGD_INODE" ThisKey="inode" OtherKey="version" Type="IKGD_INODE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_MSTREAM" Member="IKGD_MSTREAMs">
+    <Type Name="IKGD_MSTREAM">
+      <Column Name="inode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="stream" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_INODE_IKGD_MSTREAM" Member="IKGD_INODE" ThisKey="inode" OtherKey="version" Type="IKGD_INODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKGD_STREAM_IKGD_MSTREAM" Member="IKGD_STREAM" ThisKey="stream" OtherKey="id" Type="IKGD_STREAM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_FREEZED" Member="IKGD_FREEZEDs">
+    <Type Name="IKGD_FREEZED">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="node_version" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="node_type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="IKGD_SNAPSHOT_IKGD_FREEZED" Member="IKGD_SNAPSHOT" ThisKey="version_frozen" OtherKey="version_frozen" Type="IKGD_SNAPSHOT" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_PROPERTY" Member="IKGD_PROPERTies">
+    <Type Name="IKGD_PROPERTY">
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="data" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="attributeId" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKGD_PROPERTY" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKCAT_Attribute_IKGD_PROPERTY" Member="IKCAT_Attribute" ThisKey="attributeId" OtherKey="AttributeId" Type="IKCAT_Attribute" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_RELATION" Member="IKGD_RELATIONs">
+    <Type Name="IKGD_RELATION">
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode_dst" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="snode_src" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="snode_dst" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="position" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKGD_RELATION" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_RNODE_IKGD_RELATION1" Member="IKGD_RNODE_dst" ThisKey="rnode_dst" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION" Member="IKGD_SNODE_dst" ThisKey="snode_dst" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKGD_SNODE_IKGD_RELATION1" Member="IKGD_SNODE_src" ThisKey="snode_src" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_SEARCH" Member="IKGD_SEARCHes">
+    <Type Name="IKGD_SEARCH">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="date_op" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="server" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="status" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_vnode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_inode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_vdata" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_SNAPSHOT" Member="IKGD_SNAPSHOTs">
+    <Type Name="IKGD_SNAPSHOT">
+      <Column Name="ts" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="snode_root" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="snode_folder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="path" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="affected" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="flag_rejected" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="date_frozen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="date_published" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="validator" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="IKGD_SNAPSHOT_IKGD_FREEZED" Member="IKGD_FREEZEDs" ThisKey="version_frozen" OtherKey="version_frozen" Type="IKGD_FREEZED" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_PREF" Member="IKG_PREFs">
+    <Type Name="IKG_PREF">
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="value" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="lastUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_SETTING" Member="IKG_SETTINGs">
+    <Type Name="IKG_SETTING">
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sNode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="settings" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_TAB" Member="IKG_TABs">
+    <Type Name="IKG_TAB">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sNode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_node" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_data" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="layout" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="lastUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="wdata" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKG_TAB_IKG_WIDGET" Member="IKG_WIDGETs" ThisKey="username,sNode" OtherKey="username,sNodeTab" Type="IKG_WIDGET" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_WIDGET" Member="IKG_WIDGETs">
+    <Type Name="IKG_WIDGET">
+      <Column Name="instance" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sNode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sNodeTab" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="columnIdx" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rowIdx" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="state" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="lastupdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKG_TAB_IKG_WIDGET" Member="IKG_TAB" ThisKey="username,sNodeTab" OtherKey="username,sNode" Type="IKG_TAB" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_ACL" Member="IKGD_ACLs">
+    <Type Name="IKGD_ACL">
+      <Column Name="version" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="version_frozen" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="version_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rnode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="area" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flags_acl" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKGD_ACL" Member="IKGD_RNODE" ThisKey="rnode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_ADMIN" Member="IKGD_ADMINs">
+    <Type Name="IKGD_ADMIN">
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="area" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flags_acl" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="date_modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_CONFIG" Member="IKGD_CONFIGs">
+    <Type Name="IKGD_CONFIG">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="instance" Type="System.String" DbType="VarChar(256)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(256)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="flag_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_system" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_KEYSTORAGE" Member="IKGD_KEYSTORAGEs">
+    <Type Name="IKGD_KEYSTORAGE">
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="position" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_system" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_KEYSTORAGE_IKGD_KEYSTORAGE_MAP" Member="IKGD_KEYSTORAGE_MAPs" ThisKey="application,type,key" OtherKey="application,type,key" Type="IKGD_KEYSTORAGE_MAP" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_KEYSTORAGE_MAP" Member="IKGD_KEYSTORAGE_MAPs">
+    <Type Name="IKGD_KEYSTORAGE_MAP">
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="language" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_KEYSTORAGE_IKGD_KEYSTORAGE_MAP" Member="IKGD_KEYSTORAGE" ThisKey="application,type,key" OtherKey="application,type,key" Type="IKGD_KEYSTORAGE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LazyLoginMapper" Member="LazyLoginMappers">
+    <Type Name="LazyLoginMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Creat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="LazyLoginMapper_LazyLogin_Log" Member="LazyLogin_Logs" ThisKey="Id" OtherKey="IdLL" Type="LazyLogin_Log" />
+      <Association Name="LazyLoginMapper_LazyLogin_Vote" Member="LazyLogin_Votes" ThisKey="Id" OtherKey="IdLL" Type="LazyLogin_Vote" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LazyLogin_Log" Member="LazyLogin_Logs">
+    <Type Name="LazyLogin_Log">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdLL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Code" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Value" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="LazyLoginMapper_LazyLogin_Log" Member="LazyLoginMapper" ThisKey="IdLL" OtherKey="Id" Type="LazyLoginMapper" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LazyLogin_Vote" Member="LazyLogin_Votes">
+    <Type Name="LazyLogin_Vote">
+      <Column Name="IdLL" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rNode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Category" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Value" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_LazyLogin_Vote" Member="IKGD_RNODE" ThisKey="rNode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="LazyLoginMapper_LazyLogin_Vote" Member="LazyLoginMapper" ThisKey="IdLL" OtherKey="Id" Type="LazyLoginMapper" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_ASSEMBLY" Member="IKGD_ASSEMBLies">
+    <Type Name="IKGD_ASSEMBLY">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AssemblyStream" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AssembliesMain" Type="System.String" DbType="VarChar(750) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Hash" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Enabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Arch" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCMS_SEO" Member="IKCMS_SEOs">
+    <Type Name="IKCMS_SEO">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SEO_url" Type="System.String" DbType="NVarChar(450) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="target_snode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="target_rnode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="target_url" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="language" Type="System.String" DbType="VarChar(2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="canonical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="http_code" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="priority" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_Attribute" Member="IKCAT_Attributes">
+    <Type Name="IKCAT_Attribute">
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AttributeCode" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AttributeType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ParentAttributeId" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DepthLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Position" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FlagActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FlagSystem" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Flags" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Modif" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKCAT_Attribute_IKGD_PROPERTY" Member="IKGD_PROPERTies" ThisKey="AttributeId" OtherKey="attributeId" Type="IKGD_PROPERTY" />
+      <Association Name="IKCAT_Attribute_IKCAT_Attribute" Member="IKCAT_Attributes" ThisKey="AttributeId" OtherKey="ParentAttributeId" Type="IKCAT_Attribute" />
+      <Association Name="IKCAT_Attribute_IKCAT_AttributeResource" Member="IKCAT_AttributeResources" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKCAT_AttributeResource" />
+      <Association Name="IKCAT_Attribute_IKCAT_AttributeStream" Member="IKCAT_AttributeStreams" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKCAT_AttributeStream" />
+      <Association Name="IKCAT_Attribute_IKCAT_ElementAttribute" Member="IKCAT_ElementAttributes" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKCAT_ElementAttribute" />
+      <Association Name="IKCAT_Attribute_IKCAT_Attribute" Member="IKCAT_AttributeParent" ThisKey="ParentAttributeId" OtherKey="AttributeId" Type="IKCAT_Attribute" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_AttributeResource" Member="IKCAT_AttributeResources">
+    <Type Name="IKCAT_AttributeResource">
+      <Column Name="Modif" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Language" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKCAT_Attribute_IKCAT_AttributeResource" Member="IKCAT_Attribute" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKCAT_Attribute" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_AttributeStream" Member="IKCAT_AttributeStreams">
+    <Type Name="IKCAT_AttributeStream">
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Modif" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Mime" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKCAT_Attribute_IKCAT_AttributeStream" Member="IKCAT_Attribute" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKCAT_Attribute" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_ElementFolder" Member="IKCAT_ElementFolders">
+    <Type Name="IKCAT_ElementFolder">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdMain" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rNode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sNode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKCAT_ElementFolder" Member="IKGD_RNODE" ThisKey="rNode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKGD_SNODE_IKCAT_ElementFolder" Member="IKGD_SNODE" ThisKey="sNode" OtherKey="code" Type="IKGD_SNODE" IsForeignKey="true" />
+      <Association Name="IKCAT_ElementMain_IKCAT_ElementFolder" Member="IKCAT_ElementMain" ThisKey="IdMain" OtherKey="Id" Type="IKCAT_ElementMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_ElementMain" Member="IKCAT_ElementMains">
+    <Type Name="IKCAT_ElementMain">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rNode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rNodeFolder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Catalog" Type="System.String" DbType="VarChar(10)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKCAT_ElementMain_IKCAT_ElementFolder" Member="IKCAT_ElementFolders" ThisKey="Id" OtherKey="IdMain" Type="IKCAT_ElementFolder" />
+      <Association Name="IKCAT_ElementMain_IKCAT_ElementVariant" Member="IKCAT_ElementVariants" ThisKey="Id" OtherKey="IdMain" Type="IKCAT_ElementVariant" />
+      <Association Name="IKCAT_ElementMain_IKCAT_ElementAttribute" Member="IKCAT_ElementAttributes" ThisKey="Id" OtherKey="IdMain" Type="IKCAT_ElementAttribute" />
+      <Association Name="IKGD_RNODE_IKCAT_ElementMain" Member="IKGD_RNODE" ThisKey="rNode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_RNODE_Folder_IKCAT_ElementMain" Member="IKGD_RNODE_Folder" ThisKey="rNodeFolder" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_ElementVariant" Member="IKCAT_ElementVariants">
+    <Type Name="IKCAT_ElementVariant">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdMain" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CodeVariant" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKCAT_ElementVariant_IKCAT_ElementAttribute" Member="IKCAT_ElementAttributes" ThisKey="Id" OtherKey="IdVariant" Type="IKCAT_ElementAttribute" />
+      <Association Name="IKCAT_ElementMain_IKCAT_ElementVariant" Member="IKCAT_ElementMain" ThisKey="IdMain" OtherKey="Id" Type="IKCAT_ElementMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCAT_ElementAttribute" Member="IKCAT_ElementAttributes">
+    <Type Name="IKCAT_ElementAttribute">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdMain" Type="System.Int32" DbType="Int" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IdVariant" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RankLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Value_Int" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Value_String" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Value_Double" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKCAT_Attribute_IKCAT_ElementAttribute" Member="IKCAT_Attribute" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKCAT_Attribute" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKCAT_ElementMain_IKCAT_ElementAttribute" Member="IKCAT_ElementMain" ThisKey="IdMain" OtherKey="Id" Type="IKCAT_ElementMain" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKCAT_ElementVariant_IKCAT_ElementAttribute" Member="IKCAT_ElementVariant" ThisKey="IdVariant" OtherKey="Id" Type="IKCAT_ElementVariant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_LOGGER" Member="IKG_LOGGERs">
+    <Type Name="IKG_LOGGER">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ts" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="username" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sessionHash" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="action" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="data" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_HITLOG" Member="IKG_HITLOGs">
+    <Type Name="IKG_HITLOG">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="wID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="resID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sessionHash" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ts" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="action" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="code" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKG_HITLOG" Member="IKGD_RNODE" ThisKey="resID" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_HITACC" Member="IKG_HITACCs">
+    <Type Name="IKG_HITACC">
+      <Column Name="rNode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Category" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Hits" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Value" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKG_HITACC" Member="IKGD_RNODE" ThisKey="rNode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKG_HITLOG_ARCHIVE" Member="IKG_HITLOG_ARCHIVEs">
+    <Type Name="IKG_HITLOG_ARCHIVE">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="wID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="resID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sessionHash" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ts" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="action" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="code" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_QueueMeta" Member="IKGD_QueueMetas">
+    <Type Name="IKGD_QueueMeta">
+      <Column Name="QueueID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="QueueDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ProcessingDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Application" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ApplicationInstanceHash" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_QueueMeta_IKGD_QueueData" Member="IKGD_QueueData" ThisKey="QueueID" OtherKey="QueueID" Type="IKGD_QueueData" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_QueueData" Member="IKGD_QueueDatas">
+    <Type Name="IKGD_QueueData">
+      <Column Name="QueueID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Log]" Member="Log" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_QueueMeta_IKGD_QueueData" Member="IKGD_QueueMeta" ThisKey="QueueID" OtherKey="QueueID" Type="IKGD_QueueMeta" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_VDATA_KEYVALUE" Member="IKGD_VDATA_KEYVALUEs">
+    <Type Name="IKGD_VDATA_KEYVALUE">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rNode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="vDataVersion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_published" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_current" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="KeyParent" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ValueInt" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueDouble" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueDateExt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueString" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKGD_RNODE_IKGD_VDATA_KEYVALUE" Member="IKGD_RNODE" ThisKey="rNode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+      <Association Name="IKGD_VDATA_IKGD_VDATA_KEYVALUE" Member="IKGD_VDATA" ThisKey="vDataVersion" OtherKey="version" Type="IKGD_VDATA" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SSO_KEYVALUE" Member="SSO_KEYVALUEs">
+    <Type Name="SSO_KEYVALUE">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SubSystem" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="KeyParent" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="creat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ValueInt" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueDouble" Type="System.Double" DbType="Float" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueDateExt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueString" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValueText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKATT_Attribute" Member="IKATT_Attributes">
+    <Type Name="IKATT_Attribute">
+      <Column Name="ts" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AttributeCode" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="AttributeType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ParentAttributeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FlagActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Flags" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Modif" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="IKATT_Attribute_IKATT_Attribute" Member="IKATT_Attributes" ThisKey="AttributeId" OtherKey="ParentAttributeId" Type="IKATT_Attribute" />
+      <Association Name="IKATT_Attribute_IKATT_AttributeStream" Member="IKATT_AttributeStreams" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKATT_AttributeStream" />
+      <Association Name="IKATT_Attribute_IKATT_AttributeMapping" Member="IKATT_AttributeMappings" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKATT_AttributeMapping" />
+      <Association Name="IKATT_Attribute_IKATT_Attribute" Member="IKATT_AttributeParent" ThisKey="ParentAttributeId" OtherKey="AttributeId" Type="IKATT_Attribute" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKATT_AttributeStream" Member="IKATT_AttributeStreams">
+    <Type Name="IKATT_AttributeStream">
+      <Column Name="ts" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Source" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Key]" Member="Key" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Modif" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Mime" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" />
+      <Association Name="IKATT_Attribute_IKATT_AttributeStream" Member="IKATT_Attribute" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKATT_Attribute" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKATT_AttributeMapping" Member="IKATT_AttributeMappings">
+    <Type Name="IKATT_AttributeMapping">
+      <Column Name="AttributeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="rNode" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKATT_Attribute_IKATT_AttributeMapping" Member="IKATT_Attribute" ThisKey="AttributeId" OtherKey="AttributeId" Type="IKATT_Attribute" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="IKGD_RNODE_IKATT_AttributeMapping" Member="IKGD_RNODE" ThisKey="rNode" OtherKey="code" Type="IKGD_RNODE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKQM_Queue" Member="IKQM_Queues">
+    <Type Name="IKQM_Queue">
+      <Column Name="ts" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="QID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Application" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="QueueName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ManagerType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="EventType" Type="System.String" DbType="VarChar(250)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LockedUntil" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LockedApplicationInstanceHash" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="IKQM_Queue_IKQM_QueueBlob" Member="IKQM_QueueBlob" ThisKey="Id" OtherKey="Id" Type="IKQM_QueueBlob" Cardinality="One" />
+      <Association Name="IKQM_Queue_IKQM_QueueLog" Member="IKQM_QueueLogs" ThisKey="Id" OtherKey="IdQueue" Type="IKQM_QueueLog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKQM_QueueBlob" Member="IKQM_QueueBlobs">
+    <Type Name="IKQM_QueueBlob">
+      <Column Name="ts" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Data" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKQM_Queue_IKQM_QueueBlob" Member="IKQM_Queue" ThisKey="Id" OtherKey="Id" Type="IKQM_Queue" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKQM_QueueLog" Member="IKQM_QueueLogs">
+    <Type Name="IKQM_QueueLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdQueue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ts" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Channel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="IKQM_Queue_IKQM_QueueLog" Member="IKQM_Queue" ThisKey="IdQueue" OtherKey="Id" Type="IKQM_Queue" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

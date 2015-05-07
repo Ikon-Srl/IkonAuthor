@@ -1,0 +1,136 @@
+
+--
+-- operazioni preliminari di pulizia
+--
+
+delete from IKGD_CONFIG where [key] like 'LuceneShare%';
+delete from IKGD_CONFIG where [key] like 'IndexerUrl%';
+delete from IKGD_CONFIG where [key] like 'GoogleMapsApiKey_%';
+delete from IKGD_CONFIG where [type]='BROADCAST' AND [key]='SchedulingEnabled';
+
+truncate table [ELMAH_Error];
+--truncate table [IKG_HITACC];
+--truncate table [IKG_HITLOG_ARCHIVE];
+--truncate table [IKG_LOGGER];
+--truncate table [IKGD_ASSEMBLY];
+--truncate table [IKGD_VDATA_KEYVALUE];
+
+delete from [IKGD_SEARCH];
+delete from [IKGD_QueueMeta];
+delete from [IKGD_QueueData];
+delete from [IKDOCEX_Log];
+
+delete from [IKG_PREF];
+delete from [IKG_SETTING];
+delete from [IKG_WIDGET];
+delete from [IKG_TAB];
+
+--
+-- conteggio dei record di LazyLogin associati ad utenti anonimi
+--select count(*) from LazyLoginMapper
+--left outer join aspnet_Users on aspnet_Users.UserId=LazyLoginMapper.UserId
+--where aspnet_Users.UserId IS NULL
+--
+-- pulizia dei record di LazyLogin associati ad utenti anonimi
+--delete from LazyLoginMapper where id in
+--(select LazyLoginMapper.id from LazyLoginMapper
+--left outer join aspnet_Users on aspnet_Users.UserId=LazyLoginMapper.UserId
+--where aspnet_Users.UserId IS NULL)
+
+--
+-- pulizia della tabella IKG_HITLOG
+--
+select min(id) from ( select top 500000 id from IKG_HITLOG order by id desc) ids;
+--insert into IKG_HITLOG_ARCHIVE select * from ikg_hitlog where id < 1000000000
+--delete from IKG_HITLOG where id < 1000000000
+
+--
+-- eseguire la normalizzazione del database dal vfs_manager.wgx
+--
+
+
+--
+-- pulizia dei nodi non piu' attivi
+--
+--DELETE FROM IKGD_VNODE WHERE (flag_published=0 AND flag_current=0);
+--DELETE FROM IKGD_INODE WHERE (flag_published=0 AND flag_current=0);
+--DELETE FROM IKGD_VDATA WHERE (flag_published=0 AND flag_current=0);
+--DELETE FROM IKGD_PROPERTY WHERE (flag_published=0 AND flag_current=0);
+--DELETE FROM IKGD_RELATION WHERE (flag_published=0 AND flag_current=0);
+
+--UPDATE IKGD_STREAM SET [source]=NULL WHERE ([source]='');
+--DELETE FROM IKGD_PROPERTY WHERE [name]='IKCAT_Tag' AND [attributeId] IS NULL;
+
+--SELECT * FROM [dbo].[IKGD_SNODE] AS [t0] WHERE NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [dbo].[IKGD_VNODE] AS [t1] WHERE [t1].[snode] = [t0].[code] ))
+----DELETE FROM [dbo].[IKGD_SNODE] WHERE NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [dbo].[IKGD_VNODE] AS [t1] WHERE [t1].[snode] = [dbo].[IKGD_SNODE].[code] ))
+
+--SELECT * FROM [dbo].[IKGD_RNODE]
+--WHERE (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_SNODE] AS [t1]
+--    WHERE [t1].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_VNODE] AS [t2]
+--    WHERE [t2].[folder] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_VNODE] AS [t3]
+--    WHERE [t3].[parent] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_VNODE] AS [t4]
+--    WHERE [t4].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_PROPERTY] AS [t5]
+--    WHERE [t5].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_RELATION] AS [t6]
+--    WHERE [t6].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_RELATION] AS [t7]
+--    WHERE [t7].[rnode_dst] = [dbo].[IKGD_RNODE].[code]
+--    )))
+
+--DELETE FROM [dbo].[IKGD_RNODE]
+--WHERE (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_SNODE] AS [t1]
+--    WHERE [t1].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_VNODE] AS [t2]
+--    WHERE [t2].[folder] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_VNODE] AS [t3]
+--    WHERE [t3].[parent] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_VNODE] AS [t4]
+--    WHERE [t4].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_PROPERTY] AS [t5]
+--    WHERE [t5].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_RELATION] AS [t6]
+--    WHERE [t6].[rnode] = [dbo].[IKGD_RNODE].[code]
+--    ))) AND (NOT (EXISTS(
+--    SELECT NULL AS [EMPTY]
+--    FROM [dbo].[IKGD_RELATION] AS [t7]
+--    WHERE [t7].[rnode_dst] = [dbo].[IKGD_RNODE].[code]
+--    )))
+
+
+--SELECT COUNT(*) FROM [IKGD_MSTREAM] AS [t0] WHERE NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [IKGD_INODE] AS [t1] WHERE [t1].[version] = [t0].[inode]));
+--DELETE [IKGD_MSTREAM] FROM [IKGD_MSTREAM] AS [t0] WHERE NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [IKGD_INODE] AS [t1] WHERE [t1].[version] = [t0].[inode]));
+
+--SELECT COUNT(*) FROM [IKGD_STREAM] WHERE [id] IN (SELECT DISTINCT [t0].[id] FROM [IKGD_STREAM] AS [t0] WHERE (NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [IKGD_MSTREAM] AS [t1] WHERE [t0].[id] = [t1].[stream]))) AND (NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [IKGD_INODE] AS [t2] WHERE [t0].[inode] = ([t2].[version])))));
+---- LOOP da ripetere fino a quando non cancella piu' nulla
+--DELETE FROM [IKGD_STREAM] WHERE [id] IN (SELECT DISTINCT TOP 1000 [t0].[id] FROM [IKGD_STREAM] AS [t0] WHERE (NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [IKGD_MSTREAM] AS [t1] WHERE [t0].[id] = [t1].[stream]))) AND (NOT (EXISTS(SELECT NULL AS [EMPTY] FROM [IKGD_INODE] AS [t2] WHERE [t0].[inode] = ([t2].[version])))));
+

@@ -1,0 +1,17 @@
+﻿
+proprieta' da riorganizzare
+
+IKCMS_ModelCMS_Provider.Provider.ModelBaseForContext
+  - solo in Li.m.oni, BaseSite_LESS, ManagerTags*, IKCMS_ModelCMS_Provider
+  
+ModelRootOrContext 
+ModelContextOrRoot
+
+non si deve usare il Finalize che crea problemi con il GC
+attenzione all'utilizzo di CacheItemRemovedtCallback che mantiene reference all'oggetto e impedisce il funzionamento del GC
+CacheItemRemovedCallback
+CachingHelper_onRemoveCallback
+
+usare cacheitempriority.notremovable per gli oggetti principali (config)
+provare a controllare se durante il clean dei model nei child/parent e' stata definita una cachingKey
+e in tal caso provvedere a forzare la rimozione dell'elemento (come ultima opzione)

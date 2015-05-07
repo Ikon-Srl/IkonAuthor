@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBFBC0EE-77EE-4643-BF75-251B4B41E1E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IKCMS_Components</RootNamespace>
+    <AssemblyName>IKCMS_Components</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoFac\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web.Mvc, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.3.0.5, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\DotLess\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\elmah\Bin\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Facebook\net35-client\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Heijden.Dns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\dnsbl\Heijden.Dns.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\MVC\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\MVC\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark.Web.Mvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\MVC\Spark.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="wnvhtmlconvert, Version=6.2.0.0, Culture=neutral, PublicKeyToken=5b5f377bc08a4d32, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\wnvhtmlconvert.dll</HintPath>
+    </Reference>
+    <Reference Include="Wurfl, Version=1.4.4.0, Culture=neutral, PublicKeyToken=816aeec277aa13b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Wurfl\Wurfl.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.5.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Base\AdminControllerBase.cs" />
+    <Compile Include="Controllers\Base\AuthControllerBase.cs" />
+    <Compile Include="Controllers\AuthSSOController.cs" />
+    <Compile Include="Controllers\Base\FormsControllerBase.cs" />
+    <Compile Include="Controllers\Base\HomeControllerBase.cs" />
+    <Compile Include="Deprecated\ShowReelControllerBase.cs" />
+    <Compile Include="Controllers\Base\ViewModeControllerBase.cs" />
+    <Compile Include="Controllers\Base\LanguageControllerBase.cs" />
+    <Compile Include="Controllers\Base\SearchControllerBase.cs" />
+    <Compile Include="Controllers\Base\IKCMSControllerBase.cs" />
+    <Compile Include="Deprecated\TagsCloudControllerBase.cs" />
+    <Compile Include="Controllers\BatchCMSController.cs" />
+    <Compile Include="Controllers\PrintingController.cs" />
+    <Compile Include="Controllers\LazyLoginController.cs" />
+    <Compile Include="Controllers\PingCMSController.cs" />
+    <Compile Include="Deprecated\IKCMS_HelpersController.cs" />
+    <Compile Include="Controllers\QuerySSOController.cs" />
+    <Compile Include="Filters\JsonpResult.cs" />
+    <Compile Include="Filters\FiltersRobots.cs" />
+    <Compile Include="Filters\FiltersPostProcessing.cs" />
+    <Compile Include="Filters\FiltersLog.cs" />
+    <Compile Include="Filters\FiltersLazyLogin.cs" />
+    <Compile Include="Filters\JsonFilterAttribute.cs" />
+    <Compile Include="Helpers\GoogleAnalytics.cs" />
+    <Compile Include="Helpers\DnsblHelper.cs" />
+    <Compile Include="Helpers\MobileHelper.cs" />
+    <Compile Include="Helpers\IKCMS_StaticResources.cs" />
+    <Compile Include="Helpers\MinimizeIncludesHelper.cs" />
+    <Compile Include="Helpers\CalendarsHelper.cs" />
+    <Compile Include="Helpers\SiteMapHelper.cs" />
+    <Compile Include="Helpers\HtmlCleanerHelper.cs" />
+    <Compile Include="Helpers\ResourceConverterHelpers.cs" />
+    <Compile Include="Helpers\TeasersHelperExtensions.cs" />
+    <Compile Include="Helpers\ModelGenericBricksHelpers.cs" />
+    <Compile Include="Helpers\HelperExtensionCommon.cs" />
+    <Compile Include="Helpers\WebsiteOptimizerTestAB.cs" />
+    <Compile Include="Helpers\MenuHelper.cs" />
+    <Compile Include="Helpers\LazyLoginHelpers.cs" />
+    <Compile Include="Helpers\PagingHelpers.cs" />
+    <Compile Include="Helpers\FaceBookHelper.cs" />
+    <Compile Include="Helpers\HtmlHelperExtensions.cs" />
+    <Compile Include="Deprecated\TagCloudHelper.cs" />
+    <Compile Include="Helpers\UrlHelperExtensions.cs" />
+    <Compile Include="ModelsScanner\IKCMS_ModelScannerParent.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Controllers\AdminCMSController.cs" />
+    <Compile Include="Controllers\Base\BaseControllers.cs" />
+    <Compile Include="Controllers\ProxyVFSController.cs" />
+    <Compile Include="Controllers\RSS_GeneratorController.cs" />
+    <Compile Include="Controls\IKCMS_ControllerHelpers.cs" />
+    <Compile Include="Filters\FiltersCaching.cs" />
+    <Compile Include="Helpers\HtmlHelperConditionalExtensions.cs" />
+    <Compile Include="Helpers\RSS_Utility.cs" />
+    <Compile Include="ModelsScanner\IKCMS_ModelScannerParentBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ResourceIKCMS_Components.hr.Designer.cs">
+      <DependentUpon>ResourceIKCMS_Components.hr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceIKCMS_Components.sl.Designer.cs">
+      <DependentUpon>ResourceIKCMS_Components.sl.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceIKCMS_Components.es.Designer.cs">
+      <DependentUpon>ResourceIKCMS_Components.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceIKCMS_Components.fr.Designer.cs">
+      <DependentUpon>ResourceIKCMS_Components.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceIKCMS_Components.de.Designer.cs">
+      <DependentUpon>ResourceIKCMS_Components.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceIKCMS_Components.en.Designer.cs">
+      <DependentUpon>ResourceIKCMS_Components.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourceIKCMS_Components.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceIKCMS_Components.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Routes\RoutesBase.cs" />
+    <Compile Include="TagFilters\ManagerTagsFilterEvents.cs" />
+    <Compile Include="TagFilters\ManagerTagsFilter.cs" />
+    <Compile Include="Workflow\WorkflowHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKCMS_Library\IKCMS_Library.csproj">
+      <Project>{316EBCA7-F84D-4893-8246-7E231B54B196}</Project>
+      <Name>IKCMS_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKCMS_ModelLibrary\IKCMS_ModelLibrary.csproj">
+      <Project>{9D90C7D6-9AB7-4774-A416-903CDCAA4820}</Project>
+      <Name>IKCMS_ModelLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Auth_Library\IKGD_Auth_Library.csproj">
+      <Project>{8FC2631F-3CA9-43AE-A6D9-F3357A4025DD}</Project>
+      <Name>IKGD_Auth_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Auth_Modules\IKGD_Auth_Modules.csproj">
+      <Project>{9E9650FB-714C-47B4-B574-97900141472A}</Project>
+      <Name>IKGD_Auth_Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ConfigSettings\IKGD_ConfigSettings.csproj">
+      <Project>{A6FB392B-CC41-4877-BB2A-87BA7CFED799}</Project>
+      <Name>IKGD_ConfigSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_FilterParser\IKGD_FilterParser.csproj">
+      <Project>{1ED7FD2A-7CB2-40FE-B684-3D8BF9FB5866}</Project>
+      <Name>IKGD_FilterParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ResourceType_Library\IKGD_ResourceType_Library.csproj">
+      <Project>{BD9888C2-C2C8-43BB-BF9E-077648C2D223}</Project>
+      <Name>IKGD_ResourceType_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ResourceType_Standard\IKGD_ResourceType_Standard.csproj">
+      <Project>{5171EBC4-143E-40D0-A4C8-E03F41F1D8EC}</Project>
+      <Name>IKGD_ResourceType_Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ResourceType_Standard_CMS\IKGD_ResourceType_Standard_CMS.csproj">
+      <Project>{E6E12BC1-30C6-4D89-90E4-7033A06B682F}</Project>
+      <Name>IKGD_ResourceType_Standard_CMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Utility\IKGD_Utility.csproj">
+      <Project>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</Project>
+      <Name>IKGD_Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_VFS_Library\IKGD_VFS_Library.csproj">
+      <Project>{213AA23E-553C-47F2-BD09-CE74BAAE1BED}</Project>
+      <Name>IKGD_VFS_Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectBuilder\Less\less-1.3.0.js" />
+    <Content Include="ProjectBuilder\Less\less.js" />
+    <Content Include="ProjectBuilder\Less\lessc.wsf" />
+    <Content Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.hr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.hr.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.sl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.sl.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.es.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.fr.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourceIKCMS_Components.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceIKCMS_Components.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ProjectBuilder\Less\README_MV.txt" />
+    <None Include="ProjectBuilder\Less\lessc.cmd" />
+    <None Include="ProjectBuilder\Less\README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

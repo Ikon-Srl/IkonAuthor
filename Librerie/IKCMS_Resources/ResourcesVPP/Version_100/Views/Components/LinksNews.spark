@@ -1,0 +1,29 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ArchiveBrowserItem_Interface"/>
+<div class="menu_resources" if='Model.Relations.Any()'>
+    <br />
+# var module_ItemRelations = Model.fsOp.Get_NodesInfoACL(Model.Relations.Select(r => r.snode_dst).Distinct(), null, false).ToDictionary(n => n.vNode.snode, n => (FS_Operations.FS_NodeInfo_Interface)n);
+# var links = Model.RelationsOrdered.Where(r => module_ItemRelations.ContainsKey(r.snode_dst)).Where(r => r.type == Ikon.IKGD.Library.IKGD_Constants.IKGD_LinkRelationName).Select(r => module_ItemRelations[r.snode_dst]).ToList();
+# var files = Model.RelationsOrdered.Where(r => module_ItemRelations.ContainsKey(r.snode_dst)).Where(r => r.type == Ikon.IKGD.Library.IKGD_Constants.IKGD_AttachmentRelationName).Select(r => module_ItemRelations[r.snode_dst]).ToList();
+
+  <!--ALLEGATI-->
+  <div class="panel_resources" if='files.Any()'>
+    <label class="risorsa_titolo"><strong>${Resources.ResourceStandard.Allegati}</strong></label>
+    <for each='var file in files'>
+      <div class="risorsa_panel">
+        <a href='${IKCMS_TreeStructureVFS.UrlDownloadDefaultStream(file.vNode, file.vData, file.iNode, string.Empty).DefaultIfEmpty("javascript:;").EncodeAsAttribute()}' target="_blank?{IKGD_SiteMode.IsTargetSupported}" class="risorsa_link">${file.vNode.name}</a>
+      </div>  
+    </for>
+  </div>
+  <!--LINKS-->
+  <div class="panel_links" if='links.Any()'>
+    <!--<label class="risorsa_titolo">${Resources.ResourceStandard.Links}</label>-->
+    <for each='var link in links'>
+      <div class="link_panel">
+        <a href='${Url.Content(IKCMS_RouteUrlManager.GetMvcUrlGeneral(null, link.vNode.snode, null)).EncodeAsAttribute()}' class="risorsa_link">${link.vNode.name}</a>
+      </div>  
+    </for>
+  </div>  
+  
+  
+  
+</div>

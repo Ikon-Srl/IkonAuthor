@@ -1,0 +1,73 @@
+
+
+delete from IKGD_CONFIG where [key] like 'LuceneShare%';
+delete from IKGD_CONFIG where [key] like 'IndexerUrl%';
+delete from IKGD_CONFIG where [key] like 'GoogleMapsApiKey_%';
+delete from IKGD_CONFIG where [type]='BROADCAST' AND [key]='SchedulingEnabled';
+
+truncate table [ELMAH_Error];
+truncate table [IKG_HITACC];
+truncate table [IKG_HITLOG];
+truncate table [IKG_HITLOG_ARCHIVE];
+truncate table [IKG_LOGGER];
+truncate table [IKGD_ASSEMBLY];
+truncate table [IKGD_VDATA_KEYVALUE];
+
+delete from [IKCMS_SEO];
+delete from [IKCAT_AttributeStream];
+delete from [IKCAT_AttributeResource];
+delete from [IKCAT_Attribute];
+delete from [IKGD_SEARCH];
+delete from [IKGD_QueueMeta];
+delete from [IKGD_QueueData];
+delete from [IKCAT_ElementAttribute];
+delete from [IKCAT_ElementVariant];
+delete from [IKCAT_ElementMain];
+delete from [IKCAT_ElementFolder];
+delete from [IKDOCEX_Log];
+delete from [IKGD_ACL];
+delete from [IKGD_ADMIN];
+delete from [IKGD_FREEZED];
+delete from [LazyLogin_AnagraficaMain];
+delete from [LazyLogin_CartMain];
+delete from [LazyLogin_Log];
+delete from [LazyLogin_Setting];
+delete from [LazyLogin_Vote];
+delete from [LazyLoginMapper];
+delete from [MOD_ESurvey];
+delete from [MOD_ESurveyPoll];
+
+
+delete from [IKGD_KEYSTORAGE];
+delete from [IKGD_KEYSTORAGE_MAP];
+
+delete from [IKG_PREF];
+delete from [IKG_SETTING];
+delete from [IKG_WIDGET];
+delete from [IKG_TAB];
+
+delete from [IK_TKT_FILE];
+delete from [IK_TKT_ITEM];
+delete from [IK_TKT_SUMMARY];
+delete from [IK_Anagrafica];
+
+--delete from aspnet_UsersInRoles where UserId in
+--(select aspnet_UsersInRoles.UserId from aspnet_UsersInRoles
+--join aspnet_Users on aspnet_Users.UserId=aspnet_UsersInRoles.UserId
+--where aspnet_Users.ApplicationId='00000000-0000-0000-0001-000000000000')
+
+--delete from aspnet_Membership where ApplicationId='00000000-0000-0000-0001-000000000000'
+--delete from aspnet_Users where ApplicationId='00000000-0000-0000-0001-000000000000'
+
+--
+-- conteggio dei record di LazyLogin associati ad utenti anonimi
+--select count(*) from LazyLoginMapper
+--left outer join aspnet_Users on aspnet_Users.UserId=LazyLoginMapper.UserId
+--where aspnet_Users.UserId IS NULL
+--
+-- pulizia dei record di LazyLogin associati ad utenti anonimi
+--delete from LazyLoginMapper where id in
+--(select LazyLoginMapper.id from LazyLoginMapper
+--left outer join aspnet_Users on aspnet_Users.UserId=LazyLoginMapper.UserId
+--where aspnet_Users.UserId IS NULL)
+

@@ -1,0 +1,36 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_GenericBrickCollectorInterface'>
+  # var mdl = ViewData.Model as IKCMS_ModelCMS_GenericBrickCollectorInterface;
+  # var items = mdl.Models.OfType<IKCMS_ModelCMS_GenericBrickInterface>().ToList();
+  # string cssClass = (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassForced] ?? mdl.CssClass.NullIfEmpty() ?? (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassDefault];
+  # int delay = Utility.TryParse<int>(mdl.VFS_ResourceNoLanguageKVT("Delay").ValueString, 10000);
+  # int transition = Utility.TryParse<int>(mdl.VFS_ResourceNoLanguageKVT("Transition").ValueString, 500);
+  <if condition='mdl != null && items.Any()'>
+    <div class="box_showreel ${ViewData[TeasersHelperExtension.ViewDataPlaceholderName]} ${cssClass}">
+      <div class="title" if='mdl.Title.IsNotNullOrWhiteSpace()'>${mdl.Title.EncodeAsHtml()}</div>
+      <div class="text" if='mdl.Text.IsNotNullOrWhiteSpace()'>${mdl.Text}</div>
+      ${mdl.ImageCMS("image", "box_image", null)}
+      <div class='items animationGroup'>
+        <for each='var item in items'>
+          $!{Html.RenderGenericBrick(item, new PlaceholderRenderParams { Index = itemIndex, TemplateForced = mdl.TemplateInfo.ViewPaths["item"], TemplateDefault = "~/Views/IKCMS/Showreels/ShowReelItem", ContainerCssClass = cssClass })}
+        </for>
+      </div>
+    </div>
+
+    <content name="tail_CodeJS">
+      <script type="text/javascript">
+      //<![CDATA[
+        $(document).ready(function() {
+          $('.box_showreel>.items').cycle({ timeout:${delay}, speed:${transition}, fx: 'fade' });
+        });
+      //]]>
+      </script>
+    </content>
+
+  </if>
+  <else>
+    <div class="box_showreel ${ViewData[TeasersHelperExtension.ViewDataPlaceholderName]} ${cssClass}">
+      $!{Html.Partial("~/Views/IKCMS/Showreels/ShowReelVOID")}
+    </div>
+  </else>
+
+</if>

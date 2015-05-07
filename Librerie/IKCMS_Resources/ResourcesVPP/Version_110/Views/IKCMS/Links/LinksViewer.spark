@@ -1,0 +1,11 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var items = (ViewData.Model as IKCMS_ModelCMS_Interface).Models.OfType<IKCMS_ModelCMS_LinkKVT>().ToList();
+  <if condition='items.Any()'>
+    <div class="box_links">
+      <div class="title">${IKCMS_StaticResources.GetString("Label_Links")}</div>
+      <for each='var item in items'>
+        $!{Html.RenderGenericBrick(item, new PlaceholderRenderParams { TemplateForced = null, TemplateDefault = "~/Views/IKCMS/Links/LinkItem" })}
+      </for>
+    </div>
+  </if>
+</if>

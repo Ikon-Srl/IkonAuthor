@@ -1,0 +1,19 @@
+﻿<div style="text-align: center; margin: 70px;">
+  <img src="~/Content/Images/logo.jpg" alt="Logo" />
+  <br/>
+  <br/>
+  <span>
+    <if condition='ViewData.Model != null && ViewData.Model is Ikon.IKCMS.IKCMS_ModelCMS_Interface'>
+      La risorsa richiesta non &egrave; pi&ugrave; disponibile nel CMS.<br/>
+      sNode: $!{(ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).sNode}
+    </if>
+  </span>
+  <br/>
+  <br/>
+  <if condition='Request.UrlReferrer != null'><a href='${Request.UrlReferrer.ToString().EncodeAsAttribute()}'>Ritorna alla pagina precedente</a></if>
+  <br/>
+  <br/>
+  <a href="~/">Ritorna alla Homepage</a>
+  <br/>
+  <br/>
+</div>

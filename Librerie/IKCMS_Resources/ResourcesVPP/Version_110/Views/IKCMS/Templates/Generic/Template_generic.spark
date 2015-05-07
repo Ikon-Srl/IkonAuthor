@@ -1,0 +1,3 @@
+﻿<use master="Master_site" />
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+

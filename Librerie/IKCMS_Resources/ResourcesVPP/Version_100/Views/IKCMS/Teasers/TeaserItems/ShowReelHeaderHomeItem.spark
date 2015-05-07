@@ -1,0 +1,15 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickInterface"/>
+<div class="showreelheader_item">
+
+  <div class="container_testo clickableBlock">
+    <div class="titolo">${Model.VFS_ResourceLanguageKVT("Title").ValueString}</div>
+    <div class="testo">${Model.VFS_ResourceLanguageKVT("Text").ValueString}</div>
+    <if condition='Model.HasLink'><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink"></a></if>
+
+    <div class="immaginegrande">
+      ${Model.ImageCMS("image")}
+    </div>
+    
+  </div>
+  
+</div>

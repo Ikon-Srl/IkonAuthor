@@ -1,0 +1,20 @@
+﻿<use content="cms_breadcrumbs">
+    <nav>
+	  <ul class="breadcrumbs">
+		# var breadCrumbsLastText = ViewData["breadCrumbsLastText"] as string;
+		# int? breadCrumbsSkipFirst = (int?)ViewData["breadCrumbsSkipFirst"];
+		# int? breadCrumbsSkipLast = (int?)ViewData["breadCrumbsSkipLast"];
+		<if condition='((bool?)ViewData["breadCrumbsShowRoot"]).GetValueOrDefault(false)'><li><a href='${Url.Content(IKGD_Config.AppSettings["Page_Home"] ?? Request.ApplicationPath)}' class="nav" rel="nofollow">${IKCMS_StaticResources.GetString("Breadcrumbs_Home")}</a></li></if>
+		<if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+		  # var ModelBC = ((ViewData.Model as IKCMS_ModelCMS_Interface).ModelRoot is IKCMS_ModelCMS_ArchiveBrowser_Interface) ? (ViewData.Model as IKCMS_ModelCMS_Interface).ModelRoot : (ViewData.Model as IKCMS_ModelCMS_Interface);
+		  # var breadCrumbs = ViewData["breadCrumbs"] as IEnumerable<IKCMS_ModelCMS_BreadCrumbsElement> ?? (ModelBC != null ? ModelBC.BreadCrumbs : null);
+		  <if condition='breadCrumbs != null'>
+			<for each='var frag in breadCrumbs.Skip(breadCrumbsSkipFirst.GetValueOrDefault(0)).SkipLast(breadCrumbsSkipLast)'>
+			  <li><if condition='fragIndex>0'>&nbsp;/&nbsp;</if><a href='${frag.Url.DefaultIfEmpty("javascript:;")}?{!string.IsNullOrEmpty(frag.Url)}' class="nav" rel="nofollow">${fragIsLast ? breadCrumbsLastText.DefaultIfEmpty(frag.Text) : frag.Text}</a></li>
+			</for>
+		  </if>
+		</if>
+		<div class='clearfloat'></div>
+	  </ul>
+	</nav>  
+</use>

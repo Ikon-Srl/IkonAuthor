@@ -1,0 +1,20 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickInterface"/>
+<if condition='Model != null'>
+  # string placeholderContainer = ViewData[TeasersHelperExtension.ViewDataPlaceholderName] as string;
+  # string templateContainer = ViewData[TeasersHelperExtension.ViewDataContainerTemplateName] as string;
+  # int itemIndex = (int)(ViewData[TeasersHelperExtension.ViewDataItemIndex] ?? 0);
+  # string cssClass = (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassForced] ?? Model.CssClass.NullIfEmpty() ?? (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassDefault];
+
+  <div class='item clickableBlock ${placeholderContainer} ${cssClass}'>
+    # string title = Model.VFS_ResourceLanguageKVT("Title").ValueStringNN;
+    # string text = Model.VFS_ResourceLanguageKVT("Text").ValueStringNN;
+
+    <div class="title" if='title.IsNotNullOrWhiteSpace()'>${title.EncodeAsHtml()}</div>
+    <div class="text ellipsis-block">${text}</div>
+    
+    ${Model.ImageCMS("orig_main", "image", null)}
+    
+    <a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink append_UrlBack?{!Model.HasLinkTarget}" if='Model.HasLink'></a>
+    
+  </div>
+</if>

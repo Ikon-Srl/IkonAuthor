@@ -1,0 +1,5 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+  <div class="back" if='!string.IsNullOrEmpty((ViewData.Model as IKCMS_ModelCMS_Interface).UrlBack)'>
+    <a href='${(ViewData.Model as IKCMS_ModelCMS_Interface).UrlBack.EncodeAsAttribute()}' rel="nofollow"><!--<img src="~/Content/Images/freccia_back.gif" alt="Torna alla Mappa" />-->${Resources.ResourceStandard.Back}</a>
+  </div>
+</if>

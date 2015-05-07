@@ -1,0 +1,18 @@
+<use master="Application" />
+
+# ViewData["body_class"] = "blank";
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="body_Tail"><input type="hidden" id="ajaxTimeOut" name="ajaxTimeOut" value="3600000" /></content>
+<content name="body_Main">
+  <div class="contenitore_main">
+  <div id="logo">
+    <a href='${Url.Content(IKGD_Config.AppSettings["Page_Home"] ?? Request.ApplicationPath)}'><img src="~/Content/Images/logo.jpg" alt="Logo" /></a>
+  </div>
+  <div class="clearfloat"></div>
+    <div id="container_riservata">
+	  <use content="Contents">
+	  </use>
+    </div>
+  </div>
+</content>

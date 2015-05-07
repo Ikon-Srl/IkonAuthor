@@ -1,0 +1,15 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ParagraphKVT"/>
+<if condition='Model != null'>
+
+  # //Ikon.Filters.IKGD_HtmlCleaner cleaner = new Ikon.Filters.IKGD_HtmlCleaner();
+  # //MultiStreamInfo4Settings imageInfo = Model.StreamInfos("thumb");
+
+  <div class="paragrafo onlytext">
+    <div class="titolo" if='!string.IsNullOrEmpty(Model.Title)'><h2 class="bold">${Model.Title}</h2></div>
+    <div class="testo htmlTruncate?{Utility.TryParse<bool>(Model.VFS_ResourceNoLanguageKVT("Truncate").ValueString)} { condensedLength:${Utility.TryParse<int?>(Model.VFS_ResourceNoLanguageKVT("TruncateLength").ValueString) ?? 800}, moreText:'&lt;span&gt;${Resources.ResourceStandard.Paragraph_Expand}&lt;/span&gt;', lessText:'&lt;span&gt;${Resources.ResourceStandard.Paragraph_Compact}&lt;/span&gt;' }" if='!string.IsNullOrEmpty(Model.Text)'>
+      ${Model.Text}
+    </div>
+    <div class="clearfloat"></div>  
+  </div>
+
+</if>

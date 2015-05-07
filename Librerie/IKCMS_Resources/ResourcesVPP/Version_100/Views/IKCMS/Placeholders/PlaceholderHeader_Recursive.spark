@@ -1,0 +1,39 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var elements = IKCMS_ManagerIoC.applicationContainer.Resolve<IKCMS_ModelScannerParentPlaceholder_Bricks>(new NamedParameter("placeholders", "Header")).FindModels(ViewData.Model as IKCMS_ModelCMS_Interface).ToList();
+  # var maxElements = (Request.QueryString["flashOff"] != null) ? 1 : int.MaxValue;
+  # var elementsShowreel = elements.OfType<IKCMS_ModelCMS_GenericBrickInterface>().Where(m => m.ManagerType == typeof(IKCMS_ResourceType_ShowReelElementV1).Name).Take(maxElements);
+  # //var elementsShowreel = elements.OfType<IKCMS_ModelCMS_GenericBrickInterface>().Where(m => m.ManagerType == typeof(IKCMS_ResourceType_ShowReelElementV1).Name && m.TemplateInfo != null).Take(maxElements);
+  # IKCMS_ModelCMS_WidgetCMS_ImageCMS imageModel = null;
+  # string templateDefault = "~/Views/IKCMS/Teasers/TeaserItems/ShowReelHeaderItem";
+  # string templateForced = templateDefault;
+  <if condition='elementsShowreel.Any()'>
+    <div id="showreelheader" class="slideshow animationGroup">
+      <for each='var element in elementsShowreel'>
+        $!{Html.Partial(templateForced ?? element.TemplateInfo.ViewPath ?? templateDefault, element)}
+      </for>
+    </div>
+  </if>
+  <else>
+    <div id="showreelheader">
+      # imageModel = elements.OfType<IKCMS_ModelCMS_WidgetCMS_ImageCMS>().FirstOrDefault(m => m.HasStream("image"));
+      <if condition='imageModel != null'>
+        ${imageModel.ImageCMS("image")}
+      </if>
+      <else>
+        ${Resources.ResourceStandard.ShowreelNo}
+      </else>
+    </div>
+  </else>
+</if>
+
+<content name="head_IncludeJS">
+</content>
+<content name="head_CodeJS">
+  <script type="text/javascript">
+  /*<![CDATA[*/
+    $(document).ready(function() {
+      $('.slideshow').cycle({ fx: 'fade' });
+    });
+  /*]]>*/
+  </script>
+</content>

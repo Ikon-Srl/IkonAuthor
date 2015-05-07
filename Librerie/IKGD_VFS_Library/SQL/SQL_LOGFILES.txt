@@ -1,0 +1,52 @@
+
+-- verificare sulla colonna log_reuse_wait e log_reuse_wait_desc il motivo per cui non puo' riutilizzare il file di log
+-- LOG_BACKUP significa che e' in attesa di un backup del log
+select * from sys.databases
+
+-- crea un checkpoint nel log dello stato attuale del DB
+checkpoint;
+
+-- info sui contenuti del log, (Status=2 identifica i chuncks non ancora backuppati nel log, devono trovarsi tutti ad offset bassi)
+DBCC LOGINFO
+
+
+-- per identificare il file_id del file di log (nel nostro caso generalmente e' 2)
+select * from sys.database_files
+
+--
+-- i seguenti comandi dovranno essere eseguiti in sequenza per piu' volte finche' non si riuscira' a compattare il file
+-- mentre crea il backup puo' essere che si continui a fare append sul log per cui bisogna reiterare la procedura
+-- (in questo caso il secondo backup sara' molto piu' ridotto e non occupera' piu' i 30GB)
+-- DBCC SHRINKFILE(2, 500); il primo parametro e' il file_id, il secondo e' la dimensione del file in megabytes
+--
+BACKUP LOG [nome_del_database] TO DISK = 'G:\BACKUP\LOG_BACKUP_01.bak'
+DBCC SHRINKFILE(2, 50);
+
+
+--
+-- lista dello spazio usato da tutti i files dei vari DB
+--
+EXECUTE master.sys.sp_MSforeachdb 'USE [?]; EXEC sp_helpfile'
+
+
+--
+-- TODO:
+-- attivare una procedura automatica per il backup automatico dei log (almeno uno all'ora per i siti piu' attivi)
+--
+
+
+
+--
+-- DTC setup info
+--
+http://itknowledgeexchange.techtarget.com/sql-server/how-to-configure-dtc-on-windows-2008/
+http://msdn.microsoft.com/en-us/library/cc646023.aspx (per il firewall)
+http://support.microsoft.com/kb/250367/en-us
+http://support.microsoft.com/kb/306843/en-us
+http://social.msdn.microsoft.com/forums/en-US/windowstransactionsprogramming/thread/173c937d-3fdc-43ab-8127-6083cef29a0e/
+http://blogs.msdn.com/b/ajit/archive/2008/06/18/override-the-system-transactions-default-timeout-of-10-minutes-in-the-code.aspx
+
+machine.config:
+
+section: system.transactions
+machineSettings settare allowDefinition="MachineOnly" allowExeDefinition="MachineOnly" --> "MachineToApplication"

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="BlankSite_CMS" EntityNamespace="Ikon.Config" ContextNamespace="Ikon.Config" Class="DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=BlankSite_CMS;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=60" SettingsObjectName="IKGD_ConfigSettings.Properties.Settings" SettingsPropertyName="GDCS" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IKGD_CONFIG" Member="IKGD_CONFIGs">
+    <Type Name="IKGD_CONFIG">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="instance" Type="System.String" DbType="VarChar(256)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(256)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="flag_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_system" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_KEYSTORAGE" Member="IKGD_KEYSTORAGEs">
+    <Type Name="IKGD_KEYSTORAGE">
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="position" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="flag_system" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_KEYSTORAGE_IKGD_KEYSTORAGE_MAP" Member="IKGD_KEYSTORAGE_MAPs" ThisKey="application,type,key" OtherKey="application,type,key" Type="IKGD_KEYSTORAGE_MAP" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_KEYSTORAGE_MAP" Member="IKGD_KEYSTORAGE_MAPs">
+    <Type Name="IKGD_KEYSTORAGE_MAP">
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="type" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[key]" Member="key" Type="System.String" DbType="VarChar(256) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="language" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="IKGD_KEYSTORAGE_IKGD_KEYSTORAGE_MAP" Member="IKGD_KEYSTORAGE" ThisKey="application,type,key" OtherKey="application,type,key" Type="IKGD_KEYSTORAGE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKGD_ASSEMBLY" Member="IKGD_ASSEMBLies">
+    <Type Name="IKGD_ASSEMBLY">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="modif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AssemblyStream" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AssembliesMain" Type="System.String" DbType="VarChar(750) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Hash" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Enabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Arch" Type="System.String" DbType="VarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IKCMS_SEO" Member="IKCMS_SEOs">
+    <Type Name="IKCMS_SEO">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="application" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SEO_url" Type="System.String" DbType="NVarChar(450) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="target_snode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="target_rnode" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="target_url" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="language" Type="System.String" DbType="VarChar(2)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="canonical" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="http_code" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="priority" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>

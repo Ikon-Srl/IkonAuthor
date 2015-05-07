@@ -1,0 +1,14 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var elements = (ViewData.Model as IKCMS_ModelCMS_Interface).Models.OfType<IKCMS_ModelCMS_GenericBrickSlotTeaserOrWidgetInterface>().Where(m => Regex.IsMatch(m.PlaceholderNN, @"^Home$|^Footer")).Where(m => m.TemplateInfo != null).ToList();
+  <div class="teasersViewersContainer animationGroup" if='elements.Any()'>
+    # int rowNumber = 0;
+    # int accumulatedSize = 0;
+    <for each='var element in elements'>
+      <!--<if condition='TeasersHelperExtension.TeaserSizeAccumulatorPreHorizontal(element, ref accumulatedSize, 900)'>
+        $!{Html.Partial("~/Views/IKCMS/Teasers/Extra/SeparatoreTeasersHome", rowNumber++)}<br />
+      </if>-->
+      $!{Html.Partial(element.TemplateInfo.ViewPath, element)}
+    </for>
+  </div>
+  <div class="clearfloat"></div>
+</if>

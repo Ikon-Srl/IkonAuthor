@@ -1,0 +1,6 @@
+﻿<use content="cms_print">
+  <div class="box_print">
+    <a rel="nofollow" href='#${IKCMS_RouteUrlManager.GetMvcActionUrl<PrintingController>(c => c.RenderAsPDF(Utility.Encrypt(Request.Url.PathAndQuery), null))}' style="text-decoration:none;"><i class="icon-print"></i></a>
+    <!--<a rel="nofollow" href='javascript:window.print();'><img src="~/Content/Images/icone/stampa_icona.png" alt="Stampa" /></a>-->
+  </div>
+</use>

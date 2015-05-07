@@ -1,0 +1,138 @@
+<use master="Application" />
+
+# ViewData["body_class"] = "blank";
+# var has_ACL = FS_ACL_Reduced.HasOperatorACLs();
+# var languages = Ikon.GD.IKGD_Config.GetElements("Languages", "language");
+            
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="body_Tail"><input type="hidden" id="ajaxTimeOut" name="ajaxTimeOut" value="3600000" /></content>
+
+<content name="head_IncludeCSS"><link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/AdminSite.css")}'/></content>
+
+<content name="body_Main">
+  <div id="adminHeader">
+    <use content="headerAdminContent">
+      <div id="headerTop">
+        <use content="headerTopContent">
+          <div class="titolo"><use content="headerTopTitle">Area di amministrazione</use></div>
+          <ul class="menuUser">
+		    <li class='username'>Ciao <span>${MembershipHelper.UserName}</span></li>
+		    <li class='separator'><a rel="nofollow" href='${Utility.UriSetQuery(System.Web.Security.FormsAuthentication.LoginUrl, "ReturnUrl", IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AdminCMSController>(c => c.Index()))}'  class='login'>login<a/></li>
+		    <li class='separator'><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.Logout())}' class='logout'>logout</a></li>
+	      </ul>
+        </use>
+      </div>
+      <div id="headerInfo">
+        <use content="headerInfoContent">
+          <div class='logoWrapper'>
+            <a href='${Url.Content(IKGD_Config.AppSettings["Page_Home"] ?? Request.ApplicationPath)}'><if condition='System.IO.File.Exists(Utility.vPathMap("~/Content/Images/logo.png"))'><img src="~/Content/Images/logo.png" alt="Logo"/></if><else><img src="~/Content/Images/logo.jpg" alt="Logo"/></else></a>
+          </div>
+          <div class='titolo'><use content="headerInfoTitle">Benvenuto nell'area di amministrazione</use></div>
+        </use>
+      </div>
+    </use>
+  </div>
+
+  <div id="adminCommand">
+    <div class="equal">
+      <use content="adminCommandContent">
+          <div id="leftPanel">
+            <use content="leftContent">
+			<div class='titolo_opzioni'>Opzioni disponibili</div>
+			<div class='opzioniWrapper'>
+                <use content="adminCommandStandard">
+				<div class='opzioniStandard'>
+					<a rel="nofollow" href="${Url.Content(IKGD_Config.AppSettings["Page_Home_IKGD"] ?? (IKGD_Config.AppSettings["AuthorBasePath"] ?? string.Empty + "/Author.wgx"))}" class='opzioni_button' target="_blank" if='has_ACL'>Editor CMS</a>
+                    <div class="clearfloat"></div>
+					<div class='opzioni_radio'>
+						<div class='opzioni_radio_label'>Stato del sito</div>
+						<div class='opzioni_radio_container'>
+							<table cellpadding="0" cellspacing="0">
+								<tr valign="center">
+									<td><input id="stato_pubblicato" type="radio" name="stato" ${Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == -1 ? "" : "checked"}/></td>
+									<td><label for="stato_pubblicato">Pubblicato</label></td>
+									<td width="5px"></td>
+									<td><input id="stato_preview" type="radio" name="stato" ${Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == -1 ? "checked" : ""}/></td>
+									<td><label for="stato_preview">Preview</label></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+                    <div class="clearfloat"></div>             
+					<a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.ResetCache())}' class='opzioni_button' if='has_ACL'>Reset della cache sul server</a>
+                    <div class="clearfloat"></div> 
+					<div class='opzioni_select'>
+						<select id="sLanguage">
+							<option>Cambia la lingua</option>
+							<for each='var language in languages'>
+								<option value="${language.Value}">${language.Description}</option>
+							</for>
+						</select>
+					</div>
+                    <div class='opzioni_separator20'></div>
+				</div>
+                </use>
+
+                <use content="adminCommandSpecific">
+				  <div class='opzioniSpecifiche'>
+					  $!{Html.Partial("~/Views/Admin/ActionsCustom")}
+				  </div>
+                </use>
+              
+                <use content="adminCommandUncommon">
+				<div class='opzioniNonComuni'>
+					<a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.UpdateHitsStats())}' if='has_ACL' class='opzioni_button button_lungo' >Aggiornamento dei contatori, voti e statistiche</a>
+					<div class='opzioni_databrowser'>
+						<form id="databrowser" action='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetDateTime(null))}' method="get">
+						Modifica la data del browser:<br/>
+						<input type="text" name="datetime" id="datetime" class="" data-provide="datepicker" value='${Ikon.GD.FS_OperationsHelpers.DateTimeSession}' />
+						<a href="javascript:;" class='opzioni_button' onclick='document.forms["databrowser"].submit();' >SAVE</a>
+						</form>
+					</div>
+				</div>
+                </use>
+			</div>
+			</use>
+          </div>
+          <div class='contentVerticalSeparator'></div>
+          <div id="rightPanel">  
+            <use content="rightContent">
+            </use>
+          </div>
+      </use>
+    </div>
+</div>
+</content>
+
+<content name="tail_CodeJS">
+<script type="text/javascript">
+  /*<![CDATA[*/
+    $(document).ready(function() {
+
+	  $("#stato_pubblicato").click(function(){
+		  $.ajax({
+		    url: "${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetVersionFrozen(0))}",
+			  success: function() { 
+				  $(".stato_sito_label").html("Pubblicato");
+		  }});
+	  });
+	  $("#stato_preview").click(function(){
+		  $.ajax({
+		    url: "${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetVersionFrozen(-1))}",
+			  success: function() { 
+				  $(".stato_sito_label").html("Preview");
+		  }});
+	  });
+
+	  $("#sLanguage").change(function(){
+		  $.ajax({
+			    url: "${Html.BuildUrlFromExpression<global::Custom.Controllers.LanguageController>(c => c.Set("###"))}".replace("###",$("#sLanguage").val()),
+				  success: function() { 
+					  $(".lingua_corrente_label").html($("#sLanguage").val() + " [" + $("#sLanguage").val() + "]");
+			  }});
+	  });
+
+    });
+  /*]]>*/
+</script>
+</content>

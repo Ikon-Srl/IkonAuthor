@@ -1,0 +1,37 @@
+<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+# var ModelBrick = Model as IKCMS_ModelCMS_GenericBrickInterface;
+# var ModelBrowser = Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_ArchiveBrowser_Interface>().FirstOrDefault();
+# ViewData["breadCrumbsSkipLast"] = 1;
+
+<!--<content name="title">${ModelBrick.Title}</content>-->
+
+<content name="cms_menu_nav">
+  ${Html.Partial("~/Views/Components/Menus/MenuNewsSX")}
+</content>
+
+<content name="cms_content_main">
+     <div class="news_dettaglio">
+        <div class="data">${Model.DateNode.ToLongDateString()}</div>
+        <div class="indietro">
+              <a href='${ModelBrowser.UrlBack}' rel="nofollow">&laquo; indietro</a>&nbsp; 
+              <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<RSS_GeneratorController>(c => c.FeedAtom(ModelBrowser.sNode, null, null, null))}'><img src="~/content/images/icona_feed.jpg" height="16" width="16" style="border-width: 0;" alt=" " /></a>-->
+         </div>
+         <div class="clearfloat"></div>
+                 
+       <div class="due">
+          <div class="txt_contenuti autocolumnOff { columns:2 }">
+                 <div class="thumb" if='ModelBrick.HasStream("image")'>${ModelBrick.ImageCMS_WithLink("image", "popup", null, "autoPopup", null, null)}</div>
+                 <div class="autore">Autore: <span class="autoHideParent">${ModelBrick.VFS_ResourceLanguageKVT("Author").ValueString}</span></div>
+                 <div class="abstract">${ModelBrick.VFS_ResourceLanguageKVT("Abstract").ValueString}</div>
+                 <div class="clearfloat"></div>
+                 <div class="testo">${ModelBrick.VFS_ResourceLanguageKVT("Text").ValueString}</div>
+                 <div class="clearfloat"></div>
+                 <!--risorse allegate e links-->
+                 ${Html.Partial("~/Views/Components/LinksNews")}
+          </div>
+      </div>
+    </div>  
+      
+</content>

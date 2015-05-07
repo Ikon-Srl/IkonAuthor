@@ -1,0 +1,93 @@
+﻿<use master="Master_blank" />
+
+# var has_ACL = (bool)(ViewData["HasACL"] ?? false);
+# var isAuth = System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+<content name="head_IncludeCSS"><link type="text/css" rel="stylesheet" href='${Url.AutoVersioning("~/Content/CSS/Admin.css")}'/></content>
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="title">Admin Page</content>
+<content name="Contents">
+
+  <style type="text/css">
+    .AdminCMS_row { margin: 15px 0px; }
+    .AdminCMS_left { float:left; }
+  </style>
+
+  <br />
+  <strong>Benvenuto nell'area di amministrazione.<br />
+    Scegliere tra le opzioni disponibili:</strong>
+  <br />
+  <br />
+  <br />
+  <table>
+    <tr>
+      <td style="min-width:400px;">
+        <if condition='has_ACL'>
+          <div class="AdminCMS_row"><a rel="nofollow" href="${Url.Content(IKGD_Config.AppSettings["Page_Home_IKGD"] ?? (IKGD_Config.AppSettings["AuthorBasePath"] ?? "~" + "/Author.wgx"))}" class="buttonStyle" target="_blank" if='has_ACL'>Editor CMS</a></div>
+          <div class="AdminCMS_row"><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetVersionFrozen(Ikon.GD.FS_OperationsHelpers.VersionFrozenSession != -1 ? -1 : 0))}' class="buttonStyle" if='has_ACL'>Modifica lo stato in: ${Ikon.GD.FS_OperationsHelpers.VersionFrozenSession != -1 ? "Preview" : "Pubblicato"}</a></div>
+          <div class="AdminCMS_row"><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.ResetCache())}' class="buttonStyle" if='has_ACL'>Reset della cache sul server</a></div>
+          <div class="AdminCMS_row"><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.GCCollect())}' target="_blank" class="buttonStyle" if='FS_OperationsHelpers.IsRoot'>Garbage Collector Cleaning</a></div>
+          <div class="AdminCMS_row"><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.UpdateHitsStats())}' class="buttonStyle" if='has_ACL'>Aggiornamento dei contatori, voti e statistiche</a></div>
+          <if condition='FS_OperationsHelpers.IsRoot && isAuth'>
+            <!--<div class="AdminCMS_row"><a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.RecycleAppPoolIIS())}' class="buttonStyle">Reset del web server</a></div>-->
+          </if>
+          <if condition='FS_OperationsHelpers.IsRoot && isAuth'>
+            <div class="AdminCMS_row">
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.SearchEngineUpdate())}' target="_blank" class="buttonStyle">Lucene Update</a>&nbsp;&nbsp;&nbsp;
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.SearchEngineRebuild())}' target="_blank" class="buttonStyle">Lucene Rebuild</a>&nbsp;&nbsp;&nbsp;
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.SearchEngineRebuildFull())}' target="_blank" class="buttonStyle">Lucene Rebuild with streams cleaning</a>&nbsp;&nbsp;&nbsp;
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SiteMapXmlRebuild(null, null))}' target="_blank" class="buttonStyle">Sitemap.xml rebuild</a>
+            </div>
+            <div class="AdminCMS_row">
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.IKGD_QueueRun())}' class="buttonStyle">Async Queue Run</a>&nbsp;&nbsp;&nbsp;
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.GetResourcesUsage())}' class="buttonStyle">Disk Usage Summary</a>&nbsp;&nbsp;&nbsp;
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.ClearUnmappedExternalResources())}' class="buttonStyle">Ottimizzazione External Files</a>
+              <a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.ClearDiskCacheVFS(null, null))}' class="buttonStyle">Pulizia DiskCache</a>
+            </div>
+            <div class="AdminCMS_row">
+              <a rel="nofollow" href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.BatchStatus())}' target="_blank" class="buttonStyle">Batch processes monitor</a>&nbsp;&nbsp;&nbsp;
+              <if condition='Utility.TryParse<bool>(IKGD_Config.AppSettings["IKGD_DeserializeOnVFS_Enabled"], false)'>
+                <a rel="nofollow" href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.DeserializeOnVFS_UpdateAll(false))}' target="_blank" class="buttonStyle">DeserializeOnVFS UPDATE</a>&nbsp;&nbsp;&nbsp;
+                <a rel="nofollow" href='${IKCMS_RouteUrlManager.GetMvcActionUrl<BatchCMSController>(c => c.DeserializeOnVFS_UpdateAll(true))}' target="_blank" class="buttonStyle">DeserializeOnVFS REBUILD</a>&nbsp;&nbsp;&nbsp;
+              </if>
+            </div>
+          </if>
+          <if condition='!string.IsNullOrEmpty(IKGD_Config.AppSettings["WebStatsCode"])'>
+            <div class="AdminCMS_row"><a rel="nofollow" href='${global::IkonWeb.Controllers.AdminCMSController.GetUrlStatistiche()}' class="buttonStyle">Statistiche Web</a></div>
+          </if>
+        </if>
+        <div class="AdminCMS_row">
+          <a rel="nofollow" href='${Utility.UriSetQuery(System.Web.Security.FormsAuthentication.LoginUrl, "ReturnUrl", IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AdminCMSController>(c => c.Index()))}' class="buttonStyle">Login</a>&nbsp;&nbsp;&nbsp;<a rel="nofollow" href='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.AdminCMSController>(c => c.Logout())}' class="buttonStyle">Logout</a>
+        </div>
+        <if condition='has_ACL'>
+          <div class="AdminCMS_row">
+            <form action='${Html.BuildUrlFromExpression<global::IkonWeb.Controllers.BatchCMSController>(c => c.SetDateTime(null))}' method="get">
+              <label for="datetime">Modifica la data del browser: </label><br/>
+              <input type="text" name="datetime" id="datetime" class="" data-provide="datepicker" value='${Ikon.GD.FS_OperationsHelpers.DateTimeSession}' />
+              <input type="submit" value="SAVE" />
+            </form>
+          </div>
+        </if>
+      </td>
+      <td>
+        $!{Html.Partial("~/Views/AdminCMS/Info")}
+      </td>
+    </tr>
+  </table>
+  <div class="clearfloat"></div>
+  <br />
+  <if condition='ViewData["dbg"] != null'>
+    <hr/>
+    ${ViewData["dbg"]}
+    <hr/>
+  </if>
+  <if condition='ViewData["message"] != null'>
+    <hr/>
+    ${ViewData["message"]}
+    <hr/>
+  </if>
+  <if condition='ViewData["error"] != null'>
+    <hr/>
+    ${ViewData["error"]}
+    <hr/>
+  </if>
+</content>

@@ -1,0 +1,12 @@
+﻿<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Page_Interface"/>
+
+# ViewData["breadCrumbsLastText"] = Model.TitleHead;
+
+<content name="Template_Contents_Default">
+
+      <div class="txt_contenuti">
+        $!{Html.Partial("~/Views/IKCMS/Placeholders/PlaceholderColumnMain")}
+    </div>
+
+</content>

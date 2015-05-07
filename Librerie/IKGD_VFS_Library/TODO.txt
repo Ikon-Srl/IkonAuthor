@@ -1,0 +1,84 @@
+------
+WinDbg
+------
+
+.load SOS
+.symfix c:\test\5
+.reload
+!eeheap -gc
+!address -summary
+!dumpheap -stat
+!dumpheap -mt 056776e8
+!dumpobj 294b64e4
+
+
+tracking delle richieste in corso sul webserver
+
+c:\windows\system32\inetsrv\appcmd list request
+c:\windows\system32\inetsrv\appcmd list request /apppool.name:Calligaris_AppId
+
+monitoraggio asp.net con performance counter:
+ - ottenere appId numerico dagli advanced settings di IIS manager
+ - monitorare asp.net apps 2.0x: (solo per l'id selezionato)
+  *istanze pipeline
+  *richieste in esecuzione
+  *richieste nella coda di esecuzione
+   richieste soddisfatte
+   richieste anonime
+   richieste anonime/sec
+   richieste non riuscita
+   richieste non trovate
+   richieste/sec
+   sessioni attive
+   totale bytes richieste di output
+   totale richieste
+   totale sessioni
+ - contemporaneamente monitorare le richieste in esecuzione nell'application pool
+
+
+protected override void Finalize() ?
+ - attenzione agli oggetti che lo usano e ai vari effetti collaterali:
+   http://msdn.microsoft.com/it-it/magazine/bb985010%28en-us%29.aspx
+ - System.GC.SuppressFinalize per evitare il finalize su un oggetto gia' ripulito/nullato
+
+
+
+http://weblogs.asp.net/pwilson/archive/2004/02/14/73033.aspx
+http://blogs.msdn.com/b/ricom/archive/2004/11/29/271829.aspx
+http://blog.dynatrace.com/2009/03/31/net-performance-analysis-a-net-garbage-collection-mystery/
+http://www.extremeexperts.com/Net/Articles/NetCounters.aspx
+http://blogs.microsoft.co.il/blogs/sasha/archive/2008/08/10/low-latency-gc-in-net-3-5.aspx
+
+
+
+
+----------------------------------
+---------     .NETv4     ---------
+----------------------------------
+
+verificare la possibilita' di passare da List<T> ad HashSet<T> per liste molto grandi (es path fragments o fsNodes)
+che gestisce operazioni O(1) invece di O(n) supportano buona parte delle API di List<T> e hanno anche delle operazioni sugli insiemi piu' potenti
+tipo superset o subset
+http://geekswithblogs.net/BlackRabbitCoder/archive/2011/02/03/c.net-little-wonders-the-useful-but-overlooked-sets.aspx
+
+
+
+classe IKGD_ConfigVFS
+attivare il supporto per set multipli di roots dipendenti dalla modalita' di visualizzazione del sito.
+fare dipendere tutto da una cachekey con dipendenze corrette dalla versione del sito
+la modalita' con Ext con root, aggiungere dependancy nella cachekey
+aggiungere supporto per hashing nell'helper VFS in funzione della versione del sito, basterebbe semplicemente un indice nella lista delle versioni supportate
+splittare la gestione dei viewmode in due manager uno da cui dipende il layout del VFS e uno solo per le view, poi usare un manager globale che assembli le view correttamente.
+usare settings differenti per i mapping in funzione del dominio, ciascuno con la propria configurazione
+possibili estensione di configurazioni dipendenti dal viewmode: roots, menu_roots varie, lucene, paths VFS
+ - funzione di normalizzazione dei paths per impersonation con substitutione del viewmode corrente nel path di base
+ - helper generico per leggere il nodeset da una config (es. per RootsQuickMenu, Author_Roots, rNodeForPagesNoCMS, Lucene_Roots, G.A., ecc.)
+semplificare il modulo di gestione del viewmode:
+ - niente mappings strani con dictionary, il mode diventa direttamente l'estensione
+ - creare una lista di modi constant predefiniti (accessibile, print, mobile, tablet, facebook, web)
+ - normalizzazione dello stato nel set (solo [a-z0-9_].tolower() e creare un helper per la normalizzazione)
+ - creare un helper per il detect mobile/tablet che sia decentemente configurabile
+ - creare helper per autoconfig da domain, con fallback su autotetect (con/senza tablet), su override da webconfig (per tutti due i modi)
+
+
+

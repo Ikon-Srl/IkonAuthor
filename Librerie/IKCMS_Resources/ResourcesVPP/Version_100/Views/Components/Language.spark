@@ -1,0 +1,6 @@
+<div class="lingua" onclick="$('#language_selector').toggle(250);" onkeypress="$('#language_selector').toggle(250);">
+  ${Resources.ResourceStandard.Header_Lingua}: ${global::Custom.Controllers.LanguageController.GetLanguageLabel(IKGD_Language_Provider.Provider.LanguageNN)}&nbsp; <img src='${Url.Content("~/Content/Images/bandierina_{0}.png".FormatString(IKGD_Language_Provider.Provider.LanguageNN))}' style="vertical-align:middle;" alt="language" />&nbsp; <img src="~/Content/Images/freccia_lingua.gif" alt="lingua_link" />
+  <div id="language_selector">
+    ${Html.Partial("~/Views/Components/LanguagePopup")} 
+  </div> 
+</div>

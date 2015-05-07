@@ -1,0 +1,10 @@
+﻿# int? ResourceCode = null;
+# ResourceCode = ViewData["HitLogResourceCode"] != null ? Utility.TryParse<int?>(ViewData["HitLogResourceCode"].ToString()) : null;
+# ResourceCode = ResourceCode ?? ((ViewData.Model is IKCMS_ModelCMS_Interface) ? (int?)(ViewData.Model as IKCMS_ModelCMS_Interface).rNode : null);
+<if condition='ResourceCode != null && !string.IsNullOrEmpty(ViewData["HitLogActionCode"] as string) && !string.IsNullOrEmpty(ViewData["HitLogActionSubCode"] as string)'>
+  <script type="text/javascript">
+  /*<![CDATA[*/
+    $(document).ready(function() { setTimeout(function(){ $.ajax('${Url.GetMvcActionUrl<LazyLoginController>(c => c.HitLog(ResourceCode, Utility.TryParse<int?>(ViewData["HitLogActionCode"]), Utility.TryParse<int?>(ViewData["HitLogActionSubCode"])))}', {cache:false, data:'', dataType:'json' }); }, 100); });
+  /*]]>*/
+  </script><noscript></noscript>
+</if>

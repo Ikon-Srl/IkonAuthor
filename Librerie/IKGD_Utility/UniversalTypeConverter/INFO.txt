@@ -1,0 +1,7 @@
+﻿
+ per riferimento alle funzionalita' implementate:
+ 
+ http://www.codeproject.com/Articles/248440/Universal-Type-Converter
+ 
+ e' stato solamente modificato il namespace da TB.ComponentModel a Ikon.ComponentModel
+

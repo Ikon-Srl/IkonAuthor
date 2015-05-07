@@ -1,0 +1,122 @@
+﻿
+.clearfloat {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.hover {cursor: pointer;}
+
+/* per troncare correttamente i testi nei box piccoli tipo teasers da utilizzare con il plugin JS jquery.dotdotdot, per linee singole (titoli) si puo' usare anche solo CSS con .ellipsis-line */
+.ellipsis-block,.ellipsis-live {
+  overflow: hidden;
+}
+.ellipsis-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+}
+
+.break-word {word-wrap: break-word;}
+
+/* per forzare newline anche nel caso di parole lunghissime o url */
+.prevent-text-breakouts {
+  -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+}
+
+/* per nascondere testi senza usare display:none */
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* background filling the whole container */
+.background-cover {
+  /*background: url(http://.../);*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /*height: 0;*/
+}
+
+/* per togliere i margini rognosi al primo o ultimo dei child */
+.firstchild-nomargin > :first-child { margin-left: 0 !important; }
+.lastchild-nomargin > :first-child { margin-right: 0 !important; }
+/*
+.nthchild-reset2 > :nth-child(2n+2) { margin-right: 0 !important; }
+.nthchild-reset3 > :nth-child(3n+3) { margin-right: 0 !important; }
+.nthchild-reset4 > :nth-child(4n+4) { margin-right: 0 !important; }
+.nthchild-reset5 > :nth-child(5n+5) { margin-right: 0 !important; }
+*/
+
+/* per creare un blocco centrato senza conoscere a priori le dimensioni dell'elemento http://css-tricks.com/centering-in-the-unknown/ */
+.autocenter-container {
+  text-align: center;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+}
+.autocenter-element {
+  display: inline-block;
+  vertical-align: middle;
+  /*width: 300px;*/  /* da settare eventualmente per ciascun singolo contenuto */
+}
+
+/* per aggiungere « e » agli elementi http://css-tricks.com/snippets/html/glyphs/ */
+.laquo:before { content: "« "; }
+.raquo:after { content: " »"; }
+
+.left {float: left;}
+.right {float: right;}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+.text-right {text-align: right;}
+
+img {vertical-align: middle;}
+a img {border: 0px;}
+
+.bold {font-weight: bold;}
+
+.bianco {color: #FFF;}
+.nero {color: #000;}
+
+/* per fare in modo che un set di colonne si adattino alla stessa altezza */
+.columnfill-container {overflow:hidden;}
+.columnfill {margin-bottom:-999999px;padding-bottom:999999px;}
+
+/* semplice trucchi per stilizzare le mail o i links a files scaricabili */
+/*
+a[href^="mailto:"] { }
+a[href$=".pdf"] { }
+a[href$=".doc"] { }
+*/
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_VFS_LanguageKVT_Interface'>
+  # var mdl = ViewData.Model as IKCMS_ModelCMS_Interface;
+  # var mdlKVT = ViewData.Model as IKCMS_ModelCMS_VFS_LanguageKVT_Interface;
+  # bool displayFlag = Utility.TryParse<bool>(mdlKVT.VFS_ResourceNoLanguageKVT("MiniMapDisplay").ValueString, true) && !mdl.Models.Any(m => m.ManagerType == typeof(IKCMS_ResourceType_ParagraphKVT).Name && m.Category == "paragraph_googlemap");
+  <if condition='mdl != null && mdl.vfsNode.vData.geoLatY != null && mdl.vfsNode.vData.geoLonX != null && displayFlag'>
+    <div class="box_teaser">
+      <div class="minimappa">
+        <div class="titolo"><h3 class="bold">${Resources.ResourceStandard.TeaserCartografia}</h3></div>
+        # string mapZoom = (mdlKVT != null && !string.IsNullOrEmpty(mdlKVT.VFS_ResourceLanguageKVT("MapZoom").ValueString)) ? mdlKVT.VFS_ResourceLanguageKVT("MapZoom").ValueString : "14";
+        # string urlGeo = string.Format(System.Globalization.CultureInfo.InvariantCulture.NumberFormat, "http://maps.google.com/maps/api/staticmap?center={0},{1}&zoom={2}&size=215x106&markers=color:red|{0},{1}&maptype=roadmap&sensor=false", mdl.vfsNode.vData.geoLatY, mdl.vfsNode.vData.geoLonX, mapZoom);
+        # var url = Url.GetMvcActionUrl<POIController>(c => c.Map());
+        # mdl.Tags.Where(a => Regex.IsMatch(a.AttributeType, "^AreaTematica|Area|Localita$")).Distinct((a1, a2) => a1.AttributeType == a2.AttributeType).ForEach(a => url = Utility.UriAddQuery(url, "Filter", a.AttributeId.ToString()));
+        <a href='${url.EncodeAsAttribute()}' rel="nofollow"><img src="${urlGeo.EncodeAsAttribute()}" alt="map"/></a>
+      </div>
+    </div>
+    <div class="clearfloat"></div>
+  </if>
+</if>

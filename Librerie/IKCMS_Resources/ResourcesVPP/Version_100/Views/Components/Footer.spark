@@ -1,0 +1,18 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+<div id="footer">
+    <div class="content">
+
+          <div class="copyright">${Resources.ResourceStandard.Footer_Copyright}</div>
+    
+          <div class="right">
+              <div class="powered_by">powered by &nbsp;<a href="http://www.ikon.it" target="_blank?{!IKGD_SiteMode.IsAccessible}">Ikon Multimedia</a></div>
+              <!--<div class="credits"><a href="/Disclaimer">disclaimer</a> - <a href="/Privacy">privacy</a> -&nbsp; </div>-->
+              <div class="admin"><a rel="nofollow" href="~/AdminCMS">admin</a> - &nbsp;</div>
+          
+          </div>    
+    
+    </div>
+</div>
+
+<!--<div class="credits"><a href="javascript:;" class="servizi">${Resources.ResourceStandard.Footer_Terms}</a> | <a href="javascript:;" class="servizi">Privacy</a></div>-->         

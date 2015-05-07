@@ -1,0 +1,26 @@
+
+# var items = ViewData["Items"] as IEnumerable<Ikon.Indexer.IKGD_LuceneDocCollection>;
+# var pager = items == null ? null : Ikon.IKCMS.Pagers.PagingHelperExtensions.FactoryPagerSimple(items, 5, null);
+# ViewData["FilterHtml"] = new Ikon.Filters.IKGD_HtmlCleaner();
+
+<div class="ricerca_risultati">
+    <div class="counter">
+      <div>Testo cercato: ${ViewData["query"]}</div>
+      <div class="left">Risultati trovati: ${ViewData["ItemsCount"]}</div><br /><br />
+      <div class="pager right" if='pager != null && pager.PagerPageCount > 0'>${Html.Partial("~/Views/Search/SearchPager", pager)}</div>
+    </div>
+    <div class="clearfloat"></div>
+    
+    <if condition='pager != null'>
+      <for each='var item in pager.ItemsVisible'>
+        ${Html.Partial("~/Views/Search/SearchItem", item)}
+      </for>
+    </if>
+    <else>
+      <br/><br/><br/>
+      La ricerca non ha fornito nessun risultato.
+      <br/><br/><br/><br/>
+    </else>
+    
+    <div class="pager right" if='pager != null && pager.PagerPageCount > 0'>${Html.Partial("~/Views/Search/SearchPager", pager)}</div>
+</div>

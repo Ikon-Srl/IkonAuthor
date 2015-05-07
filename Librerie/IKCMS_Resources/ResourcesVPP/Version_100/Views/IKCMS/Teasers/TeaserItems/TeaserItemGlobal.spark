@@ -1,0 +1,32 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickInterface"/>
+<div class="item clickableBlock" if='Model != null'>
+  # string templateContainer = (Model != null && Model.TemplateInfoParent != null) ? Model.TemplateInfoParent.Name : string.Empty;
+  # string placeholderContainer = (Model != null && Model.ModelParent != null) ? Model.ModelParent.PlaceholderNN : string.Empty;
+  # int textMaxChars = 150;
+  <!--<if condition='Regex.IsMatch(templateContainer, @"^TeaserViewer.*_Txt$")'>
+    <div class="thumb" if='Model.HasStream("thumb_teaser")'>${Model.ImageCMS("thumb_teaser")}</div>
+  </if>-->
+   <if condition='Regex.IsMatch(templateContainer, @"^TeaserViewer.*_Wide$")'>
+    <div class="thumb" if='Model.HasStream("thumb_teaser_full")'>${Model.ImageCMS("thumb_teaser_full")}</div>
+  </if>
+  <if condition='Regex.IsMatch(templateContainer, @"^TeaserViewer.*_Image$")'>
+    <div class="thumb" if='Model.HasStream("thumb_teaser")'>${Model.ImageCMS("thumb_teaser")}</div>
+  </if>
+  <!--<if condition='Regex.IsMatch(templateContainer, @"^TeaserViewer.*_Mini$")'>
+    <div class="thumb" if='Model.HasStream("thumb_mini")'>${Model.ImageCMS("thumb_mini")}</div>
+  </if>-->
+  
+  <div class="txt">
+    # int titleChars = Model.VFS_ResourceLanguageKVT("Title").ValueStringNN.Length;
+    <div class="titolo autoHide123">${Model.VFS_ResourceLanguageKVT("Title").ValueString.EncodeAsHtml()}</div>
+    <!--<div class="titolo2 autoHide123">${Model.VFS_ResourceLanguageKVT("SubTitle").ValueString.EncodeAsHtml()}</div>-->
+    <div class="testo autoHide123 htmlTeaserTruncate?{textMaxChars > 0} { condensedLength:${Math.Max(textMaxChars - titleChars, 0)} }">${Model.VFS_ResourceLanguageKVT("Text").ValueString}</div>
+  </div>
+  
+  <if condition='Model.HasLink'>
+    <div class="link">
+        <a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink"><img src="~/Content/Images/teaser_link.png" /></a>
+    </div>    
+  </if>
+  
+</div>

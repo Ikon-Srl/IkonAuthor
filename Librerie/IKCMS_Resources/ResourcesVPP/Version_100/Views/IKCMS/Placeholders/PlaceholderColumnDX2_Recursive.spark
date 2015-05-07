@@ -1,0 +1,9 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var managerTypes = IKCMS_RegisteredTypes.Types_IKCMS_BrickBase_Interface.Select(t => t.Name).ToList();
+  # var elements = IKCMS_ManagerIoC.applicationContainer.Resolve<IKCMS_ModelScannerParentPlaceholder_Bricks>(new NamedParameter("placeholders", "ColumnDX2")).FindModels(ViewData.Model as IKCMS_ModelCMS_Interface).OfType<IKCMS_ModelCMS_GenericBrickSlotTeaserOrWidgetInterface>().Where(m => m.TemplateInfo != null).ToList();
+  <div class="teasersViewersContainer animationGroup" if='elements.Any()'>
+    <for each='var element in elements'>
+      $!{Html.Partial(element.TemplateInfo.ViewPath, element)}
+    </for>
+  </div>
+</if>

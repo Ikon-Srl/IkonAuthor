@@ -1,0 +1,8 @@
+<viewdata model="Ikon.IKCMS.Pagers.PagerSimpleInterface"/>
+<if condition='Model != null && Model.PagerPageCount > 1'>
+    <div class="pager">
+        <a href='${Model.PagerPageUrlFirst.EncodeAsAttributeUrl()}' class="ajaxLoad pager_first">&laquo;&laquo;</a>&nbsp;&nbsp;<a href='${Model.PagerPageUrlPrev.EncodeAsAttributeUrl()}' class="ajaxLoad pager_prev">&laquo;</a>&nbsp;
+        <span class="pager_text">${string.Format("{2} {0}/{1}", Model.PagerPageCurrent + 1, Model.PagerPageCount, Resources.ResourceStandard.Pager)}</span>
+        &nbsp;<a href='${Model.PagerPageUrlNext.EncodeAsAttributeUrl()}' class="ajaxLoad pager_next">&raquo;</a>&nbsp;&nbsp;<a href='${Model.PagerPageUrlLast.EncodeAsAttributeUrl()}' class="ajaxLoad pager_last">&raquo;&raquo;</a>
+  </div>
+</if>

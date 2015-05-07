@@ -1,0 +1,9 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickInterface"/>
+# //ViewData.TeaserViewerWidthAggregatorContextUpdate(255);
+
+<div class="clickableBlock item">
+  <div class="titolo_colonna3 autoHideOFF"><h3>${Model.VFS_ResourceLanguageKVT("Title").ValueString}</h3></div>
+  <div class="thumb" if='Model.HasStream("thumb")'>${Model.ImageCMS_WithLink("thumb", "popup", null, "autoPopup", null, new { rel = "gallery" })}</div>
+  <!--<div class="testo autoHideOFF">${Model.VFS_ResourceLanguageKVT("Text").ValueString}</div>-->
+  <if condition='Model.HasLink'><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink"></a></if>
+</div>

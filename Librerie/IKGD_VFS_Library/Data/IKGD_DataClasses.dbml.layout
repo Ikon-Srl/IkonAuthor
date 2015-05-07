@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.625, 46.125" name="IKGD_DataClasses">
+  <DataContextMoniker Name="/IKGD_DataContext" />
+  <nestedChildShapes>
+    <classShape Id="b98ac0a0-60ca-4ab0-9cb3-21ec7762335a" absoluteBounds="9.625, 17.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_FREEZED" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f199437-d5fe-444e-b598-aca45bbdff1f" absoluteBounds="9.64, 17.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f964b8bf-1028-46a0-b187-219c2843661d" absoluteBounds="3.5, 4.5, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_RNODE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0512427-e219-4c30-b480-49712fd619ba" absoluteBounds="3.5150000000000006, 4.9600000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dfe16d43-53e2-4e0f-ac83-a2b5fa0e05ae" absoluteBounds="9.625, 9.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_SEARCH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2d08dea-40b8-4805-aca2-76578455068e" absoluteBounds="9.64, 10.21, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="449ca871-006b-41b0-a25d-f302cc67b9b7" absoluteBounds="9.625, 13.25, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_SNAPSHOT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a97a15d9-6244-4ac5-8788-96cdd0e81471" absoluteBounds="9.64, 13.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a0800d11-c542-4046-89b1-1e43ae8eb9a9" absoluteBounds="0.5, 9.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_SNODE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52d75ab6-167f-4633-97d3-56d0bc6cf5e8" absoluteBounds="0.51500000000000057, 10.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.625 : 16.7516097005208); (10.625 : 17.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_SNAPSHOT/IKGD_SNAPSHOT_IKGD_FREEZED" />
+      <nodes>
+        <classShapeMoniker Id="449ca871-006b-41b0-a25d-f302cc67b9b7" />
+        <classShapeMoniker Id="b98ac0a0-60ca-4ab0-9cb3-21ec7762335a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 6.40430229492187); (3.125 : 6.77930229492187); (3.125 : 10.6354484049479); (2.5 : 10.6354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_SNODE" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="a0800d11-c542-4046-89b1-1e43ae8eb9a9" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c357428f-aafb-4a68-bf32-8b1c4a253ecc" absoluteBounds="9.625, 34.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_PREF" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66a7a68a-ddd2-4686-b83d-47f39cf94f6d" absoluteBounds="9.64, 34.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="14ee9d7e-aa16-4e8b-8319-68caac74ed66" absoluteBounds="6.5, 34.125, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_SETTING" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b4192e23-094a-4606-834c-d61fae6c7e6b" absoluteBounds="6.5150000000000006, 34.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95f9b0c2-388f-4cd1-ac8e-59b598dbf40a" absoluteBounds="6.5, 30.625, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_TAB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dfe4edae-a62d-40bf-8433-b2de110fb8fd" absoluteBounds="6.5150000000000006, 31.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e453d86b-46e2-443b-8b70-5ce91c5be945" absoluteBounds="9.625, 30.625, 2, 2.347801106770838">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_WIDGET" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f7dff01-e660-4415-bda6-fec93ef34c46" absoluteBounds="9.64, 31.085, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.5 : 31.8950512695313); (9.29166666666667 : 31.8950512695313 : JumpStart); (9.45833333333333 : 31.8950512695313 : JumpEnd); (9.625 : 31.8950512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKG_TAB/IKG_TAB_IKG_WIDGET" />
+      <nodes>
+        <classShapeMoniker Id="95f9b0c2-388f-4cd1-ac8e-59b598dbf40a" />
+        <classShapeMoniker Id="e453d86b-46e2-443b-8b70-5ce91c5be945" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e80bfa25-81e3-481d-9fc5-c53b899b2bec" absoluteBounds="0.5, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_ACL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db54c763-5dbe-4c58-9d33-42a4b8fbf0a9" absoluteBounds="0.515, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.50150915249399 : 4.5); (3.125 : 4.12349084750601); (3.125 : 1.86620198567708); (2.5 : 1.86620198567708)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_ACL" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="e80bfa25-81e3-481d-9fc5-c53b899b2bec" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="daf294d9-035a-4de6-910d-89aa9dd935df" absoluteBounds="9.625, 7.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_ADMIN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07a67c3e-c7c3-4d9c-82cb-9d075312e7ec" absoluteBounds="9.64, 7.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0a234258-b659-4979-b384-0ec765096604" absoluteBounds="0.5, 4.625, 2, 4.2708154296875005">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_VNODE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9fe71e2f-c947-4470-a258-377cac21d91f" absoluteBounds="0.515, 5.085, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 5.54409912109375); (2.5 : 5.54409912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_VNODE" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="0a234258-b659-4979-b384-0ec765096604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 5.02204956054687); (2.5 : 5.02204956054687)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_VNODE1" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="0a234258-b659-4979-b384-0ec765096604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 6.06614868164062); (2.67708333333333 : 6.06614868164062 : JumpStart); (2.51041666666667 : 6.06614868164062 : JumpEnd); (2.5 : 6.06614868164062)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_VNODE2" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="0a234258-b659-4979-b384-0ec765096604" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 9.75); (1.5 : 8.8958154296875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_SNODE/IKGD_SNODE_IKGD_VNODE" />
+      <nodes>
+        <classShapeMoniker Id="a0800d11-c542-4046-89b1-1e43ae8eb9a9" />
+        <classShapeMoniker Id="0a234258-b659-4979-b384-0ec765096604" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4ad09a09-9739-49f8-8e7b-eeb2748e48a9" absoluteBounds="3.5, 27.125, 2, 2.73240397135417">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_CONFIG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41363872-644b-478f-833e-fd24f36313c7" absoluteBounds="3.5150000000000006, 27.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a74c9a9e-f64b-41bf-a153-06284a0025fb" absoluteBounds="6.5, 27.125, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_KEYSTORAGE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="88ceb6e4-24ec-44a5-a40a-d1bb0e7f1d59" absoluteBounds="6.5150000000000006, 27.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="194514d4-29f2-4105-9146-642cf7d5d764" absoluteBounds="9.625, 27.125, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_KEYSTORAGE_MAP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef2bc6c0-d2fa-4e22-a1e5-d0a2a4e69f7d" absoluteBounds="9.64, 27.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.5 : 28.1065991210938); (9.29166666666667 : 28.1065991210938 : JumpStart); (9.45833333333333 : 28.1065991210938 : JumpEnd); (9.625 : 28.1065991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_KEYSTORAGE/IKGD_KEYSTORAGE_IKGD_KEYSTORAGE_MAP" />
+      <nodes>
+        <classShapeMoniker Id="a74c9a9e-f64b-41bf-a153-06284a0025fb" />
+        <classShapeMoniker Id="194514d4-29f2-4105-9146-642cf7d5d764" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="fb7c5633-44ce-4e12-9211-262429cad020" absoluteBounds="3.625, 39.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/IKGD_DataContext/LazyLoginMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f0260187-32aa-41ea-902e-f6f7e33dc574" absoluteBounds="3.6399999999999997, 40.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e886bed4-3228-4cc1-a059-b88870513f38" absoluteBounds="3.5, 8.25, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_RELATION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="176a8234-7db3-4812-baa5-18c3565c3cb2" absoluteBounds="3.515, 8.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.53200707624699 : 6.4631982421875); (4.53200707624699 : 8.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_RELATION" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="e886bed4-3228-4cc1-a059-b88870513f38" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.98551061437049 : 6.4631982421875); (3.98551061437049 : 8.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_RELATION1" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="e886bed4-3228-4cc1-a059-b88870513f38" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 10.1782995605469); (3.5 : 10.1782995605469)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_SNODE/IKGD_SNODE_IKGD_RELATION" />
+      <nodes>
+        <classShapeMoniker Id="a0800d11-c542-4046-89b1-1e43ae8eb9a9" />
+        <classShapeMoniker Id="e886bed4-3228-4cc1-a059-b88870513f38" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 11.2848986816406); (2.51041666666667 : 11.2848986816406 : JumpStart); (2.67708333333333 : 11.2848986816406 : JumpEnd); (3.5 : 11.2848986816406)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_SNODE/IKGD_SNODE_IKGD_RELATION1" />
+      <nodes>
+        <classShapeMoniker Id="a0800d11-c542-4046-89b1-1e43ae8eb9a9" />
+        <classShapeMoniker Id="e886bed4-3228-4cc1-a059-b88870513f38" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ac1d15a4-cdcd-4cc4-9792-21ca40fc97ae" absoluteBounds="0.5, 27.125, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_ASSEMBLY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ea9253d4-fba3-4c04-91cf-225bbfa15ca7" absoluteBounds="0.51500000000000057, 27.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e9b8e7a4-4762-4f05-ac80-e9aeb1e6b094" absoluteBounds="3.5, 30.625, 2, 2.924705403645838">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCMS_SEO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54954018-4162-4052-8a8b-591e7b58463f" absoluteBounds="3.515, 31.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dafb5d55-70e3-4535-9f73-230532268216" absoluteBounds="6.5, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_INODE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15fe4f30-8e7f-4980-814c-35da1415d29b" absoluteBounds="6.515, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 5.48159912109375); (7.5 : 5.48159912109375); (7.5 : 3.42470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_INODE" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="dafb5d55-70e3-4535-9f73-230532268216" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="94c3c8ee-94fa-4354-bf94-377dea06f13e" absoluteBounds="9.625, 2.75, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_STREAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="37f31702-ede7-4698-b22d-7954f2cb4810" absoluteBounds="9.64, 3.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.5 : 3.18350341796875); (9.625 : 3.18350341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_INODE/IKGD_INODE_IKGD_STREAM" />
+      <nodes>
+        <classShapeMoniker Id="dafb5d55-70e3-4535-9f73-230532268216" />
+        <classShapeMoniker Id="94c3c8ee-94fa-4354-bf94-377dea06f13e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="36af6184-d7c4-4dfb-ae1d-658fda19bfed" absoluteBounds="9.625, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_MSTREAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="200707d0-1b4a-4e8c-9b5b-884ac7de588e" absoluteBounds="9.64, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.5 : 1.19314697265625); (9.625 : 1.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_INODE/IKGD_INODE_IKGD_MSTREAM" />
+      <nodes>
+        <classShapeMoniker Id="dafb5d55-70e3-4535-9f73-230532268216" />
+        <classShapeMoniker Id="36af6184-d7c4-4dfb-ae1d-658fda19bfed" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.625 : 2.75); (10.625 : 1.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_STREAM/IKGD_STREAM_IKGD_MSTREAM" />
+      <nodes>
+        <classShapeMoniker Id="94c3c8ee-94fa-4354-bf94-377dea06f13e" />
+        <classShapeMoniker Id="36af6184-d7c4-4dfb-ae1d-658fda19bfed" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="febd5615-7513-4a65-8da9-62f3f1d15062" absoluteBounds="3.875, 18.875, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_AttributeResource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d86496fe-34ba-463d-af9e-a1b603d17750" absoluteBounds="3.8900000000000006, 19.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="166d30d2-9265-45e3-805a-34c8bdf17a80" absoluteBounds="3.875, 16.25, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_AttributeStream" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4a3cf2d-3ff7-4b48-9d71-e4be777c5e8e" absoluteBounds="3.8900000000000006, 16.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b978ec38-2c86-462d-9605-b8a5b77d6406" absoluteBounds="0.625, 42.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/IKGD_DataContext/LazyLogin_Log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f41cb36e-57f6-475f-8a20-cac31aa4dcd5" absoluteBounds="0.64000000000000012, 42.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.625 : 41.4535953776042); (3.25 : 41.8285953776042); (3.25 : 43.3565991210938); (2.625 : 43.3565991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/LazyLoginMapper/LazyLoginMapper_LazyLogin_Log" />
+      <nodes>
+        <classShapeMoniker Id="fb7c5633-44ce-4e12-9211-262429cad020" />
+        <classShapeMoniker Id="b978ec38-2c86-462d-9605-b8a5b77d6406" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="311b4f4e-751e-4d43-9db7-3bbcb5f8b3d4" absoluteBounds="0.625, 39.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/IKGD_DataContext/LazyLogin_Vote" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84783ad2-2b35-4e52-a8d2-83c988f855b3" absoluteBounds="0.64, 40.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 4.53125); (2.59375 : 4.53125); (2.59375 : 39.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_LazyLogin_Vote" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="311b4f4e-751e-4d43-9db7-3bbcb5f8b3d4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.625 : 40.2407995605469); (2.625 : 40.2407995605469)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/LazyLoginMapper/LazyLoginMapper_LazyLogin_Vote" />
+      <nodes>
+        <classShapeMoniker Id="fb7c5633-44ce-4e12-9211-262429cad020" />
+        <classShapeMoniker Id="311b4f4e-751e-4d43-9db7-3bbcb5f8b3d4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c83215d3-dc8d-4b2f-b866-5c335f334f4b" absoluteBounds="6.5, 36.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_LOGGER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31744b26-d457-402b-85c1-de46a43324fa" absoluteBounds="6.515, 37.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="003452a8-48cb-40b3-89b1-487dc103341c" absoluteBounds="9.625, 36.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_HITLOG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91541bcb-e9e7-4c5c-9863-c0b489e080b7" absoluteBounds="9.64, 37.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 6.4631982421875); (5.625 : 6.5881982421875); (7.97916666666667 : 6.5881982421875 : JumpStart); (8.14583333333333 : 6.5881982421875 : JumpEnd); (9.375 : 6.5881982421875); (9.375 : 36.375); (9.625 : 36.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKG_HITLOG" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="003452a8-48cb-40b3-89b1-487dc103341c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f2ae9aa8-bbe7-4647-8234-910ad4bdb95b" absoluteBounds="0.5, 30.625, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_QueueMeta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="977951d7-2dd4-4ade-a923-1dabfb93a386" absoluteBounds="0.515, 31.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ef402f0b-8a38-470f-a54c-ec25fea3c614" absoluteBounds="0.5, 34.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_QueueData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99814dda-7157-4669-9012-23948ec993c7" absoluteBounds="0.51500000000000012, 34.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 32.9728011067708); (1.5 : 34.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_QueueMeta/IKGD_QueueMeta_IKGD_QueueData" />
+      <nodes>
+        <classShapeMoniker Id="f2ae9aa8-bbe7-4647-8234-910ad4bdb95b" />
+        <classShapeMoniker Id="ef402f0b-8a38-470f-a54c-ec25fea3c614" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e81c2f8c-5d5c-40cd-97fb-3c021054232c" absoluteBounds="3.5, 0.5, 2, 3.1170068359375">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_PROPERTY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="431ff7ac-dd3f-44a2-8a31-a71c12d6b8a7" absoluteBounds="3.5149999999999997, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.53200707624699 : 4.5); (4.53200707624699 : 3.6170068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_PROPERTY" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="e81c2f8c-5d5c-40cd-97fb-3c021054232c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" absoluteBounds="6.5, 22, 2, 3.5016097005208344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_Attribute" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f341686-0fce-40e2-8b00-ea26dd164ee9" absoluteBounds="6.515, 22.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.968748 : 22); (6.968748 : 19.9527498372396); (5.875 : 19.9527498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_Attribute/IKCAT_Attribute_IKCAT_AttributeResource" />
+      <nodes>
+        <classShapeMoniker Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" />
+        <classShapeMoniker Id="febd5615-7513-4a65-8da9-62f3f1d15062" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.5 : 22); (7.5 : 17.3277498372396); (5.875 : 17.3277498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_Attribute/IKCAT_Attribute_IKCAT_AttributeStream" />
+      <nodes>
+        <classShapeMoniker Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" />
+        <classShapeMoniker Id="166d30d2-9265-45e3-805a-34c8bdf17a80" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.031252 : 22); (8.031252 : 13.9246240234375); (6.25 : 13.9246240234375); (6.25 : 2.05850341796875); (5.5 : 2.05850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_Attribute/IKCAT_Attribute_IKGD_PROPERTY" />
+      <nodes>
+        <classShapeMoniker Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" />
+        <classShapeMoniker Id="e81c2f8c-5d5c-40cd-97fb-3c021054232c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.23958333333333 : 25.5016097005208); (7.23958333333333 : 25.7516097005208); (7.5 : 25.7516097005208); (7.5 : 25.5016097005208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_Attribute/IKCAT_Attribute_IKCAT_Attribute" />
+      <nodes>
+        <classShapeMoniker Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" />
+        <classShapeMoniker Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="123b843d-a41b-4175-972f-a543685aca41" absoluteBounds="6.625, 8.25, 2, 5.4246240234375005">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_VDATA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9d187209-6cdc-438e-8186-daf1ade0df65" absoluteBounds="6.64, 8.71, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 4.95954706054687); (8.0625 : 4.95954706054687); (8.0625 : 8.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_VDATA" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="123b843d-a41b-4175-972f-a543685aca41" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f0094599-9d11-4934-877d-3d58ffba35bf" absoluteBounds="6.5, 39.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_HITACC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cf8a09e-690b-4b31-b724-8f00d93f5bcc" absoluteBounds="6.5150000000000006, 40.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.0160035381235 : 6.4631982421875); (5.0160035381235 : 8); (5.79166666666667 : 8 : JumpStart); (5.95833333333333 : 8 : JumpEnd); (6.125 : 8); (6.125 : 40.6354484049479); (6.5 : 40.6354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKG_HITACC" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="f0094599-9d11-4934-877d-3d58ffba35bf" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2f4e4e52-5a1a-4b10-b50b-5b25bae47aab" absoluteBounds="9.625, 39.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKG_HITLOG_ARCHIVE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cd71f43-310b-456a-b857-2d488d68a804" absoluteBounds="9.64, 40.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="837e2473-8932-4050-b42f-44405c322bd5" absoluteBounds="0.5, 17.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_ElementFolder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cecbf3c0-c642-4c20-b739-0d633782009f" absoluteBounds="0.515, 17.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 6.44205610727163); (3.3125 : 6.62955610727163); (3.3125 : 18.3565991210938); (3.30208333333333 : 18.3565991210938 : JumpStart); (3.13541666666667 : 18.3565991210938 : JumpEnd); (2.67708333333333 : 18.3565991210938 : JumpStart); (2.51041666666667 : 18.3565991210938 : JumpEnd); (2.5 : 18.3565991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKCAT_ElementFolder" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="837e2473-8932-4050-b42f-44405c322bd5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 11.7131982421875); (1.5 : 17.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_SNODE/IKGD_SNODE_IKCAT_ElementFolder" />
+      <nodes>
+        <classShapeMoniker Id="a0800d11-c542-4046-89b1-1e43ae8eb9a9" />
+        <classShapeMoniker Id="837e2473-8932-4050-b42f-44405c322bd5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7a4e7205-68e3-48a7-a233-2e9ac39d4290" absoluteBounds="0.5, 20.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_ElementMain" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b776ec13-412c-4fcf-bb15-68802ba8c5d7" absoluteBounds="0.515, 20.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 20.375); (1.5 : 19.5304996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_ElementMain/IKCAT_ElementMain_IKCAT_ElementFolder" />
+      <nodes>
+        <classShapeMoniker Id="7a4e7205-68e3-48a7-a233-2e9ac39d4290" />
+        <classShapeMoniker Id="837e2473-8932-4050-b42f-44405c322bd5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.55587464227764 : 6.4631982421875); (3.40625 : 6.61282288446514); (3.40625 : 21.6450512695313); (2.67708333333333 : 21.6450512695313 : JumpStart); (2.51041666666667 : 21.6450512695313 : JumpEnd); (2.5 : 21.6450512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKCAT_ElementMain" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="7a4e7205-68e3-48a7-a233-2e9ac39d4290" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4fdfff8c-4170-4322-bd2e-596d725ff8d7" absoluteBounds="0.5, 24, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_ElementVariant" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2d129ca-505f-4e9d-8c40-b1e02051d55a" absoluteBounds="0.515, 24.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 23.2997054036458); (1.5 : 24)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_ElementMain/IKCAT_ElementMain_IKCAT_ElementVariant" />
+      <nodes>
+        <classShapeMoniker Id="7a4e7205-68e3-48a7-a233-2e9ac39d4290" />
+        <classShapeMoniker Id="4fdfff8c-4170-4322-bd2e-596d725ff8d7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="62999ed4-ada5-480d-bdc8-982575474706" absoluteBounds="3.875, 22, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKCAT_ElementAttribute" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95542e98-a2e5-491c-9d1e-ca45c647e0ed" absoluteBounds="3.8899999999999997, 22.46, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 23.4623527018229); (5.875 : 23.4623527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_Attribute/IKCAT_Attribute_IKCAT_ElementAttribute" />
+      <nodes>
+        <classShapeMoniker Id="86324ff6-06a3-44b5-b21e-f5c643ee0e7f" />
+        <classShapeMoniker Id="62999ed4-ada5-480d-bdc8-982575474706" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 22.6498527018229); (3.875 : 22.6498527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_ElementMain/IKCAT_ElementMain_IKCAT_ElementAttribute" />
+      <nodes>
+        <classShapeMoniker Id="7a4e7205-68e3-48a7-a233-2e9ac39d4290" />
+        <classShapeMoniker Id="62999ed4-ada5-480d-bdc8-982575474706" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 24.4623527018229); (2.51041666666667 : 24.4623527018229 : JumpStart); (2.67708333333333 : 24.4623527018229 : JumpEnd); (3.875 : 24.4623527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKCAT_ElementVariant/IKCAT_ElementVariant_IKCAT_ElementAttribute" />
+      <nodes>
+        <classShapeMoniker Id="4fdfff8c-4170-4322-bd2e-596d725ff8d7" />
+        <classShapeMoniker Id="62999ed4-ada5-480d-bdc8-982575474706" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.54832387980769 : 6.4631982421875); (3.21875 : 6.79277212199519); (3.21875 : 21.6450512695313); (2.67708333333333 : 21.6450512695313 : JumpStart); (2.51041666666667 : 21.6450512695313 : JumpEnd); (2.5 : 21.6450512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKCAT_ElementMain1" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="7a4e7205-68e3-48a7-a233-2e9ac39d4290" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7448a178-bf31-4c21-9d01-19c7b3033cb7" absoluteBounds="3.5, 12.375, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKGD_VDATA_KEYVALUE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f002408-fee4-449e-abd9-61b971d1fcd0" absoluteBounds="3.515, 12.835, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.4682867976262 : 6.4631982421875); (5.875 : 6.8699114445613); (5.875 : 12); (5.5 : 12.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKGD_VDATA_KEYVALUE" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="7448a178-bf31-4c21-9d01-19c7b3033cb7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.625 : 13.1522152278646); (5.5 : 13.1522152278646)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_VDATA/IKGD_VDATA_IKGD_VDATA_KEYVALUE" />
+      <nodes>
+        <classShapeMoniker Id="123b843d-a41b-4175-972f-a543685aca41" />
+        <classShapeMoniker Id="7448a178-bf31-4c21-9d01-19c7b3033cb7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="41cacd13-7b8c-464a-ae6a-cd70dc051f89" absoluteBounds="3.625, 42.375, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/IKGD_DataContext/SSO_KEYVALUE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eca09d7f-317e-4b51-a66f-1216794e4c35" absoluteBounds="3.6399999999999997, 42.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f273461-2e3f-4a49-b423-aac9c495b8d9" absoluteBounds="9.625, 21.125, 2, 2.9247054036458344">
+      <DataClassMoniker Name="/IKGD_DataContext/IKATT_Attribute" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97a278f1-a51f-49fa-b88f-1c8228d45453" absoluteBounds="9.64, 21.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1345198e-86ea-4828-9448-b6c6b316af8f" absoluteBounds="9.625, 24.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/IKGD_DataContext/IKATT_AttributeStream" />
+      <nestedChildShapes>
+        <elementListCompartment Id="faaae292-0d06-458c-9b12-3f5a52dc53e3" absoluteBounds="9.64, 24.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.625 : 24.0497054036458); (10.625 : 24.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKATT_Attribute/IKATT_Attribute_IKATT_AttributeStream" />
+      <nodes>
+        <classShapeMoniker Id="0f273461-2e3f-4a49-b423-aac9c495b8d9" />
+        <classShapeMoniker Id="1345198e-86ea-4828-9448-b6c6b316af8f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9a009a83-bafa-45f6-9138-59ef49811a9a" absoluteBounds="9.625, 19.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/IKGD_DataContext/IKATT_AttributeMapping" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d354cda-156f-4af8-9249-1fa4f97656a7" absoluteBounds="9.64, 19.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.625 : 21.125); (10.625 : 20.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKATT_Attribute/IKATT_Attribute_IKATT_AttributeMapping" />
+      <nodes>
+        <classShapeMoniker Id="0f273461-2e3f-4a49-b423-aac9c495b8d9" />
+        <classShapeMoniker Id="9a009a83-bafa-45f6-9138-59ef49811a9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.43299419230769); (5.96770404987981 : 6.9006982421875); (9.25 : 6.9006982421875); (9.25 : 19.125); (9.625 : 19.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKGD_RNODE/IKGD_RNODE_IKATT_AttributeMapping" />
+      <nodes>
+        <classShapeMoniker Id="f964b8bf-1028-46a0-b187-219c2843661d" />
+        <classShapeMoniker Id="9a009a83-bafa-45f6-9138-59ef49811a9a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.625 : 22.1472079827724); (9.125 : 22.1472079827724); (9.125 : 23.0484566932091); (9.625 : 23.0484566932091)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKATT_Attribute/IKATT_Attribute_IKATT_Attribute" />
+      <nodes>
+        <classShapeMoniker Id="0f273461-2e3f-4a49-b423-aac9c495b8d9" />
+        <classShapeMoniker Id="0f273461-2e3f-4a49-b423-aac9c495b8d9" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="053c1685-162d-451d-9cd6-5e17e8d8c781" absoluteBounds="12.75, 2.875, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/IKGD_DataContext/IKQM_Queue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="93457027-4c97-449b-aaf6-000f89fc58c5" absoluteBounds="12.765, 3.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0d4e2d3-5c8c-479b-b99f-2c9ea1f3d19c" absoluteBounds="12.75, 6.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/IKGD_DataContext/IKQM_QueueBlob" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd517a9f-726a-40af-ae4b-159da53ab23e" absoluteBounds="12.765, 7.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.75 : 5.79970540364583); (13.75 : 6.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/IKGD_DataContext/IKQM_Queue/IKQM_Queue_IKQM_QueueBlob" />
+      <nodes>
+        <classShapeMoniker Id="053c1685-162d-451d-9cd6-5e17e8d8c781" />
+        <classShapeMoniker Id="b0d4e2d3-5c8c-479b-b99f-2c9ea1f3d19c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="cb0a1a3d-32e7-47f4-a6cf-312cc0c3e8db" absoluteBounds="12.75, 9.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/IKGD_DataContext/IKQM_QueueLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b16ff441-5182-4991-86f2-d496eb5f2ed6" absoluteBounds="12.765, 10.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(14.75 : 5.79970540364583); (15.125 : 6.17470540364583); (15.125 : 9.25); (14.75 : 9.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/IKGD_DataContext/IKQM_Queue/IKQM_Queue_IKQM_QueueLog" />
+      <nodes>
+        <classShapeMoniker Id="053c1685-162d-451d-9cd6-5e17e8d8c781" />
+        <classShapeMoniker Id="cb0a1a3d-32e7-47f4-a6cf-312cc0c3e8db" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

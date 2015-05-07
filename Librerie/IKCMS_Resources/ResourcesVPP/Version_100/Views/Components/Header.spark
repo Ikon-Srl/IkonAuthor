@@ -1,0 +1,39 @@
+<div id="header">
+        <div class="header_content">
+            <div class="logo"><a href="~/Home"><img src="~/Content/Images/logo.png" alt="Base Site" /></a></div>
+            
+            <div class="info">
+                    <div class="menu_servizi">
+                        <a href="~/Home" class="servizi">Home</a>
+                        <!--<img src="~/Content/Images/icona_mappa.gif" />&nbsp; --><a href="~/Home/SiteMap" class="servizi">${Resources.ResourceStandard.Header_SiteMap}</a>                           
+                        <!--<img src="~/Content/Images/icona_contatto.gif" />&nbsp; --><a href='${Url.Content(Resources.ResourceStandard.Header_Contact_Url)}' class="servizi">${Resources.ResourceStandard.Header_Contact}</a>
+                        ${Html.Partial("~/Views/Components/Search")}
+                        <img src="~/Content/Images/logo.jpg" alt="Base Site" />
+                    </div>
+            </div>              
+        </div>    
+        
+        <div class="clearfloat"></div>
+        <div id="menu_panel">
+            <div class="header_content">
+                ${Html.Partial("~/Views/Components/MenuTop")}
+                ${Html.Partial("~/Views/Components/Social")}
+            </div>    
+        </div>
+        
+        
+        <!--${Html.Partial("~/Views/Components/Language")}-->               
+        <!--${Html.Partial("~/Views/Components/Stampa")}-->
+
+    <!--<div id="movie_sezione">         
+         ${Html.Partial("~/Views/Components/ShowReelPage")}
+    </div>-->
+  
+  
+  <!--<div id="quick">
+                ${Html.Partial("~/Views/Components/MenuQuick")}
+            </div>-->
+  
+  
+  </div>
+

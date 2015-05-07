@@ -1,0 +1,151 @@
+﻿body.blank {font-family: Verdana, Sans-serif;color:#333;}
+/*HEADER TOP*/
+#adminHeader #headerTop
+{
+    height:29px; 
+    line-height:29px; 
+    background-color:#333333; 
+    border-bottom:solid 1px #CACACA;
+    background-image:url(../images/admin/headertop_logo.jpg);
+    background-repeat:no-repeat;
+    background-position:50px 0px;
+}
+#adminHeader #headerTop .titolo{padding-left:85px; color:#ffffff; float:left;}
+#adminHeader #headerTop ul.menuUser{float:right; padding-right:50px; color:#ffffff;}
+#adminHeader #headerTop ul.menuUser li{float:left;}
+#adminHeader #headerTop ul.menuUser li.separator{border-left:solid 1px #666666;}
+#adminHeader li.username{padding-right:20px;}
+#adminHeader li.username span{color:#CC0000; text-decoration:underline;}
+#adminHeader a.login, a.logout{display:block; color:#ffffff; font-weight:normal; line-height:29px; width:80px; text-indent:37px; background-repeat:no-repeat; background-position:24px 0px; text-decoration:none; cursor:pointer;}
+#adminHeader a.login{background-image:url(../images/admin/headertop_login.jpg);  }
+#adminHeader a.logout{background-image:url(../images/admin/headertop_logout.jpg); }
+
+/*HEADER*/
+#adminHeader #headerInfo{background-image:url(../images/admin/admin_header_bg.jpg); background-repeat:repeat-x; height:98px; border-bottom:solid 1px #CBCBCB }
+#adminHeader #headerInfo .logoWrapper{padding-left:50px; padding-top:0px; width:350px; float:left;}
+#adminHeader #headerInfo .titolo{float:left; line-height:98px; color:#333333; font-size:18px;}
+
+
+/*CONTENT WRAPPER*/
+#adminCommand {clear:both; padding:0px 50px;}
+#adminCommand .contentVerticalSeparator{width:25px; border-left:solid 1px #E7E7E7;float:left;}
+
+/*COLONNE*/
+#adminCommand #leftPanel{width:25%;float:left;}
+#adminCommand #rightPanel{width:70%;float:right;}
+
+/*COLONNA SX*/
+#adminCommand .titolo_opzioni
+{
+    line-height:25px;
+    padding:30px 0 30px 50px;
+    background-image:url(../images/admin/opzioni.jpg); 
+    background-repeat:no-repeat; 
+    background-position:left center; 
+    font-size:19px;
+}
+#adminCommand .opzioni_separator20{clear:both; height:20px; line-height:20px;}
+
+
+#adminCommand a.opzioni_button
+{
+    display:block;
+    height:28px;
+    line-height:28px;
+    padding:0px 6px;
+    min-width:147px;
+    float:left;
+    background-image:url(../images/admin/btn_bg.jpg); 
+    border:solid 1px #CACACA;
+    font-weight:normal;
+    color:#666666;
+    text-decoration:none;
+    margin-bottom:5px;
+}
+#adminCommand a.opzioni_button:hover
+{
+    background-image:url(../images/admin/btn_hover_bg.jpg); 
+    border:solid 1px #ABCFF9;    
+}
+
+#adminCommand .opzioni_radio
+{
+    float:left;
+    height:28px;
+    line-height:28px;
+    border:solid 1px #CACACA;
+    margin-bottom:5px;
+    color:#666666;
+}
+#adminCommand .opzioni_radio .opzioni_radio_label
+{
+    float:left;
+    padding:0px 17px 0px 6px;
+    background-image:url(../images/admin/btn_radio_bg.jpg); 
+    background-repeat:no-repeat;
+    background-position:right center;
+}
+#adminCommand .opzioni_radio .opzioni_radio_container
+{
+   float:left;
+   padding:0px 11px 0px 4px;
+   background-image:url(../images/admin/btn_bg.jpg); 
+}
+#adminCommand .opzioni_radio .opzioni_radio_container table
+{
+    height:28px;
+}
+#adminCommand .opzioni_radio .opzioni_radio_container table input
+{
+    /*margin: 7px 3px 0px 5px;
+    vertical-align: top;*/
+}
+#adminCommand .opzioni_select select
+{
+    border:solid 1px #CACACA;
+    height:28px;
+    line-height:28px;
+    min-width:154px;
+    padding:5px;
+    margin:0px;
+    color:#333333;
+    font-size:11px;
+}
+#adminCommand .button_lungo{min-width:226px;}
+#adminCommand .opzioni_databrowser{float:left;}
+#adminCommand .opzioni_databrowser input
+{
+    border:solid 1px #CACACA;
+    height:24px;
+    line-height:24px;
+    color:#333333;
+    font-size:11px;   
+    padding:2px 5px; 
+    margin:0px; 
+    width:138px;
+    float:left; 
+    margin-right:5px;
+}
+#adminCommand .opzioni_databrowser .opzioni_button{width:83px; padding:0px; text-align:center; min-width:83px; float:left;}
+
+/*COLONNA DX*/
+#adminCommand .titolo_informazioni
+{
+    line-height:25px;
+    padding:30px 0 30px 50px;
+    background-image:url(../images/admin/informazioni.jpg); 
+    background-repeat:no-repeat; 
+    background-position:left center; 
+    font-size:19px;
+}
+#adminCommand #tblInformazioni tr td{margin-right:1px; background-color:#F9F9F9; height:30px; line-height:30px; padding:0 55px 0 9px; color:#333333; font-size:12px;}
+#adminCommand #tblInformazioni tr.alt td{background-color:#F4F4F4;}
+#adminCommand #tblInformazioni tr td.spacer{background-color:inherit; padding:0px;}
+#adminCommand #tblInformazioni tr td.td_value div{width:100%;}
+#adminCommand #tblInformazioni tr td.td_value{color:#4667AC; padding:0 0px 0 9px; }
+
+.clearfloat {
+  clear: both;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;}

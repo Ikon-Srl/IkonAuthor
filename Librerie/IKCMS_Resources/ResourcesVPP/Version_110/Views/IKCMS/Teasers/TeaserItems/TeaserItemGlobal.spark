@@ -1,0 +1,31 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickInterface"/>
+# string placeholderContainer = ViewData[TeasersHelperExtension.ViewDataPlaceholderName] as string;
+# string templateContainer = ViewData[TeasersHelperExtension.ViewDataContainerTemplateName] as string;
+# string cssClassContainer = ViewData[TeasersHelperExtension.ViewDataContainerCssClass] as string;
+# int itemIndex = (int)(ViewData[TeasersHelperExtension.ViewDataItemIndex] ?? 0);
+# string cssClass = Model.CssClass;
+# string templateName = Model.TemplateInfo.Name;
+<div class="item clickableBlock ${templateName} ${cssClass}" if='Model != null'>
+  # string title = Model.VFS_ResourceLanguageKVT("Title").ValueStringNN;
+  # string subtitle = Model.VFS_ResourceLanguageKVT("SubTitle").ValueStringNN;
+  # string text = Model.VFS_ResourceLanguageKVT("Text").ValueStringNN;
+  # int textMaxChars = 0;
+  # bool truncatetextOnClient = true;
+
+  # string streamSelector = null;
+  # //streamSelector = streamSelector ?? (Regex.IsMatch(templateContainer, @"wide", RegexOptions.IgnoreCase | RegexOptions.Singleline) ? "image_wide" : null);
+  # streamSelector = streamSelector ?? (Regex.IsMatch(templateContainer, @".*", RegexOptions.IgnoreCase | RegexOptions.Singleline) ? "image" : null);
+  <if condition='streamSelector.IsNotEmpty() && Model.HasStream(streamSelector)'><div class="image">${Model.ImageCMS(streamSelector, "image", null)}</div></if>
+  <div class="texts">
+    <div class="title" if='title.IsNotNullOrWhiteSpace()'><h4>${title.EncodeAsHtml()}</h4></div>
+    <div class="subtitle" if='subtitle.IsNotNullOrWhiteSpace()'>${subtitle.EncodeAsHtml()}</div>
+    <if condition='truncatetextOnClient'>
+      <div class="text ellipsis-block">${text}</div>
+    </if>
+    <else>
+      <div class="text">${(textMaxChars <= 0) ? text : Html.HtmlFilter().ParseAndTruncate(text, textMaxChars, true, "...")}</div>
+    </else>
+  </div>
+  <if condition='Model.HasLink'><div class="link"><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink append_UrlBack?{!Model.HasLinkTarget}"><i class="icon-download"></i></a></div></if>
+  
+</div>

@@ -1,0 +1,21 @@
+﻿<fieldset>
+<legend><span style="font-weight:bold;">Current CMS Status & Info</span></legend>
+<table>
+  <tr><td>Modalità corrente di visualizzazione del sito:</td><td><span style="font-weight:bold;">${Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == -1 ? "Preview" : "Pubblicato"}</span></td></tr>
+  <tr><td>UserName:</td><td><span style="font-weight:bold;">${MembershipHelper.UserName}</span></td></tr>
+  <tr><td>IsAuthenticated:</td><td><span style="font-weight:bold;">$!{System.Web.HttpContext.Current.User.Identity.IsAuthenticated}</span></td></tr>
+  <tr><td>Anonymous:</td><td><span style="font-weight:bold;">${MembershipHelper.IsAnonymous}</span></td></tr>
+  <tr><td>CMS Access:</td><td><span style="font-weight:bold;">$!{ViewData["HasACL"] ?? false}</span></td></tr>
+  <tr><td>Debug:</td><td><span style="font-weight:bold;">${HttpContext.Current.IsDebuggingEnabled}</span></td></tr>
+  <tr><td>Roles:</td><td><span style="font-weight:bold;">${Utility.Implode(System.Web.Security.Roles.GetRolesForUser(), ", ", null, true, true)}</span></td></tr>
+  <tr><td>Aree non pubbliche:</td><td><span style="font-weight:bold;">${Utility.Implode(Ikon.GD.FS_OperationsHelpers.CachedAreasExtended.AreasAllowedNotPublic, ", ", null, true, true)}</span></td></tr>
+  <tr><td>Aree visualizzabili:</td><td><span style="font-weight:bold;">${Utility.Implode(Ikon.GD.FS_OperationsHelpers.CachedAreasExtended.AreasAllowed, ", ", null, true, true)}</span></td></tr>
+  <tr><td>Aree hash:</td><td><span style="font-weight:bold;">${Ikon.GD.FS_OperationsHelpers.CachedAreasHash}</span></td></tr>
+  <tr><td>Lingua corrente:</td><td><span style="font-weight:bold;">${IKGD_Language_Provider.Provider.LanguageNN} [${IKGD_Language_Provider.Provider.Language}]</span></td></tr>
+  <tr><td>IKGD_SiteMode.ModeCombined:</td><td><span style="font-weight:bold;">${IKGD_SiteMode.ModeCombined}</span></td></tr>
+  <tr><td>IKGD_SiteMode.ModeCombinedNF:</td><td><span style="font-weight:bold;">${IKGD_SiteMode.ModeCombinedNotForced}</span></td></tr>
+  <tr><td>Data corrente:</td><td><span style="font-weight:bold;">${Ikon.GD.FS_OperationsHelpers.DateTimeSession}</span></td></tr>
+  <tr><td>ID del server:</td><td><span style="font-weight:bold;">$!{System.Environment.GetEnvironmentVariable("COMPUTERNAME")}</span></td></tr>
+  <tr><td>Indirizzo IP del client:</td><td><span style="font-weight:bold;">$!{Utility.GetRequestAddressExt(null)} [$!{IKGD_Language_Provider.Provider.GetCountryFromClientIP()}]</span></td></tr>
+<table>
+</fieldset>

@@ -1,0 +1,14 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+# var elements = IKCMS_ManagerIoC.applicationContainer.Resolve<IKCMS_ModelScannerParentPlaceholder_Bricks>(new NamedParameter("placeholders", "FooterSX")).FindModels(ViewData.Model as IKCMS_ModelCMS_Interface).OfType<IKCMS_ModelCMS_GenericBrickSlotTeaserOrWidgetInterface>().Where(m => m.TemplateInfo != null).ToList();
+<div if='elements.Any()'>
+	<div class="clearfloat"></div>
+		<div id="fascia_teaser">
+			<div class="teaser_content animationGroup" if='elements.Any()'>
+				<for each='var element in elements'>
+					$!{Html.Partial(element.TemplateInfo.ViewPath, element)}
+				</for>
+			</div>
+		<div class="clearfloat"></div>
+	</div>
+</div>         
+</if>

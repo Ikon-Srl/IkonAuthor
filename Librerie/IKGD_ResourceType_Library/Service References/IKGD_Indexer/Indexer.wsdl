@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.ikon.it/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.ikon.it/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.ikon.it/">
+      <s:element name="IKGD_IndexRebuild">
+        <s:complexType />
+      </s:element>
+      <s:element name="IKGD_IndexRebuildResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_IndexRebuildResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_IndexUpdate">
+        <s:complexType />
+      </s:element>
+      <s:element name="IKGD_IndexUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IKGD_IndexUpdateResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_IndexOptimize">
+        <s:complexType />
+      </s:element>
+      <s:element name="IKGD_IndexOptimizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IKGD_IndexOptimizeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetAreasList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="searchPreview" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetAreasListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_GetAreasListResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetResourceTypeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="IKGD_Indexer_GetResourceTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_GetResourceTypeListResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetSearchResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="allowedAreas" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="manager_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sNodeFolder" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateStart" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateEnd" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="searchPreview" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="formatMatches" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IKGD_Indexer_GetSearchResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_GetSearchResultsResult" type="tns:ArrayOfIKGD_LuceneHit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIKGD_LuceneHit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IKGD_LuceneHit" nillable="true" type="tns:IKGD_LuceneHit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IKGD_LuceneHit">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="doc" type="tns:Document" />
+          <s:element minOccurs="1" maxOccurs="1" name="score" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="rNode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="vData" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="sNode" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iNode" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="area" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="manager_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flag_published" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="flag_current" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="flag_unstructured" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="resourceData" type="tns:ArrayOfResourceData" />
+          <s:element minOccurs="0" maxOccurs="1" name="paths" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Document">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Object" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Object" />
+      <s:complexType name="ArrayOfResourceData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResourceData" nillable="true" type="tns:ResourceData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResourceData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="path" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sNodeResource" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="sNodeFolder" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IKGD_Indexer_GetSearchResultsRaw01">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSearch" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetSearchResultsRaw01Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_GetSearchResultsRaw01Result" type="tns:ArrayOfIKGD_LuceneHit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetSearchResultsRaw02">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSearch" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_GetSearchResultsRaw02Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_GetSearchResultsRaw02Result" type="tns:ArrayOfIKGD_LuceneHit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_RebuildRaw01">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maxRecords" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_RebuildRaw01Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_RebuildRaw01Result">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_VFS01">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="command" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IKGD_Indexer_VFS01Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IKGD_Indexer_VFS01Result">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="IKGD_IndexRebuildSoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_IndexRebuild" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_IndexRebuildSoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_IndexRebuildResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_IndexUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_IndexUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_IndexUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_IndexUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_IndexOptimizeSoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_IndexOptimize" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_IndexOptimizeSoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_IndexOptimizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetAreasListSoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetAreasList" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetAreasListSoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetAreasListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetResourceTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetResourceTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetResourceTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetResourceTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetSearchResultsSoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetSearchResults" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetSearchResultsSoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetSearchResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetSearchResultsRaw01SoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetSearchResultsRaw01" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetSearchResultsRaw01SoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetSearchResultsRaw01Response" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetSearchResultsRaw02SoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetSearchResultsRaw02" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_GetSearchResultsRaw02SoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_GetSearchResultsRaw02Response" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_RebuildRaw01SoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_RebuildRaw01" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_RebuildRaw01SoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_RebuildRaw01Response" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_VFS01SoapIn">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_VFS01" />
+  </wsdl:message>
+  <wsdl:message name="IKGD_Indexer_VFS01SoapOut">
+    <wsdl:part name="parameters" element="tns:IKGD_Indexer_VFS01Response" />
+  </wsdl:message>
+  <wsdl:portType name="IndexerSoap">
+    <wsdl:operation name="IKGD_IndexRebuild">
+      <wsdl:input message="tns:IKGD_IndexRebuildSoapIn" />
+      <wsdl:output message="tns:IKGD_IndexRebuildSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_IndexUpdate">
+      <wsdl:input message="tns:IKGD_IndexUpdateSoapIn" />
+      <wsdl:output message="tns:IKGD_IndexUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_IndexOptimize">
+      <wsdl:input message="tns:IKGD_IndexOptimizeSoapIn" />
+      <wsdl:output message="tns:IKGD_IndexOptimizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetAreasList">
+      <wsdl:input message="tns:IKGD_Indexer_GetAreasListSoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_GetAreasListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetResourceTypeList">
+      <wsdl:input message="tns:IKGD_Indexer_GetResourceTypeListSoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_GetResourceTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResults">
+      <wsdl:input message="tns:IKGD_Indexer_GetSearchResultsSoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_GetSearchResultsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResultsRaw01">
+      <wsdl:input message="tns:IKGD_Indexer_GetSearchResultsRaw01SoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_GetSearchResultsRaw01SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResultsRaw02">
+      <wsdl:input message="tns:IKGD_Indexer_GetSearchResultsRaw02SoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_GetSearchResultsRaw02SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_RebuildRaw01">
+      <wsdl:input message="tns:IKGD_Indexer_RebuildRaw01SoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_RebuildRaw01SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_VFS01">
+      <wsdl:input message="tns:IKGD_Indexer_VFS01SoapIn" />
+      <wsdl:output message="tns:IKGD_Indexer_VFS01SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IndexerSoap" type="tns:IndexerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IKGD_IndexRebuild">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_IndexRebuild" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_IndexUpdate">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_IndexUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_IndexOptimize">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_IndexOptimize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetAreasList">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetAreasList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetResourceTypeList">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetResourceTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResults">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetSearchResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResultsRaw01">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetSearchResultsRaw01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResultsRaw02">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetSearchResultsRaw02" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_RebuildRaw01">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_RebuildRaw01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_VFS01">
+      <soap:operation soapAction="http://www.ikon.it/IKGD_Indexer_VFS01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IndexerSoap12" type="tns:IndexerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IKGD_IndexRebuild">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_IndexRebuild" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_IndexUpdate">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_IndexUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_IndexOptimize">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_IndexOptimize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetAreasList">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetAreasList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetResourceTypeList">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetResourceTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResults">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetSearchResults" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResultsRaw01">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetSearchResultsRaw01" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_GetSearchResultsRaw02">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_GetSearchResultsRaw02" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_RebuildRaw01">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_RebuildRaw01" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IKGD_Indexer_VFS01">
+      <soap12:operation soapAction="http://www.ikon.it/IKGD_Indexer_VFS01" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Indexer">
+    <wsdl:port name="IndexerSoap" binding="tns:IndexerSoap">
+      <soap:address location="http://localhost:55852/Services/Indexer.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IndexerSoap12" binding="tns:IndexerSoap12">
+      <soap12:address location="http://localhost:55852/Services/Indexer.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

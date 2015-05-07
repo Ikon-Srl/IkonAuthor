@@ -1,0 +1,71 @@
+﻿
+
+Modulo di postprocessing per le views:
+
+creare un global filter che esegue l'override del metodo
+public override void OnResultExecuting(ResultExecutingContext filterContext)
+public override void OnResultExecuted(ResultExecutedContext filterContext)
+
+provare a configurare un filtro di processing per il body della request che effettui il processing custom dello stream
+ma solo per output tipo text/html e solo se non si tratta di una child action
+filterContext.RequestContext.HttpContext.Response.Filter
+
+vedere come utilizzare anche IFilterProvider congiuntamente con GlobalFilterCollection
+
+http://fluentfilters.codeplex.com/
+http://www.codeproject.com/Articles/125074/Fluent-Filters-Global-Action-Filters-for-ASP-NET-M
+
+http://msdn.microsoft.com/en-us/library/gg416513%28v=vs.98%29.aspx
+http://bradwilson.typepad.com/blog/2010/07/service-location-pt4-filters.html
+http://msdn.microsoft.com/en-us/library/system.web.httpresponse.filter.aspx
+http://stackoverflow.com/questions/483091/render-a-view-as-a-string
+
+http://www.west-wind.com/weblog/posts/2009/Nov/13/Capturing-and-Transforming-ASPNET-Output-with-ResponseFilter
+
+nel response filter processare anche i path con ~/....
+
+
+
+
+
+
+
+Modulo News tipo TagFilter
+
+forse ci conviene creare un nuovo tipo di risorsa per la gestione delle news a tag,
+se usiamo quella delle news attuali potremmo avere dei problemi con la costruzione del ModelParent
+che e' hardcoded per cercare moduli tipo news
+Nel caso usassimo un nuovo tipo di risorsa basterebbe rimappare il manager_type sul DB per convertire un sito
+
+I moduli di visualizzazione sono pagine regolari perche' internamente utilizzano il codice per il TagManager nella view
+bisogna valutare se lo vogliamo gestire anche nel model
+
+quando costruiamo i model per gli index paginati (o per il teaser) si deve fare attenzione a come si gestiscono i Model
+in cache perche' il ModelParent dipende dal contesto specifico di ricerca (c'e' gia' qualche trattamento di questi casi nelle news)
+
+la navgazione per categorie (con il rispettivo menu' e pure multilingua) viene gestita dall'editor dei TAGs
+
+Il sistema supporta la gestione dei moduli news integrati con la ricerca Lucene!
+
+Il sistema non e' limitato allo scan delle sole risorse tipo News ma potrebbe aggregare risorse di qualsiasi tipo
+es. Pagine che potrebbero essere semplicemente delle News con pagine piu' complesse oppure la visulizzazione
+cronologica di TUTTI o parte dei contenuti del sito e sarebbe facile pensarlo ad un modulo BLOG evoluto.
+
+potremmo integrare dei calendarietti AJAX nel componente?
+
+dovremo predisporre una serie di filtri per l'aggregatore come avviene per le news:
+ - selezione temporale (tutte, presenti, future, attive, ...)
+ - tipo gestione archivio (pagina stessa, folders, tutti i subfolders, ...)
+ - tipo gestione dei TAG (con categorie, con tree, ...)
+ - tipo di aggregazione temporale (anno, anno/mese, asc, desc)
+ - sorting sui risultati (temporale asc, desc, titolo, data creazione, ...)
+ - controllo della paginazione
+
+dobbiamo predisporre degli helper per la generazione dei menu'
+
+per la navigazione index/detail/archive prevedere dei pulsanti versatili:
+ - link a detail: usare link con append_BackUrl
+ - link a index (dal detail): usare BackUrl se presente altrimenti non renderizzare (funziona correttammente se arrivo da index, teaser, search)
+ - link a archivio:
+ - attenzione alla gestione corretta per le breadcrumbs
+

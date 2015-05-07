@@ -1,0 +1,7 @@
+
+jquery latest git version:
+
+http://code.jquery.com/jquery-git.js
+
+attenzione che le versioni di jQuery >= 1.9 hanno eliminato parecchie funzionalita':
+es. live, $.browser, ...

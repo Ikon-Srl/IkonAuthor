@@ -1,0 +1,11 @@
+﻿<viewdata model="IKCMS_ModelCMS_Interface"/>
+<div class="menu_news">
+<!--<a href="javascript:;">Archivio News</a>-->
+<div class="titolo_colonna3">Archivio Notizie</div>
+  <if condition='Model.ModelRoot is IKCMS_ModelCMS_Page_Interface && (Model.ModelRoot as IKCMS_ModelCMS_Page_Interface).UrlModuleHome != null'><a href='$!{(Model.ModelRoot as IKCMS_ModelCMS_Page_Interface).UrlModuleHome}'>Ultimi inserimenti &raquo;</a><br/><br/></if>
+  <ul>
+    <li>
+      ${Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_ArchiveBrowser_Interface>().FirstOrDefault().BuildBrowseMenu("", false, (node, selected) => { return string.Format("<a href=\"{1}\" class=\"{2}\">{0}</a>&nbsp;&nbsp;", System.Web.HttpUtility.HtmlEncode(node.Data.fragString), System.Web.HttpUtility.HtmlAttributeEncode(Utility.ResolveUrl(node.Data.url)), (selected ? "selected" : string.Empty)); })}
+    </li>
+  </ul>
+</div>

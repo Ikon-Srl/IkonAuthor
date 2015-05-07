@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="IKGD_DataClasses">
+  <DataContextMoniker Name="/DataContext" />
+  <nestedChildShapes>
+    <classShape Id="4ad09a09-9739-49f8-8e7b-eeb2748e48a9" absoluteBounds="9, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DataContext/IKGD_CONFIG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41363872-644b-478f-833e-fd24f36313c7" absoluteBounds="9.015, 0.96000000000000085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a74c9a9e-f64b-41bf-a153-06284a0025fb" absoluteBounds="3.25, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/DataContext/IKGD_KEYSTORAGE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="88ceb6e4-24ec-44a5-a40a-d1bb0e7f1d59" absoluteBounds="3.265, 0.96000000000000085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="194514d4-29f2-4105-9146-642cf7d5d764" absoluteBounds="6.125, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataContext/IKGD_KEYSTORAGE_MAP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef2bc6c0-d2fa-4e22-a1e5-d0a2a4e69f7d" absoluteBounds="6.14, 0.96000000000000085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.25 : 1.48159912109375); (6.125 : 1.48159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataContext/IKGD_KEYSTORAGE/IKGD_KEYSTORAGE_IKGD_KEYSTORAGE_MAP" />
+      <nodes>
+        <classShapeMoniker Id="a74c9a9e-f64b-41bf-a153-06284a0025fb" />
+        <classShapeMoniker Id="194514d4-29f2-4105-9146-642cf7d5d764" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="97b9e08e-f648-48ef-a429-bd202ad6496f" absoluteBounds="0.5, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/DataContext/IKGD_ASSEMBLY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b3bedf26-5bc8-4c58-8116-abf6d2fdd184" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="df97e179-e52d-4f75-bd77-a4108704b659" absoluteBounds="0.5, 4.375, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/DataContext/IKCMS_SEO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="714cca58-763e-4ad4-b6e5-4ff03c1e9c23" absoluteBounds="0.515, 4.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

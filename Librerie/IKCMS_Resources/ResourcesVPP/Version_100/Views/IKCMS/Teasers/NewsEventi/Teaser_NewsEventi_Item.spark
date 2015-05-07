@@ -1,0 +1,10 @@
+﻿<viewdata model="IKCMS_ModelCMS_ArchiveBrowserItem<IKCMS_ResourceType_NewsKVT>"/>
+
+<div class="item clickableBlock">
+    <div class="data">$!{Model.DateNode.ToLongDateString()}</div>
+    <!--<div class="data">$!{Model.vfsNode.vData.date_node.ToString("dd/MM/yyyy")}</div>-->
+    <div class="titolo"><a href='${IKCMS_RouteUrlManager.GetMvcUrlGeneral(null, Model.sNode)}' class="clickableBlockLink">$!{Model.Title}</a></div>
+    <div class="txt">${Html.HtmlFilter().ParseAndTruncate(Model.VFS_ResourceLanguageKVT("Abstract").ValueStringNN, 200, true, "...")}</div>
+    <!--<div class="thumb">${Model.ImageCMS_WithDefault("thumb", Url.StaticImage("_thumb_news01.jpg"), null)}</div>-->
+    <div class="leggi"><a href='${IKCMS_RouteUrlManager.GetMvcUrlGeneral(null, Model.sNode)}' class="clickableBlockLink"><!--<img src="~/Content/Images/vai.jpg" alt="leggi l'approfondimento" />--></a></div>
+</div>

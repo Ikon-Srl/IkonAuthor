@@ -1,0 +1,10 @@
+﻿<viewdata model="IKCMS_ModelCMS_Interface"/>
+  # var elements = (ViewData.Model as IKCMS_ModelCMS_Interface).Models.OfType<IKCMS_ModelCMS_GenericBrickSlotTeaserOrWidgetInterface>().Where(m => Regex.IsMatch(m.PlaceholderNN, @"^Home$|^Footer")).Where(m => m.TemplateInfo != null).ToList();
+
+<div class="footer_teaser" if='elements.Any()'>
+$!{Html.Partial("~/Views/IKCMS/Placeholders/PlaceholderFooter_Recursive")}
+</div>
+<!--# string cacheKey = FS_OperationsHelpers.ContextHashNN("FooterTeasers");
+<cache key="cacheKey" expires="DateTime.UtcNow.AddSeconds(600)">
+  # Html.RenderAction<global::Custom.Controllers.CustomController>(c => c.FooterTeasers("Home/FooterTeasers"));
+</cache>-->

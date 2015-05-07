@@ -1,0 +1,6 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_LinkKVT'>
+  # var mdl = ViewData.Model as IKCMS_ModelCMS_LinkKVT;
+  <div class="item ${mdl.TemplateInfo.Name} ${mdl.CssClass} clickableBlock" if='mdl.HasLink'>
+    <a href='${mdl.LinkUrl.EncodeAsAttribute()}' target='${mdl.LinkTarget}?{mdl.HasLinkTarget}' class="clickableBlockLink append_UrlBack?{!mdl.HasLinkTarget}">${mdl.Title.DefaultIfEmptyTrim(mdl.Name)}</a>
+  </div>
+</if>

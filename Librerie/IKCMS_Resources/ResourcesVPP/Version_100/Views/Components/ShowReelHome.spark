@@ -1,0 +1,29 @@
+﻿<viewdata model="IKCMS_ModelCMS_Interface"/>
+
+# string FlashVars = HelperExtensionCommon.ShowReelFlashGetFlashVars<ShowReelController>(Model, null, "Header", "~/Content/Flash/DataHeaderHome.xml", (Ikon.Support.BrowserInfo.FlashSupported ? null : "|orig_main")).EncodeAsAttribute();
+# string FlashUrl = Url.Content("~/Content/Flash/showreel_home.swf?v1").EncodeAsAttribute();
+# string FlashWidth = "100%";
+# string FlashHeight = "392";
+
+<div id="movie_home">
+  <if condition='Ikon.Support.BrowserInfo.FlashSupported'>
+    <if condition='string.Equals(Request.Browser.Browser, "IE", StringComparison.OrdinalIgnoreCase)'>
+      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="${FlashWidth}" height="${FlashHeight}" id="showreel_flash" align="middle">
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="movie" value='${FlashUrl}' />
+        <param name="quality" value="high" />
+        <param name="scale" value="noscale" />
+        <param name="wmode" value="transparent" />
+        <param name="allowFullScreen" value="true" />
+        <param name="bgcolor" value="#ffffff" />
+        <param name="FlashVars" value='${FlashVars}' />
+      </object>
+    </if>
+    <else>
+      <a href='${FlashUrl}' class="flash_big {width:'${FlashWidth}', height:'${FlashHeight}', attrs:{ wmode:'transparent', scale:'noscale', allowFullScreen:'true', quality:'high', allowScriptAccess:'sameDomain', bgColor:'#ffffff', FlashVars:'${FlashVars}' } }"></a>
+    </else>
+  </if>
+  <else if='FlashVars != "javascript:;"'>
+    <img src='${FlashVars}' alt="header" />
+  </else>
+</div>

@@ -1,0 +1,20 @@
+<use master="Application" />
+
+# string backUrl = (ViewData["UrlBack"] as string).NullIfEmpty() ?? Request.Params["UrlBack"];
+# if (string.IsNullOrEmpty(backUrl) && Request.UrlReferrer != null) backUrl = Request.UrlReferrer.ToString();
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+
+<div id="sito">
+  <div class="header_content">
+    <div class="logo"><a href="~/"><img src="~/Content/Images/logo.jpg" alt="Logo" /></a></div>
+  </div>
+  <div class="clearfloat"></div>
+  <div id="main_sezione">
+    <div class="back" if='!string.IsNullOrEmpty(backUrl)' style="float:right;"><a href='${backUrl.EncodeAsAttribute()}'>&laquo; indietro</a></div><br />
+    <div class="clearfloat"></div>
+    <use content="view">
+      <!-- content placeholder di default per spark -->
+    </use>
+  </div>
+</div>

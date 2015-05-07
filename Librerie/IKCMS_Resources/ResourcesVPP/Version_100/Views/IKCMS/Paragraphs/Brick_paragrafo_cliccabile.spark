@@ -1,0 +1,21 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ParagraphKVT"/>
+<if condition='Model != null'>
+
+  # //Ikon.Filters.IKGD_HtmlCleaner cleaner = new Ikon.Filters.IKGD_HtmlCleaner();
+  # //MultiStreamInfo4Settings imageInfo = Model.StreamInfos("thumb");
+
+  <div class="paragrafo clickableBlock">
+    <div class="titolo" if='!string.IsNullOrEmpty(Model.Title)'><h2 class="bold"><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="append_UrlBack clickableBlockLink">${Model.Title}</a></h2></div>
+        <div class="paragrafo_click">
+            <div class="paragrafo_image_SX" style="float:left;" if='Model.HasStream("image")'>
+              ${Model.ImageCMS("image")}
+              <!--<div class="caption autoHide">${Model.VFS_ResourceLanguageKVT("Didascalia").ValueString}</div>-->
+            </div>
+            <div class="testo" if='!string.IsNullOrEmpty(Model.Text)'>${Model.Text}</div>
+            <!--<div class="link" if='Model.HasLink'><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="append_UrlBack clickableBlockLink">vai&raquo;</a></div>-->
+            <div class="link" if='Model.HasLink'><img src="~/Content/Images/${IKGD_Language_Provider.Provider.LanguageNN}/vai.jpg" alt="leggi l'approfondimento" /></div>
+      </div>
+  <div class="clearfloat"></div>  
+  </div>
+
+</if>

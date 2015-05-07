@@ -1,0 +1,6 @@
+﻿
+precompilazione delle spark views
+
+http://sparkviewengine.com/documentation/precompiling
+http://stackoverflow.com/questions/7667583/getting-a-list-of-spark-descriptors-for-precompiling-spark-views
+

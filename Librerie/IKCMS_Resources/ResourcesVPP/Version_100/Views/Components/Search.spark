@@ -1,0 +1,8 @@
+﻿<div id="cerca">
+  <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<SearchController>(c=>c.SearchCMS(null))}' method="get">
+    <div>
+        <span><img src="~/Content/Images/search_icona.png" alt="cerca" onclick="$(this).closest('form').submit();" class="hover"></img></span>
+      <input type="text" name="searchCMS" value='${Request.Params["searchCMS"]}' title = "cerca nel sito" class="cerca_input autoWatermark { watermark:'${Resources.ResourceStandard.Search_Watermark}' }" />
+    </div>
+  </form>
+</div>

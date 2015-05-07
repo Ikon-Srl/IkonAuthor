@@ -1,0 +1,64 @@
+<use master="Application" />
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+# //ViewData["body_class"] = "main";
+
+<!--<content name="title"></content>-->
+<!--<content name="meta_description"></content>-->
+<!--<content name="meta_keywords"></content>-->
+<!--<content name="meta_robots"></content>-->
+<!--<content name="head_IncludeCSS"></content>-->
+<!--<content name="head_IncludeJS"></content>-->
+<!--<content name="head_CodeJS"></content>-->
+<!--<content name="body_Head"></content>-->
+<content name="body_Main">
+  
+  <use content="cms_background"></use>
+
+  <use content="cms_header">
+    <use content="cms_header_aux1"></use>
+    <use content="cms_showreel"></use>
+    <use content="cms_header_aux2"></use>
+  </use>
+
+  <use content="cms_title_h1"></use>
+  <use content="cms_title_h2"></use>
+
+  <use content="cms_breadcrumbs"></use>
+  <use content="cms_section_title"></use>
+  <use content="cms_back"></use>
+  <use content="cms_social"></use>
+  <use content="cms_print"></use>
+  <use content="cms_search"></use>
+  <use content="cms_language_manager"></use>
+
+  <use content="cms_menu_main"></use>
+  <use content="cms_menu_nav"></use>
+  <use content="cms_menu_aux1"></use>
+  <use content="cms_menu_aux2"></use>
+
+  <use content="cms_content_full">
+    <use content="cms_content_main"></use>
+    <use content="cms_content_aux1"></use>
+    <use content="cms_content_aux2"></use>
+    <use content="cms_content_extra"></use>
+    <use content="cms_content_links"></use>
+  </use>
+
+  <use content="cms_teasers_aux1"></use>
+  <use content="cms_teasers_aux2"></use>
+  <use content="cms_teasers_aux3"></use>
+  
+  <use content="cms_footer">
+    <use content="cms_teasers_main"></use>
+    <use content="cms_footer_aux1"></use>
+    <use content="cms_footer_aux2"></use>
+  </use>
+
+</content>
+<!--<content name="tail_IncludeJS"></content>-->
+<!--<content name="tail_CodeJS"></content>-->
+<!--<content name="account_GA"></content>-->
+<!--<content name="setCustomVar_GA"></content>-->
+<!--<content name="Logger"></content>-->
+<!--<content name="body_Tail"></content>-->

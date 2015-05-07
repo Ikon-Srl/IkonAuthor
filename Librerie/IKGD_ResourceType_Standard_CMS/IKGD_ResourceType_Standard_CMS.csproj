@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6E12BC1-30C6-4D89-90E4-7033A06B682F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IKGD_ResourceType_Standard_CMS</RootNamespace>
+    <AssemblyName>IKGD_ResourceType_Standard_CMS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collectors\IKCMS_BaseCollectors.cs" />
+    <Compile Include="Data\DataClasses_IKCMS.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses_IKCMS.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IKCMS_DataBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceTypes\IKCMS_ResourcesBricks.cs" />
+    <Compile Include="ResourceTypes\OLD\IKCMS_ResourcesFlash.cs" />
+    <Compile Include="ResourceTypes\IKCMS_ResourcesImage.cs" />
+    <Compile Include="ResourceTypes\IKCMS_ResourcesBricksBase.cs" />
+    <Compile Include="ResourceTypes\IKCMS_ResourcesCatalog.cs" />
+    <Compile Include="ResourceTypes\IKCMS_ResourcesESurvey.cs" />
+    <Compile Include="ResourceTypes\IKCMS_ResourcesBrowserModules.cs" />
+    <Compile Include="ResourceTypes\IKCMS_ResourcesPages.cs" />
+    <Compile Include="ResourceTypes\OLD\IKCMS_ResourcesText.cs" />
+    <Compile Include="Support\Extensions.cs" />
+    <Compile Include="Support\SupportFlash.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKCMS_Library\IKCMS_Library.csproj">
+      <Project>{316EBCA7-F84D-4893-8246-7E231B54B196}</Project>
+      <Name>IKCMS_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ConfigSettings\IKGD_ConfigSettings.csproj">
+      <Project>{A6FB392B-CC41-4877-BB2A-87BA7CFED799}</Project>
+      <Name>IKGD_ConfigSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_FilterParser\IKGD_FilterParser.csproj">
+      <Project>{1ED7FD2A-7CB2-40FE-B684-3D8BF9FB5866}</Project>
+      <Name>IKGD_FilterParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_ResourceType_Library\IKGD_ResourceType_Library.csproj">
+      <Project>{BD9888C2-C2C8-43BB-BF9E-077648C2D223}</Project>
+      <Name>IKGD_ResourceType_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_Utility\IKGD_Utility.csproj">
+      <Project>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</Project>
+      <Name>IKGD_Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IKGD_VFS_Library\IKGD_VFS_Library.csproj">
+      <Project>{213AA23E-553C-47F2-BD09-CE74BAAE1BED}</Project>
+      <Name>IKGD_VFS_Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Html.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\News.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Collezione.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Documents.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\File.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Folder.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\Widget.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\WidgetFolder.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\DataClasses_IKCMS.dbml.layout">
+      <DependentUpon>DataClasses_IKCMS.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Image.gif" />
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Multimediale.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\PageCMS.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\PageNoCMS.gif" />
+    <EmbeddedResource Include="Resources\Icons\VFS\TreeNode.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Data\DataClasses_IKCMS.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses_IKCMS.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Poll.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\TeaserElement.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\TeaserRotator.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Event.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\CMS3\documento.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\flash.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\folder.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\immagine.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\news.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\nodo_menu.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\pagina_archivio.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\pagina_news.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\pagina_prodotto.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\pagina_web.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\root_node.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\teaser.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\testo.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\widget_news.gif" />
+    <EmbeddedResource Include="Resources\Icons\CMS3\widget_teaser.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\ResourceType\Contatti.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

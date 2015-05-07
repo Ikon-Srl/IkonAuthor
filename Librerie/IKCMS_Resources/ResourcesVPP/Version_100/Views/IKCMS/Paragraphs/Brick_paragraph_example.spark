@@ -1,0 +1,20 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ParagraphKVT"/>
+<if condition='Model != null'>
+
+  # //Ikon.Filters.IKGD_HtmlCleaner cleaner = new Ikon.Filters.IKGD_HtmlCleaner();
+  # //MultiStreamInfo4Settings imageInfo = Model.StreamInfos("thumb");
+
+  <div class="paragrafo">
+    <div class="testo htmlTruncate?{Utility.TryParse<bool>(Model.VFS_ResourceNoLanguageKVT("Truncate").ValueString)} { condensedLength:${Utility.TryParse<int?>(Model.VFS_ResourceNoLanguageKVT("TruncateLength").ValueString) ?? 800}, moreText:'&lt;span&gt;${Resources.ResourceStandard.Paragraph_Expand}&lt;/span&gt;', lessText:'&lt;span&gt;${Resources.ResourceStandard.Paragraph_Compact}&lt;/span&gt;' }" if='!string.IsNullOrEmpty(Model.Text)'>
+    <div class="paragrafo_image_SX" if='Model.HasStream("thumb")'>
+      ${Model.ImageCMS_WithLink("thumb", "popup", null, null, null, null)}
+      <div class="caption autoHide">${Model.VFS_ResourceLanguageKVT("Didascalia").ValueString}</div>
+    </div>
+    <div class="titolo" if='!string.IsNullOrEmpty(Model.Title)'>${Model.Title}</div>
+      ${Model.Text}
+    </div>
+    <div class="link" if='Model.HasLink'><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="append_UrlBack clickableBlockLink">vai&raquo;</a></div>
+    <div class="clearfloat"></div>  
+  </div>
+
+</if>

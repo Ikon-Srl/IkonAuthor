@@ -1,0 +1,11 @@
+<use master="Master_site" />
+
+<content name="Template_Contents">
+  <div style="margin:50px;">
+    <ul class="listaRSS" style="list-style: none;">
+      <li each='var link in (List<RSS_GeneratorController.LinkData>)ViewData["pathsVFS"]'>
+        <a href='${Url.Content(link.Url)}'><img src="~/content/images/icona_feed.jpg" height="16" width="16" style="border-width: 0;" alt="feed rss" />&nbsp;${link.Text}</a>
+      </li>
+    </ul>
+  </div>
+</content>

@@ -1,0 +1,69 @@
+﻿
+Web.config (html5 boilerplate)
+ - https://github.com/h5bp/server-configs/wiki/web.config
+
+
+LESS:
+ - http://www.dotlesscss.org/
+ - http://haacked.com/archive/2009/12/02/t4-template-for-less-css.aspx
+ - http://www.weirdlover.com/2010/05/31/chirpy-has-a-new-home-and-new-features/
+ - http://www.weirdlover.com/2010/05/22/visual-studio-add-in-for-dotless-js-and-css-files/
+ - http://www.annhoang.net/twitter-bootstrap-in-visual-studio-2010-with-chirpy-and-dotless/
+ - http://stackoverflow.com/questions/2176675/visual-studio-precompile-dotless
+
+FONTS:
+ - http://www.google.com/webfonts
+ 
+Archivio di plugin vari:
+ - http://iwantaneff.in/repo/
+   - http://iwantaneff.in/repo/plugins/effects-ui/content.hover/index.html   (effetti hover per thumbnails)
+   - http://iwantaneff.in/repo/plugins/effects-ui/isotope/index.html   (organizzatore di teaser/thumbnails)
+   - http://buildinternet.com/project/totem/   (news scroller)
+   - http://grrrid.frebsite.nl/ (equal height)
+   - http://iwantaneff.in/repo/plugins/modals-lightboxes/jquery.popeye/index.html   (gallery)
+   - http://iwantaneff.in/repo/plugins/modals-lightboxes/reveal/index.html   (simple popups)
+   - http://iwantaneff.in/repo/plugins/modals-lightboxes/zebra-dialog/index.html   (popups)
+   - http://iwantaneff.in/repo/plugins/menu-nav/nice.menu/index.html   (menu' a blocchi)
+   - http://iwantaneff.in/repo/plugins/menu-nav/curtain/index.html  (effetto molto carino per lo scrolling delle pagine)
+   - http://iwantaneff.in/repo/plugins/menu-nav/list.js/index.html  (lista dinamica con search box e filtri)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/fullscreenr/index.html   (full screen background)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/backgrounder/index.html   (full screen background)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/bgstretcher/index.html   (full screen background)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/galleria/index.html   (gallery semplice)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/minimit/index.html   (effetti showreel tipo limoni)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/supersized/index.html  (supersized showreel)
+   - http://iwantaneff.in/repo/plugins/image-galleries-decks/greyscale/index.html  (fading B/N Grayscale)
+ - archivio plugins per bootstrap
+   http://ajkochanowicz.github.com/Kickstrap/javascript.html
+ - widget meteo
+   http://monkeecreate.github.com/jquery.simpleWeather
+ - twitter feeds JS
+   http://lab.rog.ie/chirp/#try
+ - jQuery++
+   http://jquerypp.com/#swipe
+ - widget draggabili
+   http://gridster.net/
+
+ 
+
+NUOVE IMPLEMENTAZIONI:
+ - ajax loader
+   http://iwantaneff.in/repo/plugins/misc/pretty.loader/index.html
+ - come fare in modo di evitare il problema dei margini con le liste di thumbnails
+ - animazioni CSS3 (da usare al posto di jQuery)
+   http://daneden.me/animate/
+ - subcolumns con divisioni in frazioni non adattabili alla grid di default (1/2, 1/3, 2/3 subcolumns)
+   http://adamkochanowicz.com/oneline.html
+   http://stackoverflow.com/questions/11697271/nested-bootstrap-layout-with-padding
+ - bootstrap carousel
+   per attivare il fade invece dello scroll (solo via CSS!)
+   http://stackoverflow.com/questions/9526970/can-the-twitter-bootstrap-carousel-plugin-fade-in-and-out-on-slide-transition
+   http://stackoverflow.com/questions/10335181/twitter-bootstraps-carousel-fade-transition
+ - testi e video autoscalanti
+   http://fittextjs.com/
+   http://fitvidsjs.com/
+ - multiple files upload
+   https://github.com/blueimp/jQuery-File-Upload
+   http://blueimp.github.com/jQuery-File-Upload/
+   
+

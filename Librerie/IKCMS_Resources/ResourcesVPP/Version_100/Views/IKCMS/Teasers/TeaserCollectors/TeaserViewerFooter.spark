@@ -1,0 +1,23 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickCollectorInterface"/>
+# var items = Model.Models.OfType<IKCMS_ModelCMS_GenericBrickInterface>().ToList();
+# string templateDefault = "~/Views/IKCMS/Teasers/TeaserItems/TeaserItemGlobal";
+# string templateForced = null;
+
+<div class="box_teaser_footer">
+  <if condition='Model != null && items.Any()'>
+    <div class='teaser_viewer teaser_footer ${Model.VFS_ResourceNoLanguageKVT("ColorBG").ValueString}' if='Model != null && items.Any()'>
+      <!--<div class="titolo autoHide"><h3 class="bold">${Model.VFS_ResourceLanguageKVT("Title").ValueString.EncodeAsHtml()}</h3></div>-->
+        <div class='contenuto teaser_rotator${items.Count < 2 ? "OFF" : null} { minItems:5, dirVertical:false, delay:10000 }'>
+          <for each='var item in items'>
+            $!{Html.Partial(templateForced ?? item.TemplateInfo.ViewPath ?? templateDefault, item)}
+          </for>
+        </div>
+    </div>
+  </if>
+  <else>
+    <div class="teaser_viewer">
+      <div class="titolo autoHide">${Model.VFS_ResourceLanguageKVT("Title").ValueString}</div>
+      NESSUN CONTENUTO
+    </div>
+  </else>
+</div>

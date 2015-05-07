@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IKGD_Utility</RootNamespace>
+    <AssemblyName>IKGD_Utility</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DllExtra\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Handlers\IKCMS_ExecutionProfiler.cs" />
+    <Compile Include="Handlers\ProxyHelpers.cs" />
+    <Compile Include="Handlers\ProxyRegular.cs" />
+    <Compile Include="Handlers\ProxyStreaming.cs" />
+    <Compile Include="JSON\FastJSON\dynamic.cs" />
+    <Compile Include="JSON\FastJSON\Formatter.cs" />
+    <Compile Include="JSON\FastJSON\Getters.cs" />
+    <Compile Include="JSON\FastJSON\JSON.cs" />
+    <Compile Include="JSON\FastJSON\JsonParser.cs" />
+    <Compile Include="JSON\FastJSON\JsonSerializer.cs" />
+    <Compile Include="JSON\FastJSON\Reflection.cs" />
+    <Compile Include="JSON\FastJSON\SafeDictionary.cs" />
+    <Compile Include="LINQ\DataTableCreator.cs" />
+    <Compile Include="LINQ\DataTableHelper.cs" />
+    <Compile Include="LINQ\Dynamic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Security.cs" />
+    <Compile Include="Tuples\Tuple.cs" />
+    <Compile Include="UniversalTypeConverter\ConversionOptions.cs" />
+    <Compile Include="UniversalTypeConverter\ObjectExtension.cs" />
+    <Compile Include="UniversalTypeConverter\UniversalTypeConverter.Core.cs" />
+    <Compile Include="UniversalTypeConverter\UniversalTypeConverter.Core.SpecialValues.cs" />
+    <Compile Include="UniversalTypeConverter\UniversalTypeConverter.cs" />
+    <Compile Include="UniversalTypeConverter\UniversalTypeConverter.Helpers.cs" />
+    <Compile Include="Utility\Ikon_Math.cs" />
+    <Compile Include="Utility\Ikon_SqlTools.cs" />
+    <Compile Include="Utility\Ikon_Strings.cs" />
+    <Compile Include="Utility\Ikon_Mime.cs" />
+    <Compile Include="Utility\Ikon_AutoMapper.cs" />
+    <Compile Include="Utility\Ikon_Logger.cs" />
+    <Compile Include="Utility\Ikon_NetworkSecurity.cs" />
+    <Compile Include="Utility\Ikon_Serialization.cs" />
+    <Compile Include="Utility\Ikon_Support.cs" />
+    <Compile Include="Utility\Ikon_Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UniversalTypeConverter\INFO.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

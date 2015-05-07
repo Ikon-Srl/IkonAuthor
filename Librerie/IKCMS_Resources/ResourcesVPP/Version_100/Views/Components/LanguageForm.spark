@@ -1,0 +1,22 @@
+<div class="lingua">
+  <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<LanguageController>(c => c.SetLanguage(null, null, null))}' method="get">
+    <if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+      <input type="hidden" name="rNode" value='${(ViewData.Model as IKCMS_ModelCMS_Interface).rNode}' />
+      <input type="hidden" name="sNode" value='${(ViewData.Model as IKCMS_ModelCMS_Interface).sNode}' />
+    </if>
+    <select id="lingua" name="language" class="autoSubmitDDL">
+      <option value="it" selected='selected?{IKGD_Language_Provider.Provider.Language == "it"}'>italiano</option>
+      <option value="en" selected='selected?{IKGD_Language_Provider.Provider.Language == "en"}'>inglese</option>
+      <option value="de" selected='selected?{IKGD_Language_Provider.Provider.Language == "de"}'>tedesco</option>
+    </select>
+  </form>
+</div>
+
+<!--
+<div class="lingua" onclick="$('#language_selector').toggle(250);" onkeypress="$('#language_selector').toggle(250);">
+  ${Resources.ResourceStandard.Header_Lingua}: ${global::Custom.Controllers.LanguageController.GetLanguageLabel(IKGD_Language_Provider.Provider.LanguageNN)}&nbsp; <img src='${Url.Content("~/Content/Images/bandierina_{0}.png".FormatString(IKGD_Language_Provider.Provider.LanguageNN))}' style="vertical-align:middle;" alt="language" />&nbsp; <img src="~/Content/Images/freccia_lingua.gif" alt="lingua_link" />
+  <div id="language_selector">
+    ${Html.Partial("~/Views/Components/LanguagePopup")}
+  </div>  
+</div>
+-->

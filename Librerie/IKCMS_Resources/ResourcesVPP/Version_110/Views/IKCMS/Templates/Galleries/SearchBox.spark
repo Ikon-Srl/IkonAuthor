@@ -1,0 +1,73 @@
+﻿<viewdata model="Ikon.IKCMS.ManagerTagFilterBase"/>
+
+# var tagsActive = Model.GetActiveFilterSets(IKGD_Language_Provider.Provider.LanguageNN, false);
+# var tags_area = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "Area", StringComparison.OrdinalIgnoreCase));
+# var tags_localita = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "Localita", StringComparison.OrdinalIgnoreCase));
+# var tags_poi = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "POI", StringComparison.OrdinalIgnoreCase));
+# var tags_areaTematica = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "AreaTematica", StringComparison.OrdinalIgnoreCase));
+# var tags_esperienza = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "Esperienza", StringComparison.OrdinalIgnoreCase));
+
+<div id="ricerca">
+ <form action='${Request.Url.EncodeAsAttributeUrl()}' method="get" class='autoDisableInputs'>
+    <div>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr if='tags_area != null'>
+          <td>$!{tags_area.Item2}</td>
+          <td>
+            $!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_area.Item4, "autoSubmitDDL", null, tags_area.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}
+          </td>
+        </tr>
+        <tr if='tags_localita != null'>
+          <td>$!{tags_localita.Item2}</td>
+          <td>
+            $!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_localita.Item4, "autoSubmitDDL", null, tags_localita.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}
+          </td>
+        </tr>
+        <tr if='tags_poi != null'>
+          <td>$!{tags_poi.Item2}</td>
+          <td>
+            $!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_poi.Item4, "autoSubmitDDL", null, tags_poi.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr if='tags_areaTematica != null'>
+          <td>$!{tags_areaTematica.Item2}</td>
+          <td>
+            $!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_areaTematica.Item4, "autoSubmitDDL", null, tags_areaTematica.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}
+          </td>
+        </tr>
+        <tr if='tags_esperienza != null'>
+          <td>$!{tags_esperienza.Item2}</td>
+          <td>
+            $!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_esperienza.Item4, "autoSubmitDDL", null, tags_esperienza.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            Keyword<br />
+            $!{Html.TextBox(Model.ParameterNameLucene, Request.Params[Model.ParameterNameLucene], new { @class = "autoWatermark {{ watermark:'{0}' }}".FormatString("keyword") })}
+          </td>
+        </tr>
+        <!--<for each='var tagSet in tagsActive'>
+          <tr>
+            <td>$!{tagSet.Item2}</td>
+            <td align="right">
+              ${HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tagSet.Item4, "autoSubmitDDL", null, tagSet.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}
+		        </td>
+          </tr>
+        </for>-->
+      </table>
+    </div>
+    
+    <div class="avvia_ricerca">
+      <!--<input type="submit" value="vai &raquo;" class="vai" />-->
+      <button type="submit"><img src='${Url.Content("~/Content/Images/{0}/button_cerca.png".FormatWith(IKGD_Language_Provider.Provider.LanguageNN))}' alt="cerca" /></button> 
+    </div>
+
+  </form>
+
+</div>

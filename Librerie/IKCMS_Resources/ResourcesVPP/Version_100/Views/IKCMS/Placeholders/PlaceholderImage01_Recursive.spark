@@ -1,0 +1,7 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var elements = IKCMS_ManagerIoC.applicationContainer.Resolve<IKCMS_ModelScannerParentPlaceholder_Bricks>(new NamedParameter("placeholders", "ImageSX")).FindModels(ViewData.Model as IKCMS_ModelCMS_Interface).OfType<IKCMS_ModelCMS_WidgetCMS_ImageCMS>().ToList();
+  <if condition='elements.Any()'>
+    # var image = elements.FirstOrDefault();
+    ${image.ImageCMS("image")}
+  </if>
+</if>

@@ -1,0 +1,8 @@
+﻿<if condition='ViewData.Model != null && ViewData.Model is IKCMS_ModelCMS_Interface'>
+  # var elements = (ViewData.Model as IKCMS_ModelCMS_Interface).Models.OfType<IKCMS_ModelCMS_GenericBrickSlotTeaserOrWidgetInterface>().Where(m => m.Placeholder == "ColumnDX").Where(m => m.TemplateInfo != null).ToList();
+  <div class="teasersViewersContainer animationGroup" if='elements.Any()'>
+    <for each='var element in elements'>
+      $!{Html.Partial(element.TemplateInfo.ViewPath, element)}
+    </for>
+  </div>
+</if>

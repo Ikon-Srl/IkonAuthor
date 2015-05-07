@@ -1,0 +1,127 @@
+﻿<use master="Application" />
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+# ViewData["body_class"] = ViewData["body_class"] ?? "main";
+# //var images = mdl.OfType<IKCMS_ModelCMS_WidgetCMS_ImageCMS>().ToList();
+# //var image_gen = images.Where(m => m.vfsNode.vData.category == "page_generic").FirstOrDefault();
+
+
+<content name="body_Main">
+
+  <use content="cms_background"></use>
+
+  <use content="cms_header">
+    <header style="background-color:#afa;">
+      <use content="cms_header_aux1">
+        <div class="container">
+          <p>Top of the header goes here...</p>
+        </div><!--/container-->
+      </use>
+      <use content="cms_menu_main">
+        <div class="container">
+          <p>Main menu goes here...</p>
+        </div><!--/container-->
+      </use>
+      <use content="cms_showreel">
+        <div class="container">
+          <!--${Html.Partial("~/Views/IKCMS/Showreels/ShowReelSimple")}-->
+          ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_showreel", MaxItems = 1 })}
+        </div><!--/container-->
+      </use>
+      <use content="cms_header_aux2">
+        <use content="cms_menu_aux1">
+          <div class="container">
+            <p>Quick menu for Header goes here...</p>
+          </div><!--/container-->
+        </use>
+      </use>
+    </header>
+  </use>
+
+  <nav style="background-color:#8f8;">
+    <div class="container">
+      <p>Navigation stuff...</p>
+      ${Html.Partial("~/Views/Components/Navigation/Breadcrumbs")}
+      ${Html.Partial("~/Views/Components/Navigation/Back")}
+      <div class='clearfix'></div>
+      ${Html.Partial("~/Views/Components/Misc/SocialButtons")}
+      ${Html.Partial("~/Views/Components/Misc/PrintButton")}
+      ${Html.Partial("~/Views/Components/Misc/SearchCMS")}
+      ${Html.Partial("~/Views/Components/Language/Language")}
+    </div><!--/container-->
+  </nav>
+
+  <article>
+    <div class="container">
+      <div class="row columnfill-container">
+        <div class="span2 columnfill" style="background-color:red;">
+          <nav>
+            <use content="cms_title_h1"><h1>${mdl.Return(m => m.TitleH1, ViewData["TitleH1"] ?? string.Empty)}</h1></use>
+            <use content="cms_menu_nav">
+              <p>Multilevel page navigation [cms_menu_nav] menu goes here...</p>
+            </use>
+            <use content="cms_content_aux1">
+              ${Html.RenderPlaceholder(mdl, (m) => m.HasStream("column"), new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_aux1", TemplateForced = "~/Views/IKCMS/Images/ImageViewer", StreamSelector = "column", ContentCssClass = "column_image" })}
+            </use>
+            <use content="cms_teasers_aux1">
+              ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_teasers_aux1" })}
+            </use>
+          </nav>
+        </div>
+        <div class="span8 columnfill" style="background-color:pink;">
+          <article>
+            <use content="cms_title_h2"><h2>${mdl.Return(m => m.TitleH2, ViewData["TitleH2"] ?? string.Empty)}</h2></use>
+            <use content="cms_content_extra">
+              ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_extra" })}
+            </use>
+            <use content="cms_content_main">
+              ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_main" })}
+            </use>
+            <use content="cms_teasers_aux3">
+              ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_teasers_aux3" })}
+            </use>
+          </article>
+        </div>
+        <div class="span2 columnfill" style="background-color:cyan;">
+          <aside>
+            <use content="cms_content_aux2">
+              <p>[cms_content_aux2] goes here...</p>
+            </use>
+            <use content="cms_content_links">
+              <p>[cms_content_links] goes here...</p>
+            </use>
+            <use content="cms_teasers_aux2">
+              ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_teasers_aux2" })}
+            </use>
+          </aside>
+        </div>
+      </div>
+    </div><!--/container-->
+  </article>
+
+  <use content="cms_footer">
+    <footer style="background-color:#4f4;">
+      <div class="container">
+        <use content="cms_teasers_main">
+          <div class="row">
+            ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_teasers_main", ContainerCssClassDefault = "span4" })}
+            <!--${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_teasers_main", ContainerCssClassDefault = "span4", MaxRowWidth=900, TemplateRowSeparator="~/Views/IKCMS/Teasers/Extra/SeparatoreTeasers" })}-->
+          </div>
+        </use>
+        <use content="cms_footer_aux1">
+          <use content="cms_menu_aux2">
+            <p>Quick menu for Footer goes here...</p>
+          </use>
+        </use>
+        <use content="cms_footer_aux2">
+          <div class="copyright">${IKCMS_StaticResources.GetString("Footer_Copyright")}</div>
+          <div class="right">
+            <div class="powered_by">powered by &nbsp;<a href="http://www.ikon.it" target="_blank?{!IKGD_SiteMode.IsAccessible}">Ikon Multimedia</a></div>
+            <div class="admin"><a rel="nofollow" href="~/Admin">admin</a> - &nbsp;</div>
+          </div>
+        </use>
+      </div><!--/container-->
+    </footer>
+  </use>
+
+</content>

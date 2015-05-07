@@ -1,0 +1,12 @@
+﻿<use master="Application" />
+
+<content name="title">Pagina non trovata</content>
+<content name="body_Main">
+
+    <br/>
+    <h1>Pagina non trovata</h1>
+    <br/>
+    Torna alla <a href='${Url.Content("~/")}'>Home</a>
+    <br/>
+
+</content>
