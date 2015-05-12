@@ -1,0 +1,33 @@
+﻿
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+
+<use content="cms_footer">
+    <footer>
+	  <use content="cms_teasers_main">
+        <div class='cms_teasers_main'>
+			<div class="container">
+				${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_teasers_main" })}
+				<div class="clearfloat"></div>
+			</div><!--/container-->
+		</div>
+      </use>
+      <div class='cms_footer_aux1'>
+		  <div class="container"> 
+			<!--<use content="cms_footer_aux1">
+			  <use content="cms_menu_aux2">
+				<p>Quick menu for Footer goes here...</p>
+			  </use>
+			</use>-->
+			<br/>
+			<use content="cms_footer_aux2">
+			  <div class="copyright">${IKCMS_StaticResources.GetString("Footer_Copyright")}</div>
+			  <div class="right">
+				<div class="admin"><a rel="nofollow" href="~/Admin">admin</a> - &nbsp;</div>
+				<div class="powered_by">powered by &nbsp;<a href="http://www.ikon.it" target="_blank?{!IKGD_SiteMode.IsAccessible}">Ikon Multimedia</a></div>
+			  </div>
+			  <div class='clearfloat'></div>
+			</use>
+		  </div><!--/container-->
+      </div>
+    </footer>
+  </use>

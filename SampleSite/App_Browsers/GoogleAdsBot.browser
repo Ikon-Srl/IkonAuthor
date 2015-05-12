@@ -1,0 +1,41 @@
+﻿<!--
+    You can find existing browser definitions at
+    <windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers
+    modifiche per evitare exceptions con GoogleAdsBot Mobile
+    
+    http://kamburov.blogspot.com/2011/05/adsbot-badbot.html
+    http://www.jasonlinham.co.uk/2009/06/sitecore-xhtml-validation-attribute.html
+    
+-->
+<browsers>
+
+  <browser id="AdsBot" parentID="Gecko">
+    <identification>
+      <userAgent match="AdsBot" />
+    </identification>
+    <capabilities>
+      <capability name="browser" value="AdsBot" />
+      <capability name="majorversion" value="0" />
+      <capability name="minorversion" value="0" />
+    </capabilities>
+  </browser>
+
+  <browser id="w3cValidator" parentID="default">
+    <identification>
+      <userAgent match="^W3C_Validator" />
+    </identification>
+    <capture>
+      <userAgent match="^W3C_Validator/(?'version'(?'major'\d+)(?'minor'\.\d+)\w*).*" />
+    </capture>
+    <capabilities>
+      <capability name="browser" value="w3cValidator" />
+      <capability name="majorversion" value="${major}" />
+      <capability name="minorversion" value="${minor}" />
+      <capability name="version" value="${version}" />
+      <capability name="w3cdomversion" value="1.0" />
+      <capability name="xml" value="true" />
+      <capability name="tagWriter" value="System.Web.UI.HtmlTextWriter" />
+    </capabilities>
+  </browser>
+
+</browsers>

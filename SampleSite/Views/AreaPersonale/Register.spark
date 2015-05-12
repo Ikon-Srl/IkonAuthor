@@ -1,0 +1,195 @@
+﻿<use master="Master_AreaPersonale" />
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+
+
+${Html.Partial("~/Views/Auth/FB_Connect")}
+
+<content name="tail_CodeJS">
+  <script type="text/javascript">
+  /*<![CDATA[*/
+    fb_success_callback = PopulateFormWithFB;
+    
+    function PopulateFormWithFB() {
+      FB.api('/me', function(response) {
+        //alert($.toJSON(response));
+        try { $('input[name="input_Nome"]').val(response.first_name); } catch(ex) {}
+        try { $('input[name="input_Cognome"]').val(response.last_name); } catch(ex) {}
+        try { $('input[name="input_EMail"]').val(response.email); } catch(ex) {}
+        //try { $('select[name="input_Genere"]').val(response.gender == 'male' ? 'M' : 'F'); } catch(ex) {}
+      });
+    }
+    
+    $.Register_formSubmitWithJsonReturnHandler = function(e) {
+    try {
+      e.preventDefault();
+      e.stopPropagation();
+    } catch (ex) { }
+    //
+    var data = {};
+    if (($('input[name="successUrl"]', $(this).closest('form')).val() || '').length == 0)
+      data.successUrl = $(this).closest('a').attr('href') || document.referrer;
+    $(this).closest('form').ajaxSubmit({
+      //beforeSubmit: function() { alert('beforeSubmit'); },
+      type: 'POST',
+      data: data,
+      dataType: 'json',
+      //complete: function() { window.locationFake = this.url; },
+      success: function(result) {
+        var tmpFn = function() {
+		  if (result.hasError == false && typeof (result.successUrl) == 'string')
+            window.location = result.successUrl;
+          else if (result.hasError == true)
+            Recaptcha.reload();
+        };
+        if (typeof (result.message) == 'string') {
+          messageBox(result.message, tmpFn);
+        }
+        else {
+          tmpFn();
+        }
+        //
+      }
+    });
+  };
+  //
+  $('.Register_formSubmitWithJsonReturn').unbind('click').click(function(e) {$.Register_formSubmitWithJsonReturnHandler.call(this, e); return false; });
+  //
+  
+    
+    
+  /*]]>*/
+  </script>
+</content>
+
+<content name="areapersonale_main">
+	<div class="registerPage">
+	  <h1>Registrati</h1>
+    <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<SampleSite_Web.Controllers.AreaPersonaleController>(c => c.Register())}'>
+      <table class="RegisterForm" border="0">
+        <tr>
+          <td class="colonna_label" colspan="3">Connettiti con il tuo account di Facebook
+          </td>
+          <td class="colonna_field" colspan="2">
+            <a href="javascript:;" onclick="AuthByFB();" class="fConnect"></a>
+          </td>
+        </tr>
+        <tr>
+          <td class="colonna_label">&nbsp;</td>
+          <td class="colonna_field">&nbsp;</td> 
+          <td class="colonna_separator"></td>      
+          <td class="colonna_label">&nbsp;</td>
+          <td class="colonna_field">&nbsp;</td>       
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="input_EMail">E-mail di registrazione*</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_EMail" type="text" class="campo_contatto_text" />
+          </td><td class="colonna_separator"></td>
+          <td class="colonna_label">&nbsp;</td>
+          <td class="colonna_field">&nbsp;</td>       
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="extra_PasswordNew">Scegli una Password*</label>
+          </td>
+          <td class="colonna_field">
+            <input name="extra_PasswordNew" type="password" class="campo_contatto_text" />
+          </td><td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="extra_PasswordVerify">Reinserisci la Password*</label>
+          </td>
+          <td class="colonna_field">
+            <input name="extra_PasswordVerify" type="password" class="campo_contatto_text" />
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="colonna_label">
+            <label for="input_Nome">Nome*</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_Nome" type="text" class="campo_contatto_text" />
+          </td><td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="input_Cognome">Cognome*</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_Cognome" type="text" class="campo_contatto_text" />
+          </td>
+         </tr>            
+        <tr>
+          <td class="colonna_label">
+            <label for="input_Indirizzo">Indirizzo</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_Indirizzo" type="text" class="campo_contatto_text" />
+          </td><td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="input_CAP">CAP</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_CAP" type="text" class="campo_contatto_text" maxlength="5"  />
+          </td>           
+        </tr>            
+        <tr>
+          
+          <td class="colonna_label">
+            <label for="input_Comune">Citt&agrave;</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_Comune" type="text" class="campo_contatto_text" />
+          </td><td class="colonna_separator"></td>   
+          <td class="colonna_label">
+            <label for="input_Provincia">Provincia</label>
+          </td>
+          <td class="colonna_field">
+            ${HelperExtensionCommon.DDL_HelperSimple("input_Provincia", HelperExtensionCustom.DC.IK_ANA_Provincias.OrderBy(r => r.Nome).Select(r => new SelectListItem() { Value = r.Sigla, Text = r.Nome, Selected = false }), "campo_contatto_select", null, string.Empty)}
+          </td>           
+        </tr>
+        <tr>  
+			<td class="colonna_label">
+            <label for="input_Telefono">Telefono</label>
+          </td>
+          <td class="colonna_field">
+            <input name="input_Telefono" type="text" class="campo_contatto_text" />
+          </td> 
+          <td class="colonna_separator"></td>
+                         
+        </tr>
+                              
+		    <tr>
+			    <td colspan="5">
+					<br/>
+				    <strong>Consenso al trattamento dei dati personali</strong>
+				    <div style="padding-right:55px">
+				      <br />
+					  Informativa ai sensi dell'art. 13 d.lgs 196/03 recante "Codice in materia di trattamento dei dati personali".<br />
+						Il trattamento &egrave; effettuato con strumenti elettronici, gestito da incaricati all'uopo individuati e con l'adozione delle misure minime richieste dalla normativa.<br />
+						L'eventuale rifiuto comporta l'impossibilit&agrave; di ricevere informazioni e di accesso alle iniziative. Possono essere esercitati i diritti previsti dall'art. 7 del Codice.
+						<br />
+				      <br />
+				    </div>
+				    <input id="input_flag_Privacy" name="input_flag_Privacy" type="checkbox" value="true" class="blank" style="width:20px;" />
+				    <label for="input_flag_Privacy">Accetto*</label>
+				    <br />
+				    <br />
+			    </td>
+			  </tr>
+		    <tr>
+		      <td colspan="5">
+		        ${Recaptcha.RecaptchaControlMvc.GenerateCaptcha(Html, "recaptcha", "clean")}<br /><br />
+		      </td>
+		    </tr>
+        <tr>
+          <td colspan="5">
+            <br/>
+            <a href='${(Request.QueryString["ReturnUrl"] ?? "javascript:;").EncodeAsAttribute()}' class="submit_link buttonStyle Register_formSubmitWithJsonReturn">Invia</a>
+            <br/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</content>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<message>
+  <from address="no-reply@example.com" text="Registrazione sito web {$site}"/>
+  <!--<bcc address="no-reply@example.com" text="Account manager: sito web {$site}"/>-->
+  <subject>Registrazione sul sito web {$site}</subject>
+  <body>
+    <![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$title}</title>
+</head>
+
+<body style="background-color: #eeeeee;margin: 0px;font-family: Arial;font-size: 20px;">
+	<div style="width: 600px;margin: 0px auto;">
+		<div>
+			<img src="{$baseUrl}Content/Images/mail/logo.jpg">
+		</div>
+		<div style="background-color: #fff;margin-top: 15px;padding: 50px 35px;">
+			Gentile <span style="color: #afc149;">{$FullName}</span>,<br>
+			grazie per aver effettuato la registrazione all'area riservata del sito <span  style='color: #afc149'>{$site}</span>. <br/>
+      <br>
+      Per accedere all'area riservata utilizza l'E-mail e la password fornita durante la registrazione.
+      <br />
+      <br />
+      Per modificare successivamente il tuo profilo personale utilizza il seguente link:<br/>
+      <a href="{$baseUrl}AreaPersonale/DatiPersonali" style="color: #afc149;">Area Personale</a><br />
+      
+    <br/>
+		</div>
+		<div><img src="{$baseUrl}Content/Images/mail/footer_ombra.jpg"></div>
+	</div>
+</body>
+
+</html>
+]]>
+  </body>
+</message>

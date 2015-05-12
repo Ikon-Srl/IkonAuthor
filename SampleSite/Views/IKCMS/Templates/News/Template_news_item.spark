@@ -1,0 +1,13 @@
+﻿<viewdata model="IKCMS_ModelCMS_ArchiveBrowserItem<IKCMS_ResourceType_NewsKVT>"/>
+<div class="item clickableBlock">
+  <div class="data">${Model.DateNode.ToLongDateString()}</div>
+  <div class="titolo">$!{Model.Title}</div>
+  <div class="abstract">
+	${Model.ImageCMS_WithDefault("thumb", Url.Content("~/Content/Images/news_default.jpg"),"image", null)}
+	$!{Model.VFS_ResourceLanguageKVT("Abstract").ValueString}
+	<if condition='Model.VFS_ResourceLanguageKVT("Author").ValueString.IsNotNullOrWhiteSpace()'><br/><div class="autore">Autore: <span>$!{Model.VFS_ResourceLanguageKVT("Author").ValueString}</strong></div></if>
+  	
+  </div>
+  <div class="link"><a href='${Model.Url}' class="leggi clickableBlockLink"><!--<img src="~/Content/Images/vai.gif" />--></a></div>
+  <div class="clearfloat"></div>
+</div>

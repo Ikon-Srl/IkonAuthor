@@ -1,0 +1,44 @@
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+        
+<use content="cms_header">
+    <header>
+       <use content="cms_header_aux1">
+        <div class="cms_header_aux1">
+			<div class="container">
+			  <div class="logo"><a href="~/"><img src="~/Content/Images/logo.png"/></a></div>
+			  <!--<div class='fascia1'>-->
+				  <div class="menu_aux">
+					<!--<a href="/SiteMap">Mappa del sito</a><a href="/Links">Links</a>-->
+				  </div>
+				  ${Html.Partial("~/Views/Components/Misc/SearchCMS")}
+				  ${Html.Partial("~/Views/Components/Language/Language")}
+				  <ul class="static_menu">
+					<li style="border:0;"><a href="~/Home">home</a></li><li>&nbsp;|&nbsp;</li>
+					<li><a href='~/Forms/Contatto'>contatti</a></li><li>&nbsp;|&nbsp;</li>	
+					<li><a href="~/Home/SiteMap">mappa del sito</a></li>
+				  </ul>	 
+			  <!--</div>-->
+			  
+			  <use content="cms_menu_main">
+				  ${Html.Partial("~/Views/Components/Menus/MenuTop")}
+			  </use>
+			</div>
+                    
+        </div>
+      </use>
+      
+      <use content="cms_showreel">
+        ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_showreel", MaxItems = 1 })}
+
+      </use>
+      <!--<use content="cms_header_aux2">
+        <use content="cms_menu_aux1">
+          <div class="container">
+            <p>Quick menu for Header goes here...</p>
+          </div>
+        </use>
+      </use>-->
+    </header>
+  </use>
+

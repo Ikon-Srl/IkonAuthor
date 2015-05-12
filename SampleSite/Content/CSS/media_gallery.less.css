@@ -1,0 +1,40 @@
+#ricercaGallery
+{
+    padding-right:20px;    
+}
+#gallery
+{
+    
+    .ordina{float:left; margin-right:30px;}
+    .vista{float:left;}
+    .ordina, .vista
+    {
+        a{color:@darkGreen;}    
+    }
+    
+    .items
+    {
+        margin:20px 0px;
+       .item
+       {
+            float:left;
+            border-left:solid 1px @darkGreen;
+       } 
+    }
+    .items.small
+    {
+        .item
+        {
+            padding:0px 29px 10px 10px; width:150px; margin-bottom:10px;
+            .thumb{}
+            .titolo{}
+        }
+    }
+    .items.big
+    {
+        .item
+        {
+            padding:0px 69px 10px 10px; margin-bottom:10px; width:300px;
+        }
+    }
+}

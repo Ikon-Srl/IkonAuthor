@@ -1,0 +1,5 @@
+﻿<viewdata model="IKCMS_ModelCMS_Interface"/>
+<div id="menu_sx">
+  <!--${Html.BuildMenuMain("sf-menu sf-vertical", ViewData.Model)}-->
+  ${Html.BuildMenuSub(null, ViewData.Model, false, null)}
+</div>

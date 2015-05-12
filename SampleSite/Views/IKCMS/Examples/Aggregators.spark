@@ -1,0 +1,10 @@
+﻿<use master="Application" />
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+
+${Html.RenderPlaceholder(mdl, (m) => m.HasStream("column"), new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_aux1", TemplateForced = "~/Views/IKCMS/Images/ImageViewer", StreamSelector = "column", ContentCssClass = "column_image" })}
+${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_teasers_footer", ContainerCssClassDefault = "span4" })}
+${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_teasers_footer", ContainerCssClassDefault = "span4", MaxRowWidth = 900, TemplateRowSeparator = "~/Views/IKCMS/Teasers/Extra/SeparatoreTeasers" })}
+${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_showreel", TemplateDefault = "~/Views/IKCMS/Showreels/ShowReelItem", TemplateVOID = null })}
+
+

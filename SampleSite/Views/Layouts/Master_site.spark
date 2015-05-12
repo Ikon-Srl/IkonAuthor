@@ -1,0 +1,63 @@
+﻿<use master="Application" />
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+# ViewData["body_class"] = ViewData["body_class"] ?? "main";
+# //var images = mdl.OfType<IKCMS_ModelCMS_WidgetCMS_ImageCMS>().ToList();
+# //var image_gen = images.Where(m => m.vfsNode.vData.category == "page_generic").FirstOrDefault();
+
+
+<content name="body_Main">
+
+
+
+  	${Html.Partial("~/Views/Custom/Header")}
+
+  <nav class='main'>
+    <div class="container">
+      ${Html.Partial("~/Views/Components/Navigation/Breadcrumbs")}
+      <!--${Html.Partial("~/Views/Components/Navigation/Back")}-->
+      <div class='clearfix'></div>
+      <!--${Html.Partial("~/Views/Components/Misc/SocialButtons")}
+      ${Html.Partial("~/Views/Components/Misc/PrintButton")}-->
+    </div><!--/container-->
+  </nav>
+
+  <article class='main'>
+	<div class="container equalHeight">
+		<use content='cms_content_full'>
+			<nav class='sx col'>
+				<use content="cms_menu_nav">
+				 ${Html.Partial("~/Views/Components/Menus/MenuSX")}
+				</use>
+				<use content="cms_content_aux1">
+				  ${Html.RenderPlaceholder(mdl, (m) => m.HasStream("column"), new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_aux1", TemplateForced = "~/Views/IKCMS/Images/ImageViewer", StreamSelector = "column", ContentCssClass = "column_image" })}
+				</use>
+				<use content="cms_teasers_aux1">
+				  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_teasers_aux1" })}
+				</use>
+			  </nav>
+			  <article class='dx col'>
+				<use content="cms_title_h1"><h1>${mdl.Return(m => m.TitleH1, ViewData["TitleH1"] ?? string.Empty)}</h1></use>
+				<use content="cms_title_h2"><h2>${mdl.Return(m => m.TitleH2, ViewData["TitleH2"] ?? string.Empty)}</h2></use>
+				<br/>
+				<use content="cms_content_extra">
+				  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_extra" })}
+				</use>
+				<use content="cms_content_main">
+				  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_main" })}
+				</use>
+				<use content="cms_teasers_aux3">
+				  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_teasers_aux3" })}
+				</use>
+			</article>
+			<div class='clearfloat'></div>
+		</use>
+		
+    </div>        
+  </article>
+  
+  	${Html.Partial("~/Views/Custom/Footer")}
+
+  
+
+</content>

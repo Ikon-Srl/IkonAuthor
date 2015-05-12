@@ -27,6 +27,6 @@ FROM [IKGD_CONFIG] where [application]='APPNAME_OLD'
 
 --
 -- per aggiungere nuove lingue
---SELECT * FROM IKGD_CONFIG WHERE [application]='TurismoFvg' AND [key]='language'
---INSERT INTO IKGD_CONFIG ([application],[type],[key],[value],[description],flag_active) VALUES ('TurismoFvg','Languages','language','ru','Russo',1)
+--SELECT * FROM IKGD_CONFIG WHERE [application]='XYZ' AND [key]='language'
+--INSERT INTO IKGD_CONFIG ([application],[type],[key],[value],[description],flag_active) VALUES ('XYZ','Languages','language','ru','Russo',1)
 

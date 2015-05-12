@@ -1,0 +1,41 @@
+.cms_showreel_wrapper
+{
+    height:554px;
+    border-bottom:solid 1px #000;
+    background-image:#454545;  
+    background-image: radial-gradient(center top, ellipse cover, #ffffff, #454545);
+    background-image: -o-radial-gradient(center top, ellipse cover, #ffffff, #454545);
+    background-image: -ms-radial-gradient(center top, ellipse cover, #ffffff, #454545);
+    background-image: -moz-radial-gradient(center top, ellipse cover, #ffffff, #454545);
+    background-image: -webkit-radial-gradient(center top, ellipse cover, #ffffff, #454545); 
+    
+    .container
+    {
+        position:relative;
+        .box_showreel
+        {
+            width:900px; height: 506px; background:#fff; margin:0px auto; overflow:hidden; position:absolute; top:14px; left:20px;
+            border:solid 10px #fff;
+            -moz-box-shadow: 0 0 10px #888;
+            -webkit-box-shadow: 0 0 10px#888;
+            box-shadow: 0 0 10px #888;
+            
+            .items >* {height:506px; width:900px;}
+            
+            ul#nav
+            {
+                position:absolute; bottom:20px; z-index:100; text-align:center; width:100%;
+                padding:0px; margin:0px; list-style-type:none;
+               li
+               {
+                 display:inline-block;
+                   a{width:9px; height:9px; display:block; background-color:#fff; margin:0px 3px; border-radius: 4px; box-shadow: 1px 1px 0px rgba(0,0,0,0.5);}
+               } 
+               li.activeSlide a,
+               li a.activeSlide{background-color:@green;}
+            }  
+        }
+    }
+    
+       
+}/*.cms_showreel*/

@@ -1,0 +1,69 @@
+<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+# var ModelBrick = Model as IKCMS_ModelCMS_GenericBrickInterface;
+# var ModelBrowser = Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_ArchiveBrowser_Interface>().FirstOrDefault();
+# ViewData["breadCrumbsSkipLast"] = 1;
+
+
+# var isPreview = Ikon.GD.FS_OperationsHelpers.VersionFrozenSession == -1;        
+# //var commentsLanguage = IKGD_Language_Provider.Provider.Language == "en" ? "en_US" : "it_IT";
+# var socialUrl = HttpContext.Current.IsDebuggingEnabled || isPreview ? "http://example.com/" : Utility.ResolveUrlFull(Model.UrlCanonical); // Request.Url.ToString().Split("?".ToCharArray())[0].ToString();
+            
+# var metadescription = Utility.StringTruncate(Regex.Replace(ModelBrick.VFS_ResourceLanguageKVT("Text").ValueString, "<.*?>", string.Empty), 160, "...").EncodeAsAttribute();
+# var metaimg = Utility.UriSetQuery(IKCMS_RouteUrlManager.GetUrlProxyVFS(Model.rNode, null, "image", null, null, true, null, false, ""), "ext", ".jpg");
+  
+<content name="meta_description"><meta name="description" content="${metadescription}" charset="utf-8"/></content>
+<content name="meta_og">
+	<meta property="og:title" content="${ModelBrick.Title}"/>
+	<meta property="og:image" content="${metaimg}"/>
+	<meta property="og:url" content="${socialUrl}"/>
+	<meta property="og:site_name" content="SampleSite"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:description" content="${metadescription}" />
+	
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="${ModelBrick.Title}" />
+	<meta name="twitter:description" content="${metadescription}" />
+	<meta name="twitter:image" content="${metaimg}" />
+</content>
+
+<content name="cms_menu_nav">
+  ${Html.Partial("~/Views/Components/Menus/MenuNewsSX")}
+</content>
+
+<content name="cms_content_main">
+     <div class="news_dettaglio">
+        <div class="data">${Model.DateNode.ToLongDateString()}</div>
+        <div class="indietro">
+              <a href='${ModelBrowser.UrlBack}' rel="nofollow">&laquo; indietro</a>&nbsp; 
+              <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<RSS_GeneratorController>(c => c.FeedAtom(ModelBrowser.sNode, null, null, null))}'><img src="~/content/images/icona_feed.jpg" height="16" width="16" style="border-width: 0;" alt=" " /></a>-->
+         </div>
+         <div class="clearfloat"></div>
+                 <div class="social">
+						 <script>
+							 (function(d, s, id) {
+							 var js, fjs = d.getElementsByTagName(s)[0];
+							 if (d.getElementById(id)) return;
+							 js = d.createElement(s); js.id = id;
+							 js.src = "//connect.facebook.net/it_IT/all.js#xfbml=1";
+							 fjs.parentNode.insertBefore(js, fjs);
+							 }(document, 'script', 'facebook-jssdk'));
+						 </script>
+						 <div class="fb-share-button" data-href="${socialUrl}" data-type="button_count"></div>
+						 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+						 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+					 </div>
+       <div class="due">
+         <if condition='ModelBrick.HasStream("image")'>${ModelBrick.ImageCMS("image", "image", null)}</if>
+         
+         <div class="abstract">${ModelBrick.VFS_ResourceLanguageKVT("Abstract").ValueString}</div>
+         <div class="testo">${ModelBrick.VFS_ResourceLanguageKVT("Text").ValueString}</div>
+         <div class="autore">Autore: <span class="autoHideParent">${ModelBrick.VFS_ResourceLanguageKVT("Author").ValueString}</span></div>
+         <div class="clearfloat"></div>
+         <!--risorse allegate e links-->
+         ${Html.Partial("~/Views/Components/Links/LinksNews")}
+      </div>
+    </div>  
+      
+</content>

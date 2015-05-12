@@ -1,0 +1,25 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ArchiveBrowserItem_Interface"/>
+<div class="box_resources" if='Model.Relations.Any()'>
+  # var module_ItemRelations = Model.fsOp.Get_NodesInfoACL(Model.Relations.Select(r => r.snode_dst).Distinct(), null, false).ToDictionary(n => n.vNode.snode, n => (FS_Operations.FS_NodeInfo_Interface)n);
+  # var links = Model.RelationsOrdered.Where(r => module_ItemRelations.ContainsKey(r.snode_dst)).Where(r => r.type == Ikon.IKGD.Library.IKGD_Constants.IKGD_LinkRelationName).Select(r => module_ItemRelations[r.snode_dst]).ToList();
+  # var files = Model.RelationsOrdered.Where(r => module_ItemRelations.ContainsKey(r.snode_dst)).Where(r => r.type == Ikon.IKGD.Library.IKGD_Constants.IKGD_AttachmentRelationName).Select(r => module_ItemRelations[r.snode_dst]).ToList();
+
+  <div class="box_allegati" if='files.Any()'>
+    <div class="title">${IKCMS_StaticResources.GetString("Label_Allegati")}</div>
+    <for each='var file in files'>
+      <div class="item">
+        <a href='${IKCMS_TreeStructureVFS.UrlDownloadDefaultStream(file.vNode, file.vData, file.iNode, string.Empty).DefaultIfEmpty("javascript:;").EncodeAsAttribute()}' target="_blank?{IKGD_SiteMode.IsTargetSupported}">${file.vNode.name}</a>
+      </div>  
+    </for>
+  </div>
+
+  <div class="box_links" if='links.Any()'>
+    <div class="title">${IKCMS_StaticResources.GetString("Label_Links")}</div>
+    <for each='var link in links'>
+      <div class="item">
+        <a href='${Url.Content(IKCMS_RouteUrlManager.GetMvcUrlGeneral(null, link.vNode.snode, null)).EncodeAsAttribute()}'>${link.vNode.name}</a>
+      </div>  
+    </for>
+  </div>  
+  
+</div>

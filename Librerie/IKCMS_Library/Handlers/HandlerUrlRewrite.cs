@@ -163,7 +163,7 @@ namespace Ikon.Handlers
         //
         if (dataOut.Any(r => r.Target_sNode != null || r.Target_rNode != null))
         {
-          // cicciopizza: creare helper che non dipenda da fsOp istanziato ma che lo utilizzi solo on demand
+          // creare helper che non dipenda da fsOp istanziato ma che lo utilizzi solo on demand
           // fsOp ha un constructor non leggero e si puo' eliminare una creazione di connessione al DB
           // tutti i path accessibili, indipendentemente dalla lingua corrente
           var pathsAll = fsOp.PathsFromNodesExt(dataOut.Where(r => r.Target_sNode != null).Select(r => r.Target_sNode.Value).Distinct(), dataOut.Where(r => r.Target_rNode != null).Select(r => r.Target_rNode.Value).Distinct(), false, false, false).FilterCustom(new Func<IKGD_Path, bool>[] { IKGD_Path_Helper.FilterByRootCMS, IKGD_Path_Helper.FilterByActive, IKGD_Path_Helper.FilterByAreas, IKGD_Path_Helper.FilterByLanguageSingleOrNull }).ToList();

@@ -1,0 +1,6 @@
+
+variable @darkGreen is undefined on line 15 in file '../CSS/area_personale.less.css':
+ [14]: {
+ [15]:     border:solid 1px @darkGreen; width:100%; padding:5px; box-sizing:border-box; -moz-box-sizing:border-box;  
+       ---------------------^
+ [16]: }

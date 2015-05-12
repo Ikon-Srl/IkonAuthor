@@ -1,0 +1,21 @@
+﻿<use content="cms_section_title">
+  <if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+    # var ModelBC = ((ViewData.Model as IKCMS_ModelCMS_Interface).ModelRoot is IKCMS_ModelCMS_ArchiveBrowser_Interface) ? (ViewData.Model as IKCMS_ModelCMS_Interface).ModelRoot : (ViewData.Model as IKCMS_ModelCMS_Interface);
+    # var breadCrumbs = ViewData["breadCrumbs"] as IEnumerable<IKCMS_ModelCMS_BreadCrumbsElement> ?? (ModelBC != null ? ModelBC.BreadCrumbs : null);
+    # int? breadCrumbsSkipFirst = (int?)ViewData["breadCrumbsSkipFirst"];
+    # int? breadCrumbsSkipLast = (int?)ViewData["breadCrumbsSkipLast"];
+    <div class="section_title clickableBlock">
+      <if condition='breadCrumbs != null'>
+        # var breadCrumbsActive = breadCrumbs.Skip(breadCrumbsSkipFirst.GetValueOrDefault(0)).SkipLast(breadCrumbsSkipLast);
+        # //
+        # var index = 0;
+        # var frag = breadCrumbsActive.Skip(index).FirstOrDefault();
+        # //var frag = breadCrumbsActive.SkipLast(index).LastOrDefault();
+        # //
+        <if condition='frag != null'>
+          <a href='${frag.Url.EncodeAsAttributeUrl()}?{frag.Url.IsNotEmpty()}' class="clickableBlockLink" rel="nofollow">${frag.Text}</a>
+        </if>
+      </if>
+    </div>
+  </if>
+</use>

@@ -1,0 +1,12 @@
+<viewdata model="Ikon.Indexer.IKGD_LuceneDocCollection"/>
+# Ikon.Filters.IKGD_HtmlCleaner filter = ViewData["FilterHtml"] as Ikon.Filters.IKGD_HtmlCleaner;
+
+<div class="item clickableBlock">
+    <img src='${Url.Content("~/Content/LIBs/Images/Search/{0}.png".FormatString(Model.isUnstructured ? "icona_all" : "icona_pag"))}' alt="." />
+    <a href='${Model.isUnstructured ? Model.UrlDownload : Model.UrlSEO}' class="link_search clickableBlockLink append_UrlBack">
+      ${filter.Parse(Model.Title)}
+    </a>
+  <div class="text">${filter.Parse(Model.TextFormatted)}</div>
+  <div class='clearfloat'></div>
+</div>
+

@@ -1,0 +1,27 @@
+﻿<viewdata model="IKCMS_ModelCMS_WidgetCMS_ImageCMS"/>
+# string streamName = "popup";
+# MultiStreamInfo4Settings imageInfo = Model.VFS_Resource.ResourceSettings.StreamInfos(null, streamName);
+# string styleStr = (imageInfo != null && imageInfo.Dimensions.X > 0 && imageInfo.Dimensions.Y > 0) ? "width:{0}px; height:{1}px;".FormatString(imageInfo.Dimensions.X, imageInfo.Dimensions.Y) : "";
+# string styleStrDati = (imageInfo != null && imageInfo.Dimensions.X > 0 && imageInfo.Dimensions.Y > 0) ? "width:{0}px;".FormatString(imageInfo.Dimensions.X, imageInfo.Dimensions.Y) : "";
+
+# ManagerTagFilter_PhotoGallery gallery = new ManagerTagFilter_PhotoGallery(null);
+# bool isAdmin = gallery.IsAdministrator;
+# IKCMS_ModelCMS_WidgetCMS_ImageCMS mdl = gallery.GetItemModel(ViewData, null, null, isAdmin, false) as IKCMS_ModelCMS_WidgetCMS_ImageCMS;
+
+
+${Model.VFS_ResourceLanguageKVT("HtmlVideo").ValueString}
+	# /*asdadassda
+		<div class="popup_photogallery">
+	  <img src='${UrlHelperExtension.UrlProxyVFS(Model, streamName, Url.TransparentImage(), false)}' style='${styleStr}' alt='$!{Model.VFS_Resource.ResourceSettings.Alt}' />
+	  <div class="clearfloat"></div>
+	  <div style='${styleStrDati};'>   
+		<div style="float:left;">
+		  <div class="titolo" if='!string.IsNullOrEmpty(Model.VFS_Resource.ResourceSettings.Title)'>$!{Model.VFS_Resource.ResourceSettings.Title}</div>
+		  <div class="text" if='!string.IsNullOrEmpty(Model.VFS_Resource.ResourceSettings.Text)'>$!{Model.VFS_Resource.ResourceSettings.Text}</div>
+		  <div class="author autoHide" if='!string.IsNullOrEmpty(Model.VFS_Resource.ResourceSettings.Author)'>Autore: $!{Model.VFS_Resource.ResourceSettings.Author}</div>
+		  <if condition='ViewData["pageHits"] != null'>
+			<div class="visualizzazioni">Visualizzazioni: $!{ViewData["pageHits"]}</div>
+		  </if><br /><br />
+		</div>
+	  </div>    
+	</div>*/

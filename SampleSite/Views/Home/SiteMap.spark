@@ -1,0 +1,35 @@
+<use master="Master_site" />
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+
+<!--<content name="head_CodeJS">
+  <script type="text/javascript">
+  /*<![CDATA[*/
+    $(document).ready(function() {
+      try {
+      } catch (e) { }
+			$('#mappa > ul.sitemap-menu > li').css('float','left');
+			$('#mappa > ul.sitemap-menu > li > ul').each(function() {
+        //$('li.section >ul', this).hide();
+        $('li.section >:not(ul)', this).bind('click', function(e) {
+          //if ($('>ul', $(this).closest('li')).length > 0 && $('>ul:visible', $(this).closest('li')).length == 0)
+          //{
+          //  e.preventDefault();
+          //  e.stopPropagation();
+          //}
+          //$('>.hitarea,>.hitarea-expanded', $(this).closest('li')).toggleClass('hitarea', ($('>ul:visible', $(this).closest('li')).length == 0));
+          //$('>.hitarea,>.hitarea-expanded', $(this).closest('li')).toggleClass('hitarea-expanded', ($('>ul:visible', $(this).closest('li')).length > 0));
+          $('>ul', $(this).closest('li')).toggle('fast');
+        });
+			});
+
+    });
+
+  /*]]>*/
+  </script>
+</content>-->
+
+<content name="cms_content_main">
+    <div id="mappa" class="pageSiteMap">
+		${Html.BuildSiteMapTree("sitemap-menu", null, 2)}
+    </div>                                       
+</content>

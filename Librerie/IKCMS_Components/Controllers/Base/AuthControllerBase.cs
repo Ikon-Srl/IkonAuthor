@@ -266,62 +266,6 @@ namespace Ikon.IKCMS
     }
 
 
-    [AcceptVerbs(HttpVerbs.Post)]
-    //[AuthorizeOFF(Order = 0)]
-    public ActionResult RegisterLocalConnection(string pass)
-    {
-      bool status = false;
-      try
-      {
-        if (Utility.HashMD5(pass) == "199d653a7c3d4efb4461cfb6e7414cc0")
-        {
-          HttpContext.Session["RegisteredLocalConnection"] = true;
-          status = true;
-        }
-      }
-      catch { }
-      return Content("RegisteredLocalConnection={0}".FormatString(status));
-    }
-
-
-    [AuthorizeLocal]
-    [AcceptVerbs(HttpVerbs.Get)]
-    public virtual ActionResult Impersonate(string user, int? IdLL)
-    {
-      bool allowedRequest = Request.IsLocal;
-      if (!allowedRequest && Utility.TryParse<bool>(IKGD_Config.AppSettings["AuthImpersonateNonLocalAllowed"], true))
-      {
-        allowedRequest |= IKGD_Config.IsLocalRequestWrapper;
-      }
-      if (!allowedRequest)
-      {
-        throw new Exception("Richiesta proveniente da una connessione non autorizzata.");
-      }
-      if (allowedRequest && IdLL != null && user.IsNullOrEmpty())
-      {
-        var llm = fsOp.DB.LazyLoginMappers.FirstOrDefault(r => r.Id == IdLL.Value);
-        if (llm != null)
-        {
-          var usr = Membership.GetUser(llm.UserId);
-          if (usr != null)
-          {
-            user = usr.UserName;
-          }
-        }
-      }
-      if (allowedRequest && user.IsNotNullOrWhiteSpace())
-      {
-        //LoginManager.LogoutUser();
-        bool logged = LoginManager.LoginUser(user);
-        if (logged && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]) && Utility.IsLocalToHostUrl(Request.QueryString["ReturnUrl"]))
-          return Redirect(Request.QueryString["ReturnUrl"]);
-      }
-      //
-      ViewData["Title"] = "Login";
-      return View("~/Views/Auth/Login");
-    }
-
-
     [AuthorizeLocal]
     [AcceptVerbs(HttpVerbs.Get)]
     public virtual ActionResult SetupUser(string user, string roles, string areas)

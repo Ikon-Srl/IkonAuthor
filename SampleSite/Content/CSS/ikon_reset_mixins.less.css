@@ -1,0 +1,71 @@
+/*Finchè non è completo meglio lasciarlo nel SampleSite, poi in caso lo sposteremo nell'ikon portal*/
+
+/*RESET*/
+ul{margin:0px; padding:0px; list-style-type:none;}
+
+/*CLASS AND MIXINS*/
+.clearfloat{clear:both;}
+.left{float:left;}
+.right{float:right;}
+.equalHeight
+{
+    overflow: hidden;
+    .col
+    {
+        margin-bottom: -99999px;
+	    padding-bottom: 99999px;
+    }
+}
+.borderBox
+{
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;    
+}
+.setTransform(@value)
+{
+    -webkit-transform:@value;    
+    -moz-transform:@value;    
+    -ms-transform:@value;    
+    -o-transform:@value;    
+    transform:@value;    
+}
+.setTransition(@value) 
+{
+    -webkit-transition:@value;    
+    -moz-transition:@value;    
+    -ms-transition:@value;    
+    -o-transition:@value;    
+    transition:@value;    
+}
+.setTransitionDelay(@value) 
+{
+    -webkit-transition-delay: @value;
+    -moz-transition-delay: @value;
+    -o-transition-delay: @value;
+    transition-delay: @value;
+}
+
+.spinner(@value)
+{
+  -webkit-animation: spinnerAnimation @value linear infinite;
+  -moz-animation:    spinnerAnimation @value linear infinite;
+  -o-animation:      spinnerAnimation @value linear infinite;
+  animation:         spinnerAnimation @value linear infinite;
+}
+@-webkit-keyframes spinnerAnimation {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes spinnerAnimation {
+  0%   { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); }
+}
+@-o-keyframes spinnerAnimation {
+  0%   { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); }
+}
+@keyframes spinnerAnimation {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

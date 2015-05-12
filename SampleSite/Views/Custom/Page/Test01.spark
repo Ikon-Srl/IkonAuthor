@@ -1,0 +1,132 @@
+<use master="Application" />
+
+<content name="body_Main">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Project name</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li class="dropdown-submenu">
+                    <a href="#">Another action</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">level 3.1</a></li>
+                      <li><a href="#">level 3.2</a></li>
+                      <li><a href="#">level 3.3</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="E-mail">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+      
+      <div class="row">
+        <div class="span12">
+		  <a class="autoPopup" href="~/Content/Images/Demo/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="~/Content/Images/Demo/1_s.jpg" alt="" /></a>
+		  <a class="autoPopup" href="~/Content/Images/Demo/2_b.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="~/Content/Images/Demo/2_s.jpg" alt="" /></a>
+		  <a class="autoPopup" href="~/Content/Images/Demo/3_b.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="~/Content/Images/Demo/3_s.jpg" alt="" /></a>
+		  <a class="autoPopup" href="~/Content/Images/Demo/4_b.jpg" data-fancybox-group="gallery" title="Sed vel sapien vel sem uno"><img src="~/Content/Images/Demo/4_s.jpg" alt="" /></a>
+        </div>
+        <div class="span2">
+          <input type="text" class="span2" data-provide="datepicker" data-date-format="mm-dd-yyyy" value="02-16-2012" />
+        </div>
+        <div class="span2">
+          <input type="text" class="span2" data-provide="datepicker" data-date-format="yyyy-mm-dd" value="2012-09-19" />
+          <a class="btn" href="#http://www.ikon.it/" rel="nofollow" >test no google</a>
+        </div>
+        <div class="span2 clickableBlock">
+          testo qualunque<br/>
+          <a class="btn autoConfirm clickableBlockLink" href="javascript:;" data-autoconfirm="te xe sicuro?">test popup</a><br/>
+          riga 3<br/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12 ajaxLoadContainer">
+          <a class="btn ajaxLoad" href="~/Debug/Debug2">load ajax</a>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Company 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+</content>
+
+
+<content name="tail_CodeJS">
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+      //bootbox.confirm('test popup', function(result) { if (result) { } });
+      //bootbox.alert('test popup', function(result) { if (result) { } });
+
+    });
+
+  </script>
+</content>
+
+<content name="tail_IncludeJS">
+  <!--<script type="text/javascript" src='${Url.AutoVersioning("~/Content/LIBs/FancyBox/jquery.fancybox.js")}'></script>-->
+</content>
+<content name="head_IncludeCSS">
+  <!--<link rel="stylesheet" type="text/css" href='${Url.AutoVersioning("~/Content/LIBs/DatePicker/css/datepicker.css")}' />-->
+</content>

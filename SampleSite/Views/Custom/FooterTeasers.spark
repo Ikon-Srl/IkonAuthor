@@ -1,0 +1,3 @@
+﻿
+# var mdl = (ViewData.Model is IKCMS_ModelCMS_GenericBrickInterface) ? (ViewData.Model as IKCMS_ModelCMS_GenericBrickInterface) : null;
+

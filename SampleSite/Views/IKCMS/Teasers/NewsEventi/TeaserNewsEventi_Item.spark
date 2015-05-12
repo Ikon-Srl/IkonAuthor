@@ -1,0 +1,29 @@
+﻿<viewdata model="IKCMS_ModelCMS_ArchiveBrowserItem_Interface"/>
+# string placeholderContainer = ViewData[TeasersHelperExtension.ViewDataPlaceholderName] as string;
+# string templateContainer = ViewData[TeasersHelperExtension.ViewDataContainerTemplateName] as string;
+# string cssClassContainer = ViewData[TeasersHelperExtension.ViewDataContainerCssClass] as string;
+# int itemIndex = (int)(ViewData[TeasersHelperExtension.ViewDataItemIndex] ?? 0);
+# string cssClass = Model.CssClass;
+<div class="item clickableBlock ${cssClass}" if='Model != null'>
+  # string title = Model.VFS_ResourceLanguageKVT("Title").ValueStringNN;
+  # string text = Model.VFS_ResourceLanguageKVT("Abstract").ValueStringNN;
+  # string dateFormat = IKCMS_StaticResources.GetString("Dates_FormatShort");
+  # int textMaxChars = 200;
+  # bool truncatetextOnClient = true;
+
+  # string streamSelector = null;
+  # streamSelector = streamSelector ?? (Regex.IsMatch(templateContainer, @".*", RegexOptions.IgnoreCase | RegexOptions.Singleline) ? "thumb" : null);
+  <if condition='streamSelector.IsNotEmpty() && Model.HasStream(streamSelector)'><div class="image">${Model.ImageCMS(streamSelector, "image", null)}</div></if>
+
+  <div class="date">$!{Model.DateNode.ToString(dateFormat)}<if condition='Model.DateNodeAux != null'> ${IKCMS_StaticResources.GetString("Dates_RangeSeparator")} $!{Model.DateNodeAux.Value.ToString(dateFormat)}</if></div>
+  <div class="title" if='title.IsNotNullOrWhiteSpace()'><h4><a href='${Model.UrlCanonical}' class="clickableBlockLink">${title.EncodeAsHtml()}</a></h4></div>
+  <if condition='truncatetextOnClient'>
+    <div class="text ellipsis-block">${text}</div>
+  </if>
+  <else>
+    <div class="text">${(textMaxChars <= 0) ? text : Html.HtmlFilter().ParseAndTruncate(text, textMaxChars, true, "...")}</div>
+  </else>
+  
+  <div class="link"><a href='${Model.UrlCanonical}' class="clickableBlockLink append_UrlBack"><i class="icon-download"></i></a></div>
+  
+</div>

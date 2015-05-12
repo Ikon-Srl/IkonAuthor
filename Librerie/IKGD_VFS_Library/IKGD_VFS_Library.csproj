@@ -165,27 +165,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="INFO.txt" />
-    <Content Include="SQL\SQL_NORMALIZATION.txt" />
-    <Content Include="SQL\Misc\SQL_ANALISYS_01.txt" />
     <Content Include="SQL\DUPLICAZIONE_IKGD_CONFIG.txt" />
     <Content Include="SQL\SQL_IKGD_CONFIG_CLEANUP_01.txt" />
-    <Content Include="SQL\SQL_FAILOVER.txt" />
-    <Content Include="SQL\SQL_LOGFILES.txt" />
-    <Content Include="SQL\Misc\SQL_UPDATE_SCHEMA_DATA_03.txt" />
-    <Content Include="SQL\Misc\SQL_UPDATE_SCHEMA_DATA_02.txt" />
-    <Content Include="SQL\Misc\SQL_INDICI_03.txt" />
-    <Content Include="SQL\Misc\SQL_UPDATE_SCHEMA_DATA.txt" />
-    <Content Include="SQL\Misc\SQL_TOOLS_01.txt" />
-    <Content Include="SQL\Misc\SQL_EXAMPLE_01.txt" />
-    <Content Include="SQL\Misc\SQL_INDICI_01.txt" />
-    <Content Include="SQL\Misc\SQL_INDICI_02.txt" />
     <Content Include="SQL\SQL_SUPPORT.txt" />
     <Content Include="Data\dbml.Associations.Reference.xml" />
-    <Content Include="TODO.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\builder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

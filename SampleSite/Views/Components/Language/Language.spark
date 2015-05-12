@@ -1,0 +1,9 @@
+<use content="cms_language_manager">
+  <div class="lingua hover" onclick="$('#language_selector').toggle(250);" onkeypress="$('#language_selector').toggle(250);">
+    <!--${IKCMS_StaticResources.GetString("Label_Language")}: ${global::Custom.Controllers.LanguageController.GetLanguageLabel(IKGD_Language_Provider.Provider.LanguageNN)}&nbsp;-->
+    <img src='${Url.Content("~/Content/LIBs/Images/Bandiere/small_{0}.png".FormatString(IKGD_Language_Provider.Provider.LanguageNN))}' alt="language" />&nbsp;<i class="icon-arrow-down"></i>
+    <div id="language_selector" style="display:none;">
+      ${Html.Partial("~/Views/Components/Language/LanguagePopup")} 
+    </div> 
+  </div>
+</use>

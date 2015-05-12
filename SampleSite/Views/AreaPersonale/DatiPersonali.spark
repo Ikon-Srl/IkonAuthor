@@ -1,0 +1,63 @@
+<use master="Master_AreaPersonale"/>
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+# var anagraficaMain = ViewData["anagraficaMain"] as Custom.DB.LazyLogin_AnagraficaMain;
+
+<content name="title">Area personale</content>
+<content name="TitleH1">Area personale</content>
+
+<content name="areapersonale_main">
+    <div class="registerPage">
+        <h1>Dati personali</h1>
+        <br/>
+		<form>
+          <!--<div class="intro">
+	        ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_main" })}
+          </div>-->
+          <div class="dati_personali">
+		    <table border="0" cellspacing="0" cellpadding="0">
+		        <tr>
+                  <td class="colonna_label"><label for="readonly_userName">E-mail di registrazione*</label></td>
+                  <td class="colonna_field"><input id="readonly_userName" type="text" name="readonly_userName"  value='$!{MembershipHelper.UserName}' readonly="readonly" disabled="disabled" /></td>		    
+				  <td class="colonna_separator"></td>      
+				  <td class="colonna_label">&nbsp;</td>
+				  <td class="colonna_field">&nbsp;</td> 
+		        </tr>
+		        <tr>
+					<td class="colonna_label"><label for="input_Nome">Nome*</label></td>
+                    <td class="colonna_field"><input id="input_Nome" type="text" name="input_Nome" value='$!{anagraficaMain.Nome}' /></td>
+					<td class="colonna_separator"></td>      
+				  <td class="colonna_label"><label for="input_Cognome">Cognome*</label></td>
+					<td class="colonna_field"><input id="input_Cognome" type="text" name="input_Cognome" value='$!{anagraficaMain.Cognome}' /></td>
+                </tr>
+                <tr>
+                  <td class="colonna_label"><label for="input_Indirizzo">Indirizzo</label></td>       
+                  <td class="colonna_field"><input id="input_Indirizzo" type="text" name="input_Indirizzo" value='$!{anagraficaMain.Indirizzo}' /></td>
+                  <td class="colonna_separator"></td>      
+				  <td class="colonna_label"><label for="input_CAP">CAP</label></td>
+				  <td class="colonna_field"><input id="input_CAP" type="text" name="input_CAP" value='$!{anagraficaMain.CAP}' maxlength="5" /></td>
+                  </tr>
+                <tr>
+                  <td class="colonna_label"><label for="input_Comune">Citt&agrave;</label></td>
+                  <td class="colonna_field"><input id="input_Comune" type="text" name="input_Comune" value='$!{anagraficaMain.Comune}' /></td>
+                  <td class="colonna_separator"></td>      
+				  <td class="colonna_label"><label for="input_Provincia">Provincia</label></td>            
+                  <td class="colonna_field">${HelperExtensionCommon.DDL_HelperSimple("input_Provincia", HelperExtensionCustom.DC.IK_ANA_Provincias.OrderBy(r => r.Nome).Select(r => new SelectListItem() { Value = r.Sigla, Text = r.Nome, Selected = string.Equals(r.Sigla, anagraficaMain.Provincia) }), "campo_contatto_select", null, string.Empty)}</td>
+                </tr>
+                
+               <tr>
+                 <td class="colonna_label"><label for="input_EMail">Email</label></td>
+                 <td class="colonna_field"><input id="input_EMail" type="text" name="input_EMail"  value='$!{anagraficaMain.EMail}' /></td>           
+                 <td class="colonna_separator"></td>
+                 <td class="colonna_label"><label for="input_Telefono">Telefono</label></td>
+                 <td class="colonna_field"><input id="input_Telefono" type="text" name="input_Telefono"  value='$!{anagraficaMain.Telefono}' /></td>           
+               </tr> 
+             </table>
+          </div>
+           <br />
+            <input type="hidden" name="successUrl" value='${Request.Url.ToString().EncodeAsAttribute()}' />
+            <a href="javascript:;" class="salva submit_link buttonStyle formSubmitWithJsonReturnLive">Salva le modifiche</a>
+           <br />           
+        </form>
+   </div>    
+</content>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MailTemplate>
+  <!--<from address="no-reply@example.com">XYZ</from>-->
+  <to address="no-reply@example.com">XYZ</to>
+  <subject>Form di contatto</subject>
+  <body>
+<![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Form di contatto</title>
+</head>
+
+<body style="background-color: #eeeeee;margin: 0px;font-family: Arial;font-size: 20px;">
+	<div style="width: 600px;margin: 0px auto;">
+		<div>
+			<img src="{$baseUrl}Content/Images/mail/logo.jpg">
+		</div>
+		<div style="background-color: #fff;margin-top: 15px;padding: 50px 35px;">
+			Gentile <span style="color: #afc149;">Amministratore</span>,<br>
+			di seguito i dati ricevuti dal <span  style='color: #afc149'>Form di Contatto</span><br/>
+      <br>
+      <div style="color: #afc149; margin-bottom:5px;">Dati Utente</div>
+      <table cellpadding='0' cellspacing='0'>
+        <tr><td width='100'>Nome:</td><td>{$Input_Nome}</td></tr>
+        <tr><td>Cognome:</td><td>{$Input_Cognome}</td></tr>
+        <tr><td>Indirizzo:</td><td>{$Input_Indirizzo}</td></tr>
+        <tr><td>Civico:</td><td>{$Input_NumeroCivico}</td></tr>
+        <tr><td>Cap:</td><td>{$Input_CAP}</td></tr>
+        <tr><td>Città:</td><td>{$Input_Citta}</td></tr>
+        <tr><td>Provincia:</td><td>{$Input_Provincia}</td></tr>
+        <tr><td>Nazione:</td><td>{$Input_Nazione}</td></tr>
+        <tr><td>Telefono:</td><td>{$Input_Telefono}</td></tr>
+        <tr><td>Fax:</td><td>{$Input_Fax}</td></tr>
+        <tr><td>E-Mail:</td><td>{$Input_Email}</td></tr>
+      </table>
+      <br/>
+    <div style="color: #afc149; margin-bottom:5px;">Accettazioni</div>
+    <table cellpadding='0' cellspacing='0'>
+      <tr><td>Informativa e richiesta di consenso:</td><td>OK</td></tr>
+    </table>
+    <br/>
+    <div style="color: #afc149; margin-bottom:5px;">Messaggio</div>
+    {$Input_Testo}
+    <br/>
+		</div>
+		<div><img src="{$baseUrl}Content/Images/mail/footer_ombra.jpg"></div>
+	</div>
+</body>
+
+</html>
+]]>
+  </body>
+</MailTemplate>

@@ -1,0 +1,156 @@
+<use master="Master_site_full" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Page_Interface"/>
+
+# var ModelPage = (ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).ModelRoot;
+# ViewData["breadCrumbs"] = new List<IKCMS_ModelCMS_BreadCrumbsElement> { new IKCMS_ModelCMS_BreadCrumbsElement(null, null, "Contatto") };
+# var texts = Model.Models.OfType<IKCMS_ModelCMS_WidgetCMS_Text>().ToList();
+
+<content name="cms_content_main">
+    <div class="pageContatti">
+
+    
+    <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<global::Custom.Controllers.FormsController>(c => c.Contatto(null))}'>
+      <table class="contenitore_contatto">
+        <tr>
+          <td class="colonna_label">
+            <label for="Input_Nome">${ResourcesCustom.Contatto_Nome}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Nome" type="text" class="campo_contatto_text" />
+          </td>
+          <td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="Input_Cognome">${ResourcesCustom.Contatto_Cognome}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Cognome" type="text" class="campo_contatto_text" />
+          </td>
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="Input_Indirizzo">${ResourcesCustom.Contatto_Indirizzo}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Indirizzo" type="text" class="campo_contatto_text" />
+          </td>
+          <td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="Input_NumeroCivico">${ResourcesCustom.Contatto_Numero}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_NumeroCivico" type="text" class="campo_contatto_text" />
+          </td>
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="Input_CAP">${ResourcesCustom.Contatto_Cap}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_CAP" type="text" class="campo_contatto_text" />
+          </td>
+          <td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="Input_Citta">${ResourcesCustom.Contatto_Citta}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Citta" type="text" class="campo_contatto_text" />
+          </td>
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="Input_Provincia">${ResourcesCustom.Contatto_Provincia}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Provincia" type="text" class="campo_contatto_text" />
+          </td>
+          <td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="Input_Nazione">${ResourcesCustom.Contatto_Nazione}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Nazione" type="text" class="campo_contatto_text" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="titolo_argomento">
+            <div>${ResourcesCustom.Contatto_TitoloTel}</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="Input_Telefono">${ResourcesCustom.Contatto_Tel}</label>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Telefono" type="text" class="campo_contatto_text" />
+          </td>
+          <td class="colonna_separator"></td>
+          <td class="colonna_label">
+            <label for="Input_Fax">${ResourcesCustom.Contatto_Fax}</label>
+          </td>
+          <td class="colonna_field">
+            <input name="Input_Fax" type="text" class="campo_contatto_text" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" class="titolo_argomento">
+            <div>${ResourcesCustom.Contatto_TitoloMail}</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="colonna_label">
+            <label for="Input_Email">${ResourcesCustom.Contatto_Mail}</label>
+            <span class="asterisco">*</span>
+          </td>
+          <td class="colonna_field" colspan="4">
+            <input name="Input_Email" type="text" class="campo_contatto_text" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" class="titolo_argomento">
+            <div>${ResourcesCustom.Contatto_TitoloCommento}</div></td>
+        </tr>
+        <tr>
+          <td class="colonna_label" valign="top">
+            <label for="Input_Testo">${ResourcesCustom.Contatto_Testo}</label>
+          </td>
+          <td colspan="4">
+            <textarea name="Input_Testo" class="campo_contatto_textarea"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <br />
+            <br />
+            <strong>${ResourcesCustom.Contatto_TitoloPrivacy}</strong>
+            <br />
+            <br />${ResourcesCustom.Contatto_TestoPrivacy}
+            <br />
+            <br />
+            <input id="privacy" name="privacy" type="checkbox" value="true" class="blank" />
+            <label for="privacy">${ResourcesCustom.Contatto_AccettoPrivacy}</label><span class="asterisco">*</span>
+            <br />
+            <br />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <a href="javascript:;" class="buttonStyle formSubmitWithJsonReturn">${ResourcesCustom.Contatto_InviaPrivacy}</a>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+      </div>
+</content>

@@ -1,0 +1,18 @@
+﻿# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+<if condition='mdl != null'>
+  # var immagini = mdl.Models.OfType<Ikon.IKCMS.IKCMS_ModelCMS_WidgetCMS_ImageCMS>().Where(r => r.Category == "image_photogallery");
+  # string popupView = null;
+  # //popupView = Model.TemplateInfo.ViewPaths["popup"] ?? "~/Views/IKCMS/Templates/Galleries/Template_GalleryPhoto_popup";
+
+  <div class='gallery'>
+    <for each='var immagine in immagini'>
+      <if condition='popupView.IsNotEmpty()'>
+        <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithView(null, immagine.rNode, popupView)).EncodeAsAttribute()}' class="autoPopupAny" data-fancybox-type='ajax' rel="gallery">
+          ${immagine.ImageCMS("thumb", Url.TransparentImage(), null, null, null)}
+        </a>
+      </if><else>
+        ${immagine.ImageCMS_WithLink("thumb", "popup", null, "autoPopup", null, new { rel = "gallery" })}
+      </else>
+    </for>
+  </div>
+</if>

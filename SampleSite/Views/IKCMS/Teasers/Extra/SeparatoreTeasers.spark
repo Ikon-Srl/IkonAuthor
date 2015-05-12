@@ -1,0 +1,4 @@
+﻿# int rowNumber = (int)ViewData.Model;
+# string style = string.Format("top:{0}px;", rowNumber * 230 + 90);
+
+</div><div class="row">

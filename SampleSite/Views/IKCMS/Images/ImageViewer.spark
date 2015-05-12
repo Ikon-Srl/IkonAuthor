@@ -1,0 +1,6 @@
+﻿<if condition='ViewData.Model is IKCMS_ModelCMS_GenericBrickInterface'>
+  # var mdl = ViewData.Model as IKCMS_ModelCMS_GenericBrickInterface;
+  # string streamSelector = ViewData[TeasersHelperExtension.ViewDataStreamSelector] as string;
+  # string cssClass = ViewData[TeasersHelperExtension.ViewDataContentCssClass] as string;
+  ${mdl.ImageCMS(streamSelector, cssClass, null)}
+</if>

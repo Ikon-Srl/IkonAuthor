@@ -290,19 +290,6 @@ namespace Ikon.IKCMS
     }
 
 
-    [AcceptVerbs(HttpVerbs.Get)]
-    public virtual ActionResult Impersonate(string user)
-    {
-      if (Request.IsLocal && user.IsNotNullOrWhiteSpace())
-      {
-        //LoginManager.LogoutUser();
-        bool logged = LoginManager.LoginUser(user);
-        return Login();
-      }
-      return View("~/Views/Auth/Login");
-    }
-
-
     public virtual ActionResult Unavailable()
     {
       return View("~/Views/Auth/Unavailable");

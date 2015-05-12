@@ -1,0 +1,36 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_ParagraphKVT"/>
+<if condition='Model != null'>
+  # string placeholderContainer = ViewData[TeasersHelperExtension.ViewDataPlaceholderName] as string;
+  # string templateName = Model.TemplateInfo.Name;
+  # string cssClass = Model.CssClass;
+  # int itemIndex = (int)(ViewData[TeasersHelperExtension.ViewDataItemIndex] ?? 0);
+
+  # string streamSelector = null;
+  # streamSelector = streamSelector ?? (Regex.IsMatch(Model.TemplateInfo.Name, @"image.*big", RegexOptions.IgnoreCase | RegexOptions.Singleline) ? "image_big" : null);
+  # streamSelector = streamSelector ?? (Regex.IsMatch(Model.TemplateInfo.Name, @"image", RegexOptions.IgnoreCase | RegexOptions.Singleline) ? "image" : null);
+
+  # bool truncatetextOnClient = false;
+  # int textMaxChars = Utility.TryParse<int?>(Model.VFS_ResourceNoLanguageKVT("TruncateLength").ValueString).GetValueOrDefault(800);
+  # bool truncate = Utility.TryParse<bool>(Model.VFS_ResourceNoLanguageKVT("Truncate").ValueString);
+
+  <div class="paragrafo ${placeholderContainer} ${templateName} ${cssClass} clickableBlock?{Model.HasLink}">
+    <div class="title" if='Model.Title.IsNotNullOrWhiteSpace()'>${Model.Title.EncodeAsHtml()}</div>
+    <if condition='Model.Text.IsNotNullOrWhiteSpace()'>
+      <if condition='truncatetextOnClient'>
+        <div class="text htmlTruncate?{truncate} { condensedLength:${textMaxChars}, moreText:'&lt;span&gt;${IKCMS_StaticResources.GetString("Paragraph_Expand")}&lt;/span&gt;', lessText:'&lt;span&gt;${IKCMS_StaticResources.GetString("Paragraph_Compact")}&lt;/span&gt;' }">
+          <if condition='streamSelector.IsNotEmpty() && Model.HasStream(streamSelector)'><div class="image">${Model.ImageCMS_WithLink(streamSelector, "popup", "image", "autoPopup", null, new { rel = "gallery" })}</div></if>
+          ${Model.Text}
+        </div>
+      </if>
+      <else>
+        <div class="text">
+          <if condition='streamSelector.IsNotEmpty() && Model.HasStream(streamSelector)'><div class="image">${Model.ImageCMS_WithLink(streamSelector, "popup", "image", "autoPopup", null, new { rel = "gallery" })}</div></if>
+          ${truncate ? Html.HtmlFilter().ParseAndTruncate(Model.Text, textMaxChars, true, "...") : Model.Text}
+        </div>
+      </else>
+    </if>
+    <if condition='Model.HasLink'><div class="link"><a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink append_UrlBack?{!Model.HasLinkTarget}"><i class="icon-download"></i></a></div></if>
+    <div class="clearfloat"></div>
+  </div>
+
+</if>

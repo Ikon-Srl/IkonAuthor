@@ -1,0 +1,5 @@
+﻿<span>
+  <if condition='ViewData.Model != null && ViewData.Model is Ikon.IKCMS.IKCMS_ModelCMS_Interface'>
+    NULL render for sNode: $!{(ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).sNode}
+  </if>
+</span>

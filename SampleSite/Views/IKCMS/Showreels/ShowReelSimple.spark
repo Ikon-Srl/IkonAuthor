@@ -1,0 +1,17 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+<div class="box_showreel">
+  <div class="items animationGroup">
+    ${Html.RenderPlaceholder(Model, new PlaceholderRenderParams { Recursive = true, ContainerPlaceHolderName = "cms_showreel", TemplateDefault = "~/Views/IKCMS/Showreels/ShowReelItem", TemplateVOID = null })}
+  </div>
+</div>
+
+<content name="tail_CodeJS">
+  <script type="text/javascript">
+  //<![CDATA[
+    $(document).ready(function() {
+      $('.box_showreel>.items').cycle({ timeout:10000, speed:500, fx: 'fade' });
+    });
+  //]]>
+  </script>
+</content>

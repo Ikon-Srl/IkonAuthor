@@ -949,10 +949,9 @@ namespace Ikon.IKCMS
   //
   // TODO:
   // rimuovere completamente dalla libreria IKCMS_ModelCMS_Event4PageItem_Interface, IKCMS_ModelCMS_Event4PageItem<T>, IKCMS_ResourceType_Event4PageKVT
-  // che sono usati solo da Calligaris
+  // che sono usati solo da vecchi siti
   // ci sono riferimenti a questa interface/classe in IKCMS_Components: CalendarHelpers, IKCMS_HelpersController
   // poi altri riferimenti vari in files spark sparsi nei vari progetti.
-  // ho verificato che la risorsa IKCMS_ResourceType_Event4PageKVT e' presente solamente nel DB Calligaris_CMS e in nessun altro:
   // select count(*) from ikgd_vdata where (flag_current=1 or flag_published=1) and manager_type='IKCMS_ResourceType_Event4PageKVT'
   //
   public interface IKCMS_ModelCMS_Event4PageItem_Interface : IKCMS_ModelCMS_Interface, IKCMS_ModelCMS_Widget_Interface, IKCMS_ModelCMS_HasTemplateInfo_Interface

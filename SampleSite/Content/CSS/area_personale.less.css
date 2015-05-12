@@ -1,0 +1,68 @@
+.fbConnectForm{display:inline-block;}
+.fConnect
+{
+    display:inline-block; height:25px; width:107px; background-image:url("../Images/fConnect.jpg");    
+}
+.fConnect:hover
+{
+    background-position:right center;
+}
+input[type=text],
+input[type=password],
+select,
+textarea
+{
+    border:solid 1px @darkGreen; width:100%; padding:5px; box-sizing:border-box; -moz-box-sizing:border-box;  
+}
+
+.cms_areapersonale_header
+{
+    height:70px;
+    background-image:#454545;  
+    background-image: radial-gradient(center top, ellipse cover, #aaa, #454545);
+    background-image: -o-radial-gradient(center top, ellipse cover, #aaa, #454545);
+    background-image: -ms-radial-gradient(center top, ellipse cover, #aaa, #454545);
+    background-image: -moz-radial-gradient(center top, ellipse cover, #aaa, #454545);
+    background-image: -webkit-radial-gradient(center top, ellipse cover, #aaa, #454545); 
+    
+    .menu_nominativo
+    {
+        color:#fff; line-height:40px;
+    }
+    .menu_AreaPersonale
+    {
+        .tabs
+        {
+            float:left;
+            a{line-height:30px; display:inline-block; padding:0px 20px; background-color:#ccc; color:#000;}
+            a.active_down{background-color:#fff;}
+        }
+        .gest_utente
+        {
+            float:right;
+            a{color:#fff;}
+        }
+    }
+}
+
+.areapersonale_main
+{
+    padding:0px 0px 20px; min-height:480px;    
+}
+
+.box_login
+{
+    padding-bottom:20px;
+    .submit_link{margin-right:20px;}    
+}
+
+.registerPage 
+{
+    .colonna_label,
+    .colonna_field,
+    .colonna_separator{padding-bottom:8px;}
+    
+        .colonna_label{width:170px;}
+        .colonna_field{width:200px;}
+        .colonna_separator{width:20px;}
+}

@@ -1,0 +1,28 @@
+﻿<viewdata model="IKCMS_ModelCMS_GenericBrickInterface"/>
+<if condition='Model != null'>
+  # string placeholderContainer = ViewData[TeasersHelperExtension.ViewDataPlaceholderName] as string;
+  # string templateContainer = ViewData[TeasersHelperExtension.ViewDataContainerTemplateName] as string;
+  # int itemIndex = (int)(ViewData[TeasersHelperExtension.ViewDataItemIndex] ?? 0);
+  # string cssClass = (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassForced] ?? Model.CssClass.NullIfEmpty() ?? (string)ViewData[TeasersHelperExtension.ViewDataContainerCssClassDefault];
+
+  # string codiceYoutube = Model.VFS_ResourceLanguageKVT("YoutubeCode").ValueStringNN;
+  # string title = Model.VFS_ResourceLanguageKVT("Title").ValueStringNN;
+  # string text = Model.VFS_ResourceLanguageKVT("Text").ValueStringNN;
+  
+  <!--<if condition='codiceYoutube.IsNullOrEmpty()'>-->
+	  <div class='item clickableBlock ${placeholderContainer} ${cssClass}'>
+		
+		<!--<div class="title" if='title.IsNotNullOrWhiteSpace()'>${title.EncodeAsHtml()}</div>
+		<div class="text ellipsis-block">${text}</div>-->
+	    
+		${Model.ImageCMS("image", "image", null)}
+	    
+		<a href='${Model.LinkUrl}' target='${Model.LinkTarget}?{Model.HasLinkTarget}' class="clickableBlockLink append_UrlBack?{!Model.HasLinkTarget}" if='Model.HasLink'></a>
+	    
+	  </div>
+  <!--</if><else>
+	 <a href="http://www.youtube.com/v/${codiceYoutube}?version=3&rel=0">${title}</a>
+  </else>-->
+  
+  
+</if>

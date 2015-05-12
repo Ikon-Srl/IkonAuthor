@@ -1,0 +1,5 @@
+﻿<viewdata model="IKCMS_ModelCMS_Interface"/>
+# string cacheKey = FS_OperationsHelpers.ContextHashNN("FooterTeasers");
+<cache key="cacheKey" expires="DateTime.UtcNow.AddSeconds(600)">
+  # //Html.RenderAction<global::Custom.Controllers.CustomController>(c => c.FooterTeasers("Home/FooterTeasers"));
+</cache>

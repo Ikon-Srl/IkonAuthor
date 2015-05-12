@@ -1,0 +1,25 @@
+﻿<use master="Master_site" />
+<viewdata model="IKCMS_ModelCMS_Interface"/>
+
+# ViewData["body_class"] = ViewData["body_class"] ?? "area_personale";
+
+<content name='cms_showreel'>
+	<div class="cms_areapersonale_header">
+		<div class="container">
+			<div class="menu_nominativo">Ciao ${MembershipHelper.FullName}, benvenuto nella tua Area personale</div>
+			<use content="header_tabs">
+				${Html.Partial("~/Views/AreaPersonale/AP_Header", ViewData.Model)}
+			</use>
+		</div>
+	</div>
+	
+</content>
+
+<content name='cms_content_full'>
+	<div class='areapersonale_main'>
+		<use content="areapersonale_main"></use>
+	</div>
+</content>
+
+<content name='cms_teasers_main'></content>
+

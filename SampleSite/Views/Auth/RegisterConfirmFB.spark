@@ -1,0 +1,84 @@
+﻿<use master="Master_AreaPersonale" />
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+# var dataFB = ViewData["dataFB"] as IDictionary<string, object>;
+
+<content name="meta_robots"><meta name="robots" content="noindex,nofollow" /></content>
+<content name="title"></content>
+<content name="areapersonale_main">
+
+  <h1>Conferma di registrazione</h1>
+  <div class="txt_contenuti">
+   ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_main" })}
+  </div> 
+  <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AuthController>(c => c.AutoRegisterConfirmFB(null, null))}' method="POST">
+    <div>
+      <input name="ReturnUrl" type="hidden" value='${Request.Params["ReturnUrl"].EncodeAsAttribute()}'/>
+      <input name="FB_token" type="hidden" value='${Request.Params["FB_token"].EncodeAsAttribute()}'/>
+
+      <table class="RegisterForm" border="0">      
+      <!-- DATI FB -->
+      <tr>
+            <td class="colonna_label"><strong>Nome:</strong></td>
+            <td class="">$!{dataFB.TryGetValueMV("first_name")}</td>
+      </tr>
+      <tr>
+            <td class="colonna_label"><strong>Cognome:</strong></td>
+            <td class="">$!{dataFB.TryGetValueMV("last_name")}</td>
+      </tr>
+      <tr>
+            <td class="colonna_label"><strong>E-mail:</strong></td>
+            <td class="">$!{ViewData["email"]}</td>
+      </tr>      
+     
+              <!--Nome completo: $!{dataFB.TryGetValueMV("name")}<br/>
+              Genere: $!{dataFB.TryGetValueMV("gender")}<br/>
+              Data di nascita: $!{dataFB.TryGetValueMV("birthdate")}-->
+
+              <td colspan="2" class="">
+              <br /><br />
+			    <strong>Informativa e richiesta di consenso</strong>
+                <br />
+				<textarea id="informativa" style="height:200px;">${Html.Partial("~/Views/AreaPersonale/Privacy01")}</textarea>
+                <br />
+                <br />
+                <span class="fucsia bold">DICHIARA:</span>
+                <div class="clearfloat"></div>
+                <br/>
+                <div class="dichiara">
+                Di aver avuto piena conoscenza dell'informativa resa e, conseguentemente:<br />
+                <br />
+                Presta il proprio consenso al trattamento dei Dati Personali per finalit&agrave; di <strong>"MARKETING DIRETTO"</strong> ovvero l'offerta
+                - anche personalizzata - di promozioni, sconti, agevolazioni ed altri servizi, nonch&egrave; l'invio - sotto qualunque forma connessa all'utilizzo
+                dei dati forniti ivi espressamente inclusi, a titolo esemplificativo e non esaustivo, invio di email, sms, mms, corrispondenza,
+                contatti telefonici diretti - di informazioni commerciali e promozionali nonch&egrave; di prodotti in omaggio, la partecipazione di manifestazioni
+                a premio, lo svolgimento di ricerche di mercato.
+                </div>
+                <!--<input id="flag_PrivacyCommerciale" type="radio" class="flag" name="flag_PrivacyCommerciale" value="true" checked="checked">SI</input>
+                &nbsp;&nbsp;
+                <input id="flag_PrivacyCommerciale" type="radio" class="flag" name="flag_PrivacyCommerciale" value="false">No</input>-->
+                <br />
+                <div class="dichiara">
+                Presta inoltre il proprio consenso per le finalit&agrave; di <strong>"PROFILAZIONE DELLA CLIENTELA"</strong> ovvero l'analisi delle scelte
+                di consumo attraverso la rilevazione della tipologia e frequenza degli acquisti nonch&egrave; l'elaborazione dei dati personali forniti
+				e/o desunti dalla navigazione sul sito www.XYZ.com (precisando che tale consenso viene espressamente prestato anche con riferimento
+				ai dati desumibili dalla navigazione effettuata sul sito www.XYZ.com in epoca anteriore alla registrazione e ricavabili dai cookies
+                non cancellati all'atto del completamento della procedura di registrazione) e utilizzabili al fine di definire il profilo commerciale,
+				abitudini e propensioni al consumo, di ciascun utente. Le informazioni cos&igrave; ottenute consentiranno a XYZ di strutturare
+                al meglio le proposte commerciali e le promozioni.
+                </div>
+                <!--<input id="flag_PrivacyAnalytics" type="radio" class="flag" name="flag_PrivacyAnalytics" value="true" checked="checked">SI</input>
+                &nbsp;&nbsp;
+                <input id="flag_PrivacyAnalytics" type="radio" class="flag" name="flag_PrivacyAnalytics" value="false">NO</input>-->
+                <br /><br />
+              </td>
+            </tr>
+      </table>
+      <div class="clearfloat"></div>
+      <div class="left"><a href='javascript:;' onclick="$(this).closest('form').submit()" class="buttonStyle">Acconsento</a></div>
+      <div class="right"><a href='${(Request.Params["ReturnUrl"] ?? Url.Content("~/")).EncodeAsAttribute()}' class="buttonStyle">Annulla</a></div>
+      <div class="clearfloat"></div>
+      <br/>
+    </div>
+  </form>
+</content>

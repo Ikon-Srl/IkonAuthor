@@ -1,0 +1,25 @@
+﻿<viewdata model="Ikon.IKCMS.ManagerTagFilterBase"/>
+
+# var tagsActive = Model.GetActiveFilterSets(IKGD_Language_Provider.Provider.LanguageNN, false);
+# var tags_tipi1 = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "TipiImmagine1", StringComparison.OrdinalIgnoreCase));
+# var tags_tipi2 = tagsActive.FirstOrDefault(r => string.Equals(r.Item1, "TipiImmagini2", StringComparison.OrdinalIgnoreCase));
+
+<div id="ricercaGallery">
+ <form action='${Request.Url.EncodeAsAttributeUrl()}' method="get" class='autoDisableInputs'>
+	<if condition='tags_tipi1 != null'>
+		Tipologia 1:<br/>
+		$!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_tipi1.Item4, "autoSubmitDDL", null, tags_tipi1.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}<br/>
+    </if>
+    <if condition='tags_tipi2 != null'>
+		Tipologia 2:<br/>
+		$!{HelperExtensionCommon.DDL_HelperSimple(Model.ParameterNameFilter, tags_tipi2.Item4, "autoSubmitDDL", null, tags_tipi2.Item3, IKCMS_StaticResources.GetString("Label_Tutti"))}<br/>
+    </if>
+    Testo:      <br/>
+	$!{Html.TextBox(Model.ParameterNameLucene, Request.Params[Model.ParameterNameLucene], new { @class = "autoWatermark {{ watermark:'{0}' }}".FormatString("keyword") })}<br/>
+    <div class="avvia_ricerca">
+      <button type="submit">Cerca</button> 
+    </div>
+
+  </form>
+
+</div>

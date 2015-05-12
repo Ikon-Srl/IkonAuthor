@@ -1,0 +1,32 @@
+﻿<use namespace="System"/>
+<use namespace="System.Collections.Generic"/>
+<use namespace="System.Text"/>
+<use namespace="System.Text.RegularExpressions"/>
+<use namespace="System.Linq"/>
+<use namespace="System.Xml.Linq"/>
+<use namespace="System.Web"/>
+<use namespace="System.Web.Mvc"/>
+<use namespace="System.Web.Mvc.Html"/>
+<use namespace="System.Web.Mvc.Ajax"/>
+<use namespace="System.Web.Routing"/>
+<use namespace="Microsoft.Web.Mvc"/>
+<use namespace="Spark"/>
+<use namespace="LinqKit"/>
+<use namespace="Autofac"/>
+<use namespace="Ikon"/>
+<use namespace="Ikon.GD"/>
+<use namespace="Ikon.IKCMS"/>
+<use namespace="Ikon.IKCMS.SparkIKCMS"/>
+<use namespace="Ikon.IKCMS.Library.Resources"/>
+<use namespace="Ikon.IKGD.Library.Resources"/>
+<use namespace="Custom.Controllers"/>
+<use namespace="IkonWeb.Controllers"/>
+<use namespace="SampleSiteWeb"/>
+
+<!--
+<macro name="NavItem" text="string" args="object">
+  <var values="new RouteValueDictionary(args)" />
+  <var action="Convert.ToString(values['action'])" />
+  <li class="selected?{Url.Action(action, values) == Context.Request.RawUrl}">!{Html.ActionLink(text, action, values)}</li>
+</macro>
+-->

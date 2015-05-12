@@ -1,0 +1,23 @@
+﻿<use master="Master_AreaPersonale"/>
+
+<content name="areapersonale_main">
+  <if condition='!MembershipHelper.IsAnonymous && MembershipHelper.IsMembershipVerified'>
+    <!--<h3 class="">Ciao ${MembershipHelper.FullName}, benvenuto nella tua Area personale</h3><br />-->
+    <div class="text">
+      Qui puoi modificare i tuoi dati e vedere gli ordini.<br />
+      <br /><br />
+      Registrati per richiedere l'accesso se non sei ${MembershipHelper.FullName}<br /><br />
+      <a href="~/AreaPersonale/Register" class="login submit_link buttonStyle">Registrati</a>
+    </div>     
+  </if>
+  <else>
+    <div class="text">
+      <h3 class="">Benvenuto nella tua Area personale</h3><br />
+      Fai login per accedere all'area personale<br /><br />
+      <a href="~/Auth/Login?ReturnUrl=${HttpContext.Current.Server.UrlEncode(Request.Url.ToString())}" class="login submit_link buttonStyle">Login</a><br />
+      <br /><br />
+      Oppure registrati per richiederne l'accesso<br /><br />
+      <a href="~/AreaPersonale/Register" class="login submit_link buttonStyle">Registrati</a>
+    </div>
+  </else>
+</content>

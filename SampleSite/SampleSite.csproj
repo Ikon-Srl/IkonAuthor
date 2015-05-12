@@ -1,0 +1,595 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C1F96D2-6E8A-11E1-A652-1BE54824019B}</ProjectGuid>
+    <ProjectTypeGuids>{f85e285d-a4e0-4152-9332-ab1d724d3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SampleSite_Web</RootNamespace>
+    <AssemblyName>SampleSite_Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.20820.16598, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\AutoFac\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\AutoFac\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web.Mvc, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\AutoFac\Autofac.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.3.0.5, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\DotLess\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\elmah\Bin\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="FusionCharts, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\FusionCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Common, Version=3.0.5701.0, Culture=neutral, PublicKeyToken=263fa4ef694acff6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Forms, Version=3.0.5701.0, Culture=neutral, PublicKeyToken=c508b41386c60f1d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Forms.Extended, Version=3.0.5701.0, Culture=neutral, PublicKeyToken=85eae29607c9f5f3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Forms.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Forms.Office, Version=3.0.5701.0, Culture=neutral, PublicKeyToken=d50c2c7452ba77d9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Forms.Office.dll</HintPath>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Forms.Professional, Version=3.0.5701.0, Culture=neutral, PublicKeyToken=6b5c571512bede7c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Forms.Professional.dll</HintPath>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Forms.Themes, Version=3.0.5701.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Forms.Themes.dll</HintPath>
+    </Reference>
+    <Reference Include="Gizmox.WebGUI.Server, Version=3.0.5701.0, Culture=neutral, PublicKeyToken=3de6eb684226c24d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="IKGD_Author_Catalog, Version=1.0.5610.19103, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\IKGD_Author_Catalog.dll</HintPath>
+    </Reference>
+    <Reference Include="IKGD_Author_CKEditor, Version=1.0.5610.19100, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\IKGD_Author_CKEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="IKGD_Author_Engine_v1, Version=1.0.5610.19107, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\IKGD_Author_Engine_v1.dll</HintPath>
+    </Reference>
+    <Reference Include="IKGD_Author_Modules_Library, Version=1.0.5610.19101, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\IKGD_Author_Modules_Library.dll</HintPath>
+    </Reference>
+    <Reference Include="IKGD_Author_Modules_Standard, Version=1.0.5610.19104, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\IKGD_Author_Modules_Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="IKGD_Author_Modules_StandardCMS, Version=1.0.5610.19105, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\IKGD_Author_Modules_StandardCMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Highlighter, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\Lucene.Net.Contrib.Highlighter.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.9.1.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\Lucene.Net\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\MVC\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib, Version=2.0.36.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\MVC\MvcContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib.FluentHtml, Version=2.0.36.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\MVC\MvcContrib.FluentHtml.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Recaptcha, Version=1.0.5.0, Culture=neutral, PublicKeyToken=9afc4d65b28c38c2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\ReCaptcha\Recaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.4.1976.34865, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\MVC\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark.Web.Mvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\MVC\Spark.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\TidyNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.4.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IkonPortal\DllExtra\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Code\Data\DataContext_Custom.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataContext_Custom.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Code\Data\DataContext_CustomExtensions.cs" />
+    <Compile Include="Code\HelperExtensionCustom.cs" />
+    <Compile Include="Code\ManagerTagsCustom.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AreaPersonaleController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
+    <Compile Include="Controllers\FormsController.cs" />
+    <Compile Include="Controllers\CustomController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IKCMSController.cs" />
+    <Compile Include="Controllers\Routes\RoutesCustom.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ResourcesCustom.Designer.cs">
+      <DependentUpon>ResourcesCustom.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\ResourcesSite.Designer.cs">
+      <DependentUpon>ResourcesSite.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <None Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\JS\Custom.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="Views\Shared\Debug.aspx" />
+    <None Include="Views\Custom\Footer.spark" />
+    <None Include="Views\Shared\_global.spark" />
+    <None Include="Views\Custom\Header.spark" />
+    <None Include="Views\Components\Misc\SearchCMS.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKCMS_Components\IKCMS_Components.csproj">
+      <Project>{FBFBC0EE-77EE-4643-BF75-251B4B41E1E2}</Project>
+      <Name>IKCMS_Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKCMS_Library\IKCMS_Library.csproj">
+      <Project>{316EBCA7-F84D-4893-8246-7E231B54B196}</Project>
+      <Name>IKCMS_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKCMS_ModelLibrary\IKCMS_ModelLibrary.csproj">
+      <Project>{9D90C7D6-9AB7-4774-A416-903CDCAA4820}</Project>
+      <Name>IKCMS_ModelLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKCMS_Resources\IKCMS_Resources.csproj">
+      <Project>{69B1D2C5-B4CD-42BA-BB10-EE3751150831}</Project>
+      <Name>IKCMS_Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_Auth_Library\IKGD_Auth_Library.csproj">
+      <Project>{8FC2631F-3CA9-43AE-A6D9-F3357A4025DD}</Project>
+      <Name>IKGD_Auth_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_Auth_Modules\IKGD_Auth_Modules.csproj">
+      <Project>{9E9650FB-714C-47B4-B574-97900141472A}</Project>
+      <Name>IKGD_Auth_Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_ConfigSettings\IKGD_ConfigSettings.csproj">
+      <Project>{A6FB392B-CC41-4877-BB2A-87BA7CFED799}</Project>
+      <Name>IKGD_ConfigSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_FilterParser\IKGD_FilterParser.csproj">
+      <Project>{1ED7FD2A-7CB2-40FE-B684-3D8BF9FB5866}</Project>
+      <Name>IKGD_FilterParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_ResourceType_Library\IKGD_ResourceType_Library.csproj">
+      <Project>{BD9888C2-C2C8-43BB-BF9E-077648C2D223}</Project>
+      <Name>IKGD_ResourceType_Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_ResourceType_Standard\IKGD_ResourceType_Standard.csproj">
+      <Project>{5171EBC4-143E-40D0-A4C8-E03F41F1D8EC}</Project>
+      <Name>IKGD_ResourceType_Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_ResourceType_Standard_CMS\IKGD_ResourceType_Standard_CMS.csproj">
+      <Project>{E6E12BC1-30C6-4D89-90E4-7033A06B682F}</Project>
+      <Name>IKGD_ResourceType_Standard_CMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_Utility\IKGD_Utility.csproj">
+      <Project>{BED413D6-21D5-45E5-8A98-E1D3D6D455C4}</Project>
+      <Name>IKGD_Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IkonPortal\Librerie\IKGD_VFS_Library\IKGD_VFS_Library.csproj">
+      <Project>{213AA23E-553C-47F2-BD09-CE74BAAE1BED}</Project>
+      <Name>IKGD_VFS_Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Author\FCKeditor_Author\Web.config" />
+    <Content Include="Content\Web.config" />
+    <None Include="Views\Auth\ChangePassword.spark" />
+    <None Include="Views\Auth\RegisterAjax.spark" />
+    <None Include="Views\Auth\Logout.spark" />
+    <None Include="Views\Auth\Login.spark" />
+    <None Include="Views\Forms\Contatto.spark" />
+    <None Include="Views\Home\Home.spark" />
+    <None Include="Views\Home\SiteMap.spark" />
+    <None Include="Views\Layouts\Master_site.spark" />
+    <None Include="Views\IKCMS\Templates\News\Template_news_detail.spark" />
+    <None Include="Views\IKCMS\Templates\News\Template_news_index.spark" />
+    <None Include="Views\IKCMS\Templates\Generic\Template_generic.spark" />
+    <None Include="Views\IKCMS\Templates\News\Template_news_item.spark" />
+    <None Include="Views\Search\Debug_SearchItem.spark" />
+    <None Include="Views\Search\Debug_Search.spark" />
+    <None Include="Views\Search\SearchItem.spark" />
+    <None Include="Views\Components\Navigation\Pager.spark" />
+    <None Include="Views\Search\Search.spark" />
+    <None Include="Views\Components\Links\LinksPages.spark" />
+    <None Include="Views\Components\Links\LinksNews.spark" />
+    <None Include="Views\Components\Menus\MenuNews.spark" />
+    <Content Include="Web.config" />
+    <None Include="Views\Components\Menus\MenuSX.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Offline.html" />
+    <Content Include="Author\Config\README.txt" />
+    <Content Include="Author\Config\SiteConfig.xml" />
+    <Content Include="Author\FCKeditor_Author\fckconfig.js" />
+    <Content Include="Author\FCKeditor_Author\fckstyles.xml" />
+    <Content Include="Author\FCKeditor_Author\fcktemplates.xml" />
+    <Content Include="Author\FCKeditor_Author\fck_editorarea.css" />
+    <Content Include="Author\FCKeditor_Author\images\bullet_testo.gif" />
+    <Content Include="Author\FCKeditor_Author\images\icona_important.gif" />
+    <Content Include="Author\FCKeditor_Author\images\icona_info.gif" />
+    <Content Include="Author\FCKeditor_Author\images\icona_nota.gif" />
+    <Content Include="clientaccesspolicy.xml" />
+    <Content Include="Content\MailTemplates\MailContatto.xml" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="Views\Auth\MsgApprovationChangeUser.xml" />
+    <Content Include="Views\Auth\MsgResetPassword.xml" />
+    <Content Include="Views\Auth\MsgWelcomeNewUser.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\IKCMS\Templates\Galleries\Popup_PhotoGallery.spark" />
+    <None Include="Views\Layouts\Master_site_full.spark" />
+    <None Include="Views\IKCMS\Templates\Galleries\Template_PhotoGallery.spark" />
+    <None Include="Views\Custom\FooterTeasers.spark" />
+    <None Include="Views\Components\Menus\MenuTop.spark" />
+    <None Include="Views\Components\Menus\MenuQuick.spark" />
+    <None Include="Views\Components\Misc\PrintButton.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Author\CKeditor_Author\contents.css" />
+    <Content Include="Author\CKeditor_Author\Web.config" />
+    <Content Include="Content\Minifier.xml" />
+    <Content Include="App_Browsers\GoogleAdsBot.browser" />
+    <None Include="Code\Data\DataContext_Custom.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataContext_Custom.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Views\Components\Navigation\Back.spark" />
+    <None Include="Views\Components\Navigation\Breadcrumbs_OLD.spark" />
+    <None Include="Views\Components\Language\Language.spark" />
+    <None Include="Views\Components\Language\LanguageForm.spark" />
+    <None Include="Views\Components\Language\LanguagePopup.spark" />
+    <None Include="Views\Components\Misc\SocialButtonsShareThis.spark" />
+    <None Include="Views\IKCMS\Links\LinkItem.spark" />
+    <None Include="Views\IKCMS\Links\LinksViewer.spark" />
+    <None Include="Views\IKCMS\Showreels\ShowReelItem.spark" />
+    <None Include="Views\IKCMS\Templates\Expired.spark" />
+    <None Include="Views\IKCMS\Templates\NULL.spark" />
+    <None Include="Views\IKCMS\Templates\Galleries\SearchBox.spark" />
+    <None Include="Views\IKCMS\Templates\Galleries\Popup_PhotoGalleryVotabile.spark" />
+    <None Include="Views\IKCMS\Templates\Generic\Template_generic_nomenu.spark" />
+    <None Include="Views\IKCMS\Widgets\WidgetDefault.spark" />
+    <None Include="Views\Components\Menus\MenuNewsSX.spark" />
+    <None Include="Views\Components\Menus\MenuNewsDX.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\CSS\main.less.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\dummy.txt" />
+    <Content Include="App_Data\EmbeddedResourcesVPP.list" />
+    <Content Include="Author\Web.config" />
+    <None Include="Code\Data\DataContext_Custom.dbml.layout">
+      <DependentUpon>DataContext_Custom.dbml</DependentUpon>
+    </None>
+    <None Include="Content\Compiled\css_admin.less" />
+    <None Include="Content\Compiled\css_AP.less" />
+    <None Include="Content\Compiled\css_main.less" />
+    <Content Include="blank.html" />
+    <Content Include="Content\Compiled\jsForms.min.js" />
+    <Content Include="Content\CSS\ikon_reset_mixins.less.css" />
+    <Content Include="Content\CSS\static_pages.less.css" />
+    <Content Include="Content\CSS\media_gallery.less.css" />
+    <Content Include="Content\CSS\news_eventi.less.css" />
+    <Content Include="Content\CSS\main_variables.less.css" />
+    <Content Include="Content\Compiled\css_admin.css" />
+    <Content Include="Content\Compiled\css_AP.css" />
+    <Content Include="Content\Compiled\css_main.css" />
+    <Content Include="Content\Compiled\jsBootstrap.min.js" />
+    <Content Include="Content\Compiled\jsCustom.min.js" />
+    <Content Include="Content\Compiled\jsLib.min.js" />
+    <Content Include="Content\CSS\area_personale.less.css" />
+    <Content Include="Content\CSS\admin.less.css" />
+    <Content Include="Content\CSS\showreel.less.css" />
+    <Content Include="Content\CSS\teaser.less.css" />
+    <Content Include="Content\JS\Plugins\jquery.cycle2.min.js" />
+    <Content Include="FB_receiver.html" />
+    <Content Include="humans.txt" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Views\Auth\MsgActivateUser.xml" />
+    <Content Include="Views\Auth\MsgWelcomeNewUserFB.xml" />
+    <EmbeddedResource Include="Content\LIBs\Bootstrap\less\forms.less" />
+    <None Include="Views\Admin\ActionsCustom.spark" />
+    <None Include="Views\AreaPersonale\AP_Header.spark" />
+    <None Include="Views\AreaPersonale\DatiPersonali.spark" />
+    <None Include="Views\AreaPersonale\Index.spark" />
+    <None Include="Views\AreaPersonale\Register.spark" />
+    <None Include="Views\Auth\FB_Connect.spark" />
+    <None Include="Views\Auth\RegisterConfirmFB.spark" />
+    <None Include="Views\Auth\Unavailable.spark" />
+    <None Include="Views\Components\DOM\Debug.spark" />
+    <None Include="Views\Components\Misc\LoginBox.spark" />
+    <None Include="Views\Components\Misc\SocialButtons.spark" />
+    <None Include="Views\Components\Navigation\Breadcrumbs.spark" />
+    <None Include="Views\Components\Navigation\readme.md" />
+    <None Include="Views\Components\Navigation\SectionTitle.spark" />
+    <None Include="Views\Custom\FooterTeasersGlobal.spark" />
+    <None Include="Views\Custom\Page\Test.spark" />
+    <None Include="Views\Custom\Page\Test01.spark" />
+    <None Include="Views\IKCMS\Examples\Aggregators.spark" />
+    <None Include="Views\IKCMS\Images\ImageViewer.spark" />
+    <None Include="Views\IKCMS\Paragraphs\Paragraph_generic.spark" />
+    <None Include="Views\IKCMS\Showreels\ShowReelVOID.spark" />
+    <None Include="Views\IKCMS\Showreels\ShowReelSimple.spark" />
+    <None Include="Views\IKCMS\Showreels\ShowReelWithTeaser.spark" />
+    <None Include="Views\IKCMS\Teasers\Extra\SeparatoreTeasers.spark" />
+    <None Include="Views\IKCMS\Teasers\NewsEventi\TeaserNewsEventi_Item.spark" />
+    <None Include="Views\IKCMS\Teasers\NewsEventi\TeaserNewsEventi_Rotator.spark" />
+    <None Include="Views\IKCMS\Teasers\TeaserItems\TeaserItem_Footer.spark" />
+    <None Include="Views\IKCMS\Teasers\TeaserViewers\TeaserViewer_Footer.spark" />
+    <None Include="Views\IKCMS\Teasers\TeaserViewers\TeaserViewerFade.spark" />
+    <None Include="Views\IKCMS\Teasers\TeaserViewers\TeaserViewerRotator.spark" />
+    <None Include="Views\IKCMS\Teasers\TeaserItems\TeaserItemGlobal.spark" />
+    <None Include="Views\IKCMS\Templates\Galleries\MiniGallery.spark" />
+    <None Include="Views\IKCMS\Templates\Galleries\Popup_VideoGallery.spark" />
+    <None Include="Views\IKCMS\Templates\Galleries\Template_VideoGallery.spark" />
+    <None Include="Views\Layouts\Application.spark" />
+    <None Include="Views\Layouts\Master_AreaPersonale.spark" />
+    <None Include="Views\Layouts\Master_site_REFERENCE.spark" />
+    <None Include="Views\Layouts\Master_REFERENCE.spark" />
+    <None Include="Views\Layouts\MasterPageNoAjax.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ResourcesCustom.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesCustom.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ResourcesSite.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesSite.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Ikon.IKCMS</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="Content\Data\" />
+    <Folder Include="Content\Favicons\" />
+    <Folder Include="Content\Flash\" />
+    <Folder Include="Content\Fonts\" />
+    <Folder Include="Content\Html\" />
+    <Folder Include="Content\Images\Demo\" />
+    <Folder Include="Content\Images\icone\" />
+    <Folder Include="Content\LIBs\Bootstrap\css\" />
+    <Folder Include="Content\LIBs\Bootstrap\img\" />
+    <Folder Include="Content\LIBs\Bootstrap\js\" />
+    <Folder Include="Content\LIBs\Bootstrap\js_extra\" />
+    <Folder Include="Content\LIBs\Bootstrap\js_min\" />
+    <Folder Include="Content\LIBs\Bootstrap\reparented\" />
+    <Folder Include="Content\LIBs\Columnizer\" />
+    <Folder Include="Content\LIBs\Cycle\" />
+    <Folder Include="Content\LIBs\Dates\DateFormatter\" />
+    <Folder Include="Content\LIBs\Dates\DatePicker\css\" />
+    <Folder Include="Content\LIBs\Dates\DatePicker\js\" />
+    <Folder Include="Content\LIBs\Dates\DatePicker\less\" />
+    <Folder Include="Content\LIBs\FancyBox\helpers\" />
+    <Folder Include="Content\LIBs\FitText\" />
+    <Folder Include="Content\LIBs\Forms\Captcha\imgs\" />
+    <Folder Include="Content\LIBs\Forms\Chosen\" />
+    <Folder Include="Content\LIBs\Forms\FCKEditor\" />
+    <Folder Include="Content\LIBs\Forms\ReCatptcha\" />
+    <Folder Include="Content\LIBs\Forms\Sisyphus\" />
+    <Folder Include="Content\LIBs\Forms\Validation\" />
+    <Folder Include="Content\LIBs\IkonAuthor\" />
+    <Folder Include="Content\LIBs\Images\Bandiere\" />
+    <Folder Include="Content\LIBs\Images\FileTypes\" />
+    <Folder Include="Content\LIBs\Images\Loader\" />
+    <Folder Include="Content\LIBs\Images\Search\" />
+    <Folder Include="Content\LIBs\Images\Social\" />
+    <Folder Include="Content\LIBs\JS_base\" />
+    <Folder Include="Content\LIBs\JS_extra\UI\i18n\" />
+    <Folder Include="Content\LIBs\Knockout\" />
+    <Folder Include="Content\LIBs\LINQ\" />
+    <Folder Include="Content\LIBs\Maps\GMaps\" />
+    <Folder Include="Content\LIBs\Mobile\" />
+    <Folder Include="Content\LIBs\ModalBootBox\" />
+    <Folder Include="Content\LIBs\NumberFormat\" />
+    <Folder Include="Content\LIBs\PictureFill\" />
+    <Folder Include="Content\LIBs\PrettyLoader\css\" />
+    <Folder Include="Content\LIBs\PrettyLoader\images\prettyLoader\" />
+    <Folder Include="Content\LIBs\PrettyLoader\js\" />
+    <Folder Include="Content\LIBs\Social\koottam\css\" />
+    <Folder Include="Content\LIBs\Social\koottam\img\" />
+    <Folder Include="Content\LIBs\Social\koottam\js\" />
+    <Folder Include="Content\LIBs\Social\Sharrre\" />
+    <Folder Include="Content\LIBs\SubcolumnsFractional\" />
+    <Folder Include="Content\LIBs\Texts\" />
+    <Folder Include="Content\LIBs\Truncate\" />
+    <Folder Include="Content\LIBs\UnderscoreJS\" />
+    <Folder Include="Content\LIBs\Video\FitVids\" />
+    <Folder Include="Content\XML\" />
+    <Folder Include="Models\Data\" />
+    <Folder Include="Views\Debug\" />
+    <Folder Include="Views\IKCMS\Bricks\" />
+    <Folder Include="Views\IKCMS\Templates\TagSearch\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v9.0\Gizmox.VWGApplication.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

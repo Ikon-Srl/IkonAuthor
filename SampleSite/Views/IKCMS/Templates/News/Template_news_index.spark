@@ -1,0 +1,33 @@
+<use master="Master_site" />
+<viewdata model="IKCMS_ModelCMS_Interface"/>
+
+# var ModelBrowser = Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_ArchiveBrowser_Interface>().FirstOrDefault();
+# var items = ModelBrowser.GetIndexItems(vfsNodeFetchModeEnum.vNode_vData, null);
+# var pager = items == null ? null : Ikon.IKCMS.Pagers.PagingHelperExtensions.FactoryPagerSimple(items, 10, null);
+# items = (pager == null) ? items : pager.ItemsVisible.ToList();
+# ViewData["breadCrumbsSkipLast"] = 1;
+
+<content name="cms_menu_nav">
+  ${Html.Partial("~/Views/Components/Menus/MenuNewsSX")}
+</content>
+
+<content name="cms_content_main">
+  <div class="txt_contenuti">
+    <!--<div style="float:right;"><a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<RSS_GeneratorController>(c => c.FeedAtom(ModelBrowser.sNode, null, null, null))}'><img src="~/content/images/icona_feed.jpg" height="16" width="16" style="border-width: 0;" alt=" " /></a></div>-->
+    <!--<div class="titolo"><h1>${ModelBrowser.TitleH1}: $!{Model.BackRecurseOnModels.OfType<IKCMS_ModelCMS_Page_Interface>().FirstOrDefault().BreadCrumbs.ReverseT().Skip(2).FirstOrDefault().Text}</h1></div>-->
+    <!--<div class="titolo"><h1>${ModelBrowser.TitleH1}: $!{IKCMS_ManagerIoC.requestContainer.ResolveNamed<FS_Operations>("readonly").PathsFromNodeExt(Model.sNode).FirstOrDefault().FolderFragment.Name}</h1></div>-->
+   <!--<div class="titolo" if='!string.IsNullOrEmpty(Model.TitleH1)'><h1 class="fucsia">${ModelBrowser.TitleH1}</h1></div>-->
+    <div id="news_lista">
+      <if condition='items != null && items.Any()'>
+        <for each='var item in items'>
+          ${Html.Partial(ModelBrowser.TemplateInfo.ViewPaths["item"] ?? "~/Views/IKCMS/Templates/Template_news_item", item)}
+        </for>
+      </if>
+    </div>
+    <div class="clearfloat"></div>
+    <div style="float:right;" if='pager != null && pager.PagerPageCount > 0'>${Html.Partial("~/Views/Components/Navigation/Pager", pager)}</div>
+    <div class="clearfloat"></div>
+  </div>
+</content>
+
+

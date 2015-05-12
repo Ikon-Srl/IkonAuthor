@@ -645,7 +645,6 @@ namespace Ikon.Indexer
                 //
                 // non usare la ricerca di path ottimizzata perche' non e' particolarmente efficiente per le bulk search
                 //
-                // cicciopizza
                 // sembra che ci siano dei problemi con le risorse nelle cartelle __Upload__
                 // se si usa la versione ottimizzata dei path non si entra in queste cartelle e lucene non processa gli allegati
                 // per testarlo vedere la intranet autovie, su rigenerazione completa lucene intercettare l'allegato con rNode=5442

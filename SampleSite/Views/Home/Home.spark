@@ -1,0 +1,20 @@
+﻿<use master="Master_site"/>
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+
+# ViewData["body_class"] = "home";
+
+
+<content name="cms_content_full">
+    <use content="cms_title_h1"><h1>${mdl.Return(m => m.TitleH1, ViewData["TitleH1"] ?? string.Empty)}</h1></use>
+	<use content="cms_title_h2"><h2>${mdl.Return(m => m.TitleH2, ViewData["TitleH2"] ?? string.Empty)}</h2></use>
+	<br/>
+	<use content="cms_content_extra">
+	  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_extra" })}
+	</use>
+	<use content="cms_content_main">
+	  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_content_main" })}
+	</use>
+	<use content="cms_teasers_aux3">
+	  ${Html.RenderPlaceholder(mdl, new PlaceholderRenderParams { Recursive = false, ContainerPlaceHolderName = "cms_teasers_aux3" })}
+	</use>
+</content>

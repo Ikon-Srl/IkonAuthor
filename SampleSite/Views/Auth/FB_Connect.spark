@@ -1,0 +1,102 @@
+﻿<content name="tail_CodeJS">
+  <script type="text/javascript">
+  /*<![CDATA[*/
+
+    var fb_initialized = false;
+    //var fb_permission_required = 'email';
+    var fb_permission_required = 'email,user_birthday,user_hometown,user_location';
+    var fb_message_box = null;
+    var fb_success_callback = null;  // funziona chiamata al termine delle operazioni di autentificazione/verifica
+    
+    Modernizr.load([{
+      load: '//connect.facebook.net/${IKGD_Language_Provider.Provider.GetCultureStringFromLanguage2(null).Replace("-", "_")}/all.js#xfbml=1',
+      complete: function(){
+        // Initialize FB
+        window.fbAsyncInit = function(){
+          FB.init({
+            appId: '${Ikon.IKCMS.FaceBook.FaceBookHelperSimple.AutoGetAppId("Auth")}',
+            channelUrl: '${Utility.ResolveUrlFull("~/Content/Html/FB_channel.html")}',
+            status: true,
+            cookie: true,
+            oauth: true,
+            xfbml: true
+          });
+          //
+          fb_initialized = true;
+          //
+        };
+      }
+    }]);
+
+
+    function AuthByFB() {
+      $('#FB_token').val('');
+      if (!fb_initialized)
+      {
+        messageBox("Facebook SDK non ready.");
+        return;
+      }
+      //
+      fb_message_box = messageBox("Richiesta di autenticazione con Facebook in corso.");
+      //
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          // check for permissions
+          FB.api('/me/permissions', function(rsp) {
+            //alert($.toJSON(rsp));
+            var vars = fb_permission_required.split(',');
+            var hasAllPermissions = true;
+            for (var i=0;i<vars.length;i++)
+              hasAllPermissions &= (rsp.data[0][vars[i]] == 1);
+            if (hasAllPermissions) {
+              if (response.authResponse.accessToken.length > 0) {
+                try { $('#FB_token').val(response.authResponse.accessToken).closest('form').submit(); } catch(ex) {}
+                try { fb_message_box.modal('hide'); } catch(ex) {}
+                if (typeof(fb_success_callback) == 'function') { fb_success_callback(); }
+              }
+            }
+            else {
+              CustomLoginFB();
+            }
+          });
+        } else if (response.status === 'not_authorized') {
+          CustomLoginFB();
+        } else {
+          CustomLoginFB();
+        }
+      });
+    }
+
+    function CustomLoginFB() {
+      FB.login(function(response) {
+        if (response.authResponse) {
+          // connected
+          if (response.authResponse.accessToken.length > 0) {
+            try { $('#FB_token').val(response.authResponse.accessToken).closest('form').submit(); } catch(ex) {}
+            try { fb_message_box.modal('hide'); } catch(ex) {}
+            if (typeof(fb_success_callback) == 'function') { fb_success_callback(); }
+            return;
+          }
+        } else {
+          // cancelled
+          try { fb_message_box.modal('hide'); } catch(ex) {}
+          fb_message_box = messageBox("Richiesta di autenticazione con Facebook fallita.");
+        }
+      }, {scope: fb_permission_required});
+    }
+
+
+  /*]]>*/
+  </script>
+</content>
+
+# /*
+<if condition='Ikon.IKCMS.FaceBook.FaceBookHelperSimple.AutoGetAppId("Auth").IsNotEmpty()'>
+  <!--<form action='${Url.GetMvcActionUrl<AuthController>(c => c.AuthFB(null))}'>-->
+  <form action='${Url.GetMvcActionUrl<AuthController>(c => c.AutoRegisterFB(null))}'>
+    <input id="FB_token" name="FB_token" type="hidden">
+    <if condition='Request.Params["ReturnUrl"].IsNotEmpty()'><input name="ReturnUrl" type="hidden" value='${Request.Params["ReturnUrl"].EncodeAsAttribute()}'></if>
+    <a href="javascript:;" onclick="AuthByFB();" class="fConnect"></a>
+  </form>
+</if>
+# */

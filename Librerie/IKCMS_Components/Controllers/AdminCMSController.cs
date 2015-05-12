@@ -98,12 +98,6 @@ namespace IkonWeb.Controllers
     public static string GetUrlStatistiche()
     {
       string url = null;
-      if (!string.IsNullOrEmpty(IKGD_Config.AppSettings["WebStatsCode"]))
-      {
-        string hash = Utility.HashMD5(IKGD_Config.AppSettings["WebStatsCode"] + "cane");
-        string baseUrl = IKGD_Config.AppSettings["WebStatsBaseUrl"] ?? "http://nlb1stats.ikon.it/cgi-bin/awstats.pl";
-        url = string.Format("{2}?config={0}&auth_code={1}", IKGD_Config.AppSettings["WebStatsCode"], hash, baseUrl);
-      }
       return url;
     }
 

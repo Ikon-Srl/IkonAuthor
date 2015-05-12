@@ -1,0 +1,8 @@
+﻿<use content="cms_back">
+  <if condition='ViewData.Model is IKCMS_ModelCMS_Interface'>
+    # var mdl = ViewData.Model as IKCMS_ModelCMS_Interface;
+    <if condition='mdl != null'>
+      <div class="backbutton"><a rel="nofollow" href='${mdl.UrlBack.EncodeAsAttribute()}' class="ajaxUpdate btn laquo">${IKCMS_StaticResources.GetString("Back_Button")}</a></div>
+    </if>
+  </if>
+</use>

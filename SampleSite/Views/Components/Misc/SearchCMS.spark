@@ -1,0 +1,9 @@
+﻿<use content="cms_search">
+  <form action='${IKCMS_RouteUrlManager.GetMvcActionUrl<SearchController>(c => c.SearchCMS(null))}' method="get">
+    <div class="box_search">
+      <label onclick="$(this).closest('form').submit();" class="label_search">${IKCMS_StaticResources.GetString("CmsSearch_Button")}</label>
+      <input type="text" name="searchCMS" value='${Request.Params["searchCMS"].EncodeAsAttribute()}' placeholder="${IKCMS_StaticResources.GetString("CmsSearch_Watermark")}" />
+      <label class="label_vai"><a href="javascript:;" onclick="$(this).closest('form').submit();">${IKCMS_StaticResources.GetString("CmsSearch_GO")}</a></label>
+    </div>
+  </form>
+</use>

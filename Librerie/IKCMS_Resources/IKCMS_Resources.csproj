@@ -461,7 +461,6 @@
     <EmbeddedResource Include="ResourcesVPP\Version_100\Scripts\modernizr.js" />
     <EmbeddedResource Include="ResourcesVPP\Version_100\Scripts\less.js" />
     <EmbeddedResource Include="ResourcesVPP\Version_100\Scripts\less-1.3.3.min.js" />
-    <Content Include="ResourcesVPP\Version_110\Content\TODO.txt" />
     <EmbeddedResource Include="ResourcesVPP\Version_110\Scripts\jquery-migrate-1.2.1.min.js" />
     <EmbeddedResource Include="ResourcesVPP\Version_110\Scripts\jquery-migrate.js" />
     <EmbeddedResource Include="ResourcesVPP\Version_110\crossdomain.xml" />

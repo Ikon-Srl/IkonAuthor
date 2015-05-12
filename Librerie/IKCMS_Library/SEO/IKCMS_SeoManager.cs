@@ -238,7 +238,7 @@ namespace Ikon.GD
               if (datas != null && datas.Any())
               {
                 //
-                // cicciopizza: questo blocco di codice sembra impattare significativamente sulle performance
+                // questo blocco di codice sembra impattare significativamente sulle performance
                 // bisogna cachare i risultati, generamente viene usato nel generatore di menu
                 //
                 dataOut = IKGD_SEO_Manager.MapOutcomingSet(datas).OrderBy(r => datas.IndexOfSortable(r)).ThenBy(r => r.Priority).ToList();

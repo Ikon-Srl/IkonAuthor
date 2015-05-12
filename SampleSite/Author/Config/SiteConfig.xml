@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<configuration>
+
+  <!-- ACL per i menu' di amministrazione -->
+  <main_admin_VFS UsersACL="root" LocalOnly="true" />
+  <VFS_AuthorModulesManager UsersACL="root" LocalOnly="true" />
+  <VFS_DB_Selector UsersACL="root" LocalOnly="true" />
+  <main_admin_users RolesACL="admin,Administrator" UsersACL="Administrator" />
+  <main_admin_roles RolesACL="admin,Administrator" UsersACL="Administrator" />
+  <manager_url_mapping RolesACL="" UsersACL="*" />
+  <customModuleAcl01 RolesACL="admin,Administrator" UsersACL="Administrator" Description="ACL custom per utilizzi specifici all'interno di un sito" />
+
+  <!-- settings per la customizzazione dei tabs dell'editor dei Tags -->
+  <IKCAT_Editor_TagsCloud RolesACL="" UsersACL="" Enabled="false" />
+
+  <IKCAT_Editor_Tags RolesACL="Administrator,TagEditor" UsersACL="" Enabled="true">
+    <CustomTab type="Ikon.IKCAT.Dialogs.TagsTxtPage" title="Testi multilingua" />
+  </IKCAT_Editor_Tags>
+
+  <IKCAT_Editor_Attributes RolesACL="Administrator" UsersACL="" Enabled="false" />
+  <IKCAT_Editor_AttributeSets RolesACL="Administrator" UsersACL="" Enabled="false" />
+
+  <!-- settings per l'editor delle risorse -->
+  <DialogResourceManager>
+    <Dialog Width="800" Height="500" />
+  </DialogResourceManager>
+
+  <!-- settings per i tabs custom nel modulo gestione utenti -->
+  <UC_UserCustomEditorInterface>
+    <!--<Control Class="UC_UserCustom_XYZ" />-->
+  </UC_UserCustomEditorInterface>
+
+
+  <IKCMS_ResourceType_PageCMS>
+    <!--<Flags DisplayLanguageVFS="true" DisplayLink="false" DisplayTagsBrowser="true" DisplayDateBox="true" DisplayDateNode="true" DisplayDateAux="false" DisplayGeoRef="true" DisplayItemsRelated="false" DisplayArchivesRelated="true" MergeOp="add;0" />-->
+
+    <Module Category="PageCMS_Generic" Description="Pagina CMS: generica">
+      <!--<Field Name="MiniMapDisplay" Label="Visualizzazione mini mappa google" ControlType="UC_FramedCheckBox" _DefaultValue="True" NoLang="true" />-->
+      <!--<Field Name="MapZoom" Label="Livello zoom mini mappa" ControlType="UC_FramedComboBox" NoLang="true" >
+        <option/>
+        <option value="14">Alto</option>
+        <option value="12">Medio</option>
+        <option value="10">Basso</option>
+      </Field>-->
+    </Module>
+
+    <!--<Module Category="PageCMS_RicercaDocumentale" Description="Pagina: Ricerca Documentale">
+      <Field Name="SortAtStart" Label="Ordine di visualizzazione iniziale" ControlType="UC_FramedComboBox" NoLang="true" Area="Page">
+        <option/>
+        <option value="+Name">Nome del file</option>
+        <option value="-Date">Data più recente</option>
+        <option value="+Date">Data meno recente</option>
+        <option value="Viewed">Più visti</option>
+        <option value="-Creat">Data di creazione più recente</option>
+      </Field>
+    </Module>-->
+
+    <Module Category="PageCMS_Gallery" Description="Pagina CMS: galleria di contenuti" Position="1099">
+      <Field Name="TitleHead" Label="Titolo della finestra del browser" Area="Page" />
+      <Field Name="TitleH1" Label="Titolo della pagina &lt;H1&gt;" Area="Page" />
+      <Field Name="TitleH2" Label="Sottotitolo della pagina &lt;H2&gt;" Area="Page" />
+      <Field Name="SortAtStart" Label="Ordine di visualizzazione iniziale" ControlType="UC_FramedComboBox" Area="Page">
+        <option/>
+        <option value="Viewed">Più visti</option>
+        <option value="+Name">Nome del file</option>
+        <option value="-Creat">Data di creazione più recente</option>
+        <option value="-Date">Data più recente</option>
+        <option value="Position">Posizione nelle cartelle</option>
+      </Field>
+    </Module>
+  </IKCMS_ResourceType_PageCMS>
+
+
+  <IKCMS_ResourceType_PageStatic>
+    <!--<Module Category="PageStatic" Description="Pagina Speciale"></Module>-->
+  </IKCMS_ResourceType_PageStatic>
+
+
+  <IKCMS_ResourceType_ParagraphKVT>
+    <!--<Flags DisplayLanguageVFS="false" DisplayLink="false" DisplayTagsBrowser="false" DisplayDateBox="true" DisplayGeoRef="false" MergeOp="add;0" />-->
+    <!--<Flags DisplayPlaceholder="true" MergeOp="add;0.2" />-->
+
+    <Module Category="paragraph_with1image" Description="Paragrafo con immagine opzionale" Position="1000">
+      <Field Name="Title" Label="Titolo" />
+      <Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxHtmlArea" Height="400" />
+      <Field Name="Truncate" Label="Paragrafo con visualizzazione in modalità compatta" ControlType="UC_FramedCheckBox" _DefaultValue="False" NoLang="true" />
+      <Field Name="TruncateLength" Label="Numero di caratteri nella modalità compatta" NoLang="true" />
+      <Field Name="CssClass" Label="CssClass" ControlType="UC_FramedComboBox" NoLang="true" Area="Page" >
+        <option value="">---</option>
+        <option value="gray">Sfondo grigio</option>
+      </Field>
+      <ImageSet Description="Immagine per il paragrafo">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+        <image Key="image" WidthMax="150" HeightMax="150" Area="20000" Crop="false" CropGravity="0.0,0.0" quality="0.85" Description="Immagine" />
+        <image Key="image_crop" Width="176" Height="117" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Immagine ritagliata" />
+        <image Key="image_top" Width="315" Height="230" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Immagine ritagliata per paragrafo top" />
+        <image Key="image_big" WidthMax="270" HeightMax="270" Area="50000" Crop="false" CropGravity="0.0,0.0" quality="0.85" Description="Immagine grande" />
+        <image Key="popup" Width="800" Height="800" quality="0.85" Description="Popup" />
+      </ImageSet>
+    </Module>
+
+  </IKCMS_ResourceType_ParagraphKVT>
+
+
+  <IKCMS_ResourceType_FileCMS>
+    <Module Category="file_articolo" Description="Articolo per l'archivio" Position="1010">
+      <Flags DisplayLink="false" DisplayTagsBrowser="true" DisplayItemsRelated="false" DisplayBricksCollectableRelated="false" DisplayArchivesRelated="false" MergeOp="add;1.2" />
+      <Field Name="Title" Label="Titolo" RegEx=".+" RegExMessage="Il campo [Titolo] non puo' essere vuoto" Area="Page" />
+      <Field Name="Provvedimento" Label="Provvedimento" Area="Page" />
+      <Field Name="Rating" Label="Rating" ControlType="UC_FramedComboBox" NoLang="true" Area="Page" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </Field>
+      <Field Name="Author" Label="Autore" MultiField="true" NoLang="true" Area="Page" />
+      <Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxMultiLine" Height="200" Area="Page" />
+      <!--<Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxHtmlArea" Height="400" Area="Page" />-->
+      <ExternalStreams Description="documenti">
+        <file ExternalStorageMode="Ext" Source="streamExt" maxSize="50000" />
+      </ExternalStreams>
+    </Module>
+
+    <!--<Module Category="file_articolo_OLD" Description="Articolo per l'archivio" Position="1020">
+      <Flags DisplayLink="false" DisplayTagsBrowser="true" DisplayItemsRelated="false" DisplayBricksCollectableRelated="false" DisplayArchivesRelated="false" MergeOp="add;1.2" />
+      <Field Name="Title" Label="Titolo" NoLang="true" Storage="IKGD_Property" Tag="Misc|Titolo" RegEx=".+" RegExMessage="Il campo [Titolo] non puo' essere vuoto" />
+      <Field Name="Author" Label="Autore" NoLang="true" Storage="IKGD_Property" Tag="Misc|Autore" />
+      <Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxMultiLine" Height="200" />
+      <ExternalStreams Description="documenti">
+        <file ExternalStorageMode="Ext" Source="streamExt" maxSize="50000" />
+      </ExternalStreams>
+    </Module>-->
+  </IKCMS_ResourceType_FileCMS>
+
+
+  <IKCMS_ResourceType_TeaserCollection>
+    <!--<Field Name="Title" Label="Titolo" />-->
+    <!--<Field Name="SubTitle" Label="Sottotitolo" />-->
+    <Field Name="Delay" Type="int" Label="Tempo di permanenza di ciascun frame (millisecondi)" Enabled="false" />
+    <Field Name="Transition" Type="int" Label="Durata della transizione tra i frame (millisecondi)" Enabled="false" />
+    <!--<Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxHtmlArea" Height="400" _FilterScriptTags="true" />-->
+
+    <Module Category="TeaserCollection" Description="Visualizzatore di teaser">
+      <Field Name="Title" Label="Titolo" />
+      <Field Name="Text" Enabled="false" />
+      <Field Name="CssClass" Label="CssClass" ControlType="UC_FramedComboBox" NoLang="true" Area="Page" >
+        <option value="">---</option>
+        <option value="square">Quadrato</option>
+        <option value="wide">Larghezza doppia</option>
+      </Field>
+      <!--<Field Name="ColorBG" Label="Colore di sfondo del teaser" ControlType="UC_FramedComboBox" NoLang="true">
+        <option/>
+        <option value="ColorBG_1">Sfondo bianco</option>
+        <option value="ColorBG_2">Sfondo grigio chiaro</option>
+        <option value="ColorBG_3">Sfondo grigio medio</option>
+      </Field>-->
+    </Module>
+
+    <Module Category="ShowReelCollection" Description="Visualizzatore per lo showreel">
+      <Field Name="Title" Enabled="false" />
+      <Field Name="Text" Enabled="false" />
+    </Module>
+
+  </IKCMS_ResourceType_TeaserCollection>
+
+
+  <IKCMS_ResourceType_TeaserElementKVT>
+    <ImageSet tag="image" Description="Teaser Image">
+      <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+      <image Key="image_footer" Width="320" Height="280" Crop="true" CropGravity="0.0,0.0" png="true" quality="0.85" Description="Immagine per il footer" />
+    </ImageSet>
+    <Module Category="teaser" Description="Teaser generico">
+      <Field Name="Title" Label="Titolo" />
+      <!--<Field Name="SubTitle" Label="Sottotitolo" />-->
+      <Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxHtmlArea" Height="350" _FilterScriptTags="true" />
+    </Module>
+  </IKCMS_ResourceType_TeaserElementKVT>
+
+
+  <IKCMS_ResourceType_ShowReelElementV1>
+
+    <Module Category="page" Description="Modulo ShowReel per le pagine">
+      <!--<Field Name="Delay" Label="Delay (ms)" NoLang="true" Enabled="false" />-->
+      <!--<Field Name="Title" Label="Titolo" Enabled="false" />-->
+      <!--<Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxHtmlArea" Height="250" _FilterScriptTags="true" />-->
+
+      <Field Name="YoutubeCode" Label="Codice Youtube"/>
+      <ImageSet Description="Immagine per lo showreel">
+        <file KeyOrig="orig_main" saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" Description="Immagine principale 957*235" />
+        <image Key="image" Width="900" Height="506" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="image main" />
+      </ImageSet>
+      <!--<ImageSet ForceMultiStream="true" Description="Immagini per lo showreel">
+        <file Source="main" KeyOrig="orig_main" saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" Description="Immagine principale 435*245" />
+        <file Source="fullscreen" KeyOrig="orig_fscr" saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" Description="Immagine fullscreen" />
+        <image Source="main" Key="image_main" Width="435" Height="245" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="image main" />
+      </ImageSet>-->
+    </Module>
+
+  </IKCMS_ResourceType_ShowReelElementV1>
+
+
+  <IKCMS_ResourceType_BrowserModuleKVT>
+    <Field Name="TitleHead" Label="Titolo della finestra del browser" Area="Page" />
+    <Field Name="TitleH1" Label="Titolo della pagina &lt;H1&gt;" Area="Page" />
+    <Field Name="TitleH2" Label="Sottotitolo della pagina &lt;H2&gt;" Area="Page" />
+    <Module Category="ModuleNews" Description="Pagina News"></Module>
+  </IKCMS_ResourceType_BrowserModuleKVT>
+
+
+  <!-- settings per le risorse tipo teaser news/eventi -->
+  <IKCMS_ResourceType_TeaserNewsEventiKVT>
+    <!--<Flags DisplayLanguageVFS="true" UseKeyValueTreeLanguage="true" DisplayLink="false" DisplayTagsBrowser="false" DisplayDateBox="true" DisplayDateNode="true" DisplayDateAux="true" DisplayGeoRef="false" DisplayItemsRelated="false" DisplayBricksCollectableRelated="false" DisplayArchivesRelated="false" MergeOp="add;0.2" />-->
+    <Module Category="Browsers_teaser_news" Description="Teaser Home Tipo News/Eventi">
+    </Module>
+    <!--<Module Category="teaser_news_footer" Description="Teaser Tipo News per il footer"></Module>-->
+  </IKCMS_ResourceType_TeaserNewsEventiKVT>
+
+
+  <IKCMS_ResourceType_NewsKVT>
+
+    <Config Class="UC_EditorModule_IKCMS_BrowsersDates" CustomFormat="dd MMMM yyyy" />
+    <Flags DisplayLanguageVFS="true" UseKeyValueTreeLanguage="true" DisplayLink="false" DisplayTagsBrowser="false" DisplayDateBox="true" DisplayDateNode="true" DisplayDateAux="true" DisplayGeoRef="false" DisplayItemsRelated="false" DisplayBricksCollectableRelated="false" DisplayArchivesRelated="false" MergeOp="add;0" />
+
+    <Module Category="module_News" Description="Modulo News">
+      <Field Name="Title" Label="Titolo" />
+      <Field Name="Author" Label="Autore" />
+      <Field Name="Abstract" Label="Abstract" ControlType="UC_FramedTextBoxHtmlArea" Height="250" />
+      <Field Name="Text" Label="Testo" ControlType="UC_FramedTextBoxHtmlArea" Height="500" _FilterScriptTags="true" />
+      <ImageSet Description="Immagine">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+        <image Key="thumb" Width="200" Height="96" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail" />
+        <image Key="image" Width="280" Height="" Crop="false" CropGravity="0.0,0.0" quality="0.85" Description="Immagine in pagina" />
+        <image Key="popup" Width="800" Height="800" quality="0.85" Description="Popup" />
+      </ImageSet>
+    </Module>
+
+  </IKCMS_ResourceType_NewsKVT>
+
+
+  <IKCMS_ResourceType_ImageCMS>
+
+    <Module Category="htmlarea" Description="Immagine per htmlarea">
+      <Field Name="Title" Label="Titolo dell'immagine da usare come alt image" Area="Image" />
+
+      <ImageSet tag="htmlarea" Description="Immagine per htmlarea">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+      </ImageSet>
+    </Module>
+
+    <Module Category="page_generic" Description="Immagine per la pagina in alto a sinistra">
+      <ImageSet tag="page_generic" Description="Immagine per la pagina in alto a sinistra">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png)|*.bmp;*.gif;*.jpg;*.jpeg;*.png" />
+        <image Key="image" Width="240" Height="240" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Image" />
+        <image Key="popup" Width="800" Height="800" quality="0.85" Description="Popup" />
+      </ImageSet>
+    </Module>
+
+    <!--<Module Category="image_photogallery" Description="Immagine per photogallery" Position="1100">
+      <Flags DisplayLanguageVFS="true" DisplayTagsBrowser="true" MergeOp="add;1" />
+      <ImageSet Description="Immagine per la photogallery">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+        <image Key="thumb_small" Width="150" Height="100" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail small" />
+        <image Key="thumb_big" Width="213" Height="142" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail big" />
+        <image Key="popup" Width="800" Height="800" quality="0.85" Description="Photo popup" />
+      </ImageSet>
+    </Module>-->
+
+    <Module Category="image_photogallery" Description="Immagine per photogallery" Position="1100">
+      <Flags DisplayLanguageVFS="true" DisplayTagsBrowser="true" MergeOp="add;1" />
+      <ImageSet Description="Immagine per la photogallery">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+        <image Key="thumb" Width="150" Height="85" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail" />
+        <image Key="thumb_big" Width="300" Height="170" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail" />
+        <image Key="popup" Width="800" Height="800" quality="0.85" Description="Photo popup" />
+      </ImageSet>
+    </Module>
+    <Module Category="image_videogallery" Description="Immagine per videogallery" Position="1100">
+      <Flags DisplayLanguageVFS="true" DisplayTagsBrowser="true" MergeOp="add;1" />
+      <!--<Field Name="HtmlVideo" Label="Html Video" ControlType="UC_FramedTextBoxMultiLine" Height="500" Area="Page"/>-->
+      <Field Name="CodiceYoutube" Label="Codice youtube"/>
+      <ImageSet Description="Immagine per la videogallery">
+        <file saveOrig="true" maxSize="10000" allowedExts="Image files(*.bmp;*.gif;*.jpg;*.png;*.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tiff" />
+        <image Key="thumb" Width="150" Height="85" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail" />
+        <image Key="thumb_big" Width="300" Height="170" Crop="true" CropGravity="0.0,0.0" quality="0.85" Description="Thumbnail" />
+      </ImageSet>
+    </Module>
+
+  </IKCMS_ResourceType_ImageCMS>
+
+
+  <IKCMS_ResourceType_DocumentCollection>
+
+    <Module Category="DocumentCollection" Description="Visualizzatore di allegati" />
+
+  </IKCMS_ResourceType_DocumentCollection>
+
+
+
+
+  <!-- Definizione dei placeholders per i bricks -->
+  <IKCMS_PageCMS_Placeholder_Interface>
+    <Placeholder>
+      <Code>cms_content_main</Code>
+      <Description>Corpo della pagina</Description>
+    </Placeholder>
+    <Placeholder>
+      <Code>cms_content_extra</Code>
+      <Description>Blocco Top</Description>
+    </Placeholder>
+    <Placeholder>
+      <Code>cms_content_aux1</Code>
+      <Description>Colonna Sinistra</Description>
+    </Placeholder>
+    <Placeholder>
+      <Code>cms_content_aux2</Code>
+      <Description>Colonna Destra</Description>
+    </Placeholder>
+    <Placeholder Selectable="true">
+      <Code>cms_showreel</Code>
+      <Description>Header</Description>
+    </Placeholder>
+    <Placeholder Selectable="true">
+      <Code>cms_teasers_main</Code>
+      <Description>Footer</Description>
+    </Placeholder>
+    <Placeholder Selectable="false">
+      <Code>cms_teasers_aux1</Code>
+      <Description>Teasers in colonna SX</Description>
+    </Placeholder>
+    <Placeholder Selectable="true">
+      <Code>cms_teasers_aux2</Code>
+      <Description>Teasers in colonna DX</Description>
+    </Placeholder>
+    <Placeholder Selectable="false">
+      <Code>cms_teasers_aux3</Code>
+      <Description>In pagina</Description>
+    </Placeholder>
+  </IKCMS_PageCMS_Placeholder_Interface>
+
+
+  <IKCMS_PageCMS_Template_Interface>
+
+    <!--templates NULL per default-->
+    <Template Selectable="false">
+      <Type>NULL</Type>
+      <ViewPath>~/Views/IKCMS/Templates/NULL</ViewPath>
+      <!--<ViewPath>~/Views/Layouts/Application</ViewPath>
+      <ResourceTypes><![CDATA[IKCMS_ResourceType_ImageCMS]]></ResourceTypes>
+      <ResourceTypes><![CDATA[IKCMS_BrowsableIndexable_Interface]]></ResourceTypes>-->
+      <!--<Placeholders><![CDATA[Header,ColumnSX,ColumnMain,ColumnDX,Footer,FooterMini]]></Placeholders>-->
+      <Description>NULL render</Description>
+    </Template>
+    <Template Selectable="false">
+      <Type>Expired</Type>
+      <ViewPath>~/Views/IKCMS/Templates/Expired</ViewPath>
+      <!--<ViewPath>~/Views/Layouts/Application</ViewPath>-->
+      <!--<Placeholders><![CDATA[Header,ColumnSX,ColumnMain,ColumnDX,Footer,FooterMini]]></Placeholders>-->
+      <Description>Expired resource</Description>
+    </Template>
+
+    <!--templates per le pagine CMS-->
+    <Template>
+      <Type>PageTemplate_Generic_NoMenu</Type>
+      <ViewPath>~/Views/IKCMS/Templates/Generic/Template_generic_nomenu</ViewPath>
+      <ResourceTypes Categories="PageCMS_Generic"><![CDATA[IKCMS_ResourceType_PageCMS]]></ResourceTypes>
+      <Description>Pagina piena (Senza menu)</Description>
+    </Template>
+    <Template>
+      <Type>PageTemplate_Generic</Type>
+      <ViewPath>~/Views/IKCMS/Templates/Generic/Template_generic</ViewPath>
+      <ResourceTypes Categories="PageCMS_Generic"><![CDATA[IKCMS_ResourceType_PageCMS]]></ResourceTypes>
+      <Description>Con menù a sinistra</Description>
+    </Template>
+    
+    <Template>
+      <Type>PageTemplate_PhotoGallery</Type>
+      <ViewPath code="index">~/Views/IKCMS/Templates/Galleries/Template_PhotoGallery</ViewPath>
+      <ViewPath code="popup">~/Views/IKCMS/Templates/Galleries/Popup_PhotoGallery</ViewPath>
+      <ResourceTypes Categories="PageCMS_Gallery"><![CDATA[IKCMS_ResourceType_PageCMS,IKCMS_ResourceType_PageStatic]]></ResourceTypes>
+      <Description>Pagina CMS: photo gallery</Description>
+    </Template>
+
+    <Template>
+      <Type>PageTemplate_VideoGallery</Type>
+      <ViewPath code="index">~/Views/IKCMS/Templates/Galleries/Template_VideoGallery</ViewPath>
+      <ViewPath code="popup">~/Views/IKCMS/Templates/Galleries/Popup_VideoGallery</ViewPath>
+      <ResourceTypes Categories="PageCMS_Gallery"><![CDATA[IKCMS_ResourceType_PageCMS,IKCMS_ResourceType_PageStatic]]></ResourceTypes>
+      <Description>Pagina CMS: video gallery</Description>
+    </Template>
+    
+    <Template>
+      <Type>PageTemplate_News</Type>
+      <ViewPath code="index">~/Views/IKCMS/Templates/News/Template_news_index</ViewPath>
+      <ViewPath code="item">~/Views/IKCMS/Templates/News/Template_news_item</ViewPath>
+      <ViewPath code="detail">~/Views/IKCMS/Templates/News/Template_news_detail</ViewPath>
+      <ResourceTypes><![CDATA[IKCMS_ResourceType_BrowserModuleKVT]]></ResourceTypes>
+      <Description>Pagina CMS: modulo News</Description>
+    </Template>
+
+    <!--templates per i paragrafi-->
+    <Template>
+      <Type>Brick_paragrafo_1image_SX</Type>
+      <ViewPath>~/Views/IKCMS/Paragraphs/Paragraph_generic</ViewPath>
+      <ResourceTypes Categories="paragraph_with1image"><![CDATA[IKCMS_ResourceType_ParagraphKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_content_main,cms_content_extra]]></Placeholders>
+      <Description>Immagine piccola a sinistra</Description>
+    </Template>
+    <Template>
+      <Type>Brick_paragrafo_1image_DX</Type>
+      <ViewPath>~/Views/IKCMS/Paragraphs/Paragraph_generic</ViewPath>
+      <ResourceTypes Categories="paragraph_with1image"><![CDATA[IKCMS_ResourceType_ParagraphKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_content_main,cms_content_extra]]></Placeholders>
+      <Description>Immagine piccola a destra</Description>
+    </Template>
+    <Template>
+      <Type>Brick_paragrafo_onlytext</Type>
+      <ViewPath>~/Views/IKCMS/Paragraphs/Paragraph_generic</ViewPath>
+      <ResourceTypes Categories="paragraph_with1image"><![CDATA[IKCMS_ResourceType_ParagraphKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_content_main,cms_content_extra]]></Placeholders>
+      <Description>Solo testo</Description>
+    </Template>
+    <Template>
+      <Type>Brick_paragrafo_cliccabile</Type>
+      <ViewPath>~/Views/IKCMS/Paragraphs/Paragraph_generic</ViewPath>
+      <ResourceTypes Categories="paragraph_with1image"><![CDATA[IKCMS_ResourceType_ParagraphKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_content_main,cms_content_extra]]></Placeholders>
+      <Description>Cliccabile</Description>
+    </Template>
+    <!--<Template>
+      <Type>Brick_paragrafo_contatto</Type>
+      <ViewPath>~/Views/IKCMS/Paragraphs/Brick_paragrafo_cliccabile</ViewPath>
+      <ResourceTypes Categories="contact"><![CDATA[IKCMS_ResourceType_ParagraphKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_content_main,cms_content_extra,cms_content_aux2]]></Placeholders>
+      <Description>Paragrafo cliccabile con immagine</Description>
+    </Template>-->
+
+    <!--teaser news/eventi-->
+    <Template>
+      <Type>TeaserViewer_NewsEventi</Type>
+      <ViewPath code="container">~/Views/IKCMS/Teasers/NewsEventi/TeaserNewsEventi_Rotator</ViewPath>
+      <ViewPath code="item">~/Views/IKCMS/Teasers/NewsEventi/TeaserNewsEventi_Item</ViewPath>
+      <ResourceTypes Categories="Browsers_teaser_news"><![CDATA[IKCMS_ResourceType_TeaserNewsEventiKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_teasers_main,cms_teasers_aux1,cms_teasers_aux2,cms_teasers_aux3]]></Placeholders>
+      <Description>Visualizzatore di news/eventi</Description>
+      <Size Width="300" Height="300"/>
+    </Template>
+
+    <!--teaser viewer per showreel-->
+    <Template>
+      <Type>TeaserViewer_ShowReel</Type>
+      <ViewPath>~/Views/IKCMS/Showreels/ShowReelWithTeaser</ViewPath>
+      <ResourceTypes Categories="ShowReelCollection"><![CDATA[IKCMS_BrickCollector_Interface]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_showreel]]></Placeholders>
+      <Description>Visualizzatore per lo showreel</Description>
+      <Size Width="1000" Height="500"/>
+    </Template>
+
+    <!--templates per i visualizzatori di teasers-->
+    <Template>
+      <Type>TeaserViewer_Normal</Type>
+      <ViewPath>~/Views/IKCMS/Teasers/TeaserViewers/TeaserViewerRotator</ViewPath>
+      <ResourceTypes Categories="TeaserCollection"><![CDATA[IKCMS_BrickCollector_Interface]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_teasers_aux1,cms_teasers_aux2,cms_teasers_aux3]]></Placeholders>
+      <Description>Visualizzatore di teaser con testo</Description>
+      <Size Width="300" Height="300"/>
+    </Template>
+
+    <Template>
+      <Type>TeaserViewer_Footer</Type>
+      <ViewPath>~/Views/IKCMS/Teasers/TeaserViewers/TeaserViewer_Footer</ViewPath>
+      <ResourceTypes Categories="TeaserCollection"><![CDATA[IKCMS_BrickCollector_Interface]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_teasers_main]]></Placeholders>
+      <Description>Visualizzatore di teaser footer</Description>
+      <Size Width="300" Height="300"/>
+    </Template>
+
+    <!--templates per gli elementi singoli dei teasers collettori-->
+    <Template>
+      <Type>TeaserItem_Default</Type>
+      <ViewPath>~/Views/IKCMS/Teasers/TeaserItems/TeaserItemGlobal</ViewPath>
+      <ResourceTypes><![CDATA[IKCMS_BrickTeaser_Interface,^IKCMS_BrickCollector_Interface]]></ResourceTypes>
+      <Description>Teaser</Description>
+    </Template>
+
+    <Template>
+      <Type>Widget_Default</Type>
+      <ViewPath>~/Views/IKCMS/Widgets/WidgetDefault</ViewPath>
+      <ResourceTypes Categories="Widget_Default"><![CDATA[IKCMS_ResourceType_BrickWidgetGeneric]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_teasers_main,cms_teasers_aux1,cms_teasers_aux2,cms_teasers_aux3]]></Placeholders>
+      <Description>widget generico</Description>
+      <Size Width="300" Height="300"/>
+    </Template>
+
+    <!--templates per i links-->
+    <Template>
+      <Type>LinkItem</Type>
+      <ViewPath>~/Views/IKCMS/Links/LinkItem</ViewPath>
+      <ResourceTypes Categories="link"><![CDATA[IKCMS_ResourceType_LinkKVT]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_teasers_main,cms_teasers_aux1,cms_teasers_aux2,cms_teasers_aux3]]></Placeholders>
+      <Description>Link normale</Description>
+    </Template>
+
+    <!--templates per gli showreel-->
+    <Template>
+      <Type>ShowreelHeaderItem</Type>
+      <ViewPath>~/Views/IKCMS/Showreels/ShowReelItem</ViewPath>
+      <ResourceTypes Categories="page"><![CDATA[IKCMS_ResourceType_ShowReelElementV1]]></ResourceTypes>
+      <Placeholders><![CDATA[cms_showreel]]></Placeholders>
+      <Description>Showreel per l'header</Description>
+      <Size Width="1000" Height="500"/>
+    </Template>
+
+  </IKCMS_PageCMS_Template_Interface>
+
+
+
+
+  <Global>
+    <!--<Flags HasPopup="false" HasAlt="true" HasDescription="true" HasLink="false" HasTarget="false" HasStreamSelector="false" HasProcessorSelector="false" />-->
+    <!--<Keys/>-->
+    <!--<Categories/>-->
+  </Global>
+
+</configuration>

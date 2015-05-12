@@ -1,0 +1,24 @@
+<use master="Application" />
+
+<content name="body_Main">
+
+  Hello World!
+
+</content>
+
+
+<content name="tail_CodeJS">
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+    });
+
+  </script>
+</content>
+
+<content name="tail_IncludeJS">
+  <!--<script type="text/javascript" src='${Url.AutoVersioning("~/Content/LIBs/FancyBox/jquery.fancybox.js")}'></script>-->
+</content>
+<content name="head_IncludeCSS">
+  <!--<link rel="stylesheet" type="text/css" href='${Url.AutoVersioning("~/Content/LIBs/DatePicker/css/datepicker.css")}' />-->
+</content>

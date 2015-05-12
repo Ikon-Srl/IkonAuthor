@@ -1,0 +1,35 @@
+﻿/*teasers footer*/
+.cms_teasers_main
+{
+    border-top:solid 1px #000;
+    background:#454545;  
+    overflow:hidden;
+    .container
+    {
+        -moz-box-shadow: 0 0 10px #000;
+        -webkit-box-shadow: 0 0 10px#000;
+        box-shadow: 0 0 10px #000;
+    }
+    .box_teaser
+    {
+        width:320px; height:280px; float:left; overflow:hidden;
+        .items
+        {
+            white-space: nowrap; overflow: hidden;
+            width:320px; height:280px;
+            .item
+            {
+                display: inline-block; white-space:normal;
+                position: relative;
+                width:320px; height:280px;
+                overflow: hidden;
+                .texts
+                {
+                    position:absolute; bottom:0px; left:0px; right:0px; background-color:rgba(0,0,0,0.5);
+                    color:#fff; padding:10px;
+                }
+            }
+        }
+    }
+}
+    

@@ -1,0 +1,80 @@
+﻿<use master="Master_site" />
+<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Page_Interface"/>
+
+# var ModelPage = (ViewData.Model as Ikon.IKCMS.IKCMS_ModelCMS_Interface).ModelRoot as Ikon.IKCMS.IKCMS_ModelCMS_Page_Interface;
+# bool isCompactView = (Request.Params["ListMode"] != "Wide");
+# var rowSize = isCompactView ? 4 : 2;
+# var pageSize = rowSize * (isCompactView ? 4 : 3);
+# ManagerTagFilter_VideoGallery gallery = new ManagerTagFilter_VideoGallery(Model);
+# gallery.ScanVFS_Paged(pageSize, null, Request.Params[gallery.ParameterNameSorter] ?? (Model as IKCMS_ModelCMS_VFS_LanguageKVT_Interface).VFS_ResourceLanguageKVT("SortAtStart").ValueString, null);
+# var popupView = Model.TemplateInfo.ViewPaths["popup"] ?? "~/Views/IKCMS/Templates/Galleries/Popup_VideoGallery";
+
+# var mdl = ViewData.ModelBaseForContext<IKCMS_ModelCMS_GenericBrickInterface>();
+# var images = mdl.OfType<IKCMS_ModelCMS_WidgetCMS_ImageCMS>().ToList();
+# var image_gen = images.Where(m => m.vfsNode.vData.category == "page_generic").FirstOrDefault();
+        
+<content name="tail_CodeJS">
+  <if condition='!string.IsNullOrEmpty(Request.Params["rNode"])'>
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+      try {
+        //autopopup per le foto
+        //$('a[rel="gallery"][href*="sNode=${Request.Params["sNode"].EncodeAsAttribute()}&"]').add($('a[rel="gallery"][href$="sNode=${Request.Params["sNode"].EncodeAsAttribute()}"]')).click();
+        $('a[rel="gallery"][href*="rNode=${Request.Params["rNode"].EncodeAsAttribute()}&"]').add($('a[rel="gallery"][href$="rNode=${Request.Params["rNode"].EncodeAsAttribute()}"]')).click();
+      } catch (e) { }
+    });
+
+    </script>
+  </if>
+</content>
+
+<content name="cms_title_h2"></content>
+<content name="cms_menu_nav">${Html.Partial("~/Views/IKCMS/Templates/Galleries/SearchBox", gallery)}</content>
+<content name="cms_content_main">
+  
+		<div id="gallery">
+		<!--<h2 class="bold">risultati trovati:</h2>-->
+	    
+		  <div class="ordina">
+			  Ordina:&nbsp; <a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Name", "+Name", +1)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Name", "+Name", +1, "active_", "up", "down")}' rel="nofollow">Nome</a>&nbsp; 
+			  <a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Creat", "-Creat", -1)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Creat", "-Creat", +1, "active_", "up", "down")}' rel="nofollow">più recenti</a>&nbsp;
+			  <!--<a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Date", "-Date", -1)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Date", "-Date", +1, "active_", "up", "down")}' rel="nofollow">più recenti</a>&nbsp;-->
+			  <!--<a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Viewed", "-Viewed", null)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "Viewed", "-Viewed", -1, "active_", "down", "down")}' rel="nofollow">più visti</a>&nbsp;-->
+			  <!--<a href='${HelperExtensionCommon.GetSortingUrl("SortMode", "Voted", "-Voted", null)}' class='${HelperExtensionCommon.GetSortingCSS("SortMode", "voted", "-Voted", -1, "active_", "down", "down")}' rel="nofollow">più votati</a>-->
+		  </div>
+		  <div class="vista">
+			Visualizzazione&nbsp; <a href='${isCompactView ? "javascript:;" : Utility.UriSetQuery(Request.Url, "ListMode", "Compact").EncodeAsAttributeUrl()}' rel="nofollow">Compatta</a>&nbsp;<a href='${isCompactView ? Utility.UriSetQuery(Request.Url, "ListMode", "Wide").EncodeAsAttributeUrl() : "javascript:;"}' rel="nofollow">Larga</a>
+		  </div>
+		  <div class="clearfloat"></div>
+		  <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithView(null, rNode, popupView)).EncodeAsAttribute()}' each='var rNode in gallery.NodesPre' if='gallery.NodesPre != null' class="autoPopup" rel="gallery"></a>-->
+		  <div class='items ${isCompactView ? "small" : "big"}'>
+		    <if condition='gallery.Models.Any()'>
+			  <for each='var item in gallery.Models.OfType<IKCMS_ModelCMS_GenericBrickInterface>()'>
+			    <div class='item'>
+				  <div class="thumb">
+	              <a href='http://www.youtube.com/embed/${item.VFS_ResourceLanguageKVT("CodiceYoutube").ValueString}?autoplay=1' class="autoPopupVideo fancybox.iframe">
+  				
+				    <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithViewAndMaster(null, item.rNode, popupView, "")).EncodeAsAttribute()}' class="autoPopupVideo"  data-fancybox-type="iframe">-->
+					  ${item.ImageCMS(isCompactView ? "thumb" : "thumb_big", Url.TransparentImage(), null, null, null)}
+				    <div class="titolo">$!{item.Title}</div>
+				    </a>
+				  </div>
+			    </div>
+			  </for>
+		    </if><else>
+		      <br/><br/><br/>
+		      ${IKCMS_StaticResources.GetString("GalleryNoResults")}
+		      <br/><br/><br/>
+		    </else>
+			<div class="clearfloat"></div>
+		  <div class="pager" if='gallery.Pager != null && gallery.Pager.PagerPageCount > 1'>${Html.Partial("~/Views/Components/Navigation/Pager", gallery.Pager)}</div>
+		  </div>
+		  <!--<a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<IKCMSController>(c => c.ResourceWithView(null, rNode, popupView)).EncodeAsAttribute()}' each='var rNode in gallery.NodesPost' if='gallery.NodesPost != null' class="autoPopup" rel="gallery"></a>-->
+
+		  <div class="clearfloat"></div>
+		</div>
+
+	
+</content>
+

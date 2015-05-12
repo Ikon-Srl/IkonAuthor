@@ -1,0 +1,16 @@
+﻿<viewdata model="Ikon.IKCMS.IKCMS_ModelCMS_Interface"/>
+
+<div class="menu_AreaPersonale">
+    <div class="tabs">
+      <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<SampleSite_Web.Controllers.AreaPersonaleController>(c => c.Index()).EncodeAsAttribute()}' class='tab active_down?{Request.RawUrl.IndexOf(IKCMS_RouteUrlManager.GetMvcActionUrl<SampleSite_Web.Controllers.AreaPersonaleController>(c => c.Index())) >= 0}'>Area Personale</a>
+      <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<SampleSite_Web.Controllers.AreaPersonaleController>(c => c.DatiPersonali()).EncodeAsAttribute()}' class='tab active_down?{Request.RawUrl.IndexOf(IKCMS_RouteUrlManager.GetMvcActionUrl<SampleSite_Web.Controllers.AreaPersonaleController>(c => c.DatiPersonali())) >= 0}'>Dati personali</a>
+    </div>
+    <if condition='!MembershipHelper.IsAnonymous && MembershipHelper.IsMembershipVerified'>
+        <div class="gest_utente">
+          <a href='${Url.Content(string.Format("~/Auth/ChangePassword?ReturnUrl={0}", Url.Encode(Request.QueryString["ReturnUrl"]))).EncodeAsAttribute()}' class="login">Modifica password</a>&nbsp;|&nbsp;
+          <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AuthController>(c => c.DeleteUser(MembershipHelper.UserName, global::IkonWeb.Controllers.AuthController.GetUnlockCodeV2(MembershipHelper.UserName))).EncodeAsAttribute()}' class="login autoConfirm" autoConfirm="Sei sicuro di voler eliminare il tuo account?">Rimuovi il tuo account</a>&nbsp;|&nbsp;
+          <a href='${IKCMS_RouteUrlManager.GetMvcActionUrl<global::IkonWeb.Controllers.AuthController>(c => c.Logout()).EncodeAsAttribute()}' class="login">Logout</a>
+        </div>
+    </if>
+</div>
+<div class="clearfloat"></div>
