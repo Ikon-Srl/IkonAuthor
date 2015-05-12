@@ -97,6 +97,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerie\DLLs\Gizmox.WebGUI.Server.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librerie\DLLs\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="IKGD_Author_Catalog, Version=1.0.5610.19103, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerie\DLLs\IKGD_Author_Catalog.dll</HintPath>
@@ -124,10 +128,6 @@
     <Reference Include="Lucene.Net.Contrib.Highlighter, Version=2.3.2.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerie\DLLs\Lucene.Net.Contrib.Highlighter.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\IkonPortal\DllExtra\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
@@ -587,7 +587,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v9.0\Gizmox.VWGApplication.targets" />
+  <!--<Import Condition="" Project="$(MSBuildExtensionsPath)\Gizmox\v9.0\Gizmox.VWGApplication.targets" />-->
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
