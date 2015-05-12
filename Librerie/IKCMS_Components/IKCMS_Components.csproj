@@ -33,59 +33,59 @@
   <ItemGroup>
     <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoFac\Autofac.dll</HintPath>
+      <HintPath>..\DLLs\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Web, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.dll</HintPath>
+      <HintPath>..\DLLs\Autofac.Integration.Web.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Web.Mvc, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.Mvc.dll</HintPath>
+      <HintPath>..\DLLs\Autofac.Integration.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoMapper.dll</HintPath>
+      <HintPath>..\DLLs\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core, Version=1.3.0.5, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\DotLess\dotless.Core.dll</HintPath>
+      <HintPath>..\DLLs\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\EcmaScript.NET.modified.dll</HintPath>
+      <HintPath>..\DLLs\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\elmah\Bin\Elmah.dll</HintPath>
+      <HintPath>..\DLLs\Elmah.dll</HintPath>
     </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\Facebook\net35-client\Facebook.dll</HintPath>
+      <HintPath>..\DLLs\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Heijden.Dns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\dnsbl\Heijden.Dns.dll</HintPath>
+      <HintPath>..\DLLs\Heijden.Dns.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+      <HintPath>..\DLLs\LinqKit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\MVC\Microsoft.Web.Mvc.dll</HintPath>
+      <HintPath>..\DLLs\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\MVC\Spark.dll</HintPath>
+      <HintPath>..\DLLs\Spark.dll</HintPath>
     </Reference>
     <Reference Include="Spark.Web.Mvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\MVC\Spark.Web.Mvc.dll</HintPath>
+      <HintPath>..\DLLs\Spark.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations">
@@ -127,17 +127,13 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="wnvhtmlconvert, Version=6.2.0.0, Culture=neutral, PublicKeyToken=5b5f377bc08a4d32, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\wnvhtmlconvert.dll</HintPath>
-    </Reference>
     <Reference Include="Wurfl, Version=1.4.4.0, Culture=neutral, PublicKeyToken=816aeec277aa13b9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\Wurfl\Wurfl.dll</HintPath>
+      <HintPath>..\DLLs\Wurfl.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=1.5.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\Yahoo.Yui.Compressor.dll</HintPath>
+      <HintPath>..\DLLs\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

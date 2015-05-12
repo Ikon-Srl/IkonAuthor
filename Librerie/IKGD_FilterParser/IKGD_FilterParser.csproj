@@ -33,39 +33,39 @@
   <ItemGroup>
     <Reference Include="AntiXSSLibrary, Version=4.2.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AntiXSS\NET35\AntiXSSLibrary.dll</HintPath>
+      <HintPath>..\DLLs\AntiXSSLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Autofac, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoFac\Autofac.dll</HintPath>
+      <HintPath>..\DLLs\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Web, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.dll</HintPath>
+      <HintPath>..\DLLs\Autofac.Integration.Web.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Web.Mvc, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AutoFac\Autofac.Integration.Web.Mvc.dll</HintPath>
+      <HintPath>..\DLLs\Autofac.Integration.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="HtmlSanitizationLibrary, Version=4.2.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\AntiXSS\SANITIZER\HtmlSanitizationLibrary.dll</HintPath>
+      <HintPath>..\DLLs\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\itextsharp.dll</HintPath>
+      <HintPath>..\DLLs\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\LinqKit.dll</HintPath>
+      <HintPath>..\DLLs\LinqKit.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\log4net.dll</HintPath>
+      <HintPath>..\DLLs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="SgmlReaderDll, Version=1.4.1976.34865, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\SgmlReaderDll.dll</HintPath>
+      <HintPath>..\DLLs\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -93,7 +93,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllExtra\TidyNet.dll</HintPath>
+      <HintPath>..\DLLs\TidyNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
